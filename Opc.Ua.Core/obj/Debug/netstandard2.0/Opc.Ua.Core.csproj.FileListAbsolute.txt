@@ -1,0 +1,16 @@
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\bin\Debug\netstandard2.0\Opc.Ua.Core.deps.json
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\bin\Debug\netstandard2.0\Opc.Ua.Core.dll
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\bin\Debug\netstandard2.0\Opc.Ua.Core.pdb
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.csproj.CoreCompileInputs.cache
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.AssemblyInfoInputs.cache
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.AssemblyInfo.cs
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.dll
+E:\MyThesis\UA-.NETStandard-master\UA-.NETStandard-master\Stack\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.pdb
+C:\Thesis\Opc.Ua.Core\bin\Debug\netstandard2.0\Opc.Ua.Core.deps.json
+C:\Thesis\Opc.Ua.Core\bin\Debug\netstandard2.0\Opc.Ua.Core.dll
+C:\Thesis\Opc.Ua.Core\bin\Debug\netstandard2.0\Opc.Ua.Core.pdb
+C:\Thesis\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.csproj.CoreCompileInputs.cache
+C:\Thesis\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.AssemblyInfoInputs.cache
+C:\Thesis\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.AssemblyInfo.cs
+C:\Thesis\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.dll
+C:\Thesis\Opc.Ua.Core\obj\Debug\netstandard2.0\Opc.Ua.Core.pdb
