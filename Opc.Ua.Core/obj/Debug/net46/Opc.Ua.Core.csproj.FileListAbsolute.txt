@@ -111,10 +111,10 @@ C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Security.Cryptography.X509Certifica
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Text.Encodings.Web.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Threading.Tasks.Extensions.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Xml.ReaderWriter.dll
+C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.csprojAssemblyReference.cache
 C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.csproj.CoreCompileInputs.cache
 C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.AssemblyInfoInputs.cache
 C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.AssemblyInfo.cs
 C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.csproj.CopyComplete
 C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.dll
 C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.pdb
-C:\Thesis\Opc.Ua.Core\obj\Debug\net46\Opc.Ua.Core.csprojAssemblyReference.cache

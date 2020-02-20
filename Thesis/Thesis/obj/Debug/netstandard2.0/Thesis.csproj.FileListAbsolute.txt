@@ -9,10 +9,10 @@ C:\Thesis\Thesis\Thesis\bin\Debug\netstandard2.0\Opc.Ua.Configuration.pdb
 C:\Thesis\Thesis\Thesis\bin\Debug\netstandard2.0\Opc.Ua.Core.pdb
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Thesis.csprojAssemblyReference.cache
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\App.xaml.g.cs
-C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\View\MainPage.xaml.g.cs
-C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\View\Popup.xaml.g.cs
-C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\View\TreeView.xaml.g.cs
-C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\View\WritePopup.xaml.g.cs
+C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Views\Popup.xaml.g.cs
+C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Views\TreeView.xaml.g.cs
+C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Views\WritePopup.xaml.g.cs
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Thesis.csproj.CoreCompileInputs.cache
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Thesis.AssemblyInfoInputs.cache
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Thesis.AssemblyInfo.cs

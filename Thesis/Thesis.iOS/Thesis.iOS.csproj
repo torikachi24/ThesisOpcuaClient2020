@@ -109,6 +109,8 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <BundleResource Include="Resources\Icon-Small-40.png" />
+    <BundleResource Include="Resources\ic_create.png" />
+    <BundleResource Include="Resources\ic_delete_forever.png" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="PathService.cs" />
