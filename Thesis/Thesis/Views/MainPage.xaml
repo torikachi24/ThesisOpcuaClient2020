@@ -6,8 +6,6 @@
     <ContentPage.Content>
         <StackLayout  Margin = "10,10,10,10">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-                <!--<Label Text="OPC UA server's endpoint URL:" FontSize="Medium" TextColor="#0066ff" FontAttributes="Bold" />
-                <Entry x:Name="EntryUrl" Placeholder="Write your EndpointUrl here" />-->
 
                 <StackLayout Orientation="Horizontal">
                     <Button  x:Name="AddNewConnection"
@@ -16,23 +14,16 @@
                     Margin="0,0,0,0"
                     HorizontalOptions="FillAndExpand"
                     BorderRadius="6"
-                    BackgroundColor="#ccccb3"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="HotPink"
                     Clicked="AddNewConnection_Clicked" />
-                    
-                    <Button x:Name="ConnectButton"
-                    Text="Connect"
-                    Font="Large"
-                    HorizontalOptions="FillAndExpand"
-                    Clicked="OnConnect"
-                    BorderRadius="6"
-                    Margin="0,0,0,0"
-                    BackgroundColor="#ccccb3" />
                 </StackLayout>
 
                 <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold" TextColor="DodgerBlue" FontSize="Medium" />
                 <BoxView HeightRequest="2" Color="DodgerBlue" />
 
-                <ListView ItemsSource="{Binding Connections}" 
+                <ListView ItemsSource="{Binding Connections}"
                           HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -45,7 +36,7 @@
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Column="0" Orientation="Vertical">
                                         <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnConnect" CommandParameter="{Binding ConnectionId}"/>
+                                            <TapGestureRecognizer Tapped="OnConnect" CommandParameter="{Binding ConnectionId}" />
                                         </StackLayout.GestureRecognizers>
                                         <Label x:Name="NameA" Text="{Binding ConnectionName}"
                                            FontSize="Medium"
@@ -70,10 +61,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <!--<ActivityIndicator x:Name="ConnectIndicator"
-                IsRunning="False"
-                Color="DodgerBlue"
-                VerticalOptions="CenterAndExpand" />-->
                 <Label x:Name="label"
                    Text="{Binding LabelText, Mode=TwoWay}"
                    FontSize="Medium"

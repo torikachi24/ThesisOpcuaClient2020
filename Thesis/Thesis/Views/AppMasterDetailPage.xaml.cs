@@ -9,18 +9,18 @@ namespace Thesis
     public partial class AppMasterDetailPage : MasterDetailPage
     {
         private static LabelViewModel textInfo = new LabelViewModel();
-        public Tree xtree;
-        public SampleClient sampleClient;
-        public AppMasterDetailPage(Tree tree, SampleClient sample)
+        public static Tree tree_controlPage;
+        public static SampleClient sampleClient_controlPage;
+
+        public AppMasterDetailPage()
         {
             InitializeComponent();
             MasterPage.ListView.ItemSelected += ListView_ItemSelected;
             BindingContext = textInfo;
-            xtree = tree;
-            sampleClient = sample;
-            
+            //xtree = tree;
+            //sampleClient = sample;
         }
-        
+
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as AppMasterDetailPageMenuItem;
@@ -28,8 +28,7 @@ namespace Thesis
                 return;
             if (item.Id == 1)
             {
-                
-                Page treeViewRoot = new TreeView(xtree, sampleClient);
+                Page treeViewRoot = new TreeView(tree_controlPage, sampleClient_controlPage);
                 treeViewRoot.Title = "/Root";
                 Detail = new NavigationPage(treeViewRoot);
                 IsPresented = false;
@@ -42,7 +41,6 @@ namespace Thesis
                 Detail = new NavigationPage(page);
                 IsPresented = false;
             }
-            
 
             MasterPage.ListView.SelectedItem = null;
         }

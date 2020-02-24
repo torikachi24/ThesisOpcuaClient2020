@@ -56,6 +56,12 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\ic_delete_forever.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable-xhdpi\ic_delete_forever.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable-xxhdpi\drawable-xxhdpi\ic_delete_forever.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable-xxxhdpi\ic_delete_forever.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\home.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\search.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\report.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\question.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\info.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\logout.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\R.cs.flag
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\R.txt
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\uploadflags.txt
@@ -151,11 +157,7 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Thesis.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Core.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\search.png
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\info.png
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\report.png
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\question.png
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\home.png
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\logout.png
+C:\Thesis\Thesis\Thesis\bin\Debug\netstandard2.0\Thesis.dll
+C:\Thesis\Thesis\Thesis.Android\bin\Debug\Thesis.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Rg.Plugins.Popup.Droid.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Thesis.dll.mdb

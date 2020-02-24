@@ -14,7 +14,7 @@ namespace Thesis
         private static LabelViewModel textInfo = new LabelViewModel();
         private SampleClient OpcClient = new SampleClient(textInfo);
         private string endpointUrl = null;
-        
+
         public MainPage()
         {
             BindingContext = textInfo;
@@ -27,65 +27,50 @@ namespace Thesis
             TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
             ConnectType connectType = ((ConnectionListViewModel)BindingContext).Connections.Where(emp => emp.ConnectionId == (int)tappedEventArgs.Parameter).FirstOrDefault();
             endpointUrl = connectType.ConnectionUrl;
-            //endpointUrl = EntryUrl.Text;
-
             if (endpointUrl != null)
             {
-                if (ConnectButton.Text == "Connect")
+                bool connectToServer = true;
+                await PopupNavigation.Instance.PushAsync(new ActivityIndicatorPage());
+
+                await Task.Run(() => OpcClient.CreateCertificate());
+
+                if (OpcClient.haveAppCertificate == false)
                 {
-                    bool connectToServer = true;
-                    //ConnectIndicator.IsRunning = true;
-                    await PopupNavigation.Instance.PushAsync(new ActivityIndicatorPage());
+                    connectToServer = await DisplayAlert("Warning", "missing application certificate, \nusing unsecure connection. \nDo you want to continue?", "Yes", "No");
+                }
 
-                    await Task.Run(() => OpcClient.CreateCertificate());
+                if (connectToServer == true)
+                {
+                    var connectionStatus = await Task.Run(() => OpcClient.OpcClient(endpointUrl));
 
-                    if (OpcClient.haveAppCertificate == false)
+                    if (connectionStatus == SampleClient.ConnectionStatus.Connected)
                     {
-                        connectToServer = await DisplayAlert("Warning", "missing application certificate, \nusing unsecure connection. \nDo you want to continue?", "Yes", "No");
-                    }
+                        await PopupNavigation.Instance.PopAsync();//turn off Activity Indicator
 
-                    if (connectToServer == true)
-                    {
-                        var connectionStatus = await Task.Run(() => OpcClient.OpcClient(endpointUrl));
+                        Tree tree;
+                        tree = OpcClient.GetRootNode(textInfo);
+                        if (tree.currentView[0].children == true)
+                        {
+                            tree = OpcClient.GetChildren(tree.currentView[0].id);
+                        }
+                        Page MasterPage = new AppMasterDetailPageMaster();
+                        AppMasterDetailPageMaster.OpcClient_Master = OpcClient;
 
-                        if (connectionStatus == SampleClient.ConnectionStatus.Connected)
-                        {
-                            await PopupNavigation.Instance.PopAsync();//turn off Activity Indicator
-                            
-                            
-                            ///////////////////////////////////////
-                            ConnectButton.Text = "Disconnect";
-                            Tree tree;
-                            tree = OpcClient.GetRootNode(textInfo);
-                            if (tree.currentView[0].children == true)
-                            {
-                                tree = OpcClient.GetChildren(tree.currentView[0].id);
-                            }
-                            //ConnectIndicator.IsRunning = false;
-                            //Page treeViewRoot = new TreeView(tree, OpcClient);
-                            //treeViewRoot.Title = "/Root";
-                            //await Navigation.PushAsync(treeViewRoot);
-                            AppMasterDetailPage master = new AppMasterDetailPage(tree,OpcClient);
-                            NavigationPage.SetHasBackButton(master, false);
-                            await Navigation.PushAsync(master);
-                        }
-                        else
-                        {
-                            //ConnectIndicator.IsRunning = false;
-                            await PopupNavigation.Instance.PopAsync();
-                            await DisplayAlert("Warning", "Cannot connect to an OPC UA server", "Ok");
-                        }
+                        AppMasterDetailPage.tree_controlPage = tree;
+                        AppMasterDetailPage.sampleClient_controlPage = OpcClient;
+                        Page ControlPage = new AppMasterDetailPage();
+                        NavigationPage.SetHasBackButton(ControlPage, false);
+                        await Navigation.PushAsync(ControlPage);
                     }
                     else
                     {
                         await PopupNavigation.Instance.PopAsync();
-                        //ConnectIndicator.IsRunning = false;
+                        await DisplayAlert("Warning", "Cannot connect to an OPC UA server", "Ok");
                     }
                 }
                 else
                 {
-                    OpcClient.Disconnect(OpcClient.session);
-                    ConnectButton.Text = "Connect";
+                    await PopupNavigation.Instance.PopAsync();
                 }
             }
             else

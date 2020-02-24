@@ -22,13 +22,12 @@
         Padding="20, 10, 20, 10">
             <Frame BackgroundColor="#5A5A5A" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center">
                 <StackLayout>
-                    <ActivityIndicator IsRunning="True"/>
+                    <ActivityIndicator IsRunning="True" />
                     <Label Text="Connecting..."
                            FontSize="Large"
-                           HorizontalOptions="CenterAndExpand"/>
+                           HorizontalOptions="CenterAndExpand" />
                 </StackLayout>
             </Frame>
         </StackLayout>
     </ContentPage.Content>
-    
 </pages:PopupPage>
