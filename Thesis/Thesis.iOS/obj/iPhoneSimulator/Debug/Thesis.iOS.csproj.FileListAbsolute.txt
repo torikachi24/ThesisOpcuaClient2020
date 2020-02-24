@@ -109,3 +109,4 @@ C:\Thesis\Thesis\Thesis.iOS\obj\iPhoneSimulator\Debug\XamlC.stamp
 C:\Thesis\Thesis\Thesis.iOS\obj\iPhoneSimulator\Debug\Thesis.iOS.csproj.CopyComplete
 C:\Thesis\Thesis\Thesis.iOS\obj\iPhoneSimulator\Debug\Thesis.iOS.exe
 C:\Thesis\Thesis\Thesis.iOS\obj\iPhoneSimulator\Debug\Thesis.iOS.pdb
+C:\Thesis\Thesis\Thesis.iOS\bin\iPhoneSimulator\Debug\Thesis.dll.mdb

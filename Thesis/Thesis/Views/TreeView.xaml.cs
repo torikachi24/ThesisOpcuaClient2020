@@ -1,19 +1,15 @@
 ﻿using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Thesis
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TreeView : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TreeView : ContentPage
+    {
         private ObservableCollection<ListNode> nodes = new ObservableCollection<ListNode>();
         private SampleClient opcClient;
         private Tree storedTree;

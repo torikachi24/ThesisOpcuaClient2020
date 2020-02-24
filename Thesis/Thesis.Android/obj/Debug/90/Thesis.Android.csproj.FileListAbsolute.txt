@@ -151,5 +151,11 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Thesis.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Core.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Xaml.pdb
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\search.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\info.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\report.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\question.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\home.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\logout.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Rg.Plugins.Popup.Droid.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Thesis.dll.mdb

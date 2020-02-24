@@ -14,7 +14,7 @@ namespace Thesis
         private static LabelViewModel textInfo = new LabelViewModel();
         private SampleClient OpcClient = new SampleClient(textInfo);
         private string endpointUrl = null;
-
+        
         public MainPage()
         {
             BindingContext = textInfo;
@@ -24,14 +24,18 @@ namespace Thesis
 
         private async void OnConnect(object sender, EventArgs e)
         {
-            endpointUrl = EntryUrl.Text;
+            TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
+            ConnectType connectType = ((ConnectionListViewModel)BindingContext).Connections.Where(emp => emp.ConnectionId == (int)tappedEventArgs.Parameter).FirstOrDefault();
+            endpointUrl = connectType.ConnectionUrl;
+            //endpointUrl = EntryUrl.Text;
 
             if (endpointUrl != null)
             {
                 if (ConnectButton.Text == "Connect")
                 {
                     bool connectToServer = true;
-                    ConnectIndicator.IsRunning = true;
+                    //ConnectIndicator.IsRunning = true;
+                    await PopupNavigation.Instance.PushAsync(new ActivityIndicatorPage());
 
                     await Task.Run(() => OpcClient.CreateCertificate());
 
@@ -46,37 +50,36 @@ namespace Thesis
 
                         if (connectionStatus == SampleClient.ConnectionStatus.Connected)
                         {
-                            Tree tree;
+                            await PopupNavigation.Instance.PopAsync();//turn off Activity Indicator
+                            
+                            
+                            ///////////////////////////////////////
                             ConnectButton.Text = "Disconnect";
-
+                            Tree tree;
                             tree = OpcClient.GetRootNode(textInfo);
                             if (tree.currentView[0].children == true)
                             {
                                 tree = OpcClient.GetChildren(tree.currentView[0].id);
                             }
-
-                            ConnectIndicator.IsRunning = false;
-                            //if (Device.OS == TargetPlatform.Android)
-                            //{
-                            //    //Application.Current.MainPage = new MasterDetail();
-                            //}
-                            //else if (Device.OS == TargetPlatform.iOS)
-                            //{
-                            //    await Navigation.PushModalAsync(new MasterDetail());
-                            //}
-                            Page treeViewRoot = new TreeView(tree, OpcClient);
-                            treeViewRoot.Title = "/Root";
-                            await Navigation.PushAsync(treeViewRoot);
+                            //ConnectIndicator.IsRunning = false;
+                            //Page treeViewRoot = new TreeView(tree, OpcClient);
+                            //treeViewRoot.Title = "/Root";
+                            //await Navigation.PushAsync(treeViewRoot);
+                            AppMasterDetailPage master = new AppMasterDetailPage(tree,OpcClient);
+                            NavigationPage.SetHasBackButton(master, false);
+                            await Navigation.PushAsync(master);
                         }
                         else
                         {
-                            ConnectIndicator.IsRunning = false;
+                            //ConnectIndicator.IsRunning = false;
+                            await PopupNavigation.Instance.PopAsync();
                             await DisplayAlert("Warning", "Cannot connect to an OPC UA server", "Ok");
                         }
                     }
                     else
                     {
-                        ConnectIndicator.IsRunning = false;
+                        await PopupNavigation.Instance.PopAsync();
+                        //ConnectIndicator.IsRunning = false;
                     }
                 }
                 else

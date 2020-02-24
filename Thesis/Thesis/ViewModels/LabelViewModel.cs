@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Thesis
 {
-    public class LabelViewModel: INotifyPropertyChanged
+    public class LabelViewModel : INotifyPropertyChanged
     {
         private string _labelText;
 
@@ -34,4 +31,3 @@ namespace Thesis
         }
     }
 }
-

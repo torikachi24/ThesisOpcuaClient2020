@@ -111,6 +111,12 @@
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\ic_create.png" />
     <BundleResource Include="Resources\ic_delete_forever.png" />
+    <BundleResource Include="Resources\report.png" />
+    <BundleResource Include="Resources\question.png" />
+    <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\home.png" />
+    <BundleResource Include="Resources\search.png" />
+    <BundleResource Include="Resources\logout.png" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="PathService.cs" />

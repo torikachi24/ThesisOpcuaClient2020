@@ -1,8 +1,9 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace Thesis
 {
     public partial class App : Application
@@ -11,6 +12,7 @@ namespace Thesis
         {
             InitializeComponent();
             MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new AppMasterDetailPage());
         }
 
         protected override void OnStart()

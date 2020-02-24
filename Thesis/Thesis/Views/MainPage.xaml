@@ -2,13 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Thesis"
-             x:Class="Thesis.MainPage"
-             Title="OPC UA Client">
+             x:Class="Thesis.MainPage">
     <ContentPage.Content>
         <StackLayout  Margin = "10,10,10,10">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-                <Label Text="OPC UA server's endpoint URL:" FontSize="Medium" TextColor="#0066ff" FontAttributes="Bold" />
-                <Entry x:Name="EntryUrl" Placeholder="Write your EndpointUrl here" />
+                <!--<Label Text="OPC UA server's endpoint URL:" FontSize="Medium" TextColor="#0066ff" FontAttributes="Bold" />
+                <Entry x:Name="EntryUrl" Placeholder="Write your EndpointUrl here" />-->
 
                 <StackLayout Orientation="Horizontal">
                     <Button  x:Name="AddNewConnection"
@@ -19,7 +18,7 @@
                     BorderRadius="6"
                     BackgroundColor="#ccccb3"
                     Clicked="AddNewConnection_Clicked" />
-
+                    
                     <Button x:Name="ConnectButton"
                     Text="Connect"
                     Font="Large"
@@ -33,7 +32,8 @@
                 <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold" TextColor="DodgerBlue" FontSize="Medium" />
                 <BoxView HeightRequest="2" Color="DodgerBlue" />
 
-                <ListView x:Name="ContactsList" ItemsSource="{Binding Connections}" HasUnevenRows="True">
+                <ListView ItemsSource="{Binding Connections}" 
+                          HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -44,10 +44,13 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Column="0" Orientation="Vertical">
-                                        <Label Text="{Binding ConnectionName}"
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnConnect" CommandParameter="{Binding ConnectionId}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label x:Name="NameA" Text="{Binding ConnectionName}"
                                            FontSize="Medium"
                                            FontAttributes="Bold" />
-                                        <Label Text="{Binding ConnectionUrl}" />
+                                        <Label  Text="{Binding ConnectionUrl}" />
                                     </StackLayout>
                                     <Image Source="ic_create.png" Grid.Column=" 1">
                                         <Image.GestureRecognizers>
@@ -67,10 +70,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <ActivityIndicator x:Name="ConnectIndicator"
+                <!--<ActivityIndicator x:Name="ConnectIndicator"
                 IsRunning="False"
                 Color="DodgerBlue"
-                VerticalOptions="CenterAndExpand" />
+                VerticalOptions="CenterAndExpand" />-->
                 <Label x:Name="label"
                    Text="{Binding LabelText, Mode=TwoWay}"
                    FontSize="Medium"

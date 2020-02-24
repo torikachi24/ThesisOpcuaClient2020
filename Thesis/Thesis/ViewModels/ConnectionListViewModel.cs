@@ -36,7 +36,6 @@ namespace Thesis
                         Connections.Add(connectType);
                         int oldIndex = Connections.IndexOf(connectType);
                         Connections.Move(oldIndex, newIndex);
-                    
                     }
                 }
                 );

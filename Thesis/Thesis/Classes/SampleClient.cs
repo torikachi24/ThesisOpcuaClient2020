@@ -1,10 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
-using Opc.Ua;
+﻿using Opc.Ua;
 using Opc.Ua.Client;
 using Opc.Ua.Configuration;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+
 namespace Thesis
 {
     public class SampleClient
@@ -506,4 +507,3 @@ namespace Thesis
         }
     }
 }
-
