@@ -10,9 +10,9 @@ namespace Thesis
     {
         public App()
         {
-            InitializeComponent();
-            MainPage = new NavigationPage(new MainPage());
-            //MainPage = new NavigationPage(new AppMasterDetailPage());
+            this.InitializeComponent();
+            this.MainPage = new NavigationPage(new MainPage());
+            
         }
 
         protected override void OnStart()

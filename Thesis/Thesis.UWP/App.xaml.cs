@@ -31,11 +31,7 @@ namespace Thesis.UWP
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
-
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points

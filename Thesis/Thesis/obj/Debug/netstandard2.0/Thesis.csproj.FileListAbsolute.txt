@@ -9,6 +9,7 @@ C:\Thesis\Thesis\Thesis\bin\Debug\netstandard2.0\Opc.Ua.Configuration.pdb
 C:\Thesis\Thesis\Thesis\bin\Debug\netstandard2.0\Opc.Ua.Core.pdb
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Thesis.csprojAssemblyReference.cache
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\LineGraphPage.xaml.g.cs
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Views\AboutPage.xaml.g.cs
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Views\ActivityIndicatorPage.xaml.g.cs
 C:\Thesis\Thesis\Thesis\obj\Debug\netstandard2.0\Views\AppMasterDetailPage.xaml.g.cs

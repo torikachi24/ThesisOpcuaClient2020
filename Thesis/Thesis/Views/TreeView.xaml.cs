@@ -23,7 +23,7 @@ namespace Thesis
             opcClient = client;
             DisplayNodes();
         }
-
+        
         private void DisplayNodes()
         {
             nodes.Clear();

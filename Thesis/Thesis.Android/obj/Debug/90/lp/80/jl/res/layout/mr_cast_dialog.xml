@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2018 The Android Open Source Project
   ~
@@ -12,4 +13,15 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  --><LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"><include layout="@layout/mr_cast_media_metadata" /><android.support.v7.widget.RecyclerView android:id="@+id/mr_cast_list" android:layout_width="match_parent" android:layout_height="match_parent" /></LinearLayout>
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <include layout="@layout/mr_cast_media_metadata" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mr_cast_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

@@ -4,6 +4,25 @@
              x:Class="Thesis.AppMasterDetailPageDetail"
              Title="Detail">
   <StackLayout Padding="10">
-    <Label Text="This is a detail page. To get the 'triple' line icon on each platform add a icon to each platform and update the 'Master' page with an Icon that references it."/>
-  </StackLayout>
+        <Label Text="SERVER NAME" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Large"/>
+        <BoxView HeightRequest="1" Color="DodgerBlue" />
+        <Label x:Name="servername" FontSize="Medium"/>
+
+        <Label Text="SERVER URI" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Large"/>
+        <BoxView HeightRequest="1" Color="DodgerBlue" />
+        <Label x:Name="serveruri" FontSize="Medium"/>
+
+        <Label Text="SECURITY" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Large"/>
+        <BoxView HeightRequest="1" Color="DodgerBlue" />
+        <Label Text="..." FontSize="Medium"/>
+
+        <Label Text="CONNECTION STATUS" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Large"/>
+        <BoxView HeightRequest="1" Color="DodgerBlue" />
+        <Label x:Name="connectionstatus" FontSize="Medium"/>
+
+        <Label Text="CONNECTED SINCE" TextColor="DodgerBlue" FontAttributes="Bold" FontSize="Large"/>
+        <BoxView HeightRequest="1" Color="DodgerBlue" />
+        <Label x:Name="connectedsince" FontSize="Medium"/>
+        
+    </StackLayout>
 </ContentPage>

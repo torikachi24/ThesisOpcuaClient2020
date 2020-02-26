@@ -45,6 +45,9 @@ namespace Thesis
 
                     if (connectionStatus == SampleClient.ConnectionStatus.Connected)
                     {
+                        AppMasterDetailPageDetail.connecttype = connectType;
+                        AppMasterDetailPageDetail.datetime = DateTime.Now.ToString();
+
                         await PopupNavigation.Instance.PopAsync();//turn off Activity Indicator
 
                         Tree tree;
@@ -53,9 +56,7 @@ namespace Thesis
                         {
                             tree = OpcClient.GetChildren(tree.currentView[0].id);
                         }
-                        Page MasterPage = new AppMasterDetailPageMaster();
                         AppMasterDetailPageMaster.OpcClient_Master = OpcClient;
-
                         AppMasterDetailPage.tree_controlPage = tree;
                         AppMasterDetailPage.sampleClient_controlPage = OpcClient;
                         Page ControlPage = new AppMasterDetailPage();
