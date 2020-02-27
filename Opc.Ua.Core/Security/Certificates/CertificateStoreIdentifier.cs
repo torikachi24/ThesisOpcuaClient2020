@@ -78,7 +78,8 @@ namespace Opc.Ua
         /// <summary>
         /// Options that can be used to suppress certificate validation errors.
         /// </summary>
-        public CertificateValidationOptions ValidationOptions {
+        public CertificateValidationOptions ValidationOptions
+        {
             get { return m_validationOptions; }
             set { m_validationOptions = value; }
         }
@@ -135,15 +136,15 @@ namespace Opc.Ua
             switch (storeType)
             {
                 case CertificateStoreType.X509Store:
-                {
-                    store = new X509CertificateStore();
-                    break;
-                }
+                    {
+                        store = new X509CertificateStore();
+                        break;
+                    }
                 case CertificateStoreType.Directory:
-                {
-                    store = new DirectoryCertificateStore();
-                    break;
-                }
+                    {
+                        store = new DirectoryCertificateStore();
+                        break;
+                    }
             }
             return store;
         }

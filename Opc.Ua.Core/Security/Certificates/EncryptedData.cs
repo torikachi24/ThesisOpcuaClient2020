@@ -22,7 +22,8 @@ namespace Opc.Ua
         /// <summary>
         /// The algorithm used to encrypt the data.
         /// </summary>
-        public string Algorithm {
+        public string Algorithm
+        {
             get { return m_algorithm; }
             set { m_algorithm = value; }
         }
@@ -30,7 +31,8 @@ namespace Opc.Ua
         /// <summary>
         /// The encrypted data.
         /// </summary>
-        public byte[] Data {
+        public byte[] Data
+        {
             get { return m_data; }
             set { m_data = value; }
         }

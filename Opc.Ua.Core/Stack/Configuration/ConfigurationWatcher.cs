@@ -75,15 +75,18 @@ namespace Opc.Ua
         /// <summary>
         /// Raised when the configuration file changes.
         /// </summary>
-        public event EventHandler<ConfigurationWatcherEventArgs> Changed {
-            add {
+        public event EventHandler<ConfigurationWatcherEventArgs> Changed
+        {
+            add
+            {
                 lock (m_lock)
                 {
                     m_Changed += value;
                 }
             }
 
-            remove {
+            remove
+            {
                 lock (m_lock)
                 {
                     m_Changed -= value;
@@ -170,14 +173,16 @@ namespace Opc.Ua
         /// <summary>
         /// The application configuration which changed.
         /// </summary>
-        public ApplicationConfiguration Configuration {
+        public ApplicationConfiguration Configuration
+        {
             get { return m_configuration; }
         }
 
         /// <summary>
         /// The path to the application configuration file.
         /// </summary>
-        public string FilePath {
+        public string FilePath
+        {
             get { return m_filePath; }
         }
 

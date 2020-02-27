@@ -139,141 +139,141 @@ namespace Opc.Ua.Export
             switch (node.NodeClass)
             {
                 case NodeClass.Object:
-                {
-                    BaseObjectState o = (BaseObjectState)node;
-                    UAObject value = new UAObject();
-                    value.EventNotifier = o.EventNotifier;
-
-                    if (o.Parent != null)
                     {
-                        value.ParentNodeId = ExportAlias(o.Parent.NodeId, context.NamespaceUris);
-                    }
+                        BaseObjectState o = (BaseObjectState)node;
+                        UAObject value = new UAObject();
+                        value.EventNotifier = o.EventNotifier;
 
-                    exportedNode = value;
-                    break;
-                }
+                        if (o.Parent != null)
+                        {
+                            value.ParentNodeId = ExportAlias(o.Parent.NodeId, context.NamespaceUris);
+                        }
+
+                        exportedNode = value;
+                        break;
+                    }
 
                 case NodeClass.Variable:
-                {
-                    BaseVariableState o = (BaseVariableState)node;
-                    UAVariable value = new UAVariable();
-                    value.DataType = ExportAlias(o.DataType, context.NamespaceUris);
-                    value.ValueRank = o.ValueRank;
-                    value.ArrayDimensions = Export(o.ArrayDimensions);
-                    value.AccessLevel = o.AccessLevelEx;
-                    value.MinimumSamplingInterval = o.MinimumSamplingInterval;
-                    value.Historizing = o.Historizing;
-
-                    if (o.Parent != null)
                     {
-                        value.ParentNodeId = ExportAlias(o.Parent.NodeId, context.NamespaceUris);
+                        BaseVariableState o = (BaseVariableState)node;
+                        UAVariable value = new UAVariable();
+                        value.DataType = ExportAlias(o.DataType, context.NamespaceUris);
+                        value.ValueRank = o.ValueRank;
+                        value.ArrayDimensions = Export(o.ArrayDimensions);
+                        value.AccessLevel = o.AccessLevelEx;
+                        value.MinimumSamplingInterval = o.MinimumSamplingInterval;
+                        value.Historizing = o.Historizing;
+
+                        if (o.Parent != null)
+                        {
+                            value.ParentNodeId = ExportAlias(o.Parent.NodeId, context.NamespaceUris);
+                        }
+
+                        if (o.Value != null)
+                        {
+                            XmlEncoder encoder = CreateEncoder(context);
+
+                            Variant variant = new Variant(o.Value);
+                            encoder.WriteVariantContents(variant.Value, variant.TypeInfo);
+
+                            XmlDocument document = new XmlDocument();
+                            document.InnerXml = encoder.Close();
+                            value.Value = document.DocumentElement;
+                        }
+
+                        exportedNode = value;
+                        break;
                     }
-
-                    if (o.Value != null)
-                    {
-                        XmlEncoder encoder = CreateEncoder(context);
-
-                        Variant variant = new Variant(o.Value);
-                        encoder.WriteVariantContents(variant.Value, variant.TypeInfo);
-
-                        XmlDocument document = new XmlDocument();
-                        document.InnerXml = encoder.Close();
-                        value.Value = document.DocumentElement;
-                    }
-
-                    exportedNode = value;
-                    break;
-                }
 
                 case NodeClass.Method:
-                {
-                    MethodState o = (MethodState)node;
-                    UAMethod value = new UAMethod();
-                    value.Executable = o.Executable;
-
-                    if (o.TypeDefinitionId != o.NodeId)
                     {
-                        value.MethodDeclarationId = Export(o.TypeDefinitionId, context.NamespaceUris);
-                    }
+                        MethodState o = (MethodState)node;
+                        UAMethod value = new UAMethod();
+                        value.Executable = o.Executable;
 
-                    if (o.Parent != null)
-                    {
-                        value.ParentNodeId = ExportAlias(o.Parent.NodeId, context.NamespaceUris);
-                    }
+                        if (o.TypeDefinitionId != o.NodeId)
+                        {
+                            value.MethodDeclarationId = Export(o.TypeDefinitionId, context.NamespaceUris);
+                        }
 
-                    exportedNode = value;
-                    break;
-                }
+                        if (o.Parent != null)
+                        {
+                            value.ParentNodeId = ExportAlias(o.Parent.NodeId, context.NamespaceUris);
+                        }
+
+                        exportedNode = value;
+                        break;
+                    }
 
                 case NodeClass.View:
-                {
-                    ViewState o = (ViewState)node;
-                    UAView value = new UAView();
-                    value.ContainsNoLoops = o.ContainsNoLoops;
-                    exportedNode = value;
-                    break;
-                }
+                    {
+                        ViewState o = (ViewState)node;
+                        UAView value = new UAView();
+                        value.ContainsNoLoops = o.ContainsNoLoops;
+                        exportedNode = value;
+                        break;
+                    }
 
                 case NodeClass.ObjectType:
-                {
-                    BaseObjectTypeState o = (BaseObjectTypeState)node;
-                    UAObjectType value = new UAObjectType();
-                    value.IsAbstract = o.IsAbstract;
-                    exportedNode = value;
-                    break;
-                }
+                    {
+                        BaseObjectTypeState o = (BaseObjectTypeState)node;
+                        UAObjectType value = new UAObjectType();
+                        value.IsAbstract = o.IsAbstract;
+                        exportedNode = value;
+                        break;
+                    }
 
                 case NodeClass.VariableType:
-                {
-                    BaseVariableTypeState o = (BaseVariableTypeState)node;
-                    UAVariableType value = new UAVariableType();
-                    value.IsAbstract = o.IsAbstract;
-                    value.DataType = ExportAlias(o.DataType, context.NamespaceUris);
-                    value.ValueRank = o.ValueRank;
-                    value.ArrayDimensions = Export(o.ArrayDimensions);
-
-                    if (o.Value != null)
                     {
-                        XmlEncoder encoder = CreateEncoder(context);
+                        BaseVariableTypeState o = (BaseVariableTypeState)node;
+                        UAVariableType value = new UAVariableType();
+                        value.IsAbstract = o.IsAbstract;
+                        value.DataType = ExportAlias(o.DataType, context.NamespaceUris);
+                        value.ValueRank = o.ValueRank;
+                        value.ArrayDimensions = Export(o.ArrayDimensions);
 
-                        Variant variant = new Variant(o.Value);
-                        encoder.WriteVariantContents(variant.Value, variant.TypeInfo);
+                        if (o.Value != null)
+                        {
+                            XmlEncoder encoder = CreateEncoder(context);
 
-                        XmlDocument document = new XmlDocument();
-                        document.InnerXml = encoder.Close();
-                        value.Value = document.DocumentElement;
+                            Variant variant = new Variant(o.Value);
+                            encoder.WriteVariantContents(variant.Value, variant.TypeInfo);
+
+                            XmlDocument document = new XmlDocument();
+                            document.InnerXml = encoder.Close();
+                            value.Value = document.DocumentElement;
+                        }
+
+                        exportedNode = value;
+                        break;
                     }
-
-                    exportedNode = value;
-                    break;
-                }
 
                 case NodeClass.DataType:
-                {
-                    DataTypeState o = (DataTypeState)node;
-                    UADataType value = new UADataType();
-                    value.IsAbstract = o.IsAbstract;
-                    value.Definition = Export(o, o.DataTypeDefinition, context.NamespaceUris, outputRedundantNames);
-                    value.Purpose = o.Purpose;
-                    exportedNode = value;
-                    break;
-                }
-
-                case NodeClass.ReferenceType:
-                {
-                    ReferenceTypeState o = (ReferenceTypeState)node;
-                    UAReferenceType value = new UAReferenceType();
-                    value.IsAbstract = o.IsAbstract;
-
-                    if (!Opc.Ua.LocalizedText.IsNullOrEmpty(o.InverseName))
                     {
-                        value.InverseName = Export(new Opc.Ua.LocalizedText[] { o.InverseName });
+                        DataTypeState o = (DataTypeState)node;
+                        UADataType value = new UADataType();
+                        value.IsAbstract = o.IsAbstract;
+                        value.Definition = Export(o, o.DataTypeDefinition, context.NamespaceUris, outputRedundantNames);
+                        value.Purpose = o.Purpose;
+                        exportedNode = value;
+                        break;
                     }
 
-                    value.Symmetric = o.Symmetric;
-                    exportedNode = value;
-                    break;
-                }
+                case NodeClass.ReferenceType:
+                    {
+                        ReferenceTypeState o = (ReferenceTypeState)node;
+                        UAReferenceType value = new UAReferenceType();
+                        value.IsAbstract = o.IsAbstract;
+
+                        if (!Opc.Ua.LocalizedText.IsNullOrEmpty(o.InverseName))
+                        {
+                            value.InverseName = Export(new Opc.Ua.LocalizedText[] { o.InverseName });
+                        }
+
+                        value.Symmetric = o.Symmetric;
+                        exportedNode = value;
+                        break;
+                    }
             }
 
             exportedNode.NodeId = Export(node.NodeId, context.NamespaceUris);
@@ -468,153 +468,153 @@ namespace Opc.Ua.Export
             switch (nodeClass)
             {
                 case NodeClass.Object:
-                {
-                    UAObject o = (UAObject)node;
-                    BaseObjectState value = new BaseObjectState(null);
-                    value.EventNotifier = o.EventNotifier;
-                    importedNode = value;
-                    break;
-                }
+                    {
+                        UAObject o = (UAObject)node;
+                        BaseObjectState value = new BaseObjectState(null);
+                        value.EventNotifier = o.EventNotifier;
+                        importedNode = value;
+                        break;
+                    }
 
                 case NodeClass.Variable:
-                {
-                    UAVariable o = (UAVariable)node;
-
-                    NodeId typeDefinitionId = null;
-
-                    if (node.References != null)
                     {
-                        for (int ii = 0; ii < node.References.Length; ii++)
-                        {
-                            Opc.Ua.NodeId referenceTypeId = ImportNodeId(node.References[ii].ReferenceType, context.NamespaceUris, true);
-                            bool isInverse = !node.References[ii].IsForward;
-                            Opc.Ua.ExpandedNodeId targetId = ImportExpandedNodeId(node.References[ii].Value, context.NamespaceUris, context.ServerUris);
+                        UAVariable o = (UAVariable)node;
 
-                            if (referenceTypeId == ReferenceTypeIds.HasTypeDefinition && !isInverse)
+                        NodeId typeDefinitionId = null;
+
+                        if (node.References != null)
+                        {
+                            for (int ii = 0; ii < node.References.Length; ii++)
                             {
-                                typeDefinitionId = Opc.Ua.ExpandedNodeId.ToNodeId(targetId, context.NamespaceUris);
-                                break;
+                                Opc.Ua.NodeId referenceTypeId = ImportNodeId(node.References[ii].ReferenceType, context.NamespaceUris, true);
+                                bool isInverse = !node.References[ii].IsForward;
+                                Opc.Ua.ExpandedNodeId targetId = ImportExpandedNodeId(node.References[ii].Value, context.NamespaceUris, context.ServerUris);
+
+                                if (referenceTypeId == ReferenceTypeIds.HasTypeDefinition && !isInverse)
+                                {
+                                    typeDefinitionId = Opc.Ua.ExpandedNodeId.ToNodeId(targetId, context.NamespaceUris);
+                                    break;
+                                }
                             }
                         }
+
+                        BaseVariableState value = null;
+
+                        if (typeDefinitionId == Opc.Ua.VariableTypeIds.PropertyType)
+                        {
+                            value = new PropertyState(null);
+                        }
+                        else
+                        {
+                            value = new BaseDataVariableState(null);
+                        }
+
+                        value.DataType = ImportNodeId(o.DataType, context.NamespaceUris, true);
+                        value.ValueRank = o.ValueRank;
+                        value.ArrayDimensions = ImportArrayDimensions(o.ArrayDimensions);
+                        value.AccessLevelEx = o.AccessLevel;
+                        value.UserAccessLevel = (byte)(o.AccessLevel & 0xFF);
+                        value.MinimumSamplingInterval = o.MinimumSamplingInterval;
+                        value.Historizing = o.Historizing;
+
+                        if (o.Value != null)
+                        {
+                            XmlDecoder decoder = CreateDecoder(context, o.Value);
+                            TypeInfo typeInfo = null;
+                            value.Value = decoder.ReadVariantContents(out typeInfo);
+                            decoder.Close();
+                        }
+
+                        importedNode = value;
+                        break;
                     }
-
-                    BaseVariableState value = null;
-
-                    if (typeDefinitionId == Opc.Ua.VariableTypeIds.PropertyType)
-                    {
-                        value = new PropertyState(null);
-                    }
-                    else
-                    {
-                        value = new BaseDataVariableState(null);
-                    }
-
-                    value.DataType = ImportNodeId(o.DataType, context.NamespaceUris, true);
-                    value.ValueRank = o.ValueRank;
-                    value.ArrayDimensions = ImportArrayDimensions(o.ArrayDimensions);
-                    value.AccessLevelEx = o.AccessLevel;
-                    value.UserAccessLevel = (byte)(o.AccessLevel & 0xFF);
-                    value.MinimumSamplingInterval = o.MinimumSamplingInterval;
-                    value.Historizing = o.Historizing;
-
-                    if (o.Value != null)
-                    {
-                        XmlDecoder decoder = CreateDecoder(context, o.Value);
-                        TypeInfo typeInfo = null;
-                        value.Value = decoder.ReadVariantContents(out typeInfo);
-                        decoder.Close();
-                    }
-
-                    importedNode = value;
-                    break;
-                }
 
                 case NodeClass.Method:
-                {
-                    UAMethod o = (UAMethod)node;
-                    MethodState value = new MethodState(null);
-                    value.Executable = o.Executable;
-                    value.UserExecutable = o.Executable;
-                    value.TypeDefinitionId = ImportNodeId(o.MethodDeclarationId, context.NamespaceUris, true);
-                    importedNode = value;
-                    break;
-                }
+                    {
+                        UAMethod o = (UAMethod)node;
+                        MethodState value = new MethodState(null);
+                        value.Executable = o.Executable;
+                        value.UserExecutable = o.Executable;
+                        value.TypeDefinitionId = ImportNodeId(o.MethodDeclarationId, context.NamespaceUris, true);
+                        importedNode = value;
+                        break;
+                    }
 
                 case NodeClass.View:
-                {
-                    UAView o = (UAView)node;
-                    ViewState value = new ViewState();
-                    value.ContainsNoLoops = o.ContainsNoLoops;
-                    importedNode = value;
-                    break;
-                }
+                    {
+                        UAView o = (UAView)node;
+                        ViewState value = new ViewState();
+                        value.ContainsNoLoops = o.ContainsNoLoops;
+                        importedNode = value;
+                        break;
+                    }
 
                 case NodeClass.ObjectType:
-                {
-                    UAObjectType o = (UAObjectType)node;
-                    BaseObjectTypeState value = new BaseObjectTypeState();
-                    value.IsAbstract = o.IsAbstract;
-                    importedNode = value;
-                    break;
-                }
+                    {
+                        UAObjectType o = (UAObjectType)node;
+                        BaseObjectTypeState value = new BaseObjectTypeState();
+                        value.IsAbstract = o.IsAbstract;
+                        importedNode = value;
+                        break;
+                    }
 
                 case NodeClass.VariableType:
-                {
-                    UAVariableType o = (UAVariableType)node;
-                    BaseVariableTypeState value = new BaseDataVariableTypeState();
-                    value.IsAbstract = o.IsAbstract;
-                    value.DataType = ImportNodeId(o.DataType, context.NamespaceUris, true);
-                    value.ValueRank = o.ValueRank;
-                    value.ArrayDimensions = ImportArrayDimensions(o.ArrayDimensions);
-
-                    if (o.Value != null)
                     {
-                        XmlDecoder decoder = CreateDecoder(context, o.Value);
-                        TypeInfo typeInfo = null;
-                        value.Value = decoder.ReadVariantContents(out typeInfo);
-                        decoder.Close();
-                    }
+                        UAVariableType o = (UAVariableType)node;
+                        BaseVariableTypeState value = new BaseDataVariableTypeState();
+                        value.IsAbstract = o.IsAbstract;
+                        value.DataType = ImportNodeId(o.DataType, context.NamespaceUris, true);
+                        value.ValueRank = o.ValueRank;
+                        value.ArrayDimensions = ImportArrayDimensions(o.ArrayDimensions);
 
-                    importedNode = value;
-                    break;
-                }
+                        if (o.Value != null)
+                        {
+                            XmlDecoder decoder = CreateDecoder(context, o.Value);
+                            TypeInfo typeInfo = null;
+                            value.Value = decoder.ReadVariantContents(out typeInfo);
+                            decoder.Close();
+                        }
+
+                        importedNode = value;
+                        break;
+                    }
 
                 case NodeClass.DataType:
-                {
-                    UADataType o = (UADataType)node;
-                    DataTypeState value = new DataTypeState();
-                    value.IsAbstract = o.IsAbstract;
-                    Opc.Ua.DataTypeDefinition dataTypeDefinition = Import(o, o.Definition, context.NamespaceUris);
-                    value.DataTypeDefinition = new ExtensionObject(dataTypeDefinition);
-                    value.Purpose = o.Purpose;
-                    value.DataTypeModifier = DataTypeModifier.None;
-
-                    if (o.Definition != null)
                     {
-                        if (o.Definition.IsOptionSet)
+                        UADataType o = (UADataType)node;
+                        DataTypeState value = new DataTypeState();
+                        value.IsAbstract = o.IsAbstract;
+                        Opc.Ua.DataTypeDefinition dataTypeDefinition = Import(o, o.Definition, context.NamespaceUris);
+                        value.DataTypeDefinition = new ExtensionObject(dataTypeDefinition);
+                        value.Purpose = o.Purpose;
+                        value.DataTypeModifier = DataTypeModifier.None;
+
+                        if (o.Definition != null)
                         {
-                            value.DataTypeModifier = DataTypeModifier.OptionSet;
+                            if (o.Definition.IsOptionSet)
+                            {
+                                value.DataTypeModifier = DataTypeModifier.OptionSet;
+                            }
+                            else if (o.Definition.IsUnion)
+                            {
+                                value.DataTypeModifier = DataTypeModifier.Union;
+                            }
                         }
-                        else if (o.Definition.IsUnion)
-                        {
-                            value.DataTypeModifier = DataTypeModifier.Union;
-                        }
+
+                        importedNode = value;
+                        break;
                     }
 
-                    importedNode = value;
-                    break;
-                }
-
                 case NodeClass.ReferenceType:
-                {
-                    UAReferenceType o = (UAReferenceType)node;
-                    ReferenceTypeState value = new ReferenceTypeState();
-                    value.IsAbstract = o.IsAbstract;
-                    value.InverseName = Import(o.InverseName);
-                    value.Symmetric = o.Symmetric;
-                    importedNode = value;
-                    break;
-                }
+                    {
+                        UAReferenceType o = (UAReferenceType)node;
+                        ReferenceTypeState value = new ReferenceTypeState();
+                        value.IsAbstract = o.IsAbstract;
+                        value.InverseName = Import(o.InverseName);
+                        value.Symmetric = o.Symmetric;
+                        importedNode = value;
+                        break;
+                    }
             }
 
             importedNode.NodeId = ImportNodeId(node.NodeId, context.NamespaceUris, false);
@@ -958,7 +958,8 @@ namespace Opc.Ua.Export
             if (source.Field != null)
             {
                 // check if definition is for enumeration or structure.
-                bool isStructure = Array.Exists<DataTypeField>(source.Field, delegate (DataTypeField fieldLookup) {
+                bool isStructure = Array.Exists<DataTypeField>(source.Field, delegate (DataTypeField fieldLookup)
+                {
                     return fieldLookup.Value == -1;
                 });
 

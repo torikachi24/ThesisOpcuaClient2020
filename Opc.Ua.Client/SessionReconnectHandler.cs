@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -38,6 +38,7 @@ namespace Opc.Ua.Client
     public class SessionReconnectHandler : IDisposable
     {
         #region IDisposable Members
+
         /// <summary>
         /// Frees any unmanaged resources.
         /// </summary>
@@ -63,9 +64,11 @@ namespace Opc.Ua.Client
                 }
             }
         }
-        #endregion
+
+        #endregion IDisposable Members
 
         #region Public Methods
+
         /// <summary>
         /// Gets the session managed by the handler.
         /// </summary>
@@ -94,9 +97,11 @@ namespace Opc.Ua.Client
                 m_reconnectTimer = new System.Threading.Timer(OnReconnect, null, reconnectPeriod, Timeout.Infinite);
             }
         }
-        #endregion
+
+        #endregion Public Methods
 
         #region Private Methods
+
         /// <summary>
         /// Called when the reconnect timer expires.
         /// </summary>
@@ -193,15 +198,18 @@ namespace Opc.Ua.Client
                 return false;
             }
         }
-        #endregion
+
+        #endregion Private Methods
 
         #region Private Fields
+
         private object m_lock = new object();
         private Session m_session;
         private bool m_reconnectFailed;
         private int m_reconnectPeriod;
         private Timer m_reconnectTimer;
         private EventHandler m_callback;
-        #endregion
+
+        #endregion Private Fields
     }
 }

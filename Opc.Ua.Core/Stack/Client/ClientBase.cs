@@ -72,8 +72,10 @@ namespace Opc.Ua
         /// <summary>
         /// The description of the endpoint.
         /// </summary>
-        public EndpointDescription Endpoint {
-            get {
+        public EndpointDescription Endpoint
+        {
+            get
+            {
                 ITransportChannel channel = TransportChannel;
 
                 if (channel != null)
@@ -88,8 +90,10 @@ namespace Opc.Ua
         /// <summary>
         /// The configuration for the endpoint.
         /// </summary>
-        public EndpointConfiguration EndpointConfiguration {
-            get {
+        public EndpointConfiguration EndpointConfiguration
+        {
+            get
+            {
                 ITransportChannel channel = TransportChannel;
 
                 if (channel != null)
@@ -105,8 +109,10 @@ namespace Opc.Ua
         /// The message context used when serializing messages.
         /// </summary>
         /// <value>The message context.</value>
-        public ServiceMessageContext MessageContext {
-            get {
+        public ServiceMessageContext MessageContext
+        {
+            get
+            {
                 ITransportChannel channel = TransportChannel;
 
                 if (channel != null)
@@ -122,8 +128,10 @@ namespace Opc.Ua
         /// Gets or set the channel being wrapped by the client object.
         /// </summary>
         /// <value>The transport channel.</value>
-        public ITransportChannel TransportChannel {
-            get {
+        public ITransportChannel TransportChannel
+        {
+            get
+            {
                 ITransportChannel channel = m_channel;
 
                 if (channel != null)
@@ -137,7 +145,8 @@ namespace Opc.Ua
                 return channel;
             }
 
-            protected set {
+            protected set
+            {
                 ITransportChannel channel = m_channel;
                 m_channel = null;
 
@@ -161,8 +170,10 @@ namespace Opc.Ua
         /// <summary>
         /// The channel being wrapped by the client object.
         /// </summary>
-        internal IChannelBase InnerChannel {
-            get {
+        internal IChannelBase InnerChannel
+        {
+            get
+            {
                 ITransportChannel channel = TransportChannel;
 
                 if (channel != null)
@@ -178,12 +189,15 @@ namespace Opc.Ua
         /// What diagnostics the server should return in the response.
         /// </summary>
         /// <value>The diagnostics.</value>
-        public DiagnosticsMasks ReturnDiagnostics {
-            get {
+        public DiagnosticsMasks ReturnDiagnostics
+        {
+            get
+            {
                 return m_returnDiagnostics;
             }
 
-            set {
+            set
+            {
                 m_returnDiagnostics = value;
             }
         }
@@ -191,8 +205,10 @@ namespace Opc.Ua
         /// <summary>
         /// Sets the timeout for an operation.
         /// </summary>
-        public int OperationTimeout {
-            get {
+        public int OperationTimeout
+        {
+            get
+            {
                 ITransportChannel channel = TransportChannel;
 
                 if (channel != null)
@@ -203,7 +219,8 @@ namespace Opc.Ua
                 return 0;
             }
 
-            set {
+            set
+            {
                 ITransportChannel channel = TransportChannel;
 
                 if (channel != null)
@@ -216,8 +233,10 @@ namespace Opc.Ua
         /// <summary>
         /// Gets a value that indicates whether to use the TransportChannel when sending requests.
         /// </summary>
-        protected bool UseTransportChannel {
-            get {
+        protected bool UseTransportChannel
+        {
+            get
+            {
                 ITransportChannel channel = TransportChannel;
 
                 if (channel == null)
@@ -252,8 +271,10 @@ namespace Opc.Ua
         /// Whether the object has been disposed.
         /// </summary>
         /// <value><c>true</c> if disposed; otherwise, <c>false</c>.</value>
-        public bool Disposed {
-            get {
+        public bool Disposed
+        {
+            get
+            {
                 return m_disposed;
             }
         }
@@ -314,7 +335,8 @@ namespace Opc.Ua
         /// An object used to synchronize access to the session state.
         /// </summary>
         /// <value>The synchronization object.</value>
-        protected object SyncRoot {
+        protected object SyncRoot
+        {
             get { return m_lock; }
         }
 
@@ -322,12 +344,15 @@ namespace Opc.Ua
         /// The authorization token used to connect to the server.
         /// </summary>
         /// <value>The authentication token.</value>
-        protected NodeId AuthenticationToken {
-            get {
+        protected NodeId AuthenticationToken
+        {
+            get
+            {
                 return m_authenticationToken;
             }
 
-            set {
+            set
+            {
                 m_authenticationToken = value;
             }
         }
@@ -617,8 +642,10 @@ namespace Opc.Ua
         /// The server assigned identifier for the current session.
         /// </summary>
         /// <value>The session id.</value>
-        public NodeId SessionId {
-            get {
+        public NodeId SessionId
+        {
+            get
+            {
                 return m_sessionId;
             }
         }
@@ -627,8 +654,10 @@ namespace Opc.Ua
         /// Whether a session has beed created with the server.
         /// </summary>
         /// <value><c>true</c> if connected; otherwise, <c>false</c>.</value>
-        public bool Connected {
-            get {
+        public bool Connected
+        {
+            get
+            {
                 return m_sessionId != null;
             }
         }

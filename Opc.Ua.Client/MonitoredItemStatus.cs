@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -28,10 +28,6 @@
  * ======================================================================*/
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Runtime.Serialization;
 
 namespace Opc.Ua.Client
 {
@@ -41,6 +37,7 @@ namespace Opc.Ua.Client
     public class MonitoredItemStatus
     {
         #region Constructors
+
         /// <summary>
         /// Creates a empty object.
         /// </summary>
@@ -51,21 +48,23 @@ namespace Opc.Ua.Client
 
         private void Initialize()
         {
-            m_id               = 0;
-            m_nodeId           = null;
-            m_attributeId      = Attributes.Value;
-            m_indexRange       = null;
-            m_encoding     = null; 
-            m_monitoringMode   = MonitoringMode.Disabled;
-            m_clientHandle     = 0;
+            m_id = 0;
+            m_nodeId = null;
+            m_attributeId = Attributes.Value;
+            m_indexRange = null;
+            m_encoding = null;
+            m_monitoringMode = MonitoringMode.Disabled;
+            m_clientHandle = 0;
             m_samplingInterval = 0;
-            m_filter           = null;
-            m_queueSize        = 0;
-            m_discardOldest    = true;
+            m_filter = null;
+            m_queueSize = 0;
+            m_discardOldest = true;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// The identifier assigned by the server.
         /// </summary>
@@ -73,7 +72,7 @@ namespace Opc.Ua.Client
         {
             get { return m_id; }
         }
-        
+
         /// <summary>
         /// Whether the item has been created on the server.
         /// </summary>
@@ -81,7 +80,7 @@ namespace Opc.Ua.Client
         {
             get { return m_id != 0; }
         }
-        
+
         /// <summary>
         /// Any error condition associated with the monitored item.
         /// </summary>
@@ -97,7 +96,7 @@ namespace Opc.Ua.Client
         {
             get { return m_nodeId; }
         }
-        
+
         /// <summary>
         /// The attribute being monitored.
         /// </summary>
@@ -129,7 +128,7 @@ namespace Opc.Ua.Client
         {
             get { return m_monitoringMode; }
         }
-        
+
         /// <summary>
         /// The identifier assigned by the client.
         /// </summary>
@@ -168,10 +167,12 @@ namespace Opc.Ua.Client
         public bool DiscardOldest
         {
             get { return m_discardOldest; }
-        }        
-        #endregion
-        
+        }
+
+        #endregion Public Properties
+
         #region Public Methods
+
         /// <summary>
         /// Updates the monitoring mode.
         /// </summary>
@@ -179,13 +180,13 @@ namespace Opc.Ua.Client
         {
             m_monitoringMode = monitoringMode;
         }
-        
+
         /// <summary>
         /// Updates the object with the results of a translate browse paths request.
         /// </summary>
-        internal void SetResolvePathResult(   
+        internal void SetResolvePathResult(
             BrowsePathResult result,
-            ServiceResult    error)
+            ServiceResult error)
         {
             m_error = error;
         }
@@ -193,37 +194,37 @@ namespace Opc.Ua.Client
         /// <summary>
         /// Updates the object with the results of a create monitored item request.
         /// </summary>
-        internal void SetCreateResult(   
+        internal void SetCreateResult(
             MonitoredItemCreateRequest request,
-            MonitoredItemCreateResult  result,
-            ServiceResult              error)
+            MonitoredItemCreateResult result,
+            ServiceResult error)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            if (result == null)  throw new ArgumentNullException(nameof(result));
-            
-            m_nodeId           = request.ItemToMonitor.NodeId;
-            m_attributeId      = request.ItemToMonitor.AttributeId;
-            m_indexRange       = request.ItemToMonitor.IndexRange;
-            m_encoding         = request.ItemToMonitor.DataEncoding;
-            m_monitoringMode   = request.MonitoringMode;
-            m_clientHandle     = request.RequestedParameters.ClientHandle;
+            if (result == null) throw new ArgumentNullException(nameof(result));
+
+            m_nodeId = request.ItemToMonitor.NodeId;
+            m_attributeId = request.ItemToMonitor.AttributeId;
+            m_indexRange = request.ItemToMonitor.IndexRange;
+            m_encoding = request.ItemToMonitor.DataEncoding;
+            m_monitoringMode = request.MonitoringMode;
+            m_clientHandle = request.RequestedParameters.ClientHandle;
             m_samplingInterval = request.RequestedParameters.SamplingInterval;
-            m_queueSize        = request.RequestedParameters.QueueSize;
-            m_discardOldest    = request.RequestedParameters.DiscardOldest;
-            m_filter           = null;
-            m_error            = error;
-            
+            m_queueSize = request.RequestedParameters.QueueSize;
+            m_discardOldest = request.RequestedParameters.DiscardOldest;
+            m_filter = null;
+            m_error = error;
+
             if (request.RequestedParameters.Filter != null)
-            {        
+            {
                 m_filter = Utils.Clone(request.RequestedParameters.Filter.Body) as MonitoringFilter;
             }
 
             if (ServiceResult.IsGood(error))
             {
-                m_id               = result.MonitoredItemId;
+                m_id = result.MonitoredItemId;
                 m_samplingInterval = result.RevisedSamplingInterval;
-                m_queueSize        = result.RevisedQueueSize; 
-            }           
+                m_queueSize = result.RevisedQueueSize;
+            }
         }
 
         /// <summary>
@@ -231,32 +232,32 @@ namespace Opc.Ua.Client
         /// </summary>
         internal void SetModifyResult(
             MonitoredItemModifyRequest request,
-            MonitoredItemModifyResult  result,
-            ServiceResult              error)
+            MonitoredItemModifyResult result,
+            ServiceResult error)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-            if (result == null)  throw new ArgumentNullException(nameof(result));
-            
+            if (result == null) throw new ArgumentNullException(nameof(result));
+
             m_error = error;
 
             if (ServiceResult.IsGood(error))
             {
-                m_clientHandle     = request.RequestedParameters.ClientHandle;
+                m_clientHandle = request.RequestedParameters.ClientHandle;
                 m_samplingInterval = request.RequestedParameters.SamplingInterval;
-                m_queueSize        = request.RequestedParameters.QueueSize;
-                m_discardOldest    = request.RequestedParameters.DiscardOldest;
-                m_filter           = null;
-                
+                m_queueSize = request.RequestedParameters.QueueSize;
+                m_discardOldest = request.RequestedParameters.DiscardOldest;
+                m_filter = null;
+
                 if (request.RequestedParameters.Filter != null)
-                {        
+                {
                     m_filter = Utils.Clone(request.RequestedParameters.Filter.Body) as MonitoringFilter;
                 }
-                
+
                 m_samplingInterval = result.RevisedSamplingInterval;
                 m_queueSize = result.RevisedQueueSize;
             }
         }
-        
+
         /// <summary>
         /// Updates the object with the results of a delete item request.
         /// </summary>
@@ -265,7 +266,7 @@ namespace Opc.Ua.Client
             m_id = 0;
             m_error = error;
         }
-        
+
         /// <summary>
         /// Sets the error state for the monitored item status.
         /// </summary>
@@ -273,9 +274,11 @@ namespace Opc.Ua.Client
         {
             m_error = error;
         }
-        #endregion
+
+        #endregion Public Methods
 
         #region Private Fields
+
         private uint m_id;
         private ServiceResult m_error;
         private NodeId m_nodeId;
@@ -288,6 +291,7 @@ namespace Opc.Ua.Client
         private MonitoringFilter m_filter;
         private uint m_queueSize;
         private bool m_discardOldest;
-        #endregion
+
+        #endregion Private Fields
     }
 }

@@ -163,7 +163,8 @@ namespace Opc.Ua
         /// <summary>
         /// The identifier for the key.
         /// </summary>
-        public string KeyId {
+        public string KeyId
+        {
             get { return m_keyId; }
             private set { m_keyId = value; }
         }
@@ -171,7 +172,8 @@ namespace Opc.Ua
         /// <summary>
         /// A list of names for the issuer.
         /// </summary>
-        public ReadOnlyList<string> AuthorityNames {
+        public ReadOnlyList<string> AuthorityNames
+        {
             get { return m_authorityNames; }
             private set { m_authorityNames = value; }
         }
@@ -179,7 +181,8 @@ namespace Opc.Ua
         /// <summary>
         /// The serial number for the key.
         /// </summary>
-        public string SerialNumber {
+        public string SerialNumber
+        {
             get { return m_serialNumber; }
             private set { m_serialNumber = value; }
         }

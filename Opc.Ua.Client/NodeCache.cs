@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Reflection;
 
 namespace Opc.Ua.Client
@@ -40,6 +39,7 @@ namespace Opc.Ua.Client
     public class NodeCache : INodeTable, ITypeTable
     {
         #region Constructors
+
         /// <summary>
         /// Initializes the object with default values.
         /// </summary>
@@ -47,27 +47,29 @@ namespace Opc.Ua.Client
         {
             if (session == null) throw new ArgumentNullException(nameof(session));
 
-            m_session  = session;
+            m_session = session;
             m_typeTree = new TypeTable(m_session.NamespaceUris);
-            m_nodes    = new NodeTable(m_session.NamespaceUris, m_session.ServerUris, m_typeTree);
+            m_nodes = new NodeTable(m_session.NamespaceUris, m_session.ServerUris, m_typeTree);
         }
-        #endregion
+
+        #endregion Constructors
 
         #region INodeTable Members
+
         /// <summary cref="INodeTable.NamespaceUris" />
         public NamespaceTable NamespaceUris
         {
             get { return m_session.NamespaceUris; }
         }
-        
+
         /// <summary cref="INodeTable.ServerUris" />
         public StringTable ServerUris
         {
             get { return m_session.ServerUris; }
         }
-        
+
         /// <summary cref="INodeTable.TypeTree" />
-        public ITypeTable TypeTree 
+        public ITypeTable TypeTree
         {
             get { return this; }
         }
@@ -77,7 +79,7 @@ namespace Opc.Ua.Client
         {
             return Find(nodeId) != null;
         }
-        
+
         /// <summary cref="INodeTable.Find(ExpandedNodeId)" />
         public INode Find(ExpandedNodeId nodeId)
         {
@@ -111,14 +113,14 @@ namespace Opc.Ua.Client
                 return null;
             }
         }
-        
+
         /// <summary cref="INodeTable.Find(ExpandedNodeId,NodeId,bool,bool,QualifiedName)" />
         public INode Find(
-            ExpandedNodeId sourceId, 
-            NodeId         referenceTypeId, 
-            bool           isInverse, 
-            bool           includeSubtypes, 
-            QualifiedName  browseName)
+            ExpandedNodeId sourceId,
+            NodeId referenceTypeId,
+            bool isInverse,
+            bool includeSubtypes,
+            QualifiedName browseName)
         {
             // find the source.
             Node source = Find(sourceId) as Node;
@@ -127,14 +129,14 @@ namespace Opc.Ua.Client
             {
                 return null;
             }
-            
+
             // find all references.
             IList<IReference> references = source.ReferenceTable.Find(referenceTypeId, isInverse, includeSubtypes, m_typeTree);
 
             foreach (IReference reference in references)
-            {  
+            {
                 INode target = Find(reference.TargetId);
-                        
+
                 if (target == null)
                 {
                     continue;
@@ -152,11 +154,11 @@ namespace Opc.Ua.Client
 
         /// <summary cref="INodeTable.Find(ExpandedNodeId,NodeId,bool,bool)" />
         public IList<INode> Find(
-            ExpandedNodeId sourceId, 
-            NodeId         referenceTypeId, 
-            bool           isInverse, 
-            bool           includeSubtypes)
-        {            
+            ExpandedNodeId sourceId,
+            NodeId referenceTypeId,
+            bool isInverse,
+            bool includeSubtypes)
+        {
             List<INode> hits = new List<INode>();
 
             // find the source.
@@ -169,11 +171,11 @@ namespace Opc.Ua.Client
 
             // find all references.
             IList<IReference> references = source.ReferenceTable.Find(referenceTypeId, isInverse, includeSubtypes, m_typeTree);
-            
+
             foreach (IReference reference in references)
-            {  
+            {
                 INode target = Find(reference.TargetId);
-                        
+
                 if (target == null)
                 {
                     continue;
@@ -184,9 +186,11 @@ namespace Opc.Ua.Client
 
             return hits;
         }
-        #endregion
-        
+
+        #endregion INodeTable Members
+
         #region ITypeTable Methods
+
         /// <summary>
         /// Determines whether a node id is a known type id.
         /// </summary>
@@ -195,7 +199,7 @@ namespace Opc.Ua.Client
         /// 	<c>true</c> if the specified type id is known; otherwise, <c>false</c>.
         /// </returns>
         public bool IsKnown(ExpandedNodeId typeId)
-        {            
+        {
             INode type = Find(typeId);
 
             if (type == null)
@@ -214,7 +218,7 @@ namespace Opc.Ua.Client
         /// 	<c>true</c> if the specified type id is known; otherwise, <c>false</c>.
         /// </returns>
         public bool IsKnown(NodeId typeId)
-        {            
+        {
             INode type = Find(typeId);
 
             if (type == null)
@@ -327,7 +331,7 @@ namespace Opc.Ua.Client
 
                 supertype = Find(currentId) as ILocalNode;
             }
-            
+
             return false;
         }
 
@@ -366,7 +370,7 @@ namespace Opc.Ua.Client
 
                 supertype = Find(currentId) as ILocalNode;
             }
-            
+
             return false;
         }
 
@@ -411,7 +415,7 @@ namespace Opc.Ua.Client
             {
                 return false;
             }
-            
+
             foreach (IReference reference in encoding.References.Find(ReferenceTypeIds.HasEncoding, true, true, m_typeTree))
             {
                 if (reference.TargetId == datatypeId)
@@ -440,13 +444,13 @@ namespace Opc.Ua.Client
             {
                 return false;
             }
-            
+
             // check for exact match.
             if (expectedTypeId == value.TypeId)
-            {                
+            {
                 return true;
             }
-            
+
             // find the encoding.
             ILocalNode encoding = Find(value.TypeId) as ILocalNode;
 
@@ -509,12 +513,12 @@ namespace Opc.Ua.Client
 
             // for structure types must try to determine the subtype.
             ExtensionObject extension = value as ExtensionObject;
-            
+
             if (extension != null)
             {
                 return IsEncodingFor(expectedTypeId, extension);
             }
-            
+
             // every element in an array must match.
             ExtensionObject[] extensions = value as ExtensionObject[];
 
@@ -540,22 +544,22 @@ namespace Opc.Ua.Client
         /// </summary>
         /// <param name="encodingId">The encoding id.</param>
         /// <returns></returns>
-        public NodeId FindDataTypeId(ExpandedNodeId encodingId)            
-        {            
+        public NodeId FindDataTypeId(ExpandedNodeId encodingId)
+        {
             ILocalNode encoding = Find(encodingId) as ILocalNode;
 
             if (encoding == null)
             {
                 return NodeId.Null;
             }
-            
+
             IList<IReference> references = encoding.References.Find(ReferenceTypeIds.HasEncoding, true, true, m_typeTree);
 
             if (references.Count > 0)
             {
                 return ExpandedNodeId.ToNodeId(references[0].TargetId, m_session.NamespaceUris);
             }
-                
+
             return NodeId.Null;
         }
 
@@ -566,7 +570,7 @@ namespace Opc.Ua.Client
         /// <returns>
         /// The data type for the <paramref name="encodingId"/>
         /// </returns>
-        public NodeId FindDataTypeId(NodeId encodingId)            
+        public NodeId FindDataTypeId(NodeId encodingId)
         {
             ILocalNode encoding = Find(encodingId) as ILocalNode;
 
@@ -574,19 +578,21 @@ namespace Opc.Ua.Client
             {
                 return NodeId.Null;
             }
-            
+
             IList<IReference> references = encoding.References.Find(ReferenceTypeIds.HasEncoding, true, true, m_typeTree);
 
             if (references.Count > 0)
             {
                 return ExpandedNodeId.ToNodeId(references[0].TargetId, m_session.NamespaceUris);
-            } 
-                
+            }
+
             return NodeId.Null;
         }
-        #endregion
+
+        #endregion ITypeTable Methods
 
         #region Public Methods
+
         /// <summary>
         /// Loads the UA defined types into the cache.
         /// </summary>
@@ -595,7 +601,7 @@ namespace Opc.Ua.Client
         {
             NodeStateCollection predefinedNodes = new NodeStateCollection();
             predefinedNodes.LoadFromBinaryResource(context, "Opc.Ua.Core.Stack.Generated.Opc.Ua.PredefinedNodes.uanodes", typeof(ArgumentCollection).GetTypeInfo().Assembly, true);
-            
+
             for (int ii = 0; ii < predefinedNodes.Count; ii++)
             {
                 BaseTypeState type = predefinedNodes[ii] as BaseTypeState;
@@ -697,16 +703,16 @@ namespace Opc.Ua.Client
                 subType = superType;
             }
         }
-        
+
         /// <summary>
         /// Returns the references of the specified node that meet the criteria specified.
         /// </summary>
         public IList<INode> FindReferences(
-            ExpandedNodeId nodeId, 
-            NodeId         referenceTypeId, 
-            bool           isInverse,
-            bool           includeSubtypes)
-        {            
+            ExpandedNodeId nodeId,
+            NodeId referenceTypeId,
+            bool isInverse,
+            bool includeSubtypes)
+        {
             IList<INode> targets = new List<INode>();
 
             Node source = Find(nodeId) as Node;
@@ -717,9 +723,9 @@ namespace Opc.Ua.Client
             }
 
             IList<IReference> references = source.ReferenceTable.Find(
-                referenceTypeId, 
-                isInverse, 
-                includeSubtypes, 
+                referenceTypeId,
+                isInverse,
+                includeSubtypes,
                 m_typeTree);
 
             foreach (IReference reference in references)
@@ -734,7 +740,7 @@ namespace Opc.Ua.Client
 
             return targets;
         }
-        
+
         /// <summary>
         /// Returns a display name for a node.
         /// </summary>
@@ -777,7 +783,7 @@ namespace Opc.Ua.Client
                     break;
                 }
             }
-            
+
             // prepend the parent display name.
             if (displayText != null)
             {
@@ -834,17 +840,20 @@ namespace Opc.Ua.Client
         public NodeId BuildBrowsePath(ILocalNode node, IList<QualifiedName> browsePath)
         {
             NodeId typeId = null;
-           
+
             browsePath.Add(node.BrowseName);
 
             return typeId;
         }
-        #endregion
-        
+
+        #endregion Public Methods
+
         #region Private Fields
+
         private Session m_session;
         private TypeTable m_typeTree;
         private NodeTable m_nodes;
-        #endregion
+
+        #endregion Private Fields
     }
 }

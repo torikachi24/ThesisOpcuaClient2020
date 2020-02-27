@@ -153,14 +153,16 @@ namespace Opc.Ua
         /// <summary>
         /// The OID for a Subject Alternate Name extension.
         /// </summary>
-        public static string SubjectAltNameOid {
+        public static string SubjectAltNameOid
+        {
             get { return s_SubjectAltNameOid; }
         }
 
         /// <summary>
         /// The OID for a Subject Alternate Name 2 extension.
         /// </summary>
-        public static string SubjectAltName2Oid {
+        public static string SubjectAltName2Oid
+        {
             get { return s_SubjectAltName2Oid; }
         }
 
@@ -168,7 +170,8 @@ namespace Opc.Ua
         /// Gets the uris.
         /// </summary>
         /// <value>The uris.</value>
-        public ReadOnlyList<string> Uris {
+        public ReadOnlyList<string> Uris
+        {
             get { return m_uris; }
         }
 
@@ -176,7 +179,8 @@ namespace Opc.Ua
         /// Gets the domain names.
         /// </summary>
         /// <value>The domain names.</value>
-        public ReadOnlyList<string> DomainNames {
+        public ReadOnlyList<string> DomainNames
+        {
             get { return m_domainNames; }
         }
 
@@ -184,7 +188,8 @@ namespace Opc.Ua
         /// Gets the IP addresses.
         /// </summary>
         /// <value>The IP addresses.</value>
-        public ReadOnlyList<string> IPAddresses {
+        public ReadOnlyList<string> IPAddresses
+        {
             get { return m_ipAddresses; }
         }
 

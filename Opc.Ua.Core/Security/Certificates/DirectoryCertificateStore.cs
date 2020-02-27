@@ -66,7 +66,8 @@ namespace Opc.Ua
         /// <summary>
         /// The directory containing the certificate store.
         /// </summary>
-        public DirectoryInfo Directory {
+        public DirectoryInfo Directory
+        {
             get { return m_directory; }
         }
 

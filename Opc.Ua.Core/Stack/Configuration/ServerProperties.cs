@@ -43,7 +43,8 @@ namespace Opc.Ua
         /// <summary>
         /// The unique identifier for the product.
         /// </summary>
-        public string ProductUri {
+        public string ProductUri
+        {
             get { return m_productUri; }
             set { m_productUri = value; }
         }
@@ -51,7 +52,8 @@ namespace Opc.Ua
         /// <summary>
         /// The name of the product
         /// </summary>
-        public string ProductName {
+        public string ProductName
+        {
             get { return m_productName; }
             set { m_productName = value; }
         }
@@ -59,7 +61,8 @@ namespace Opc.Ua
         /// <summary>
         /// The name of the manufacturer
         /// </summary>
-        public string ManufacturerName {
+        public string ManufacturerName
+        {
             get { return m_manufacturerName; }
             set { m_manufacturerName = value; }
         }
@@ -67,7 +70,8 @@ namespace Opc.Ua
         /// <summary>
         /// The software version for the application
         /// </summary>
-        public string SoftwareVersion {
+        public string SoftwareVersion
+        {
             get { return m_softwareVersion; }
             set { m_softwareVersion = value; }
         }
@@ -75,7 +79,8 @@ namespace Opc.Ua
         /// <summary>
         /// The build number for the application
         /// </summary>
-        public string BuildNumber {
+        public string BuildNumber
+        {
             get { return m_buildNumber; }
             set { m_buildNumber = value; }
         }
@@ -83,7 +88,8 @@ namespace Opc.Ua
         /// <summary>
         /// When the application was built.
         /// </summary>
-        public DateTime BuildDate {
+        public DateTime BuildDate
+        {
             get { return m_buildDate; }
             set { m_buildDate = value; }
         }
@@ -91,14 +97,16 @@ namespace Opc.Ua
         /// <summary>
         /// The assemblies that contain encodeable types that could be uses a variable values.
         /// </summary>
-        public StringCollection DatatypeAssemblies {
+        public StringCollection DatatypeAssemblies
+        {
             get { return m_datatypeAssemblies; }
         }
 
         /// <summary>
         /// The software certificates granted to the server.
         /// </summary>
-        public SignedSoftwareCertificateCollection SoftwareCertificates {
+        public SignedSoftwareCertificateCollection SoftwareCertificates
+        {
             get { return m_softwareCertificates; }
         }
 

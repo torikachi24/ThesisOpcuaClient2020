@@ -392,104 +392,35 @@ namespace Thesis
             }
         }
 
-        //public void WriteValues(List<String> values, List<String> nodeIdStrings)
+        //public string VariableWrite(string node,string value)
         //{
-        //    //Create a collection of values to write
-        //    WriteValueCollection valuesToWrite = new WriteValueCollection();
-        //    //Create a collection for StatusCodes
-        //    StatusCodeCollection result = new StatusCodeCollection();
-        //    //Create a collection for DiagnosticInfos
-        //    DiagnosticInfoCollection diagnostics = new DiagnosticInfoCollection();
-
-        //    foreach (String str in nodeIdStrings)
-        //    {
-        //        //Create a nodeId
-        //        NodeId nodeId = new NodeId(str);
-        //        //Create a dataValue
-        //        DataValue dataValue = new DataValue();
-        //        //Read the dataValue
-        //        try
-        //        {
-        //            dataValue = mSession.ReadValue(nodeId);
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            //handle Exception here
-        //            throw e;
-        //        }
-
-        //        string test = dataValue.Value.GetType().Name;
-        //        //Get the data type of the read dataValue
-        //        //Handle Arrays here: TBD
-        //        Variant variant = 0;
-        //        try
-        //        {
-        //            variant = new Variant(Convert.ChangeType(values[nodeIdStrings.IndexOf(str)], dataValue.Value.GetType()));
-        //        }
-        //        catch //no base data type
-        //        {
-        //            //Handle different arrays types here: TBD
-        //            if (dataValue.Value.GetType().Name == "string[]")
-        //            {
-        //                string[] arrString = values[nodeIdStrings.IndexOf(str)].Split(';');
-        //                variant = new Variant(arrString);
-        //            }
-        //            else if (dataValue.Value.GetType().Name == "Byte[]")
-        //            {
-        //                string[] arrString = values[nodeIdStrings.IndexOf(str)].Split(';');
-        //                Byte[] arrInt = new Byte[arrString.Length];
-
-        //                for (int i = 0; i < arrString.Length; i++)
-        //                {
-        //                    arrInt[i] = Convert.ToByte(arrString[i]);
-        //                }
-        //                variant = new Variant(arrInt);
-        //            }
-        //            else if (dataValue.Value.GetType().Name == "Int16[]")
-        //            {
-        //                string[] arrString = values[nodeIdStrings.IndexOf(str)].Split(';');
-        //                Int16[] arrInt = new Int16[arrString.Length];
-
-        //                for (int i = 0; i < arrString.Length; i++)
-        //                {
-        //                    arrInt[i] = Convert.ToInt16(arrString[i]);
-        //                }
-        //                variant = new Variant(arrInt);
-        //            }
-        //        }
-
-        //        //Overwrite the dataValue with a new constructor using read dataType
-        //        dataValue = new DataValue(variant);
-
-        //        //Create a WriteValue using the NodeId, dataValue and attributeType
-        //        WriteValue valueToWrite = new WriteValue();
-        //        valueToWrite.Value = dataValue;
-        //        valueToWrite.NodeId = nodeId;
-        //        valueToWrite.AttributeId = Attributes.Value;
-
-        //        //Add the dataValues to the collection
-        //        valuesToWrite.Add(valueToWrite);
-        //    }
-
         //    try
         //    {
-        //        //Write the      to the server
-        //        mSession.Write(null, valuesToWrite, out result, out diagnostics);
-        //        foreach (StatusCode code in result)
+        //        DataValueCollection values = null;
+        //        DiagnosticInfoCollection diagnosticInfos = null;
+        //        ReadValueIdCollection nodesToWrite = new ReadValueIdCollection();
+        //        ReadValueId valueId = new ReadValueId();
+        //        valueId.NodeId = new NodeId(node);
+        //        valueId.AttributeId = Attributes.Value;
+        //        valueId.IndexRange = null;
+        //        valueId.DataEncoding = null;
+        //        nodesToRead.Add(valueId);
+        //        ResponseHeader responseHeader = session.Read(null, 0, TimestampsToReturn.Both, nodesToRead, out values, out diagnosticInfos);
+        //        string value = "";
+        //        if (values[0].Value != null)
         //        {
-        //            if (code != 0)
-        //            {
-        //                Exception ex = new Exception(code.ToString());
-        //                throw ex;
-        //            }
+        //            var rawValue = values[0].WrappedValue.ToString();
+        //            value = rawValue.Replace("|", "\r\n").Replace("{", "").Replace("}", "");
         //        }
+        //        return value;
         //    }
-        //    catch (Exception e)
+        //    catch
         //    {
-        //        //handle Exception here
-        //        throw e;
+        //        return null;
         //    }
         //}
+
+
         private void CertificateValidator_CertificateValidation(CertificateValidator validator, CertificateValidationEventArgs e)
         {
             if (e.Error.StatusCode == StatusCodes.BadCertificateUntrusted)

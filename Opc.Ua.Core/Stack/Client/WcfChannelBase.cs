@@ -10,10 +10,10 @@
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
 
+using Opc.Ua.Bindings;
 using System;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
-using Opc.Ua.Bindings;
 
 namespace Opc.Ua
 {
@@ -63,8 +63,10 @@ namespace Opc.Ua
         /// <summary>
         /// Returns true if the channel uses the UA Binary encoding.
         /// </summary>
-        public bool UseBinaryEncoding {
-            get {
+        public bool UseBinaryEncoding
+        {
+            get
+            {
                 if (m_settings != null && m_settings.Configuration != null)
                 {
                     return m_settings.Configuration.UseBinaryEncoding;
@@ -77,8 +79,10 @@ namespace Opc.Ua
         /// <summary>
         /// Gets the binary encoding support.
         /// </summary>
-        public BinaryEncodingSupport BinaryEncodingSupport {
-            get {
+        public BinaryEncodingSupport BinaryEncodingSupport
+        {
+            get
+            {
                 if (m_settings != null && m_settings.Configuration != null)
                 {
                     if (m_settings != null && m_settings.Configuration.UseBinaryEncoding)
@@ -140,8 +144,10 @@ namespace Opc.Ua
         /// <summary>
         /// A masking indicating which features are implemented.
         /// </summary>
-        public TransportChannelFeatures SupportedFeatures {
-            get {
+        public TransportChannelFeatures SupportedFeatures
+        {
+            get
+            {
                 if (m_wcfBypassChannel != null)
                 {
                     return m_wcfBypassChannel.SupportedFeatures;
@@ -154,8 +160,10 @@ namespace Opc.Ua
         /// <summary>
         /// Gets the description for the endpoint used by the channel.
         /// </summary>
-        public EndpointDescription EndpointDescription {
-            get {
+        public EndpointDescription EndpointDescription
+        {
+            get
+            {
                 if (m_wcfBypassChannel != null)
                 {
                     return m_wcfBypassChannel.EndpointDescription;
@@ -173,8 +181,10 @@ namespace Opc.Ua
         /// <summary>
         /// Gets the configuration for the channel.
         /// </summary>
-        public EndpointConfiguration EndpointConfiguration {
-            get {
+        public EndpointConfiguration EndpointConfiguration
+        {
+            get
+            {
                 if (m_wcfBypassChannel != null)
                 {
                     return m_wcfBypassChannel.EndpointConfiguration;
@@ -192,8 +202,10 @@ namespace Opc.Ua
         /// <summary>
         /// Gets the context used when serializing messages exchanged via the channel.
         /// </summary>
-        public ServiceMessageContext MessageContext {
-            get {
+        public ServiceMessageContext MessageContext
+        {
+            get
+            {
                 if (m_wcfBypassChannel != null)
                 {
                     return m_wcfBypassChannel.MessageContext;
@@ -206,8 +218,10 @@ namespace Opc.Ua
         /// <summary>
         /// Gets or sets the default timeout for requests send via the channel.
         /// </summary>
-        public int OperationTimeout {
-            get {
+        public int OperationTimeout
+        {
+            get
+            {
                 if (m_wcfBypassChannel != null)
                 {
                     return m_wcfBypassChannel.OperationTimeout;
@@ -216,7 +230,8 @@ namespace Opc.Ua
                 return m_operationTimeout;
             }
 
-            set {
+            set
+            {
                 if (m_wcfBypassChannel != null)
                 {
                     m_wcfBypassChannel.OperationTimeout = value;
@@ -704,16 +719,16 @@ namespace Opc.Ua
             switch (description.TransportProfileUri)
             {
                 case Profiles.UaTcpTransport:
-                {
-                    useUaTcp = true;
-                    break;
-                }
+                    {
+                        useUaTcp = true;
+                        break;
+                    }
 
                 case Profiles.HttpsBinaryTransport:
-                {
-                    useHttps = true;
-                    break;
-                }
+                    {
+                        useHttps = true;
+                        break;
+                    }
             }
 
             // note: WCF channels are not supported
@@ -990,7 +1005,8 @@ namespace Opc.Ua
             /// Gets the wrapped channel.
             /// </summary>
             /// <value>The wrapped channel.</value>
-            public TChannel Channel {
+            public TChannel Channel
+            {
                 get { return m_channel; }
             }
 
@@ -1053,7 +1069,8 @@ namespace Opc.Ua
         /// Gets the inner channel.
         /// </summary>
         /// <value>The channel.</value>
-        protected TChannel Channel {
+        protected TChannel Channel
+        {
             get { return m_channel; }
         }
 

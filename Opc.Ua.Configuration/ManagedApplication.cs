@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -38,7 +38,7 @@ namespace Opc.Ua.Configuration
     /// An application that is managed by the configuration tool.
     /// </summary>
     [DataContract(Namespace = Namespaces.OpcUaConfig)]
-    public class ManagedApplication 
+    public class ManagedApplication
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagedApplication"/> class.
@@ -106,7 +106,7 @@ namespace Opc.Ua.Configuration
         /// Gets or sets the display name.
         /// </summary>
         /// <value>The display name.</value>
-        [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 0)]  
+        [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 0)]
         public string DisplayName
         {
             get { return m_displayName; }
@@ -117,7 +117,7 @@ namespace Opc.Ua.Configuration
         /// Gets or sets the executable path.
         /// </summary>
         /// <value>The executable path.</value>
-        [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 1)]  
+        [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 1)]
         public string ExecutablePath
         {
             get { return m_executablePath; }
@@ -128,7 +128,7 @@ namespace Opc.Ua.Configuration
         /// Gets or sets the configuration path.
         /// </summary>
         /// <value>The configuration path.</value>
-        [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 2)]  
+        [DataMember(IsRequired = false, EmitDefaultValue = false, Order = 2)]
         public string ConfigurationPath
         {
             get { return m_configurationPath; }
@@ -217,7 +217,7 @@ namespace Opc.Ua.Configuration
             m_application = null;
 
             FileInfo executableFile = new FileInfo(m_executablePath);
-            m_displayName = executableFile.Name.Substring(0, executableFile.Name.Length-4);
+            m_displayName = executableFile.Name.Substring(0, executableFile.Name.Length - 4);
 
             FileInfo configFile = new FileInfo(executableFile.FullName + ".config");
             Utils.Trace(1, "APPCONFIG={0}", configFile);
@@ -273,7 +273,7 @@ namespace Opc.Ua.Configuration
 
             FileInfo executablePath = new FileInfo(m_executablePath);
             string currentDirectory = Directory.GetCurrentDirectory();
-            
+
             try
             {
                 m_application = GetApplicationSettings(m_configurationPath);
@@ -306,7 +306,7 @@ namespace Opc.Ua.Configuration
                 m_configurationPath = null;
                 return;
             }
-            
+
             m_configurationPath = filePath;
 
             FileInfo configFile = new FileInfo(filePath);
@@ -353,10 +353,10 @@ namespace Opc.Ua.Configuration
                 StreamReader reader = new StreamReader(appConfigFile.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
                 XmlDocument doc = new XmlDocument();
                 doc.Load(reader);
-                
+
                 try
                 {
-                    foreach( XmlNode node1 in doc.ChildNodes)
+                    foreach (XmlNode node1 in doc.ChildNodes)
                     {
                         if (node1.Name == "ConfigurationLocation")
                         {
@@ -384,6 +384,7 @@ namespace Opc.Ua.Configuration
         }
 
         #region Private Fields
+
         private FileInfo m_sourceFile;
         private bool m_isSdkCompatible;
         private Opc.Ua.Security.SecuredApplication m_application;
@@ -393,6 +394,7 @@ namespace Opc.Ua.Configuration
         private CertificateIdentifier m_certificate;
         private CertificateStoreIdentifier m_trustList;
         private StringCollection m_baseAddresses;
-        #endregion 
+        #endregion Private Fields
+
     }
 }

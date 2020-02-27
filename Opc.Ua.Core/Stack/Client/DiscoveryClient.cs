@@ -176,7 +176,6 @@ namespace Opc.Ua
         }
 
         #endregion Public Methods
-
     }
 
     /// <summary>

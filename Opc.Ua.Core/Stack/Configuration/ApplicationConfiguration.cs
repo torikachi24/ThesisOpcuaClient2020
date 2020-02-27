@@ -78,7 +78,8 @@ namespace Opc.Ua
         /// </summary>
         /// <value>The file path.</value>
         [DataMember(IsRequired = true, Order = 0)]
-        public string FilePath {
+        public string FilePath
+        {
             get { return m_filePath; }
             set { m_filePath = value; }
         }
@@ -103,11 +104,13 @@ namespace Opc.Ua
         /// Gets the file that was used to load the configuration.
         /// </summary>
         /// <value>The source file path.</value>
-        public string SourceFilePath {
+        public string SourceFilePath
+        {
             get { return m_sourceFilePath; }
         }
 
-        public CertificateValidator CertificateValidator {
+        public CertificateValidator CertificateValidator
+        {
             get { return m_certificateValidator; }
             set { m_certificateValidator = value; }
         }
@@ -207,8 +210,10 @@ namespace Opc.Ua
         /// </summary>
         /// <value>A new instance of a ServiceMessageContext object.</value>
         [Obsolete("Warning: Behavior changed return a copy instead of a reference. Should call CreateMessageContext() instead.")]
-        public ServiceMessageContext MessageContext {
-            get {
+        public ServiceMessageContext MessageContext
+        {
+            get
+            {
                 if (m_messageContext == null)
                 {
                     m_messageContext = CreateMessageContext();

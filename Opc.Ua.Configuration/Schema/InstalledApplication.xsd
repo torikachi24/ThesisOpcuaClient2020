@@ -19,7 +19,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ListOfInstalledApplication" nillable="true" type="ListOfInstalledApplication" />
-  
+
   <xs:complexType name="InstalledApplication">
     <xs:complexContent>
       <xs:extension base="uas:SecuredApplication">
@@ -53,5 +53,4 @@
       <xs:enumeration value="Disabled" />
     </xs:restriction>
   </xs:simpleType>
-  
 </xs:schema>

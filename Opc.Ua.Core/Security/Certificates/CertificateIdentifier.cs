@@ -137,7 +137,8 @@ namespace Opc.Ua
         /// <value>
         /// The validation options that can be used to suppress certificate validation errors.
         /// </value>
-        public CertificateValidationOptions ValidationOptions {
+        public CertificateValidationOptions ValidationOptions
+        {
             get { return m_validationOptions; }
             set { m_validationOptions = value; }
         }
@@ -150,7 +151,8 @@ namespace Opc.Ua
         /// Gets or sets the actual certificate.
         /// </summary>
         /// <value>The X509 certificate used by this instance.</value>
-        public X509Certificate2 Certificate {
+        public X509Certificate2 Certificate
+        {
             get { return m_certificate; }
             set { m_certificate = value; }
         }

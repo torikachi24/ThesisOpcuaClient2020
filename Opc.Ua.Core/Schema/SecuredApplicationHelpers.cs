@@ -26,7 +26,8 @@ namespace Opc.Ua.Security
         /// The name of the application.
         /// </summary>
         [Obsolete("Replaced by ApplicationName")]
-        public string Name {
+        public string Name
+        {
             get { return this.ApplicationName; }
             set { this.ApplicationName = value; }
         }
@@ -35,7 +36,8 @@ namespace Opc.Ua.Security
         /// The uri of the application.
         /// </summary>
         [Obsolete("Replaced by ApplicationUri")]
-        public string Uri {
+        public string Uri
+        {
             get { return this.ApplicationUri; }
             set { this.ApplicationUri = value; }
         }
@@ -44,7 +46,8 @@ namespace Opc.Ua.Security
         /// A store of certificates trusted by the application.
         /// </summary>
         [Obsolete("Replaced by TrustedCertificateStore")]
-        public CertificateStoreIdentifier TrustedPeerStore {
+        public CertificateStoreIdentifier TrustedPeerStore
+        {
             get { return this.TrustedCertificateStore; }
             set { this.TrustedCertificateStore = value; }
         }
@@ -53,7 +56,8 @@ namespace Opc.Ua.Security
         /// A list of certificates trusted by the application.
         /// </summary>
         [Obsolete("Replaced by TrustedCertificates")]
-        public CertificateList TrustedPeerCertificates {
+        public CertificateList TrustedPeerCertificates
+        {
             get { return this.TrustedCertificates; }
             set { this.TrustedCertificates = value; }
         }
@@ -62,7 +66,8 @@ namespace Opc.Ua.Security
         /// A store of certificate issuers used by the application.
         /// </summary>
         [Obsolete("Replaced by TrustedIssuerStore")]
-        public CertificateStoreIdentifier TrustedIssuerStore {
+        public CertificateStoreIdentifier TrustedIssuerStore
+        {
             get { return this.IssuerCertificateStore; }
             set { this.IssuerCertificateStore = value; }
         }
@@ -71,7 +76,8 @@ namespace Opc.Ua.Security
         /// A list of certificate issuers used by the application.
         /// </summary>
         [Obsolete("Replaced by IssuerCertificates")]
-        public CertificateList TrustedIssuerCertificates {
+        public CertificateList TrustedIssuerCertificates
+        {
             get { return this.IssuerCertificates; }
             set { this.IssuerCertificates = value; }
         }
@@ -379,20 +385,20 @@ namespace Opc.Ua.Security
                 switch (profileUri)
                 {
                     case SecurityPolicies.None:
-                    {
-                        policy.SecurityMode = MessageSecurityMode.None;
-                        break;
-                    }
+                        {
+                            policy.SecurityMode = MessageSecurityMode.None;
+                            break;
+                        }
 
                     case SecurityPolicies.Basic128Rsa15:
                     case SecurityPolicies.Basic256:
                     case SecurityPolicies.Basic256Sha256:
                     case SecurityPolicies.Aes128_Sha256_RsaOaep:
                     case SecurityPolicies.Aes256_Sha256_RsaPss:
-                    {
-                        policy.SecurityMode = MessageSecurityMode.SignAndEncrypt;
-                        break;
-                    }
+                        {
+                            policy.SecurityMode = MessageSecurityMode.SignAndEncrypt;
+                            break;
+                        }
                 }
             }
 

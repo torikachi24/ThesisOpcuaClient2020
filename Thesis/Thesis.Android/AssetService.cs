@@ -1,23 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Android.Content.Res;
 using System.IO;
-
-using Android.App;
-using Android.Content;
-using Android.Content.Res;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Thesis.Droid.AssetService))]
 
 namespace Thesis.Droid
 {
-    public class AssetService:IAssetService
+    public class AssetService : IAssetService
     {
         public string LoadFile(string fileName)
         {
@@ -35,6 +24,5 @@ namespace Thesis.Droid
             }
             return content;
         }
-
     }
 }

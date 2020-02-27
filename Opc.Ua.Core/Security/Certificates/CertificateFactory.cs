@@ -10,15 +10,6 @@
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 using Opc.Ua;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Asn1.Pkcs;
@@ -35,6 +26,15 @@ using Org.BouncyCastle.Security;
 using Org.BouncyCastle.Utilities;
 using Org.BouncyCastle.X509;
 using Org.BouncyCastle.X509.Extension;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Opc.Ua
 {
@@ -1288,9 +1288,9 @@ public class CertificateFactory
             {
                 case X509AuthorityKeyIdentifierExtension.AuthorityKeyIdentifierOid:
                 case X509AuthorityKeyIdentifierExtension.AuthorityKeyIdentifier2Oid:
-                {
-                    return new X509AuthorityKeyIdentifierExtension(extension, extension.Critical);
-                }
+                    {
+                        return new X509AuthorityKeyIdentifierExtension(extension, extension.Critical);
+                    }
             }
         }
 

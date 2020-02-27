@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -29,17 +29,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.ServiceModel;
-using System.Runtime.Serialization;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Globalization;
 using System.IO;
-using System.Xml;
+using System.Runtime.Serialization;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Reflection;
+using System.Xml;
 
 namespace Opc.Ua.Client
 {
@@ -49,6 +46,7 @@ namespace Opc.Ua.Client
     public class Session : SessionClient, IDisposable
     {
         #region Constructors
+
         /// <summary>
         /// Constructs a new instance of the session.
         /// </summary>
@@ -138,9 +136,11 @@ namespace Opc.Ua.Client
                 this.AddSubscription(new Subscription(subscription, copyEventHandlers));
             }
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Private Methods
+
         /// <summary>
         /// Initializes the channel.
         /// </summary>
@@ -158,7 +158,7 @@ namespace Opc.Ua.Client
             m_configuration = configuration;
             m_endpoint = endpoint;
 
-            // update the default subscription. 
+            // update the default subscription.
             m_defaultSubscription.MinLifetimeInterval = (uint)configuration.ClientConfiguration.MinSubscriptionLifetime;
 
             if (m_endpoint.Description.SecurityPolicyUri != SecurityPolicies.None)
@@ -177,7 +177,6 @@ namespace Opc.Ua.Client
                     }
 
                     m_instanceCertificate = m_configuration.SecurityConfiguration.ApplicationCertificate.Find(true).Result;
-
                 }
 
                 // check for valid certificate.
@@ -319,7 +318,7 @@ namespace Opc.Ua.Client
                 return;
             }
 
-            if (identity!= null && identity.TokenType != UserTokenType.Anonymous)
+            if (identity != null && identity.TokenType != UserTokenType.Anonymous)
             {
                 // the server nonce should be validated if the token includes a secret.
                 if (!Utils.Nonce.ValidateNonce(serverNonce, MessageSecurityMode.SignAndEncrypt, (uint)m_configuration.SecurityConfiguration.NonceLength))
@@ -389,9 +388,11 @@ namespace Opc.Ua.Client
                 throw new ServiceResultException(StatusCodes.BadCertificateHostNameInvalid, message);
             }
         }
-        #endregion
+
+        #endregion Private Methods
 
         #region IDisposable Members
+
         /// <summary>
         /// Closes the session and the underlying channel.
         /// </summary>
@@ -415,9 +416,11 @@ namespace Opc.Ua.Client
 
             base.Dispose(disposing);
         }
-        #endregion
+
+        #endregion IDisposable Members
 
         #region Events
+
         /// <summary>
         /// Raised when a keep alive arrives from the server or an error is detected.
         /// </summary>
@@ -477,7 +480,7 @@ namespace Opc.Ua.Client
         /// Raised when an exception occurs while processing a publish response.
         /// </summary>
         /// <remarks>
-        /// Exceptions in a publish response are not necessarily fatal and the Session will 
+        /// Exceptions in a publish response are not necessarily fatal and the Session will
         /// attempt to recover by issuing Republish requests if missing messages are detected.
         /// That said, timeout errors may be a symptom of a OperationTimeout that is too short
         /// when compared to the shortest PublishingInterval/KeepAliveCount amount the current
@@ -535,9 +538,11 @@ namespace Opc.Ua.Client
                 m_SessionClosing -= value;
             }
         }
-        #endregion
+
+        #endregion Events
 
         #region Public Properties
+
         /// <summary>
         /// Gets the endpoint used to connect to the server.
         /// </summary>
@@ -816,9 +821,11 @@ namespace Opc.Ua.Client
                 }
             }
         }
-        #endregion
+
+        #endregion Public Properties
 
         #region Public Static Methods
+
         /// <summary>
         /// Creates a new communication session with a server by invoking the CreateSession service
         /// </summary>
@@ -951,7 +958,6 @@ namespace Opc.Ua.Client
             return session;
         }
 
-
         /// <summary>
         /// Recreates a session based on a specified template.
         /// </summary>
@@ -968,7 +974,7 @@ namespace Opc.Ua.Client
                 template.m_endpoint.Description,
                 template.m_endpoint.Configuration,
                 template.m_instanceCertificate,
-                template.m_configuration.SecurityConfiguration.SendCertificateChain ? 
+                template.m_configuration.SecurityConfiguration.SendCertificateChain ?
                     template.m_instanceCertificateChain : null,
                 messageContext);
 
@@ -999,9 +1005,11 @@ namespace Opc.Ua.Client
 
             return session;
         }
-        #endregion
+
+        #endregion Public Static Methods
 
         #region Delegates and Events
+
         /// <summary>
         /// Used to handle renews of user identity tokens before reconnect.
         /// </summary>
@@ -1017,9 +1025,11 @@ namespace Opc.Ua.Client
         }
 
         private event RenewUserIdentityEventHandler m_RenewUserIdentity;
-        #endregion
+
+        #endregion Delegates and Events
 
         #region Public Methods
+
         /// <summary>
         /// Reconnects to the server after a network failure.
         /// </summary>
@@ -1169,7 +1179,6 @@ namespace Opc.Ua.Client
             }
         }
 
-
         /// <summary>
         /// Saves all the subscriptions of the session.
         /// </summary>
@@ -1207,7 +1216,6 @@ namespace Opc.Ua.Client
                 stream.Dispose();
             }
         }
-
 
         /// <summary>
         /// Load the list of subscriptions saved in a file.
@@ -1302,7 +1310,7 @@ namespace Opc.Ua.Client
             else
             {
                 m_serverUris.Update((string[])values[1].Value);
-            } 
+            }
         }
 
         /// <summary>
@@ -1385,7 +1393,6 @@ namespace Opc.Ua.Client
             return browser.Browse(variable.DataType);
         }
 
-
         /// <summary>
         /// Returns the data description for the encoding.
         /// </summary>
@@ -1409,7 +1416,6 @@ namespace Opc.Ua.Client
 
             return references[0];
         }
-
 
         /// <summary>
         ///  Returns the data dictionary that contains the description.
@@ -1466,7 +1472,7 @@ namespace Opc.Ua.Client
             NodeId dictionaryId = ExpandedNodeId.ToNodeId(dictionaryNode.NodeId, m_namespaceUris);
             if (!forceReload &&
                 m_dictionaries.TryGetValue(dictionaryId, out dictionary))
-            { 
+            {
                 return dictionary;
             }
 
@@ -1482,13 +1488,13 @@ namespace Opc.Ua.Client
         /// </summary>
         /// <param name="dataTypeSystem">The type system.</param>
         /// <returns></returns>
-        public async Task<Dictionary<NodeId,DataDictionary>> LoadDataTypeSystem(NodeId dataTypeSystem = null)
+        public async Task<Dictionary<NodeId, DataDictionary>> LoadDataTypeSystem(NodeId dataTypeSystem = null)
         {
             if (dataTypeSystem == null)
             {
                 dataTypeSystem = ObjectIds.OPCBinarySchema_TypeSystem;
             }
-            else 
+            else
             if (!Utils.Equals(dataTypeSystem, ObjectIds.OPCBinarySchema_TypeSystem) &&
                 !Utils.Equals(dataTypeSystem, ObjectIds.XmlSchema_TypeSystem))
             {
@@ -2114,7 +2120,6 @@ namespace Opc.Ua.Client
             return value;
         }
 
-
         /// <summary>
         /// Fetches all references for the specified node.
         /// </summary>
@@ -2377,7 +2382,6 @@ namespace Opc.Ua.Client
                         out serverSoftwareCertificates,
                         out serverSignature,
                         out m_maxRequestMessageSize);
-
             }
             // save session id.
             lock (SyncRoot)
@@ -2699,7 +2703,7 @@ namespace Opc.Ua.Client
             string securityPolicyUri = m_endpoint.Description.SecurityPolicyUri;
 
             // create the client signature.
-            byte[]  dataToSign = Utils.Append(m_serverCertificate != null ? m_serverCertificate.RawData : null, serverNonce);
+            byte[] dataToSign = Utils.Append(m_serverCertificate != null ? m_serverCertificate.RawData : null, serverNonce);
             SignatureData clientSignature = SecurityPolicies.Sign(m_instanceCertificate, securityPolicyUri, dataToSign);
 
             // choose a default token.
@@ -2890,7 +2894,6 @@ namespace Opc.Ua.Client
             }
         }
 
-
         /// <summary>
         /// Reads the values for a set of variables.
         /// </summary>
@@ -2977,7 +2980,6 @@ namespace Opc.Ua.Client
             }
         }
 
-
         /// <summary>
         /// Reads the display name for a set of Nodes.
         /// </summary>
@@ -3041,9 +3043,11 @@ namespace Opc.Ua.Client
                 }
             }
         }
-        #endregion
+
+        #endregion Public Methods
 
         #region Close Methods
+
         /// <summary>
         /// Disconnects from the server and frees any network resources.
         /// </summary>
@@ -3129,9 +3133,11 @@ namespace Opc.Ua.Client
             Dispose();
             return result;
         }
-        #endregion
+
+        #endregion Close Methods
 
         #region Subscription Methods
+
         /// <summary>
         /// Adds a subscription to the session.
         /// </summary>
@@ -3235,9 +3241,11 @@ namespace Opc.Ua.Client
 
             return true;
         }
-        #endregion
+
+        #endregion Subscription Methods
 
         #region Browse Methods
+
         /// <summary>
         /// Invokes the Browse service.
         /// </summary>
@@ -3383,9 +3391,11 @@ namespace Opc.Ua.Client
 
             return responseHeader;
         }
-        #endregion
+
+        #endregion Browse Methods
 
         #region BrowseNext Methods
+
         /// <summary>
         /// Invokes the BrowseNext service.
         /// </summary>
@@ -3475,9 +3485,11 @@ namespace Opc.Ua.Client
 
             return responseHeader;
         }
-        #endregion
+
+        #endregion BrowseNext Methods
 
         #region Call Methods
+
         /// <summary>
         /// Calls the specified method and returns the output arguments.
         /// </summary>
@@ -3532,9 +3544,11 @@ namespace Opc.Ua.Client
 
             return outputArguments;
         }
-        #endregion
+
+        #endregion Call Methods
 
         #region Protected Methods
+
         /// <summary>
         /// Returns the software certificates assigned to the application.
         /// </summary>
@@ -3560,7 +3574,7 @@ namespace Opc.Ua.Client
         }
 
         /// <summary>
-        /// Inspects the software certificates provided by the server. 
+        /// Inspects the software certificates provided by the server.
         /// </summary>
         protected virtual void ValidateSoftwareCertificates(List<SoftwareCertificate> softwareCertificates)
         {
@@ -3886,9 +3900,11 @@ namespace Opc.Ua.Client
 
             return true;
         }
-        #endregion
+
+        #endregion Protected Methods
 
         #region Publish Methods
+
         /// <summary>
         /// Sends an additional publish request.
         /// </summary>
@@ -4059,7 +4075,7 @@ namespace Opc.Ua.Client
                     }
                 }
 
-                // raise an error event.     
+                // raise an error event.
                 ServiceResult error = new ServiceResult(e);
 
                 if (error.Code != StatusCodes.BadNoSubscription)
@@ -4317,7 +4333,7 @@ namespace Opc.Ua.Client
                     Utils.Trace("PublishTime {0} in publish response is newer than actual time for SubscriptionId {1}.", notificationMessage.PublishTime.ToLocalTime(), subscription.Id);
                 }
 
-                // update subscription cache.                                 
+                // update subscription cache.
                 subscription.SaveMessageInCache(
                     availableSequenceNumbers,
                     notificationMessage,
@@ -4363,9 +4379,11 @@ namespace Opc.Ua.Client
                 Utils.Trace(e, "Session: Unexpected rrror while raising Notification event.");
             }
         }
-        #endregion
+
+        #endregion Publish Methods
 
         #region Private Fields
+
         private SubscriptionAcknowledgementCollection m_acknowledgementsToSend;
         private Dictionary<uint, uint> m_latestAcknowledgementsSent;
         private List<Subscription> m_subscriptions;
@@ -4412,21 +4430,29 @@ namespace Opc.Ua.Client
         }
 
         private object m_eventLock = new object();
+
         private event KeepAliveEventHandler m_KeepAlive;
+
         private event NotificationEventHandler m_Publish;
+
         private event PublishErrorEventHandler m_PublishError;
+
         private event EventHandler m_SubscriptionsChanged;
+
         private event EventHandler m_SessionClosing;
-        #endregion
+
+        #endregion Private Fields
     }
 
     #region KeepAliveEventArgs Class
+
     /// <summary>
     /// The event arguments provided when a keep alive response arrives.
     /// </summary>
     public class KeepAliveEventArgs : EventArgs
     {
         #region Constructors
+
         /// <summary>
         /// Creates a new instance.
         /// </summary>
@@ -4439,9 +4465,11 @@ namespace Opc.Ua.Client
             m_currentState = currentState;
             m_currentTime = currentTime;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// Gets the status associated with the keep alive operation.
         /// </summary>
@@ -4474,29 +4502,35 @@ namespace Opc.Ua.Client
             get { return m_cancelKeepAlive; }
             set { m_cancelKeepAlive = value; }
         }
-        #endregion
+
+        #endregion Public Properties
 
         #region Private Fields
+
         private ServiceResult m_status;
         private ServerState m_currentState;
         private DateTime m_currentTime;
         private bool m_cancelKeepAlive;
-        #endregion
+
+        #endregion Private Fields
     }
 
     /// <summary>
     /// The delegate used to receive keep alive notifications.
     /// </summary>
     public delegate void KeepAliveEventHandler(Session session, KeepAliveEventArgs e);
-    #endregion
+
+    #endregion KeepAliveEventArgs Class
 
     #region NotificationEventArgs Class
+
     /// <summary>
     /// Represents the event arguments provided when a new notification message arrives.
     /// </summary>
     public class NotificationEventArgs : EventArgs
     {
         #region Constructors
+
         /// <summary>
         /// Creates a new instance.
         /// </summary>
@@ -4509,9 +4543,11 @@ namespace Opc.Ua.Client
             m_notificationMessage = notificationMessage;
             m_stringTable = stringTable;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// Gets the subscription that the notification applies to.
         /// </summary>
@@ -4535,28 +4571,34 @@ namespace Opc.Ua.Client
         {
             get { return m_stringTable; }
         }
-        #endregion
+
+        #endregion Public Properties
 
         #region Private Fields
+
         private Subscription m_subscription;
         private NotificationMessage m_notificationMessage;
         private IList<string> m_stringTable;
-        #endregion
+
+        #endregion Private Fields
     }
 
     /// <summary>
     /// The delegate used to receive publish notifications.
     /// </summary>
     public delegate void NotificationEventHandler(Session session, NotificationEventArgs e);
-    #endregion
+
+    #endregion NotificationEventArgs Class
 
     #region PublishErrorEventArgs Class
+
     /// <summary>
     /// Represents the event arguments provided when a publish error occurs.
     /// </summary>
     public class PublishErrorEventArgs : EventArgs
     {
         #region Constructors
+
         /// <summary>
         /// Creates a new instance.
         /// </summary>
@@ -4574,9 +4616,11 @@ namespace Opc.Ua.Client
             m_subscriptionId = subscriptionId;
             m_sequenceNumber = sequenceNumber;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// Gets the status associated with the keep alive operation.
         /// </summary>
@@ -4600,18 +4644,22 @@ namespace Opc.Ua.Client
         {
             get { return m_sequenceNumber; }
         }
-        #endregion
+
+        #endregion Public Properties
 
         #region Private Fields
+
         private uint m_subscriptionId;
         private uint m_sequenceNumber;
         private ServiceResult m_status;
-        #endregion
+
+        #endregion Private Fields
     }
 
     /// <summary>
     /// The delegate used to receive pubish error notifications.
     /// </summary>
     public delegate void PublishErrorEventHandler(Session session, PublishErrorEventArgs e);
-    #endregion
+
+    #endregion PublishErrorEventArgs Class
 }

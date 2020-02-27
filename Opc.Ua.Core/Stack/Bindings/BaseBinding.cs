@@ -46,7 +46,8 @@ namespace Opc.Ua.Bindings
         /// <summary>
         /// The message context to use with the binding.
         /// </summary>
-        public ServiceMessageContext MessageContext {
+        public ServiceMessageContext MessageContext
+        {
             get { return m_messageContext; }
             set { m_messageContext = value; }
         }

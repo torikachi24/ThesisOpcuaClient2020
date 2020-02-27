@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -27,45 +27,41 @@
  * http://opcfoundation.org/License/MIT/1.00/
  * ======================================================================*/
 
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Runtime.Serialization;
-using System.IO;
-using System.Xml;
-using System.Reflection;
 
 namespace Opc.Ua.Configuration
-{    
+{
     /// <summary>
     /// Specifies how to configure an application during installation.
     /// </summary>
     [DataContract(Namespace = Namespaces.OpcUaSdk + "Installation.xsd")]
     public partial class InstalledApplication : Opc.Ua.Security.SecuredApplication
     {
-    	#region Constructors
-    	/// <summary>
-    	/// The default constructor.
-    	/// </summary>
+        #region Constructors
+
+        /// <summary>
+        /// The default constructor.
+        /// </summary>
         public InstalledApplication()
-    	{
-    		Initialize();
-    	}
-        
-    	/// <summary>
-    	/// Called by the .NET framework during deserialization.
-    	/// </summary>
+        {
+            Initialize();
+        }
+
+        /// <summary>
+        /// Called by the .NET framework during deserialization.
+        /// </summary>
         [OnDeserializing]
         private void Initialize(StreamingContext context)
-    	{
-    		Initialize();
-    	}
+        {
+            Initialize();
+        }
 
-    	/// <summary>
-    	/// Sets private members to default values.
-    	/// </summary>
-    	private void Initialize()
-    	{
+        /// <summary>
+        /// Sets private members to default values.
+        /// </summary>
+        private void Initialize()
+        {
             UseDefaultCertificateStores = true;
             DeleteCertificatesOnUninstall = true;
             ConfigureFirewall = false;
@@ -79,10 +75,12 @@ namespace Opc.Ua.Configuration
             LocallyRegisterOIDs = false;
             MinimumKeySize = CertificateFactory.defaultKeySize;
             LifeTimeInMonths = CertificateFactory.defaultLifeTime;
-    	}
-    	#endregion
+        }
+
+        #endregion Constructors
 
         #region Persistent Properties
+
         /// <summary>
         /// Whether to use the default stores.
         /// </summary>
@@ -172,10 +170,12 @@ namespace Opc.Ua.Configuration
         /// </summary>
         [DataMember(IsRequired = false, Order = 15)]
         public TraceConfiguration TraceConfiguration { get; set; }
-        #endregion
+
+        #endregion Persistent Properties
     }
 
     #region InstalledApplicationCollection Class
+
     /// <summary>
     /// A collection of InstalledApplication objects.
     /// </summary>
@@ -183,6 +183,7 @@ namespace Opc.Ua.Configuration
     public partial class InstalledApplicationCollection : List<InstalledApplication>
     {
         #region Constructors
+
         /// <summary>
         /// Initializes the collection with default values.
         /// </summary>
@@ -197,11 +198,14 @@ namespace Opc.Ua.Configuration
         /// Initializes the collection with another collection.
         /// </summary>
         public InstalledApplicationCollection(IEnumerable<InstalledApplication> collection) : base(collection) { }
-        #endregion
+
+        #endregion Constructors
     }
-    #endregion
+
+    #endregion InstalledApplicationCollection Class
 
     #region StartMode Enum
+
     /// <summary>
     /// Start mode of the Windows service
     /// </summary>
@@ -238,5 +242,6 @@ namespace Opc.Ua.Configuration
         [EnumMember]
         Disabled = 0x00000004
     }
-    #endregion
+
+    #endregion StartMode Enum
 }

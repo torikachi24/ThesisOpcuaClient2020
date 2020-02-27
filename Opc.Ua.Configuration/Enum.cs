@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -28,13 +28,11 @@
  * ======================================================================*/
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.Serialization;
 
 namespace Opc.Ua.Configuration
 {
     #region ServiceStatus Enum
+
     /// <summary>
     /// Represents the service status.
     /// </summary>
@@ -44,36 +42,44 @@ namespace Opc.Ua.Configuration
         /// The service is stopped
         /// </summary>
         Stopped,
+
         /// <summary>
         /// The service is going to process a start request
         /// </summary>
         StartPending,
+
         /// <summary>
         /// The service is going to process a stop request
         /// </summary>
         StopPending,
+
         /// <summary>
         /// The service started
         /// </summary>
         Running,
+
         /// <summary>
         /// The service is going to process a continue request
         /// </summary>
         ContinuePending,
+
         /// <summary>
         /// The service is going to process a pause request
         /// </summary>
         PausePending,
+
         /// <summary>
         /// The service is paused
         /// </summary>
         Paused,
+
         /// <summary>
         /// Unknown status
         /// </summary>
         Unknown
     }
-    #endregion
+
+    #endregion ServiceStatus Enum
 
     #region internal
 
@@ -81,33 +87,33 @@ namespace Opc.Ua.Configuration
 
     /// <summary>
     /// Access to the service. Before granting the requested access, the
-    /// system checks the access token of the calling process. 
+    /// system checks the access token of the calling process.
     /// </summary>
     [Flags]
     internal enum ServiceAccess : uint
     {
         /// <summary>
-        /// Required to call the QueryServiceConfig and 
+        /// Required to call the QueryServiceConfig and
         /// QueryServiceConfig2 functions to query the service configuration.
         /// </summary>
         QueryConfig = 0x00001,
 
         /// <summary>
-        /// Required to call the ChangeServiceConfig or ChangeServiceConfig2 function 
-        /// to change the service configuration. Because this grants the caller 
-        /// the right to change the executable file that the system runs, 
+        /// Required to call the ChangeServiceConfig or ChangeServiceConfig2 function
+        /// to change the service configuration. Because this grants the caller
+        /// the right to change the executable file that the system runs,
         /// it should be granted only to administrators.
         /// </summary>
         ChangeConfig = 0x00002,
 
         /// <summary>
-        /// Required to call the QueryServiceStatusEx function to ask the service 
+        /// Required to call the QueryServiceStatusEx function to ask the service
         /// control manager about the status of the service.
         /// </summary>
         QueryStatus = 0x00004,
 
         /// <summary>
-        /// Required to call the EnumDependentServices function to enumerate all 
+        /// Required to call the EnumDependentServices function to enumerate all
         /// the services dependent on the service.
         /// </summary>
         EnumerateDependents = 0x00008,
@@ -123,7 +129,7 @@ namespace Opc.Ua.Configuration
         Stop = 0x00020,
 
         /// <summary>
-        /// Required to call the ControlService function to pause or continue 
+        /// Required to call the ControlService function to pause or continue
         /// the service.
         /// </summary>
         PauseContinue = 0x00040,
@@ -179,10 +185,10 @@ namespace Opc.Ua.Configuration
             UserDefinedControl,
 
         /// <summary>
-        /// Required to call the QueryServiceObjectSecurity or 
+        /// Required to call the QueryServiceObjectSecurity or
         /// SetServiceObjectSecurity function to access the SACL. The proper
-        /// way to obtain this access is to enable the SE_SECURITY_NAME 
-        /// privilege in the caller's current access token, open the handle 
+        /// way to obtain this access is to enable the SE_SECURITY_NAME
+        /// privilege in the caller's current access token, open the handle
         /// for ACCESS_SYSTEM_SECURITY access, and then disable the privilege.
         /// </summary>
         SystemSecurity = ACCESS_MASK.ACCESS_SYSTEM_SECURITY,
@@ -205,8 +211,8 @@ namespace Opc.Ua.Configuration
         WriteDac = ACCESS_MASK.WRITE_DAC,
 
         /// <summary>
-        /// Required to call the SetServiceObjectSecurity function to modify 
-        /// the Owner and Group members of the service object's security 
+        /// Required to call the SetServiceObjectSecurity function to modify
+        /// the Owner and Group members of the service object's security
         /// descriptor.
         /// </summary>
         WriteOwner = ACCESS_MASK.WRITE_OWNER,
@@ -263,9 +269,10 @@ namespace Opc.Ua.Configuration
         WINSTA_ALL_ACCESS = 0x0000037f
     }
 
-    #endregion
+    #endregion ServiceAccess Enum
 
     #region ServiceType Enum
+
     /// <summary>
     /// Service types.
     /// </summary>
@@ -298,12 +305,12 @@ namespace Opc.Ua.Configuration
         InteractiveProcess = 0x00000100,
     }
 
-    #endregion
+    #endregion ServiceType Enum
 
     #region ServiceError Enum
 
     /// <summary>
-    /// Severity of the error, and action taken, if this service fails 
+    /// Severity of the error, and action taken, if this service fails
     /// to start.
     /// </summary>
     internal enum ServiceError
@@ -321,9 +328,9 @@ namespace Opc.Ua.Configuration
         ErrorNormal = 0x00000001,
 
         /// <summary>
-        /// The startup program logs the error in the event log. If the 
-        /// last-known-good configuration is being started, the startup 
-        /// operation continues. Otherwise, the system is restarted with 
+        /// The startup program logs the error in the event log. If the
+        /// last-known-good configuration is being started, the startup
+        /// operation continues. Otherwise, the system is restarted with
         /// the last-known-good configuration.
         /// </summary>
         ErrorSevere = 0x00000002,
@@ -331,14 +338,13 @@ namespace Opc.Ua.Configuration
         /// <summary>
         /// The startup program logs the error in the event log, if possible.
         /// If the last-known-good configuration is being started, the startup
-        /// operation fails. Otherwise, the system is restarted with the 
+        /// operation fails. Otherwise, the system is restarted with the
         /// last-known good configuration.
         /// </summary>
         ErrorCritical = 0x00000003,
     }
 
+    #endregion ServiceError Enum
 
-    #endregion
-
-    #endregion
+    #endregion internal
 }

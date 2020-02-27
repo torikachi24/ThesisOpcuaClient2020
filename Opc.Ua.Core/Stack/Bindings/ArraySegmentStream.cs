@@ -94,17 +94,20 @@ namespace Opc.Ua.Bindings
         #region Overridden Methods
 
         /// <summary cref="Stream.CanRead" />
-        public override bool CanRead {
+        public override bool CanRead
+        {
             get { return true; }
         }
 
         /// <summary cref="Stream.CanSeek" />
-        public override bool CanSeek {
+        public override bool CanSeek
+        {
             get { return true; }
         }
 
         /// <summary cref="Stream.CanWrite" />
-        public override bool CanWrite {
+        public override bool CanWrite
+        {
             get { return true; }
         }
 
@@ -115,17 +118,21 @@ namespace Opc.Ua.Bindings
         }
 
         /// <summary cref="Stream.Length" />
-        public override long Length {
+        public override long Length
+        {
             get { return GetAbsoluteLength(); }
         }
 
         /// <summary cref="Stream.Position" />
-        public override long Position {
-            get {
+        public override long Position
+        {
+            get
+            {
                 return GetAbsolutePosition();
             }
 
-            set {
+            set
+            {
                 Seek(value, SeekOrigin.Begin);
             }
         }
@@ -174,21 +181,21 @@ namespace Opc.Ua.Bindings
             switch (origin)
             {
                 case SeekOrigin.Begin:
-                {
-                    break;
-                }
+                    {
+                        break;
+                    }
 
                 case SeekOrigin.Current:
-                {
-                    offset += GetAbsolutePosition();
-                    break;
-                }
+                    {
+                        offset += GetAbsolutePosition();
+                        break;
+                    }
 
                 case SeekOrigin.End:
-                {
-                    offset += GetAbsoluteLength();
-                    break;
-                }
+                    {
+                        offset += GetAbsoluteLength();
+                        break;
+                    }
             }
 
             if (offset < 0)

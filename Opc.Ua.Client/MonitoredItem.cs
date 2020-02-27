@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -29,10 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 using System.Runtime.Serialization;
-using System.Reflection;
 
 namespace Opc.Ua.Client
 {
@@ -46,6 +43,7 @@ namespace Opc.Ua.Client
     public class MonitoredItem
     {
         #region Constructors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MonitoredItem"/> class.
         /// </summary>
@@ -63,7 +61,7 @@ namespace Opc.Ua.Client
             Initialize();
             m_clientHandle = clientHandle;
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MonitoredItem"/> class.
         /// </summary>
@@ -113,18 +111,18 @@ namespace Opc.Ua.Client
                     }
                 }
 
-                m_handle             = template.m_handle;
-                m_displayName        = Utils.Format("{0} {1}", displayName, m_clientHandle);
-                m_startNodeId        = template.m_startNodeId;
-                m_relativePath       = template.m_relativePath;
-                m_attributeId        = template.m_attributeId;
-                m_indexRange         = template.m_indexRange;
-                m_encoding           = template.m_encoding; 
-                m_monitoringMode     = template.m_monitoringMode;
-                m_samplingInterval   = template.m_samplingInterval;
-                m_filter             = (MonitoringFilter)Utils.Clone(template.m_filter);
-                m_queueSize          = template.m_queueSize;
-                m_discardOldest      = template.m_discardOldest;
+                m_handle = template.m_handle;
+                m_displayName = Utils.Format("{0} {1}", displayName, m_clientHandle);
+                m_startNodeId = template.m_startNodeId;
+                m_relativePath = template.m_relativePath;
+                m_attributeId = template.m_attributeId;
+                m_indexRange = template.m_indexRange;
+                m_encoding = template.m_encoding;
+                m_monitoringMode = template.m_monitoringMode;
+                m_samplingInterval = template.m_samplingInterval;
+                m_filter = (MonitoringFilter)Utils.Clone(template.m_filter);
+                m_queueSize = template.m_queueSize;
+                m_discardOldest = template.m_discardOldest;
                 m_attributesModified = true;
 
                 if (copyEventHandlers)
@@ -141,37 +139,37 @@ namespace Opc.Ua.Client
                 NodeClass = template.m_nodeClass;
             }
         }
-        
-		/// <summary>
-		/// Called by the .NET framework during deserialization.
-		/// </summary>
-	    [OnDeserializing]
-		private void Initialize(StreamingContext context)
-		{
+
+        /// <summary>
+        /// Called by the .NET framework during deserialization.
+        /// </summary>
+        [OnDeserializing]
+        private void Initialize(StreamingContext context)
+        {
             // object initializers are not called during deserialization.
             m_cache = new object();
 
             Initialize();
-		}
+        }
 
         /// <summary>
         /// Sets the private members to default values.
         /// </summary>
         private void Initialize()
         {
-            m_startNodeId          = null;
-            m_relativePath         = null;
-            m_clientHandle         = 0;
-            m_attributeId          = Attributes.Value;
-            m_indexRange           = null;
-            m_encoding             = null; 
-            m_monitoringMode       = MonitoringMode.Reporting;
-            m_samplingInterval     = -1;
-            m_filter               = null;
-            m_queueSize            = 0;
-            m_discardOldest        = true;
-            m_attributesModified   = true;
-            m_status               = new MonitoredItemStatus();
+            m_startNodeId = null;
+            m_relativePath = null;
+            m_clientHandle = 0;
+            m_attributeId = Attributes.Value;
+            m_indexRange = null;
+            m_encoding = null;
+            m_monitoringMode = MonitoringMode.Reporting;
+            m_samplingInterval = -1;
+            m_filter = null;
+            m_queueSize = 0;
+            m_discardOldest = true;
+            m_attributesModified = true;
+            m_status = new MonitoredItemStatus();
 
             // this ensures the state is consistent with the node class.
             NodeClass = NodeClass.Variable;
@@ -179,19 +177,20 @@ namespace Opc.Ua.Client
             // assign a unique handle.
             m_clientHandle = Utils.IncrementIdentifier(ref s_GlobalClientHandle);
         }
-        #endregion
-        
+
+        #endregion Constructors
+
         #region Persistent Properties
+
         /// <summary>
         /// A display name for the monitored item.
         /// </summary>
         [DataMember(Order = 1)]
         public string DisplayName
         {
-            get { return m_displayName;  }
+            get { return m_displayName; }
             set { m_displayName = value; }
         }
-        
 
         /// <summary>
         /// The start node for the browse path that identifies the node to monitor.
@@ -199,10 +198,10 @@ namespace Opc.Ua.Client
         [DataMember(Order = 2)]
         public NodeId StartNodeId
         {
-            get { return m_startNodeId;  }
+            get { return m_startNodeId; }
             set { m_startNodeId = value; }
         }
-        
+
         /// <summary>
         /// The relative path from the browse path to the node to monitor.
         /// </summary>
@@ -212,9 +211,9 @@ namespace Opc.Ua.Client
         [DataMember(Order = 3)]
         public string RelativePath
         {
-            get { return m_relativePath;  }
-            
-            set 
+            get { return m_relativePath; }
+
+            set
             {
                 // clear resolved path if relative path has changed.
                 if (m_relativePath != value)
@@ -225,7 +224,7 @@ namespace Opc.Ua.Client
                 m_relativePath = value;
             }
         }
-        
+
         /// <summary>
         /// The node class of the node being monitored (affects the type of filter available).
         /// </summary>
@@ -233,8 +232,8 @@ namespace Opc.Ua.Client
         public NodeClass NodeClass
         {
             get { return m_nodeClass; }
-            
-            set 
+
+            set
             {
                 if (m_nodeClass != value)
                 {
@@ -283,7 +282,7 @@ namespace Opc.Ua.Client
         [DataMember(Order = 5)]
         public uint AttributeId
         {
-            get { return m_attributeId;  }
+            get { return m_attributeId; }
             set { m_attributeId = value; }
         }
 
@@ -293,7 +292,7 @@ namespace Opc.Ua.Client
         [DataMember(Order = 6)]
         public string IndexRange
         {
-            get { return m_indexRange;  }
+            get { return m_indexRange; }
             set { m_indexRange = value; }
         }
 
@@ -303,7 +302,7 @@ namespace Opc.Ua.Client
         [DataMember(Order = 7)]
         public QualifiedName Encoding
         {
-            get { return m_encoding;  }
+            get { return m_encoding; }
             set { m_encoding = value; }
         }
 
@@ -313,10 +312,10 @@ namespace Opc.Ua.Client
         [DataMember(Order = 8)]
         public MonitoringMode MonitoringMode
         {
-            get { return m_monitoringMode;  }
+            get { return m_monitoringMode; }
             set { m_monitoringMode = value; }
         }
-        
+
         /// <summary>
         /// The sampling interval.
         /// </summary>
@@ -324,15 +323,15 @@ namespace Opc.Ua.Client
         public int SamplingInterval
         {
             get { return m_samplingInterval; }
-            
-            set 
+
+            set
             {
                 if (m_samplingInterval != value)
                 {
                     m_attributesModified = true;
                 }
 
-                m_samplingInterval = value; 
+                m_samplingInterval = value;
             }
         }
 
@@ -343,14 +342,14 @@ namespace Opc.Ua.Client
         public MonitoringFilter Filter
         {
             get { return m_filter; }
-            
-            set 
+
+            set
             {
                 // validate filter against node class.
                 ValidateFilter(m_nodeClass, value);
 
                 m_attributesModified = true;
-                m_filter = value; 
+                m_filter = value;
             }
         }
 
@@ -361,15 +360,15 @@ namespace Opc.Ua.Client
         public uint QueueSize
         {
             get { return m_queueSize; }
-            
-            set 
+
+            set
             {
                 if (m_queueSize != value)
                 {
                     m_attributesModified = true;
                 }
 
-                m_queueSize = value; 
+                m_queueSize = value;
             }
         }
 
@@ -380,20 +379,22 @@ namespace Opc.Ua.Client
         public bool DiscardOldest
         {
             get { return m_discardOldest; }
-            
-            set 
+
+            set
             {
                 if (m_discardOldest != value)
                 {
                     m_attributesModified = true;
                 }
 
-                m_discardOldest = value; 
+                m_discardOldest = value;
             }
         }
-        #endregion
+
+        #endregion Persistent Properties
 
         #region Dynamic Properties
+
         /// <summary>
         /// The subscription that owns the monitored item.
         /// </summary>
@@ -433,7 +434,7 @@ namespace Opc.Ua.Client
         /// </summary>
         public NodeId ResolvedNodeId
         {
-            get 
+            get
             {
                 // just return the start id if relative path is empty.
                 if (String.IsNullOrEmpty(m_relativePath))
@@ -441,7 +442,7 @@ namespace Opc.Ua.Client
                     return m_startNodeId;
                 }
 
-                return m_resolvedNodeId;  
+                return m_resolvedNodeId;
             }
 
             internal set { m_resolvedNodeId = value; }
@@ -462,9 +463,11 @@ namespace Opc.Ua.Client
         {
             get { return m_status; }
         }
-        #endregion
+
+        #endregion Dynamic Properties
 
         #region Cache Related Functions
+
         /// <summary>
         /// Returns the queue size used by the cache.
         /// </summary>
@@ -478,7 +481,7 @@ namespace Opc.Ua.Client
                     {
                         return m_dataCache.QueueSize;
                     }
-                    
+
                     if (m_eventCache != null)
                     {
                         return m_eventCache.QueueSize;
@@ -496,7 +499,7 @@ namespace Opc.Ua.Client
                     {
                         m_dataCache.SetQueueSize(value);
                     }
-                    
+
                     if (m_eventCache != null)
                     {
                         m_eventCache.SetQueueSize(value);
@@ -504,13 +507,13 @@ namespace Opc.Ua.Client
                 }
             }
         }
-        
+
         /// <summary>
         /// The last value or event received from the server.
         /// </summary>
         public IEncodeable LastValue
         {
-            get 
+            get
             {
                 lock (m_cache)
                 {
@@ -518,7 +521,7 @@ namespace Opc.Ua.Client
                 }
             }
         }
-        
+
         /// <summary>
         /// Read all values in the cache queue.
         /// </summary>
@@ -534,7 +537,7 @@ namespace Opc.Ua.Client
                 return new List<DataValue>();
             }
         }
-        
+
         /// <summary>
         /// Read all events in the cache queue.
         /// </summary>
@@ -550,13 +553,13 @@ namespace Opc.Ua.Client
                 return new List<EventFieldList>();
             }
         }
-        
+
         /// <summary>
         /// The last message containing a notification for the item.
         /// </summary>
         public NotificationMessage LastMessage
         {
-            get 
+            get
             {
                 lock (m_cache)
                 {
@@ -564,7 +567,7 @@ namespace Opc.Ua.Client
                     {
                         return ((MonitoredItemNotification)m_lastNotification).Message;
                     }
-                
+
                     if (m_eventCache != null)
                     {
                         return ((EventFieldList)m_lastNotification).Message;
@@ -574,22 +577,22 @@ namespace Opc.Ua.Client
                 }
             }
         }
-                
+
         /// <summary>
         /// Raised when a new notification arrives.
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1009:DeclareEventHandlersCorrectly")]
         public event MonitoredItemNotificationEventHandler Notification
         {
-            add    
+            add
             {
                 lock (m_cache)
                 {
                     m_Notification += value;
                 }
-            } 
-            
-            remove 
+            }
+
+            remove
             {
                 lock (m_cache)
                 {
@@ -612,7 +615,7 @@ namespace Opc.Ua.Client
                     MonitoredItemNotification datachange = newValue as MonitoredItemNotification;
 
                     if (datachange != null)
-                    {                            
+                    {
                         // validate the ServerTimestamp of the notification.
                         if (datachange.Value != null && datachange.Value.ServerTimestamp > DateTime.UtcNow)
                         {
@@ -633,7 +636,7 @@ namespace Opc.Ua.Client
                         m_dataCache.OnNotification(datachange);
                     }
                 }
-                
+
                 if (m_eventCache != null)
                 {
                     EventFieldList eventchange = newValue as EventFieldList;
@@ -650,9 +653,11 @@ namespace Opc.Ua.Client
                 }
             }
         }
-        #endregion
+
+        #endregion Cache Related Functions
 
         #region ICloneable Members
+
         /// <summary>
         /// Creates a deep copy of the object.
         /// </summary>
@@ -660,9 +665,11 @@ namespace Opc.Ua.Client
         {
             return new MonitoredItem(this);
         }
-        #endregion
-        
+
+        #endregion ICloneable Members
+
         #region Public Methods
+
         /// <summary>
         /// Sets the error status for the monitored item.
         /// </summary>
@@ -674,11 +681,11 @@ namespace Opc.Ua.Client
         /// <summary>
         /// Updates the object with the results of a translate browse path request.
         /// </summary>
-        public void SetResolvePathResult( 
-            BrowsePathResult          result,
-            int                       index,
-            DiagnosticInfoCollection  diagnosticInfos,         
-            ResponseHeader            responseHeader)
+        public void SetResolvePathResult(
+            BrowsePathResult result,
+            int index,
+            DiagnosticInfoCollection diagnosticInfos,
+            ResponseHeader responseHeader)
         {
             ServiceResult error = null;
 
@@ -703,12 +710,12 @@ namespace Opc.Ua.Client
         /// <summary>
         /// Updates the object with the results of a create monitored item request.
         /// </summary>
-        public void SetCreateResult(            
+        public void SetCreateResult(
             MonitoredItemCreateRequest request,
-            MonitoredItemCreateResult  result,
-            int                        index,
-            DiagnosticInfoCollection   diagnosticInfos,            
-            ResponseHeader             responseHeader)
+            MonitoredItemCreateResult result,
+            int index,
+            DiagnosticInfoCollection diagnosticInfos,
+            ResponseHeader responseHeader)
         {
             ServiceResult error = null;
 
@@ -720,16 +727,16 @@ namespace Opc.Ua.Client
             m_status.SetCreateResult(request, result, error);
             m_attributesModified = false;
         }
-        
+
         /// <summary>
         /// Updates the object with the results of a modify monitored item request.
         /// </summary>
-        public void SetModifyResult(            
+        public void SetModifyResult(
             MonitoredItemModifyRequest request,
-            MonitoredItemModifyResult  result,
-            int                        index,
-            DiagnosticInfoCollection   diagnosticInfos,            
-            ResponseHeader             responseHeader)
+            MonitoredItemModifyResult result,
+            int index,
+            DiagnosticInfoCollection diagnosticInfos,
+            ResponseHeader responseHeader)
         {
             ServiceResult error = null;
 
@@ -741,15 +748,15 @@ namespace Opc.Ua.Client
             m_status.SetModifyResult(request, result, error);
             m_attributesModified = false;
         }
-        
+
         /// <summary>
         /// Updates the object with the results of a modify monitored item request.
         /// </summary>
-        public void SetDeleteResult(            
-            StatusCode               result,
-            int                      index,
-            DiagnosticInfoCollection diagnosticInfos,            
-            ResponseHeader           responseHeader)
+        public void SetDeleteResult(
+            StatusCode result,
+            int index,
+            DiagnosticInfoCollection diagnosticInfos,
+            ResponseHeader responseHeader)
         {
             ServiceResult error = null;
 
@@ -780,15 +787,15 @@ namespace Opc.Ua.Client
 
             return Utils.Format("{0}", SimpleAttributeOperand.Format(filter.SelectClauses[index].BrowsePath));
         }
-        
+
         /// <summary>
         /// Returns value of the field name containing the event type.
         /// </summary>
         public object GetFieldValue(
-            EventFieldList eventFields, 
-            NodeId         eventTypeId, 
-            string         browsePath, 
-            uint           attributeId)
+            EventFieldList eventFields,
+            NodeId eventTypeId,
+            string browsePath,
+            uint attributeId)
         {
             QualifiedNameCollection browseNames = SimpleAttributeOperand.Parse(browsePath);
             return GetFieldValue(eventFields, eventTypeId, browseNames, attributeId);
@@ -798,9 +805,9 @@ namespace Opc.Ua.Client
         /// Returns value of the field name containing the event type.
         /// </summary>
         public object GetFieldValue(
-            EventFieldList eventFields, 
-            NodeId         eventTypeId, 
-            QualifiedName  browseName)
+            EventFieldList eventFields,
+            NodeId eventTypeId,
+            QualifiedName browseName)
         {
             QualifiedNameCollection browsePath = new QualifiedNameCollection();
             browsePath.Add(browseName);
@@ -811,30 +818,30 @@ namespace Opc.Ua.Client
         /// Returns value of the field name containing the event type.
         /// </summary>
         public object GetFieldValue(
-            EventFieldList       eventFields, 
-            NodeId               eventTypeId, 
-            IList<QualifiedName> browsePath, 
-            uint                 attributeId)
+            EventFieldList eventFields,
+            NodeId eventTypeId,
+            IList<QualifiedName> browsePath,
+            uint attributeId)
         {
             if (eventFields == null)
             {
                 return null;
             }
-            
+
             EventFilter filter = m_filter as EventFilter;
 
             if (filter == null)
             {
                 return null;
             }
-            
+
             for (int ii = 0; ii < filter.SelectClauses.Count; ii++)
             {
                 if (ii >= eventFields.EventFields.Count)
                 {
                     return null;
                 }
-                
+
                 // check for match.
                 SimpleAttributeOperand clause = filter.SelectClauses[ii];
 
@@ -843,7 +850,7 @@ namespace Opc.Ua.Client
                 {
                     continue;
                 }
-                
+
                 // match null browse path.
                 if (browsePath == null || browsePath.Count == 0)
                 {
@@ -851,7 +858,7 @@ namespace Opc.Ua.Client
                     {
                         continue;
                     }
-                    
+
                     // ignore event type id when matching null browse paths.
                     return eventFields.EventFields[ii].Value;
                 }
@@ -869,13 +876,13 @@ namespace Opc.Ua.Client
                 {
                     continue;
                 }
-            
+
                 // check each element.
                 bool match = true;
 
                 for (int jj = 0; jj < clause.BrowsePath.Count; jj++)
-                {                    
-                    if (clause.BrowsePath[jj] !=  browsePath[jj])
+                {
+                    if (clause.BrowsePath[jj] != browsePath[jj])
                     {
                         match = false;
                         break;
@@ -887,7 +894,7 @@ namespace Opc.Ua.Client
                 {
                     continue;
                 }
-            
+
                 // return value.
                 return eventFields.EventFields[ii].Value;
             }
@@ -895,7 +902,7 @@ namespace Opc.Ua.Client
             // no event type in event field list.
             return null;
         }
-        
+
         /// <summary>
         /// Returns value of the field name containing the event type.
         /// </summary>
@@ -985,9 +992,11 @@ namespace Opc.Ua.Client
 
             return new ServiceResult(status.StatusCode, status.DiagnosticInfo, message.StringTable);
         }
-        #endregion
-            
+
+        #endregion Public Methods
+
         #region Private Methods
+
         /// <summary>
         /// Throws an exception if the flter cannot be used with the node class.
         /// </summary>
@@ -1002,30 +1011,30 @@ namespace Opc.Ua.Client
             {
                 case NodeClass.Variable:
                 case NodeClass.VariableType:
-                {
-                    if (!typeof(DataChangeFilter).IsInstanceOfType(filter))
                     {
-                        m_nodeClass = NodeClass.Variable;
-                    }
+                        if (!typeof(DataChangeFilter).IsInstanceOfType(filter))
+                        {
+                            m_nodeClass = NodeClass.Variable;
+                        }
 
-                    break;
-                }
+                        break;
+                    }
 
                 case NodeClass.Object:
                 case NodeClass.View:
-                {
-                    if (!typeof(EventFilter).IsInstanceOfType(filter))
-                    {                        
-                        m_nodeClass = NodeClass.Object;
+                    {
+                        if (!typeof(EventFilter).IsInstanceOfType(filter))
+                        {
+                            m_nodeClass = NodeClass.Object;
+                        }
+
+                        break;
                     }
 
-                    break;
-                }
-
                 default:
-                {
-                    throw ServiceResultException.Create(StatusCodes.BadFilterNotAllowed, "Filters may not be specified for nodes of class '{0}'.", nodeClass);
-                }
+                    {
+                        throw ServiceResultException.Create(StatusCodes.BadFilterNotAllowed, "Filters may not be specified for nodes of class '{0}'.", nodeClass);
+                    }
             }
         }
 
@@ -1048,9 +1057,11 @@ namespace Opc.Ua.Client
 
             m_filter = filter;
         }
-        #endregion
-        
+
+        #endregion Private Methods
+
         #region Private Fields
+
         private Subscription m_subscription;
         private object m_handle;
         private string m_displayName;
@@ -1070,22 +1081,26 @@ namespace Opc.Ua.Client
         private MonitoredItemStatus m_status;
         private bool m_attributesModified;
         private static long s_GlobalClientHandle;
-        
+
         private object m_cache = new object();
         private MonitoredItemDataCache m_dataCache;
         private MonitoredItemEventCache m_eventCache;
         private IEncodeable m_lastNotification;
-        private event MonitoredItemNotificationEventHandler m_Notification;   
-        #endregion
+
+        private event MonitoredItemNotificationEventHandler m_Notification;
+
+        #endregion Private Fields
     }
 
     #region MonitoredItemEventArgs Class
+
     /// <summary>
     /// The event arguments provided when a new notification message arrives.
     /// </summary>
     public class MonitoredItemNotificationEventArgs : EventArgs
     {
         #region Constructors
+
         /// <summary>
         /// Creates a new instance.
         /// </summary>
@@ -1093,9 +1108,11 @@ namespace Opc.Ua.Client
         {
             m_notificationValue = notificationValue;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// The new notification.
         /// </summary>
@@ -1103,25 +1120,30 @@ namespace Opc.Ua.Client
         {
             get { return m_notificationValue; }
         }
-        #endregion
-        
+
+        #endregion Public Properties
+
         #region Private Fields
+
         private IEncodeable m_notificationValue;
-        #endregion
+
+        #endregion Private Fields
     }
-    
+
     /// <summary>
     /// The delegate used to receive monitored item value notifications.
     /// </summary>
     public delegate void MonitoredItemNotificationEventHandler(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e);
-    #endregion
-    
+
+    #endregion MonitoredItemEventArgs Class
+
     /// <summary>
     /// An item in the cache
     /// </summary>
     public class MonitoredItemDataCache
     {
         #region Constructors
+
         /// <summary>
         /// Constructs a cache for a monitored item.
         /// </summary>
@@ -1130,9 +1152,11 @@ namespace Opc.Ua.Client
             m_queueSize = queueSize;
             m_values = new Queue<DataValue>();
         }
-        #endregion
-        
+
+        #endregion Constructors
+
         #region Public Members
+
         /// <summary>
         /// The size of the queue to maintain.
         /// </summary>
@@ -1148,7 +1172,7 @@ namespace Opc.Ua.Client
         {
             get { return m_lastValue; }
         }
-        
+
         /// <summary>
         /// Returns all values in the queue.
         /// </summary>
@@ -1171,9 +1195,9 @@ namespace Opc.Ua.Client
         {
             m_values.Enqueue(notification.Value);
             m_lastValue = notification.Value;
-            
+
             Utils.Trace(
-                "NotificationReceived: ClientHandle={0}, Value={1}", 
+                "NotificationReceived: ClientHandle={0}, Value={1}",
                 notification.ClientHandle,
                 m_lastValue.Value);
 
@@ -1182,7 +1206,7 @@ namespace Opc.Ua.Client
                 m_values.Dequeue();
             }
         }
-        
+
         /// <summary>
         /// Changes the queue size.
         /// </summary>
@@ -1205,21 +1229,25 @@ namespace Opc.Ua.Client
                 m_values.Dequeue();
             }
         }
-        #endregion
+
+        #endregion Public Members
 
         #region Private Fields
+
         private int m_queueSize;
         private DataValue m_lastValue;
         private Queue<DataValue> m_values;
-        #endregion
+
+        #endregion Private Fields
     }
-    
+
     /// <summary>
     /// Saves the events received from the srever.
     /// </summary>
     public class MonitoredItemEventCache
     {
         #region Constructors
+
         /// <summary>
         /// Constructs a cache for a monitored item.
         /// </summary>
@@ -1228,9 +1256,11 @@ namespace Opc.Ua.Client
             m_queueSize = queueSize;
             m_events = new Queue<EventFieldList>();
         }
-        #endregion
-        
+
+        #endregion Constructors
+
         #region Public Members
+
         /// <summary>
         /// The size of the queue to maintain.
         /// </summary>
@@ -1275,7 +1305,7 @@ namespace Opc.Ua.Client
                 m_events.Dequeue();
             }
         }
-        
+
         /// <summary>
         /// Changes the queue size.
         /// </summary>
@@ -1298,12 +1328,15 @@ namespace Opc.Ua.Client
                 m_events.Dequeue();
             }
         }
-        #endregion
+
+        #endregion Public Members
 
         #region Private Fields
+
         private int m_queueSize;
         private EventFieldList m_lastEvent;
         private Queue<EventFieldList> m_events;
-        #endregion
+
+        #endregion Private Fields
     }
 }

@@ -21,11 +21,11 @@
  * http://opcfoundation.org/License/RCL/1.00/
  * ======================================================================*/
 
+using Org.BouncyCastle.X509;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using Org.BouncyCastle.X509;
 
 namespace Opc.Ua
 {
@@ -74,6 +74,7 @@ namespace Opc.Ua
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
 
         /// <summary>
         /// An overrideable version of the Dispose.

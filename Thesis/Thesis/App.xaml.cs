@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -12,7 +11,6 @@ namespace Thesis
         {
             this.InitializeComponent();
             this.MainPage = new NavigationPage(new MainPage());
-            
         }
 
         protected override void OnStart()

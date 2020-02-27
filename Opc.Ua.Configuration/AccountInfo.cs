@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Diagnostics;
 
 namespace Opc.Ua.Configuration
 {
@@ -40,12 +39,13 @@ namespace Opc.Ua.Configuration
     public class AccountInfo : IComparable
     {
         #region Public Properties
+
         /// <summary>
         /// The name of the account.
         /// </summary>
         public string Name
         {
-            get { return m_name;  } 
+            get { return m_name; }
             set { m_name = value; }
         }
 
@@ -54,7 +54,7 @@ namespace Opc.Ua.Configuration
         /// </summary>
         public string Domain
         {
-            get { return m_domain;  } 
+            get { return m_domain; }
             set { m_domain = value; }
         }
 
@@ -63,7 +63,7 @@ namespace Opc.Ua.Configuration
         /// </summary>
         public string Sid
         {
-            get { return m_sid;  } 
+            get { return m_sid; }
             set { m_sid = value; }
         }
 
@@ -72,7 +72,7 @@ namespace Opc.Ua.Configuration
         /// </summary>
         public AccountSidType SidType
         {
-            get { return m_sidType;  } 
+            get { return m_sidType; }
             set { m_sidType = value; }
         }
 
@@ -81,7 +81,7 @@ namespace Opc.Ua.Configuration
         /// </summary>
         public string Description
         {
-            get { return m_description;  } 
+            get { return m_description; }
             set { m_description = value; }
         }
 
@@ -90,12 +90,14 @@ namespace Opc.Ua.Configuration
         /// </summary>
         public string Status
         {
-            get { return m_status;  } 
+            get { return m_status; }
             set { m_status = value; }
         }
-        #endregion 
-        
+
+        #endregion Public Properties
+
         #region Overridden Methods
+
         /// <summary cref="Object.ToString()" />
         public override string ToString()
         {
@@ -103,7 +105,7 @@ namespace Opc.Ua.Configuration
             {
                 return m_sid;
             }
-            
+
             if (!String.IsNullOrEmpty(m_domain))
             {
                 return Utils.Format("{0}{1}{2}", m_domain, Path.DirectorySeparatorChar, m_name);
@@ -111,9 +113,13 @@ namespace Opc.Ua.Configuration
 
             return m_name;
         }
-        #endregion 
+
+        #endregion Overridden Methods
+
+
 
         #region IComparable Members
+
         /// <summary>
         /// Compares the obj.
         /// </summary>
@@ -130,10 +136,10 @@ namespace Opc.Ua.Configuration
             {
                 return 0;
             }
-            
+
             if (m_domain == null)
             {
-                return (target.m_domain == null)?0:-1;
+                return (target.m_domain == null) ? 0 : -1;
             }
 
             int result = m_domain.CompareTo(target.m_domain);
@@ -145,7 +151,7 @@ namespace Opc.Ua.Configuration
 
             if (m_name == null)
             {
-                return (target.m_name == null)?0:-1;
+                return (target.m_name == null) ? 0 : -1;
             }
 
             result = m_name.CompareTo(target.m_name);
@@ -154,17 +160,19 @@ namespace Opc.Ua.Configuration
             {
                 return result;
             }
-            
+
             if (m_sid == null)
             {
-                return (target.m_sid == null)?0:-1;
+                return (target.m_sid == null) ? 0 : -1;
             }
 
             return m_sid.CompareTo(target.m_sid);
         }
-        #endregion
- 
+
+        #endregion IComparable Members
+
         #region Public Methods
+
         /// <summary>
         /// Applies the filters to the accounts.
         /// </summary>
@@ -175,10 +183,10 @@ namespace Opc.Ua.Configuration
                 return accounts;
             }
 
-            List<AccountInfo> filteredAccounts = new  List<AccountInfo>();
+            List<AccountInfo> filteredAccounts = new List<AccountInfo>();
 
             for (int ii = 0; ii < accounts.Count; ii++)
-            {                
+            {
                 if (accounts[ii].ApplyFilters(filters))
                 {
                     filteredAccounts.Add(accounts[ii]);
@@ -187,7 +195,7 @@ namespace Opc.Ua.Configuration
 
             return filteredAccounts;
         }
-        
+
         /// <summary>
         /// Applies the filters to the account
         /// </summary>
@@ -210,7 +218,7 @@ namespace Opc.Ua.Configuration
                     return false;
                 }
             }
-                
+
             // exclude non-user related accounts.
             if (this.SidType == AccountSidType.Domain || this.SidType > AccountSidType.BuiltIn)
             {
@@ -220,7 +228,7 @@ namespace Opc.Ua.Configuration
             // apply account type filter.
             if (filters.AccountTypeMask != AccountTypeMask.None)
             {
-                if ((1<<((int)this.SidType-1) & (int)filters.AccountTypeMask) == 0)
+                if ((1 << ((int)this.SidType - 1) & (int)filters.AccountTypeMask) == 0)
                 {
                     return false;
                 }
@@ -228,24 +236,28 @@ namespace Opc.Ua.Configuration
 
             return true;
         }
-#endregion
 
-#region Private Fields
+        #endregion Public Methods
+
+        #region Private Fields
+
         private string m_name;
         private string m_domain;
         private string m_sid;
         private AccountSidType m_sidType;
         private string m_description;
         private string m_status;
-#endregion
+
+        #endregion Private Fields
     }
-    
-#region AccountSidType Enumeration
+
+    #region AccountSidType Enumeration
+
     /// <summary>
     /// The type of SID used by the account.
     /// </summary>
     public enum AccountSidType : byte
-    {        
+    {
         /// <summary>
         /// An interactive user account.
         /// </summary>
@@ -271,21 +283,24 @@ namespace Opc.Ua.Configuration
         /// </summary>
         BuiltIn = 0x5
     }
-#endregion
-    
-#region AccountFilters Class
+
+    #endregion AccountSidType Enumeration
+
+    #region AccountFilters Class
+
     /// <summary>
     /// Filters that can be used to restrict the set of accounts returned.
     /// </summary>
     public class AccountFilters
     {
-#region Public Properties
+        #region Public Properties
+
         /// <summary>
         /// The name of the account (supports the '*' wildcard).
         /// </summary>
         public string Name
         {
-            get { return m_name;  } 
+            get { return m_name; }
             set { m_name = value; }
         }
 
@@ -294,36 +309,40 @@ namespace Opc.Ua.Configuration
         /// </summary>
         public string Domain
         {
-            get { return m_domain;  } 
+            get { return m_domain; }
             set { m_domain = value; }
         }
-        
 
         /// <summary>
         /// The types of accounts.
         /// </summary>
         public AccountTypeMask AccountTypeMask
         {
-            get { return m_accountTypeMask;  } 
+            get { return m_accountTypeMask; }
             set { m_accountTypeMask = value; }
         }
-#endregion
 
-#region Private Fields
+        #endregion Public Properties
+
+        #region Private Fields
+
         private string m_name;
         private string m_domain;
         private AccountTypeMask m_accountTypeMask;
-#endregion
+
+        #endregion Private Fields
     }
-#endregion
-    
-#region AccountTypeMask Enumeration
+
+    #endregion AccountFilters Class
+
+    #region AccountTypeMask Enumeration
+
     /// <summary>
     /// The masks that can be use to filter a list of accounts.
     /// </summary>
     [Flags]
     public enum AccountTypeMask
-    {        
+    {
         /// <summary>
         /// Mask not specified.
         /// </summary>
@@ -344,9 +363,11 @@ namespace Opc.Ua.Configuration
         /// </summary>
         WellKnownGroup = 0x10
     }
-#endregion
-    
-#region WellKnownSids Class
+
+    #endregion AccountTypeMask Enumeration
+
+    #region WellKnownSids Class
+
     /// <summary>
     /// The well known NT security identifiers.
     /// </summary>
@@ -380,22 +401,23 @@ namespace Opc.Ua.Configuration
         /// <summary>
         /// The network service account.
         /// </summary>
-        public const string NetworkService  = "S-1-5-20";   
+        public const string NetworkService = "S-1-5-20";
 
         /// <summary>
         /// The administrators group.
-        /// </summary>     
-        public const string Administrators  = "S-1-5-32-544";
+        /// </summary>
+        public const string Administrators = "S-1-5-32-544";
 
         /// <summary>
         /// The users group.
-        /// </summary>   
+        /// </summary>
         public const string Users = "S-1-5-32-545";
 
         /// <summary>
         /// The guests group.
-        /// </summary>   
+        /// </summary>
         public const string Guests = "S-1-5-32-546";
     }
-#endregion
+
+    #endregion WellKnownSids Class
 }

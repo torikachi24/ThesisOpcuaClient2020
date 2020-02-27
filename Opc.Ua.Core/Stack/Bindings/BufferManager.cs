@@ -88,8 +88,10 @@ namespace Opc.Ua.Bindings
         /// Returns the total amount of data in the buffers.
         /// </summary>
         /// <value>The total size.</value>
-        public int TotalSize {
-            get {
+        public int TotalSize
+        {
+            get
+            {
                 int count = 0;
 
                 for (int ii = 0; ii < this.Count; ii++)

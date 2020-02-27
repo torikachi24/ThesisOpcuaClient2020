@@ -41,7 +41,7 @@
                                         <Label x:Name="NameA" Text="{Binding ConnectionName}"
                                            FontSize="Medium"
                                            FontAttributes="Bold" />
-                                        <Label  Text="{Binding ConnectionUrl,StringFormat='URI: {0}'}"/>
+                                        <Label  Text="{Binding ConnectionUrl,StringFormat='URI: {0}'}" />
                                     </StackLayout>
                                     <Image Source="ic_create.png" Grid.Column=" 1">
                                         <Image.GestureRecognizers>

@@ -55,8 +55,10 @@ namespace Opc.Ua
         /// <summary>
         /// The encodings supported by the configuration.
         /// </summary>
-        public BinaryEncodingSupport EncodingSupport {
-            get {
+        public BinaryEncodingSupport EncodingSupport
+        {
+            get
+            {
                 if (!String.IsNullOrEmpty(EndpointUrl) && EndpointUrl.StartsWith(Utils.UriSchemeOpcTcp))
                 {
                     return BinaryEncodingSupport.Required;
@@ -67,9 +69,9 @@ namespace Opc.Ua
                 switch (TransportProfileUri)
                 {
                     case Profiles.HttpsBinaryTransport:
-                    {
-                        return BinaryEncodingSupport.Required;
-                    }
+                        {
+                            return BinaryEncodingSupport.Required;
+                        }
                 }
 
                 return BinaryEncodingSupport.None;
@@ -79,7 +81,8 @@ namespace Opc.Ua
         /// <summary>
         /// The proxy url to use when connecting to the endpoint.
         /// </summary>
-        public Uri ProxyUrl {
+        public Uri ProxyUrl
+        {
             get { return m_proxyUrl; }
             set { m_proxyUrl = value; }
         }

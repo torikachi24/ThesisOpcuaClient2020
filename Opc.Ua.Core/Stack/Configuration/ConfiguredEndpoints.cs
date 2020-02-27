@@ -305,12 +305,15 @@ namespace Opc.Ua
         /// Gets or sets the <see cref="Opc.Ua.ConfiguredEndpoint"/> at the specified index.
         /// </summary>
         /// <value>The <see cref="Opc.Ua.ConfiguredEndpoint"/> at the index</value>
-        public ConfiguredEndpoint this[int index] {
-            get {
+        public ConfiguredEndpoint this[int index]
+        {
+            get
+            {
                 return m_endpoints[index];
             }
 
-            set {
+            set
+            {
                 throw new NotImplementedException();
             }
         }
@@ -369,7 +372,8 @@ namespace Opc.Ua
         /// </summary>
         /// <value></value>
         /// <returns>The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</returns>
-        public int Count {
+        public int Count
+        {
             get { return m_endpoints.Count; }
         }
 
@@ -378,7 +382,8 @@ namespace Opc.Ua
         /// </summary>
         /// <value></value>
         /// <returns>true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.</returns>
-        public bool IsReadOnly {
+        public bool IsReadOnly
+        {
             get { return false; }
         }
 
@@ -722,12 +727,15 @@ namespace Opc.Ua
         /// <summary>
         /// A list of well known urls that can be used for discovery.
         /// </summary>
-        public StringCollection DiscoveryUrls {
-            get {
+        public StringCollection DiscoveryUrls
+        {
+            get
+            {
                 return m_discoveryUrls;
             }
 
-            set {
+            set
+            {
                 if (value == null)
                 {
                     m_discoveryUrls = new StringCollection(Utils.DiscoveryUrls);
@@ -742,7 +750,8 @@ namespace Opc.Ua
         /// <summary>
         /// The default configuration for new ConfiguredEndpoints.
         /// </summary>
-        public EndpointConfiguration DefaultConfiguration {
+        public EndpointConfiguration DefaultConfiguration
+        {
             get { return m_defaultConfiguration; }
         }
 
@@ -1243,12 +1252,15 @@ namespace Opc.Ua
         /// <summary>
         /// The collection that the endpoint belongs to.
         /// </summary>
-        public ConfiguredEndpointCollection Collection {
-            get {
+        public ConfiguredEndpointCollection Collection
+        {
+            get
+            {
                 return m_collection;
             }
 
-            internal set {
+            internal set
+            {
                 if (value == null) throw new ArgumentNullException(nameof(value));
                 m_collection = value;
             }
@@ -1257,8 +1269,10 @@ namespace Opc.Ua
         /// <summary>
         /// The URL used to create a sessions.
         /// </summary>
-        public Uri EndpointUrl {
-            get {
+        public Uri EndpointUrl
+        {
+            get
+            {
                 if (String.IsNullOrEmpty(m_description.EndpointUrl))
                 {
                     return null;
@@ -1267,7 +1281,8 @@ namespace Opc.Ua
                 return Utils.ParseUri(m_description.EndpointUrl);
             }
 
-            set {
+            set
+            {
                 if (value == null)
                 {
                     m_description.EndpointUrl = null;
@@ -1280,8 +1295,10 @@ namespace Opc.Ua
         /// <summary>
         /// The user identity to use when connecting to the endpoint.
         /// </summary>
-        public UserTokenPolicy SelectedUserTokenPolicy {
-            get {
+        public UserTokenPolicy SelectedUserTokenPolicy
+        {
+            get
+            {
                 if (m_description != null && m_description.UserIdentityTokens != null)
                 {
                     UserTokenPolicyCollection policies = m_description.UserIdentityTokens;
@@ -1295,7 +1312,8 @@ namespace Opc.Ua
                 return null;
             }
 
-            set {
+            set
+            {
                 if (m_description != null && m_description.UserIdentityTokens != null)
                 {
                     UserTokenPolicyCollection policies = m_description.UserIdentityTokens;
@@ -1368,7 +1386,8 @@ namespace Opc.Ua
         /// <summary>
         /// The CLSID for the COM server.
         /// </summary>
-        public Guid Clsid {
+        public Guid Clsid
+        {
             get { return m_clsid; }
             set { m_clsid = value; }
         }

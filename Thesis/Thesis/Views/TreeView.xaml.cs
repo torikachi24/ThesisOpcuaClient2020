@@ -23,7 +23,7 @@ namespace Thesis
             opcClient = client;
             DisplayNodes();
         }
-        
+
         private void DisplayNodes()
         {
             nodes.Clear();
@@ -57,13 +57,24 @@ namespace Thesis
             }
         }
 
-        public void OnRead(object sender, EventArgs e)
+        public async void OnRead(object sender, EventArgs e)
         {
             var menu = sender as MenuItem;
 
             var selected = menu.CommandParameter as ListNode;
             var value = opcClient.VariableRead(selected.id);
-            DisplayAlert(selected.NodeName, value, "OK");
+
+            //DisplayAlert(selected.NodeName, value, "OK");
+            await PopupNavigation.Instance.PushAsync(new AttributeReadingNode(selected,value));
+        }
+
+        private async void OnWrite(object sender, EventArgs e)
+        {
+            var menu = sender as MenuItem;
+            var selected = menu.CommandParameter as ListNode;
+            await PopupNavigation.Instance.PushAsync(new WritePopup());
+
+
         }
 
         private void OnBindingContextChanged(object sender, EventArgs e)
@@ -94,15 +105,12 @@ namespace Thesis
                     {
                         action.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
                         RNode.Clicked += OnRead;
-                        WNode.Clicked += WriteClick;
+                        WNode.Clicked += OnWrite;
                     }
                 }
             }
         }
 
-        private async void WriteClick(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PushAsync(new WritePopup());
-        }
+        
     }
 }

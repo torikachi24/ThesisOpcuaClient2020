@@ -96,7 +96,8 @@ namespace Opc.Ua
         /// <remarks>
         /// This value is used to initialize the UserIdentityToken object when GetIdentityToken() is called.
         /// </remarks>
-        public string PolicyId {
+        public string PolicyId
+        {
             get { return m_token.PolicyId; }
             set { m_token.PolicyId = value; }
         }
@@ -106,23 +107,28 @@ namespace Opc.Ua
         #region IUserIdentity Methods
 
         /// <summary cref="IUserIdentity.DisplayName" />
-        public string DisplayName {
+        public string DisplayName
+        {
             get { return m_displayName; }
         }
 
         /// <summary cref="IUserIdentity.TokenType" />
-        public UserTokenType TokenType {
+        public UserTokenType TokenType
+        {
             get { return m_tokenType; }
         }
 
         /// <summary cref="IUserIdentity.IssuedTokenType" />
-        public XmlQualifiedName IssuedTokenType {
+        public XmlQualifiedName IssuedTokenType
+        {
             get { return m_issuedTokenType; }
         }
 
         /// <summary cref="IUserIdentity.SupportsSignatures" />
-        public bool SupportsSignatures {
-            get {
+        public bool SupportsSignatures
+        {
+            get
+            {
                 return false;
             }
         }

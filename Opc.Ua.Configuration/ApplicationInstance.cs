@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -29,19 +29,20 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Reflection;
 using System.IO;
+using System.Net;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
-using System.Net;
 
 namespace Opc.Ua.Configuration
 {
     public abstract class IApplicationMessageDlg
     {
-        public abstract void Message(string text, Boolean ask=false);
+        public abstract void Message(string text, Boolean ask = false);
+
         public abstract Task<bool> ShowAsync();
     }
 
@@ -51,6 +52,7 @@ namespace Opc.Ua.Configuration
     public class ApplicationInstance
     {
         #region Ctors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationInstance"/> class.
         /// </summary>
@@ -64,10 +66,12 @@ namespace Opc.Ua.Configuration
         public ApplicationInstance(ApplicationConfiguration applicationConfiguration)
         {
             m_applicationConfiguration = applicationConfiguration;
-        } 
-        #endregion
+        }
+
+        #endregion Ctors
 
         #region Public Properties
+
         /// <summary>
         /// Gets or sets the name of the application.
         /// </summary>
@@ -144,16 +148,18 @@ namespace Opc.Ua.Configuration
         public bool NoGdsAgentAdmin { get; set; }
 
         public static IApplicationMessageDlg MessageDlg { get; set; }
-        #endregion
+
+        #endregion Public Properties
 
         #region InstallConfig Handling
+
         /// <summary>
         /// Loads the installation configuration from a file.
         /// </summary>
         public InstalledApplication LoadInstallConfigFromFile(string filePath)
         {
             if (filePath == null) throw new ArgumentNullException(nameof(filePath));
-            
+
             Stream istrm = null;
 
             try
@@ -194,7 +200,6 @@ namespace Opc.Ua.Configuration
             {
                 DataContractSerializer serializer = new DataContractSerializer(typeof(InstalledApplication));
                 return (InstalledApplication)serializer.ReadObject(istrm);
-                
             }
             catch (Exception e)
             {
@@ -251,9 +256,11 @@ namespace Opc.Ua.Configuration
                 InstallConfig.TraceConfiguration.ApplySettings();
             }
         }
-        #endregion
+
+        #endregion InstallConfig Handling
 
         #region Public Methods
+
         /// <summary>
         /// Processes the command line.
         /// </summary>
@@ -303,15 +310,18 @@ namespace Opc.Ua.Configuration
         {
             m_server.Stop();
         }
-        #endregion
+
+        #endregion Public Methods
 
         #region WindowsService Class
+
         /// <summary>
         /// Manages the interface between the UA server and the Windows SCM.
         /// </summary>
         protected class WindowsService
         {
             #region Constructors
+
             /// <summary>
             /// Initializes a new instance of the <see cref="WindowsService"/> class.
             /// </summary>
@@ -326,9 +336,11 @@ namespace Opc.Ua.Configuration
                 m_applicationType = applicationType;
                 m_configurationType = configurationType;
             }
-            #endregion
+
+            #endregion Constructors
 
             #region Private Methods
+
             /// <summary>
             /// Runs the service in a background thread.
             /// </summary>
@@ -363,18 +375,23 @@ namespace Opc.Ua.Configuration
                     Utils.Trace((int)Utils.TraceMasks.Error, error.ToLongString());
                 }
             }
-            #endregion
+
+            #endregion Private Methods
 
             #region Private Fields
+
             private ServerBase m_server;
             private string m_configSectionName;
             private ApplicationType m_applicationType;
             private Type m_configurationType;
-            #endregion
+
+            #endregion Private Fields
         }
-        #endregion
+
+        #endregion WindowsService Class
 
         #region ArgumentDescription Class
+
         /// <summary>
         /// Stores the description of an argument.
         /// </summary>
@@ -421,16 +438,18 @@ namespace Opc.Ua.Configuration
         }
 
         private static ArgumentDescription[] s_SupportedArguments = new ArgumentDescription[]
-        {            
+        {
             new ArgumentDescription("/start", false, false, "Starts the application as a service (/start [/silent] [/configFile:<filepath>])."),
             new ArgumentDescription("/install", false, false, "Installs the application (/install [/silent] [/configFile:<filepath>])."),
             new ArgumentDescription("/uninstall", false, false, "Uninstalls the application (/uninstall [/silent] [/configFile:<filepath>])."),
             new ArgumentDescription("/silent", false, false, "Performs operations without prompting user to confirm or displaying errors."),
             new ArgumentDescription("/configFile", true, true, "Specifies the installation configuration file."),
         };
-        #endregion
+
+        #endregion ArgumentDescription Class
 
         #region Protected Methods
+
         /// <summary>
         /// Gets the descriptions for the supported arguments.
         /// </summary>
@@ -487,7 +506,7 @@ namespace Opc.Ua.Configuration
             // validate the arguments.
             StringBuilder error = new StringBuilder();
 
-            foreach (KeyValuePair<string,string> arg in args)
+            foreach (KeyValuePair<string, string> arg in args)
             {
                 ArgumentDescription command = null;
 
@@ -826,9 +845,11 @@ namespace Opc.Ua.Configuration
                 }
             }
         }
-        #endregion
+
+        #endregion Protected Methods
 
         #region Static Methods
+
         public static ApplicationConfiguration FixupAppConfig(
             ApplicationConfiguration configuration)
         {
@@ -1030,9 +1051,11 @@ namespace Opc.Ua.Configuration
 
             return true;
         }
-        #endregion
+
+        #endregion Static Methods
 
         #region Private Methods
+
         /// <summary>
         /// Handles a certificate validation error.
         /// </summary>
@@ -1102,7 +1125,7 @@ namespace Opc.Ua.Configuration
                     certificate.GetRSAPublicKey().KeySize,
                     minimumKeySize);
 
-                if (!silent && MessageDlg!=null)
+                if (!silent && MessageDlg != null)
                 {
                     MessageDlg.Message(message, true);
                     if (!await MessageDlg.ShowAsync())
@@ -1431,9 +1454,11 @@ namespace Opc.Ua.Configuration
                 Utils.Trace(e, "Could not add certificate to trusted peer store. StorePath={0}", storePath);
             }
         }
-        #endregion
+
+        #endregion Private Methods
 
         #region Private Fields
+
         private string m_applicationName;
         private ApplicationType m_applicationType;
         private string m_configSectionName;
@@ -1441,6 +1466,7 @@ namespace Opc.Ua.Configuration
         private InstalledApplication m_installConfig;
         private ServerBase m_server;
         private ApplicationConfiguration m_applicationConfiguration;
-        #endregion
+
+        #endregion Private Fields
     }
 }

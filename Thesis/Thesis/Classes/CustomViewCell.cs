@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Thesis
 {
-    public  class CustomViewCell: ViewCell
+    public class CustomViewCell : ViewCell
     {
         public static readonly BindableProperty SelectedItemBackgroundColorProperty = BindableProperty.Create("SelectedItemBackgroundColor", typeof(Color), typeof(CustomViewCell));
+
         public Color SelectedItemBackgroundColor
         {
             get

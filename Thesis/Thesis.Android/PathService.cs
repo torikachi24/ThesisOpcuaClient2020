@@ -1,7 +1,7 @@
-﻿
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 [assembly: Dependency(typeof(Thesis.Droid.PathService))]
+
 namespace Thesis.Droid
 {
     public class PathService : IPathService
