@@ -7,7 +7,9 @@
         <StackLayout>
             <ListView x:Name="treeView"
               SelectedItem="Mode=Twoway"
-              ItemSelected="OnSelection">
+              ItemSelected="OnSelection"
+              IsPullToRefreshEnabled="true"
+              RefreshControlColor="Red">
                 <ListView.SeparatorVisibility>
                     <OnPlatform x:TypeArguments="SeparatorVisibility">
                         <On Platform="iOS">None</On>
@@ -32,7 +34,20 @@
                                         </OnPlatform>
                                     </Image.HeightRequest>
                                 </Image>
-                                <Label Text = "{Binding NodeName}" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="9*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text = "{Binding NodeName}" Grid.Column="0"/>
+
+                                    <Image x:Name="Icon" Source="warning.png" Grid.Column=" 1"  >
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnRead" 
+                                                                  NumberOfTapsRequired="1" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

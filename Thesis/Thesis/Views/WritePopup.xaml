@@ -30,12 +30,12 @@
                            x:Name="LabelName"
                            Margin="0,0,0,0" />
                     <Label Text="Value to change" />
-                    <Entry Placeholder="Write value here" FontSize="Large" />
+                    <Entry x:Name="ValueChange" Placeholder="Write value here" FontSize="Large" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
-                    <Button Text="Cancel"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" BackgroundColor="#ccccb3" Clicked="Button_Clicked" />
-                    <Button Text="Change"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" BackgroundColor="#ccccb3" />
+                    <Button Text="Cancel"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" BackgroundColor="#ccccb3" Clicked="Button_Clicked_Cancel" />
+                    <Button Text="Change"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" BackgroundColor="#ccccb3" Clicked="Button_Clicked_Change" />
                 </StackLayout>
             </StackLayout>
         </Frame>

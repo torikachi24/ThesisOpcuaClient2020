@@ -8786,6 +8786,9 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F090070
 			public const int tooltip_frame_light = 2131296368;
 			
+			// aapt resource value: 0x7F010016
+			public const int warning = 2130771990;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

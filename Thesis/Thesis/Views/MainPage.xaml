@@ -49,7 +49,7 @@
                                                                   CommandParameter="{Binding ConnectionId}" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Image Source="ic_delete_forever.png" Grid.Column="2">
+                                    <Image Source="ic_delete_forever.png" Grid.Column="2" >
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Remove"
                                                                   CommandParameter="{Binding ConnectionId}" />

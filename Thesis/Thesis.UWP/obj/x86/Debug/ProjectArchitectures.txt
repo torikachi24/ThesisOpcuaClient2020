@@ -1,0 +1,1 @@
+C:\Thesis\Thesis\Thesis.UWP\Thesis.UWP.csproj;x86

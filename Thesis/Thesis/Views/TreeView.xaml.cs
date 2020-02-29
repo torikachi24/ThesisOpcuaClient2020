@@ -1,7 +1,7 @@
 ﻿using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.ObjectModel;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -59,22 +59,31 @@ namespace Thesis
 
         public async void OnRead(object sender, EventArgs e)
         {
-            var menu = sender as MenuItem;
+            try
+            {
+                TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
 
-            var selected = menu.CommandParameter as ListNode;
-            var value = opcClient.VariableRead(selected.id);
+                var menu = sender as MenuItem;
 
-            //DisplayAlert(selected.NodeName, value, "OK");
-            await PopupNavigation.Instance.PushAsync(new AttributeReadingNode(selected,value));
+                var selected = menu.CommandParameter as ListNode;
+                var value = opcClient.VariableRead(selected.id);
+                await PopupNavigation.Instance.PushAsync(new AttributeReadingNode(selected, value));
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
+
 
         private async void OnWrite(object sender, EventArgs e)
         {
             var menu = sender as MenuItem;
             var selected = menu.CommandParameter as ListNode;
-            await PopupNavigation.Instance.PushAsync(new WritePopup());
 
-
+            await PopupNavigation.Instance.PushAsync(new WritePopup(opcClient,selected));
+            
         }
 
         private void OnBindingContextChanged(object sender, EventArgs e)

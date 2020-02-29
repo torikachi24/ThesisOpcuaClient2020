@@ -986,7 +986,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -1170,7 +1170,7 @@
           "System.Runtime": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Globalization.dll": {}
         },
         "runtime": {
           "lib/win8/_._": {}
@@ -2277,7 +2277,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -2370,11 +2370,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -2391,7 +2393,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -3748,7 +3750,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -4952,7 +4954,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -5028,11 +5030,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -5049,7 +5053,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -6449,7 +6453,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -7653,7 +7657,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -7729,11 +7733,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -7750,7 +7756,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -9150,7 +9156,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -10354,7 +10360,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -10427,11 +10433,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -10448,7 +10456,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -11805,7 +11813,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -13009,7 +13017,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -13085,11 +13093,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -13106,7 +13116,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -14506,7 +14516,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -15710,7 +15720,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -15786,11 +15796,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -15807,7 +15819,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -17164,7 +17176,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -18368,7 +18380,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -18444,11 +18456,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -18465,7 +18479,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -19865,7 +19879,7 @@
           "System.Threading": "4.3.0"
         },
         "compile": {
-          "ref/netstandard1.3/_._": {}
+          "ref/netstandard1.3/System.Collections.NonGeneric.dll": {}
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
@@ -21069,7 +21083,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         },
         "compile": {
-          "ref/netcore50/_._": {}
+          "ref/netcore50/System.Xml.XmlSerializer.dll": {}
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
@@ -21145,11 +21159,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.Websockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "compile": {
           "bin/placeholder/Opc.Ua.Core.dll": {}
@@ -21166,7 +21182,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -31741,5 +31757,24 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 4.5.0.356 to 4.5.0.282-pre4. Reference the package directly from the project to select a different version. \r\n Thesis.UWP -> Thesis -> Xamarin.Forms (>= 4.5.0.356) \r\n Thesis.UWP -> Xamarin.Forms (>= 4.5.0.282-pre4)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "UAP,Version=v10.0.16299",
+        "UAP,Version=v10.0.16299/win10-arm",
+        "UAP,Version=v10.0.16299/win10-arm-aot",
+        "UAP,Version=v10.0.16299/win10-arm64-aot",
+        "UAP,Version=v10.0.16299/win10-x64",
+        "UAP,Version=v10.0.16299/win10-x64-aot",
+        "UAP,Version=v10.0.16299/win10-x86",
+        "UAP,Version=v10.0.16299/win10-x86-aot"
+      ]
+    }
+  ]
 }

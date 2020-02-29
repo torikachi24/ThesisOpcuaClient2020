@@ -91,6 +91,7 @@ C:\Thesis\Opc.Ua.Core\bin\Debug\net46\BouncyCastle.Crypto.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.AppContext.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Buffers.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Collections.Immutable.dll
+C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Collections.NonGeneric.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Console.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Diagnostics.DiagnosticSource.dll
 C:\Thesis\Opc.Ua.Core\bin\Debug\net46\System.Globalization.Calendars.dll

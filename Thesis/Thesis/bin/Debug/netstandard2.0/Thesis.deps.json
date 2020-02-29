@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "7a39159aa5fdac9c796a28b3646658c295295eed"
+    "signature": "507934c3d04bb676fe4fc7c721f6227ac7b87e48"
   },
   "compilationOptions": {},
   "targets": {
@@ -14,7 +14,7 @@
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "runtime": {
           "Thesis.dll": {}
@@ -470,7 +470,7 @@
       },
       "Rg.Plugins.Popup/1.2.0.223": {
         "dependencies": {
-          "Xamarin.Forms": "4.5.0.282-pre4"
+          "Xamarin.Forms": "4.5.0.356"
         },
         "runtime": {
           "lib/netstandard1.0/Rg.Plugins.Popup.dll": {
@@ -1498,19 +1498,46 @@
           }
         }
       },
-      "Xamarin.Forms/4.5.0.282-pre4": {
+      "System.Xml.XmlSerializer/4.3.0": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Reflection.TypeExtensions": "4.4.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Xml.ReaderWriter": "4.3.0",
+          "System.Xml.XmlDocument": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {
+            "assemblyVersion": "4.0.12.0",
+            "fileVersion": "4.6.24705.1"
+          }
+        }
+      },
+      "Xamarin.Forms/4.5.0.356": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.5.0.86"
+            "fileVersion": "4.5.0.143"
           },
           "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.5.0.86"
+            "fileVersion": "4.5.0.143"
           },
           "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.5.0.86"
+            "fileVersion": "4.5.0.143"
           }
         }
       },
@@ -1536,11 +1563,13 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https": "2.2.0",
           "Newtonsoft.Json": "10.0.3",
           "Portable.BouncyCastle": "1.8.4",
+          "System.Collections.NonGeneric": "4.3.0",
           "System.Data.Common": "4.3.0",
           "System.Net.NameResolution": "4.3.0",
           "System.Net.WebSockets.Client": "4.3.2",
           "System.Reflection.TypeExtensions": "4.4.0",
-          "System.ServiceModel.Primitives": "4.5.3"
+          "System.ServiceModel.Primitives": "4.5.3",
+          "System.Xml.XmlSerializer": "4.3.0"
         },
         "runtime": {
           "Opc.Ua.Core.dll": {}
@@ -2464,12 +2493,19 @@
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
-    "Xamarin.Forms/4.5.0.282-pre4": {
+    "System.Xml.XmlSerializer/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-i9K2gRvl9ptqz1v29kz786MMydOkkJ9SSUdIEyfMJjKkWuFFEE7eHlQLyHiEGFbv/nFZcwci3GBWN/eqJkI7QQ==",
-      "path": "xamarin.forms/4.5.0.282-pre4",
-      "hashPath": "xamarin.forms.4.5.0.282-pre4.nupkg.sha512"
+      "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
+      "path": "system.xml.xmlserializer/4.3.0",
+      "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "Xamarin.Forms/4.5.0.356": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOg3sUA2xuLhyhtLuihrDVFZ5ZCa71pgojyz/HdjEH7eW5HxEws+IIgvKTYUZbFOIGD7eK/f3x1lYj6HI/o+jg==",
+      "path": "xamarin.forms/4.5.0.356",
+      "hashPath": "xamarin.forms.4.5.0.356.nupkg.sha512"
     },
     "Opc.Ua.Client/1.0.0": {
       "type": "project",

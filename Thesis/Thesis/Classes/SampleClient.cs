@@ -392,33 +392,31 @@ namespace Thesis
             }
         }
 
-        //public string VariableWrite(string node,string value)
-        //{
-        //    try
-        //    {
-        //        DataValueCollection values = null;
-        //        DiagnosticInfoCollection diagnosticInfos = null;
-        //        ReadValueIdCollection nodesToWrite = new ReadValueIdCollection();
-        //        ReadValueId valueId = new ReadValueId();
-        //        valueId.NodeId = new NodeId(node);
-        //        valueId.AttributeId = Attributes.Value;
-        //        valueId.IndexRange = null;
-        //        valueId.DataEncoding = null;
-        //        nodesToRead.Add(valueId);
-        //        ResponseHeader responseHeader = session.Read(null, 0, TimestampsToReturn.Both, nodesToRead, out values, out diagnosticInfos);
-        //        string value = "";
-        //        if (values[0].Value != null)
-        //        {
-        //            var rawValue = values[0].WrappedValue.ToString();
-        //            value = rawValue.Replace("|", "\r\n").Replace("{", "").Replace("}", "");
-        //        }
-        //        return value;
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
-        //}
+        public StatusCodeCollection VariableWrite(string nodeId, object value)
+        {
+            var nodeToWrite = new WriteValue()
+            {
+                NodeId = nodeId,
+                AttributeId = Attributes.Value,
+                Value = new DataValue()
+                {
+                    WrappedValue = new Variant(value)
+                }
+            };
+
+            WriteValueCollection nodesToWrite = new WriteValueCollection() { nodeToWrite };
+
+            ResponseHeader responseHeader = session.Write(
+                null,
+                nodesToWrite,
+                out StatusCodeCollection results,
+                out DiagnosticInfoCollection diagnosticInfos);
+
+            ClientBase.ValidateResponse(results, nodesToWrite);
+            ClientBase.ValidateDiagnosticInfos(diagnosticInfos, nodesToWrite);
+
+            return results;
+        }
 
 
         private void CertificateValidator_CertificateValidation(CertificateValidator validator, CertificateValidationEventArgs e)
