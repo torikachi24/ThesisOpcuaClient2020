@@ -16,11 +16,12 @@ namespace Thesis
             InitializeComponent();
             opcClient = Client;
             selected = id;
+            TitleNode.Text ="Change value of : "+ id.NodeName;
         }
 
         private void Button_Clicked_Cancel(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            PopupNavigation.Instance.PopAllAsync();
             
         }
 
@@ -28,7 +29,7 @@ namespace Thesis
         {
             object value = ValueChange.Text;
             //DisplayAlert("Title", value, "OK", "Cancel");
-            string abc = "ns=3;s=\"Start\"";
+            string abc = "ns=3;s=\"X\"";
             opcClient.VariableWrite(abc, value);
             //opcClient.VariableWrite(selected.id, value);
             PopupNavigation.Instance.PopAllAsync();

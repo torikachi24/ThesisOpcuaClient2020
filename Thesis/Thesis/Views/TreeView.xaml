@@ -2,14 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Thesis.TreeView"
+             BackgroundColor="#082535"
              Title="Browse Opc Ua nodes">
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="treeView"
               SelectedItem="Mode=Twoway"
               ItemSelected="OnSelection"
-              IsPullToRefreshEnabled="true"
-              RefreshControlColor="Red">
+              HasUnevenRows="True"
+              BackgroundColor="#082535"
+              SeparatorColor="#00757C">
                 <ListView.SeparatorVisibility>
                     <OnPlatform x:TypeArguments="SeparatorVisibility">
                         <On Platform="iOS">None</On>
@@ -37,16 +39,15 @@
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="9*"/>
-                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text = "{Binding NodeName}" Grid.Column="0"/>
+                                    <Label Text = "{Binding NodeName}" Grid.Column="0" TextColor="White"/>
 
-                                    <Image x:Name="Icon" Source="warning.png" Grid.Column=" 1"  >
+                                    <!--<Image x:Name="Icon" Source="warning.png" Grid.Column=" 1"  >
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnRead" 
-                                                                  NumberOfTapsRequired="1" />
+                                            <TapGestureRecognizer/>
                                         </Image.GestureRecognizers>
-                                    </Image>
+                                    </Image>-->
                                 </Grid>
                             </StackLayout>
                         </ViewCell>

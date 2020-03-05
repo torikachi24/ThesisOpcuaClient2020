@@ -66,7 +66,8 @@ namespace Thesis
                     else
                     {
                         await PopupNavigation.Instance.PopAsync();
-                        await DisplayAlert("Warning", "Cannot connect to an OPC UA server", "Ok");
+                        await Navigation.PushAsync(new AlertPage("Cannot connect to an OPC UA server"));
+                        //await DisplayAlert("Warning", "Cannot connect to an OPC UA server", "Ok");
                     }
                 }
                 else
@@ -76,7 +77,9 @@ namespace Thesis
             }
             else
             {
-                await DisplayAlert("Warning", "Server endpoint URL cannot be null", "Ok");
+                await Navigation.PushAsync(new AlertPage("Server endpoint URL cannot be null"));
+
+                //await DisplayAlert("Warning", "Server endpoint URL cannot be null", "Ok");
             }
         }
 

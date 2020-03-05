@@ -20,22 +20,26 @@
     <StackLayout VerticalOptions="Center"
         HorizontalOptions="FillAndExpand"
         Padding="20, 10, 20, 10">
-        <Frame BackgroundColor="White">
+        <Frame BackgroundColor="#082335" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center">
 
             <StackLayout>
-                <Label Text="Information of Nodes" FontSize="25" TextColor="#0066ff" Margin="10,10,10,10" FontAttributes="Bold" />
-                <BoxView HeightRequest="2" Color="#0066ff" HorizontalOptions="FillAndExpand" />
+                <Label x:Name="TitleNode" FontSize="Medium" TextColor="#06C6B6" Margin="10,10,10,10" FontAttributes="Bold" />
+                <BoxView HeightRequest="2" Color="#00757C" HorizontalOptions="FillAndExpand" />
                 <StackLayout>
-                    <Label Text="{Binding NameNode}"
-                           x:Name="LabelName"
-                           Margin="0,0,0,0" />
-                    <Label Text="Value to change" />
-                    <Entry x:Name="ValueChange" Placeholder="Write value here" FontSize="Large" />
+                    <Label Text="Value to change" TextColor="White"/>
+                    <Entry x:Name="ValueChange" Placeholder="Write value here" FontSize="Large" 
+                           TextColor="White" PlaceholderColor="#06C6BC" BackgroundColor="#082335"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Margin="0,5,0,0">
-                    <Button Text="Cancel"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" BackgroundColor="#ccccb3" Clicked="Button_Clicked_Cancel" />
-                    <Button Text="Change"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" BackgroundColor="#ccccb3" Clicked="Button_Clicked_Change" />
+                    <Button Text="Cancel"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" 
+                            BackgroundColor="#045E69" 
+                            TextColor="White"
+                            Clicked="Button_Clicked_Cancel" />
+                    <Button Text="Change"  HorizontalOptions="FillAndExpand" BorderRadius="7" FontSize="Medium" 
+                            BackgroundColor="#045E69" 
+                            TextColor="White"
+                            Clicked="Button_Clicked_Change" />
                 </StackLayout>
             </StackLayout>
         </Frame>

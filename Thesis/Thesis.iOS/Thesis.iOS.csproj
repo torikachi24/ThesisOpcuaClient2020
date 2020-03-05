@@ -99,8 +99,6 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Default-Portrait.png" />
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\folder.jpg" />
-    <BundleResource Include="Resources\folderOpen.jpg" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
     <BundleResource Include="Resources\Icon-76.png" />
@@ -109,22 +107,26 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\ic_create.png" />
-    <BundleResource Include="Resources\ic_delete_forever.png" />
-    <BundleResource Include="Resources\report.png" />
-    <BundleResource Include="Resources\question.png" />
     <BundleResource Include="Resources\info.png" />
     <BundleResource Include="Resources\home.png" />
-    <BundleResource Include="Resources\search.png" />
     <BundleResource Include="Resources\logout.png" />
-    <BundleResource Include="Resources\linegraph.png" />
-    <BundleResource Include="Resources\mindmap.png" />
-    <BundleResource Include="Resources\computer.png" />
+    <BundleResource Include="Resources\hardware.png" />
+    <BundleResource Include="Resources\doubt.png" />
+    <BundleResource Include="Resources\connector.png" />
+    <BundleResource Include="Resources\graph.png" />
+    <BundleResource Include="Resources\Logobk_trans.png" />
+    <BundleResource Include="Resources\folder.png" />
+    <BundleResource Include="Resources\tag.png" />
+    <BundleResource Include="Resources\LogoAuto.png" />
+    <BundleResource Include="Resources\edit.png" />
+    <BundleResource Include="Resources\delete.png" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="PathService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Opc.Ua.SampleClient.Config.xml" />
+    <Content Include="Opc.Ua.SampleClient.Config.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -178,10 +180,16 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microcharts">
+      <Version>0.8.5-pre</Version>
+    </PackageReference>
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.8.5-pre</Version>
+    </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.2.0.223</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

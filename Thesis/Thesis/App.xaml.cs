@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -9,8 +10,12 @@ namespace Thesis
     {
         public App()
         {
-            this.InitializeComponent();
-            this.MainPage = new NavigationPage(new MainPage());
+            try
+            {
+                InitializeComponent();
+                MainPage = new NavigationPage(new MainPage());
+            }
+            catch {; }
         }
 
         protected override void OnStart()

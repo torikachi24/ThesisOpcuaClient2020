@@ -27,6 +27,10 @@ namespace Thesis
         private LabelViewModel info;
         private ApplicationConfiguration config;
 
+        public MonitoredItemNotificationEventHandler ItemChangedNotification = null;
+        public NotificationEventHandler ItemEventNotification = null;
+        public KeepAliveEventHandler KeepAliveNotification = null;
+        public CertificateValidationEventHandler CertificateValidationNotification = null;
         public SampleClient(LabelViewModel text)
         {
             connectionStatus = ConnectionStatus.None;
@@ -35,6 +39,196 @@ namespace Thesis
             haveAppCertificate = false;
             config = null;
         }
+
+        #region EventHandling
+        /// <summary>Eventhandler to validate the server certificate forwards this event</summary>
+        private void Notificatio_CertificateValidation(CertificateValidator certificate, CertificateValidationEventArgs e)
+        {
+            CertificateValidationNotification(certificate, e);
+        }
+
+        /// <summary>Eventhandler for MonitoredItemNotifications forwards this event</summary>
+        private void Notification_MonitoredItem(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
+        {
+            ItemChangedNotification(monitoredItem, e);
+        }
+
+        /// <summary>Eventhandler for MonitoredItemNotifications for event items forwards this event</summary>
+        private void Notification_MonitoredEventItem(Session session, NotificationEventArgs e)
+        {
+            NotificationMessage message = e.NotificationMessage;
+
+            // Check for keep alive.
+            if (message.NotificationData.Count == 0)
+            {
+                return;
+            }
+
+            ItemEventNotification(session, e);
+        }
+
+        /// <summary>Eventhandler for KeepAlive forwards this event</summary>
+        private void Notification_KeepAlive(Session session, KeepAliveEventArgs e)
+        {
+            KeepAliveNotification(session, e);
+        }
+        #endregion
+
+        #region Subscription
+        /// <summary>Creats a Subscription object to a server</summary>
+        /// <param name="publishingInterval">The publishing interval</param>
+        /// <returns>Subscription</returns>
+        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
+        public Subscription Subscribe(int publishingInterval)
+        {
+            //Create a Subscription object
+            Subscription subscription = new Subscription(session.DefaultSubscription);
+            //Enable publishing
+            subscription.PublishingEnabled = true;
+            //Set the publishing interval
+            subscription.PublishingInterval = publishingInterval;
+            //Add the subscription to the session
+            session.AddSubscription(subscription);
+            try
+            {
+                //Create/Activate the subscription
+                subscription.Create();
+                return subscription;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+        /// <summary>Ads a monitored item to an existing subscription</summary>
+        /// <param name="subscription">The subscription</param>
+        /// <param name="nodeIdString">The node Id as string</param>
+        /// <param name="itemName">The name of the item to add</param>
+        /// <param name="samplingInterval">The sampling interval</param>
+        /// <returns>The added item</returns>
+        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
+        public MonitoredItem AddMonitoredItem(Subscription subscription, string nodeIdString, string itemName, int samplingInterval)
+        {
+            //Create a monitored item
+            MonitoredItem monitoredItem = new MonitoredItem();
+            //Set the name of the item for assigning items and values later on; make sure item names differ
+            monitoredItem.DisplayName = itemName;
+            //Set the NodeId of the item
+            monitoredItem.StartNodeId = nodeIdString;
+            //Set the attribute Id (value here)
+            monitoredItem.AttributeId = Attributes.Value;
+            //Set reporting mode
+            monitoredItem.MonitoringMode = MonitoringMode.Reporting;
+            //Set the sampling interval (1 = fastest possible)
+            monitoredItem.SamplingInterval = samplingInterval;
+            //Set the queue size
+            monitoredItem.QueueSize = 1;
+            //Discard the oldest item after new one has been received
+            monitoredItem.DiscardOldest = true;
+            //Define event handler for this item and then add to monitoredItem
+            monitoredItem.Notification += new MonitoredItemNotificationEventHandler(Notification_MonitoredItem);
+            try
+            {
+                //Add the item to the subscription
+                subscription.AddItem(monitoredItem);
+                //Apply changes to the subscription
+                subscription.ApplyChanges();
+                return monitoredItem;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+        /// <summary>Ads a monitored event item to an existing subscription</summary>
+        /// <param name="subscription">The subscription</param>
+        /// <param name="nodeIdString">The node Id as string</param>
+        /// <param name="itemName">The name of the item to add</param>
+        /// <param name="samplingInterval">The sampling interval</param>
+        /// <param name="filter">The event filter</param>
+        /// <returns>The added item</returns>
+        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
+        public MonitoredItem AddEventMonitoredItem(Subscription subscription, string nodeIdString, string itemName, int samplingInterval, EventFilter filter)
+        {
+            //Create a monitored item
+            MonitoredItem monitoredItem = new MonitoredItem(subscription.DefaultItem);
+            //Set the name of the item for assigning items and values later on; make sure item names differ
+            monitoredItem.DisplayName = itemName;
+            //Set the NodeId of the item
+            monitoredItem.StartNodeId = nodeIdString;
+            //Set the attribute Id (value here)
+            monitoredItem.AttributeId = Attributes.EventNotifier;
+            //Set reporting mode
+            monitoredItem.MonitoringMode = MonitoringMode.Reporting;
+            //Set the sampling interval (1 = fastest possible)
+            monitoredItem.SamplingInterval = samplingInterval;
+            //Set the queue size
+            monitoredItem.QueueSize = 1;
+            //Discard the oldest item after new one has been received
+            monitoredItem.DiscardOldest = true;
+            //Set the filter for the event item
+            monitoredItem.Filter = filter;
+
+            //Define event handler for this item and then add to monitoredItem
+            session.Notification += new NotificationEventHandler(Notification_MonitoredEventItem);
+
+            try
+            {
+                //Add the item to the subscription
+                subscription.AddItem(monitoredItem);
+                //Apply changes to the subscription
+                subscription.ApplyChanges();
+                return monitoredItem;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+        /// <summary>Removs a monitored item from an existing subscription</summary>
+        /// <param name="subscription">The subscription</param>
+        /// <param name="monitoredItem">The item</param>
+        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
+        public MonitoredItem RemoveMonitoredItem(Subscription subscription, MonitoredItem monitoredItem)
+        {
+            try
+            {
+                //Add the item to the subscription
+                subscription.RemoveItem(monitoredItem);
+                //Apply changes to the subscription
+                subscription.ApplyChanges();
+                return null;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+        /// <summary>Removes an existing Subscription</summary>
+        /// <param name="subscription">The subscription</param>
+        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
+        public void RemoveSubscription(Subscription subscription)
+        {
+            try
+            {
+                //Delete the subscription and all items submitted
+                subscription.Delete(true);
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+        #endregion
 
         public async void CreateCertificate()
         {
@@ -298,7 +492,7 @@ namespace Thesis
                             eventNotifier = currentNodeEventNotifier.ToString(),
                             executable = currentNodeExecutable.ToString(),
                             children = (references?.Count != 0),
-                            ImageUrl = (nodeReference.NodeClass.ToString() == "Variable") ? "folderOpen.jpg" : "folder.jpg"
+                            ImageUrl = (nodeReference.NodeClass.ToString() == "Variable") ? "tag.png" : "folder.png"
                         });
                         if (browserTree.currentView[0].ImageUrl == null)
                         {
@@ -363,6 +557,7 @@ namespace Thesis
                 return null;
             }
         }
+
 
         public string VariableRead(string node)
         {

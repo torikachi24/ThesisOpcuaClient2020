@@ -20,12 +20,13 @@
         <StackLayout VerticalOptions="Center"
         HorizontalOptions="FillAndExpand"
         Padding="20, 10, 20, 10">
-            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center">
+            <Frame BackgroundColor="#082335" HasShadow="True" CornerRadius="10" Margin="20,0,20,0" VerticalOptions="Center">
                 <StackLayout>
-                    <ActivityIndicator IsRunning="True" />
+                    <ActivityIndicator IsRunning="True" Color="#06C6BC" />
                     <Label Text="Connecting..."
                            FontSize="Large"
-                           HorizontalOptions="CenterAndExpand" />
+                           HorizontalOptions="CenterAndExpand" 
+                           TextColor="#06C6BC"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

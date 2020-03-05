@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Thesis"
-             x:Class="Thesis.MainPage">
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="Thesis.MainPage"
+             BackgroundColor="#082535"
+             NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <StackLayout  Margin = "10,10,10,10">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
@@ -16,23 +19,27 @@
                     BorderRadius="6"
                     FontAttributes="Bold"
                     TextColor="White"
-                    BackgroundColor="HotPink"
-                    Clicked="AddNewConnection_Clicked" />
+                    BackgroundColor="#045E69"
+                    Clicked="AddNewConnection_Clicked" 
+                          />
                 </StackLayout>
 
-                <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold" TextColor="DodgerBlue" FontSize="Medium" />
-                <BoxView HeightRequest="2" Color="DodgerBlue" />
+                <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold" 
+                       TextColor="#06C6BC" FontSize="Medium" />
+                <BoxView HeightRequest="3" Color="#00757C" />
 
                 <ListView ItemsSource="{Binding Connections}"
-                          HasUnevenRows="True">
+                          HasUnevenRows="True"
+                          SeparatorColor="#06C6BC" BackgroundColor="#082535"
+                          Footer="">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
+                            <ViewCell >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="6*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="5*" />
+                                        <ColumnDefinition Width="35" />
+                                        <ColumnDefinition Width="40" />
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Column="0" Orientation="Vertical">
                                         <StackLayout.GestureRecognizers>
@@ -40,16 +47,19 @@
                                         </StackLayout.GestureRecognizers>
                                         <Label x:Name="NameA" Text="{Binding ConnectionName}"
                                            FontSize="Medium"
-                                           FontAttributes="Bold" />
-                                        <Label  Text="{Binding ConnectionUrl,StringFormat='URI: {0}'}" />
+                                           FontAttributes="Bold" 
+                                               TextColor="#06C6BC"/>
+                                        <Label  Text="{Binding ConnectionUrl,StringFormat='Uri: {0}'}"  
+                                               TextColor="White"/>
                                     </StackLayout>
-                                    <Image Source="ic_create.png" Grid.Column=" 1">
+                                    <Image Source="edit.png" Grid.Column=" 1" >
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Edit"
                                                                   CommandParameter="{Binding ConnectionId}" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Image Source="ic_delete_forever.png" Grid.Column="2" >
+                                    <Image Source="delete.png" Grid.Column="2" 
+                                           Margin="5,0,0,0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Remove"
                                                                   CommandParameter="{Binding ConnectionId}" />
@@ -65,25 +75,27 @@
                    Text="{Binding LabelText, Mode=TwoWay}"
                    FontSize="Medium"
                    FontAttributes="None"
-                   Margin="0,50,0,0">
+                   Margin="0,50,0,0"
+                       TextColor="White">
                 </Label>
             </StackLayout>
 
-            <StackLayout Orientation="Vertical" VerticalOptions="End">
-                <BoxView HeightRequest="2" Color="Black" />
+            <StackLayout Orientation="Vertical" VerticalOptions="End" Margin="0,0,0,10">
+                <BoxView HeightRequest="3" Color="#00757C" />
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="LogoBK.jpg"
+                    <Image Source="Logobk_trans.png"
                            VerticalOptions="FillAndExpand"
-                           WidthRequest="35"
-                           HeightRequest="35"
+                           WidthRequest="40"
+                           HeightRequest="40"
                            Opacity="0.9"
-                           Margin="20,0,10,0" />
+                           Margin="20,0,10,0"
+                           Aspect="AspectFit"/>
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span Text="Power by" TextColor="#33cc33" />
+                                <Span Text="Power by" TextColor="#06C6BC" />
                                 <Span Text="{x:Static x:Environment.NewLine}" />
-                                <Span Text="MinhNhat" TextColor="#ff3300" />
+                                <Span Text="MinhNhat" TextColor="#06C6BC" />
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>

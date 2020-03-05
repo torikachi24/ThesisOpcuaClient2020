@@ -4,7 +4,7 @@
   xmlns="http://opcfoundation.org/UA/SDK/Configuration.xsd"
   schemaLocation="./Schema/ApplicationConfiguration.xsd"
 >
-  <ApplicationName>Thesis</ApplicationName>
+  <ApplicationName>UA Xamarin Sample Client</ApplicationName>
   <ApplicationUri>urn:localhost:OPCFoundation:XamarinSampleClient</ApplicationUri>
   <ProductUri>http://opcfoundation.org/UA/XamarinSampleClient</ProductUri>
   <ApplicationType>Client_1</ApplicationType>
@@ -15,7 +15,7 @@
     <ApplicationCertificate>
       <StoreType>Directory</StoreType>
       <StorePath>./OPC Foundation/pki/own</StorePath>
-      <SubjectName>CN=Thesis, C=US, S=Arizona, O=OPC Foundation, DC=localhost</SubjectName>
+      <SubjectName>CN=UA Xamarin Sample Client, C=US, S=Arizona, O=OPC Foundation, DC=localhost</SubjectName>
     </ApplicationCertificate>
 
     <!-- Where the issuer certificate are stored (certificate authorities) -->

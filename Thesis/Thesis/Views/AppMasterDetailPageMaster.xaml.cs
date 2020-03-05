@@ -30,10 +30,10 @@ namespace Thesis
                 MenuItems = new ObservableCollection<AppMasterDetailPageMenuItem>(new[]
                 {
                     new AppMasterDetailPageMenuItem { Id = 0,Icon="home.png", Title = "Status" ,TargetType=typeof(AppMasterDetailPageDetail)},
-                    new AppMasterDetailPageMenuItem { Id = 1,Icon="mindmap.png", Title = "TreeView" ,TargetType=typeof(TreeView)},
-                    new AppMasterDetailPageMenuItem { Id = 2,Icon="computer.png", Title = "Monitor", TargetType=typeof(Monitor)},
-                    new AppMasterDetailPageMenuItem { Id = 3,Icon="linegraph.png", Title = "LineGraph", TargetType=typeof(LineGraphPage)},
-                    new AppMasterDetailPageMenuItem { Id = 4,Icon="question.png", Title = "Help" ,TargetType=typeof(HelpPage)},
+                    new AppMasterDetailPageMenuItem { Id = 1,Icon="connector.png", Title = "TreeView" ,TargetType=typeof(TreeView)},
+                    new AppMasterDetailPageMenuItem { Id = 2,Icon="hardware.png", Title = "Monitor", TargetType=typeof(Monitor)},
+                    new AppMasterDetailPageMenuItem { Id = 3,Icon="graph.png", Title = "LineGraph", TargetType=typeof(LineGraphPage)},
+                    new AppMasterDetailPageMenuItem { Id = 4,Icon="doubt.png", Title = "Help" ,TargetType=typeof(HelpPage)},
                     new AppMasterDetailPageMenuItem { Id = 5,Icon="info.png", Title = "About" ,TargetType=typeof(AboutPage)},
                 });
             }

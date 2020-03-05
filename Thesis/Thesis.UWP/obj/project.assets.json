@@ -2,6 +2,35 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.16299": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -930,6 +959,113 @@
         "build": {
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.props": {},
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
+        }
+      },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/tizen-armel/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-armel"
+          },
+          "runtimes/tizen-x86/native/libSkiaSharp.so": {
+            "assetType": "native",
+            "rid": "tizen-x86"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -2389,6 +2525,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -2404,6 +2542,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -3693,6 +3860,49 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -5049,6 +5259,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -5064,6 +5276,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm-aot": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -6398,6 +6639,49 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
       "System.Buffers/4.5.0": {
         "type": "package",
         "compile": {
@@ -7752,6 +8036,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -7767,6 +8053,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm64-aot": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -9101,6 +9416,41 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
       "System.Buffers/4.5.0": {
         "type": "package",
         "compile": {
@@ -10452,6 +10802,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -10467,6 +10819,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -11756,6 +12137,49 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -13112,6 +13536,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -13127,6 +13553,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64-aot": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -14461,6 +14916,49 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
       "System.Buffers/4.5.0": {
         "type": "package",
         "compile": {
@@ -15815,6 +16313,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -15830,6 +16330,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -17119,6 +17648,49 @@
         },
         "runtime": {
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -18475,6 +19047,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -18490,6 +19064,35 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86-aot": {
+      "Microcharts/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp.Views": "1.68.0"
+        },
+        "compile": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        },
+        "runtime": {
+          "lib/uap/Microcharts.Uwp.dll": {},
+          "lib/uap/Microcharts.dll": {}
+        }
+      },
+      "Microcharts.Forms/0.8.5-pre": {
+        "type": "package",
+        "dependencies": {
+          "Microcharts": "0.8.4.2-pre",
+          "NETStandard.Library": "1.6.1",
+          "SkiaSharp.Views.Forms": "1.68.0",
+          "Xamarin.Forms": "3.5.0.129452"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -19822,6 +20425,49 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
+        }
+      },
+      "SkiaSharp/1.68.0": {
+        "type": "package",
+        "compile": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll": {},
+          "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
+        }
+      },
+      "SkiaSharp.Views/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
+        }
+      },
+      "SkiaSharp.Views.Forms/1.68.0": {
+        "type": "package",
+        "dependencies": {
+          "SkiaSharp": "1.68.0",
+          "SkiaSharp.Views": "1.68.0",
+          "Xamarin.Forms": "3.3.0.912540"
+        },
+        "compile": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -21178,6 +21824,8 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "Microcharts": "0.8.5-pre",
+          "Microcharts.Forms": "0.8.5-pre",
           "Opc.Ua.Client": "1.0.0",
           "Opc.Ua.Configuration": "1.0.0",
           "Opc.Ua.Core": "1.0.0",
@@ -21194,6 +21842,38 @@
     }
   },
   "libraries": {
+    "Microcharts/0.8.5-pre": {
+      "sha512": "zPRK+ZtublASZneu97T8ZeyVEWZQnOo0RZMvWyu7w/ZmN6fDl2NDdQP0IdW4Y4PVfOrLIBQp+2/EkQs8YkFDtQ==",
+      "type": "package",
+      "path": "microcharts/0.8.5-pre",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/MonoAndroid10/Microcharts.Droid.dll",
+        "lib/MonoAndroid10/Microcharts.dll",
+        "lib/Xamarin.iOS10/Microcharts.dll",
+        "lib/Xamarin.iOS10/Microcharts.iOS.dll",
+        "lib/netstandard1.3/Microcharts.dll",
+        "lib/uap/Microcharts.Uwp.dll",
+        "lib/uap/Microcharts.dll",
+        "lib/xamarinmac/Microcharts.dll",
+        "lib/xamarinmac/Microcharts.macOS.dll",
+        "microcharts.0.8.5-pre.nupkg.sha512",
+        "microcharts.nuspec"
+      ]
+    },
+    "Microcharts.Forms/0.8.5-pre": {
+      "sha512": "39l0XTMVT0SUJuVA3vqAjizr+73GmX/uekrbOA32y2InhGahuZY+XkMWu88kpPvtSDqLqKvSTdVwRIJgbjwewA==",
+      "type": "package",
+      "path": "microcharts.forms/0.8.5-pre",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.3/Microcharts.Forms.dll",
+        "microcharts.forms.0.8.5-pre.nupkg.sha512",
+        "microcharts.forms.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
       "sha512": "Aqr/16Cu5XmGv7mLKJvXRxhhd05UJ7cTTSaUV4MZ3ynAzfgWjsAdpIU8FWuxwAjmVdmI8oOWuVDrbs+sRkhKnA==",
       "type": "package",
@@ -27194,6 +27874,113 @@
         "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll"
       ]
     },
+    "SkiaSharp/1.68.0": {
+      "sha512": "ptuxAKk9FiClNnAgWM8hVMCYw/B0hUJWZ8W6efnIAtJmJn/Xl4jvxxDF5WOqfQYCLVzxXw5gvBPVxvTLblFp0g==",
+      "type": "package",
+      "path": "skiasharp/1.68.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "THIRD-PARTY-NOTICES.txt",
+        "build/net45/SkiaSharp.targets",
+        "build/tizen40/SkiaSharp.targets",
+        "lib/MonoAndroid/SkiaSharp.dll",
+        "lib/MonoAndroid/SkiaSharp.xml",
+        "lib/Xamarin.Mac20/SkiaSharp.dll",
+        "lib/Xamarin.Mac20/SkiaSharp.xml",
+        "lib/Xamarin.TVOS/SkiaSharp.dll",
+        "lib/Xamarin.TVOS/SkiaSharp.xml",
+        "lib/Xamarin.WatchOS/SkiaSharp.dll",
+        "lib/Xamarin.WatchOS/SkiaSharp.xml",
+        "lib/Xamarin.iOS/SkiaSharp.dll",
+        "lib/Xamarin.iOS/SkiaSharp.xml",
+        "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.xml",
+        "lib/netstandard1.3/SkiaSharp.dll",
+        "lib/netstandard1.3/SkiaSharp.xml",
+        "lib/tizen40/SkiaSharp.dll",
+        "lib/tizen40/SkiaSharp.xml",
+        "lib/uap10.0/SkiaSharp.dll",
+        "lib/uap10.0/SkiaSharp.xml",
+        "runtimes/osx/native/libSkiaSharp.dylib",
+        "runtimes/tizen-armel/native/libSkiaSharp.so",
+        "runtimes/tizen-x86/native/libSkiaSharp.so",
+        "runtimes/win-x64/native/libSkiaSharp.dll",
+        "runtimes/win-x86/native/libSkiaSharp.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
+        "skiasharp.1.68.0.nupkg.sha512",
+        "skiasharp.nuspec",
+        "xamarin.interactive/SkiaSharp.Workbooks.dll"
+      ]
+    },
+    "SkiaSharp.Views/1.68.0": {
+      "sha512": "tCpeBURfS3knCdB3lz1Ck6HQ5jXRT2CPWrT8QJb1PWhcx1SHm9iLWvcv2cu1Z5blkDuLZ1hREnxd07Mx+xS74Q==",
+      "type": "package",
+      "path": "skiasharp.views/1.68.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/MonoAndroid/SkiaSharp.Views.Android.dll",
+        "lib/MonoAndroid/SkiaSharp.Views.Android.xml",
+        "lib/Xamarin.Mac20/SkiaSharp.Views.Mac.dll",
+        "lib/Xamarin.Mac20/SkiaSharp.Views.Mac.xml",
+        "lib/Xamarin.TVOS/SkiaSharp.Views.tvOS.dll",
+        "lib/Xamarin.TVOS/SkiaSharp.Views.tvOS.xml",
+        "lib/Xamarin.WatchOS/SkiaSharp.Views.watchOS.dll",
+        "lib/Xamarin.WatchOS/SkiaSharp.Views.watchOS.xml",
+        "lib/Xamarin.iOS/SkiaSharp.Views.iOS.dll",
+        "lib/Xamarin.iOS/SkiaSharp.Views.iOS.xml",
+        "lib/net45/SkiaSharp.Views.Desktop.dll",
+        "lib/net45/SkiaSharp.Views.Desktop.xml",
+        "lib/net45/SkiaSharp.Views.Gtk.dll",
+        "lib/net45/SkiaSharp.Views.Gtk.xml",
+        "lib/net45/SkiaSharp.Views.WPF.dll",
+        "lib/net45/SkiaSharp.Views.WPF.xml",
+        "lib/tizen40/SkiaSharp.Views.Tizen.dll",
+        "lib/tizen40/SkiaSharp.Views.Tizen.xml",
+        "lib/uap10.0/SkiaSharp.Views.UWP.dll",
+        "lib/uap10.0/SkiaSharp.Views.UWP.xml",
+        "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll",
+        "skiasharp.views.1.68.0.nupkg.sha512",
+        "skiasharp.views.nuspec"
+      ]
+    },
+    "SkiaSharp.Views.Forms/1.68.0": {
+      "sha512": "VqxL96ywOA9HUj1MAEO6yvSzg4Tk03ZHvvxQFhbUKgCodDxk9lIUxmBcssTZ/wYjOUn9R2Lf/VIpDMQZlhVh/A==",
+      "type": "package",
+      "path": "skiasharp.views.forms/1.68.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/MonoAndroid/SkiaSharp.Views.Forms.dll",
+        "lib/MonoAndroid/SkiaSharp.Views.Forms.xml",
+        "lib/Xamarin.Mac20/SkiaSharp.Views.Forms.dll",
+        "lib/Xamarin.Mac20/SkiaSharp.Views.Forms.xml",
+        "lib/Xamarin.iOS/SkiaSharp.Views.Forms.dll",
+        "lib/Xamarin.iOS/SkiaSharp.Views.Forms.xml",
+        "lib/netstandard1.3/SkiaSharp.Views.Forms.dll",
+        "lib/netstandard1.3/SkiaSharp.Views.Forms.xml",
+        "lib/tizen40/SkiaSharp.Views.Forms.dll",
+        "lib/tizen40/SkiaSharp.Views.Forms.xml",
+        "lib/uap10.0/SkiaSharp.Views.Forms.dll",
+        "lib/uap10.0/SkiaSharp.Views.Forms.xml",
+        "skiasharp.views.forms.1.68.0.nupkg.sha512",
+        "skiasharp.views.forms.nuspec"
+      ]
+    },
     "System.Buffers/4.5.0": {
       "sha512": "pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
       "type": "package",
@@ -31666,6 +32453,8 @@
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
+      "Microcharts >= 0.8.5-pre",
+      "Microcharts.Forms >= 0.8.5-pre",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.9",
       "Rg.Plugins.Popup >= 1.2.0.223",
       "Thesis >= 1.0.0",
@@ -31714,6 +32503,14 @@
     "frameworks": {
       "uap10.0.16299": {
         "dependencies": {
+          "Microcharts": {
+            "target": "Package",
+            "version": "[0.8.5-pre, )"
+          },
+          "Microcharts.Forms": {
+            "target": "Package",
+            "version": "[0.8.5-pre, )"
+          },
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.9, )"

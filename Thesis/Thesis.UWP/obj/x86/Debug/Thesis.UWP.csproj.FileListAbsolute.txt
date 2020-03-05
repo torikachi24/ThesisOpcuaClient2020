@@ -8,6 +8,9 @@ C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\AppxManifest.xml
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Core\AppxManifest.xml
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Core\Thesis.UWP.exe
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Thesis.UWP.build.appxrecipe
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Microcharts.Uwp.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Microcharts.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Microcharts.Forms.dll
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Microsoft.AspNetCore.Hosting.dll
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Microsoft.AspNetCore.Hosting.Abstractions.dll
@@ -46,6 +49,13 @@ C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Rg.Plugins.Popup.UWP.pdb
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Rg.Plugins.Popup.dll
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Rg.Plugins.Popup.pdb
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\System.Runtime.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\libEGL.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\libGLESv2.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\libSkiaSharp.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\SkiaSharp.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\SkiaSharp.Views.Interop.UWP.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\SkiaSharp.Views.UWP.dll
+C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\SkiaSharp.Views.Forms.dll
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\System.IO.Pipelines.dll
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\System.Text.Encodings.Web.dll
 C:\Thesis\Thesis\Thesis.UWP\bin\x86\Debug\Microsoft.Graphics.Canvas.dll
