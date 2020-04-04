@@ -1,3 +1,7 @@
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\Thesis.Android.nuget.stamp
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\Thesis.Android.csprojAssemblyReference.cache
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Thesis.Android.dll
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Thesis.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\com.companyname.Thesis.apk
@@ -10,10 +14,6 @@ C:\Thesis\Thesis\Thesis.Android\bin\Debug\Thesis.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Opc.Ua.Client.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Opc.Ua.Core.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Opc.Ua.Configuration.pdb
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\Thesis.Android.nuget.stamp
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\Thesis.Android.csprojAssemblyReference.cache
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\libraryimports.cache.stamp
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res.flag
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\Thesis.Android.csproj.CoreCompileInputs.cache
@@ -56,6 +56,8 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\folder.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\data.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\statistics.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\background.jpg
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\xamarinlogo.png
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\opcualogo.png
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\R.cs.flag
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\R.txt
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\uploadflags.txt
@@ -63,6 +65,7 @@ C:\Thesis\Thesis\Thesis.Android\bin\Debug\FormsViewGroup.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Microsoft.CSharp.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Mono.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\mscorlib.pdb
+C:\Thesis\Thesis\Thesis.Android\bin\Debug\Plugin.Share.Abstractions.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Rg.Plugins.Popup.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\System.Core.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\System.pdb
@@ -85,11 +88,6 @@ C:\Thesis\Thesis\Thesis.Android\bin\Debug\System.Numerics.Vectors.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Mono.Security.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\System.ServiceModel.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\System.IdentityModel.pdb
-C:\Thesis\Thesis\Thesis.Android\bin\Debug\Rg.Plugins.Popup.Droid.dll.mdb
-C:\Thesis\Thesis\Thesis.Android\bin\Debug\Thesis.dll.mdb
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\xamarinlogo.png
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\res\drawable\opcualogo.png
-C:\Thesis\Thesis\Thesis.Android\bin\Debug\Plugin.Share.Abstractions.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Thesis.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\FormsViewGroup.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Microsoft.CSharp.pdb
@@ -122,6 +120,8 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\System.ServiceModel.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\System.IdentityModel.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Opc.Ua.Configuration.pdb
 C:\Thesis\Thesis\Thesis.Android\bin\Debug\Plugin.Share.dll.mdb
+C:\Thesis\Thesis\Thesis.Android\bin\Debug\Rg.Plugins.Popup.Droid.dll.mdb
+C:\Thesis\Thesis\Thesis.Android\bin\Debug\Thesis.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Plugin.Share.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Rg.Plugins.Popup.Droid.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Thesis.dll.mdb
@@ -159,8 +159,6 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Thesis.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Core.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Thesis\Thesis\Thesis\bin\Debug\netstandard2.0\Thesis.dll
-C:\Thesis\Thesis\Thesis.Android\bin\Debug\Thesis.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Plugin.Share.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Rg.Plugins.Popup.Droid.dll.mdb
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\linksrc\Thesis.dll.mdb

@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using Rg.Plugins.Popup.Services;
+using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Thesis
@@ -16,6 +18,16 @@ namespace Thesis
             serveruri.Text = "Uri:" + connecttype.ConnectionUrl;
             connectionstatus.Text = "Connected";
             connectedsince.Text = datetime;
+        }
+
+        private async void ToolbarItem_Clicked_About(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new AboutPage());
+        }
+
+        private async void ToolbarItem_Clicked_Help(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new HelpPage());
         }
     }
 }

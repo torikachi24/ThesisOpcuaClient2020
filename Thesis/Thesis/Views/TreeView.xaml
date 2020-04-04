@@ -13,6 +13,10 @@
              BackgroundColor="#082535"
              Title="Browse Opc Ua nodes">
     <ContentPage Title="DataView" IconImageSource="data.png" BackgroundColor="#082535">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Help" Order="Secondary" Priority="1" Clicked="ToolbarItem_Clicked_Help" />
+            <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        </ContentPage.ToolbarItems>
         <StackLayout>
             <ListView x:Name="treeView"
               SelectedItem="Mode=Twoway"
@@ -47,14 +51,14 @@
                                 </Image>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="9*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="9*" />
+                                        <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <Label Text = "{Binding NodeName}" Grid.Column="0" TextColor="White"/>
+                                    <Label Text = "{Binding NodeName}" Grid.Column="0" TextColor="White" />
 
-                                    <!--<Image x:Name="Icon" Source="warning.png" Grid.Column=" 1"  >
+                                    <!--<Image x:Name="Icon" Source="warning.png" Grid.Column=" 1">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer/>
+                                            <TapGestureRecognizer />
                                         </Image.GestureRecognizers>
                                     </Image>-->
                                 </Grid>
@@ -66,31 +70,31 @@
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Graph" IconImageSource="statistics.png" BackgroundColor="#082535">
-        <StackLayout >
-            <StackLayout BackgroundColor="#181616" HeightRequest="80" Margin="7,5,7,5" >
-                <Grid >
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Help" Order="Secondary" Priority="1" Clicked="ToolbarItem_Clicked_Help" />
+            <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        </ContentPage.ToolbarItems>
+        <StackLayout>
+            <StackLayout BackgroundColor="#181616" HeightRequest="80" Margin="7,5,7,5">
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0"  Text="{Binding GraphNodeID,StringFormat='NodeID: {0}'}" TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
-                    <Label Grid.Row="0" Grid.Column="1"  Text="{Binding GraphDate,StringFormat='Date: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
+                    <Label Grid.Row="0" Grid.Column="0"  Text="{Binding GraphNodeID,StringFormat='NodeID: {0}'}" TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+                    <Label Grid.Row="0" Grid.Column="1"  Text="{Binding GraphDate,StringFormat='Date: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium" />
 
-                    <Label Grid.Row="1" Grid.Column="0"  Text="{Binding GraphValue,StringFormat='Value: {0}'}"   TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
-                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding GraphTime,StringFormat='Time: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
-
+                    <Label Grid.Row="1" Grid.Column="0"  Text="{Binding GraphValue,StringFormat='Value: {0}'}"   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding GraphTime,StringFormat='Time: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium" />
                 </Grid>
-               
             </StackLayout>
-            
-            <form:ChartView x:Name="Chart0" Margin="7,0,7,5" Chart="{Binding Chart0}"  IsVisible="{Binding vis}"  BackgroundColor="#181616" 
-                            HeightRequest="450" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-           
+
+            <form:ChartView x:Name="Chart0" Margin="7,0,7,5" Chart="{Binding Chart0}"  IsVisible="{Binding vis}"  BackgroundColor="#181616"
+                            HeightRequest="450" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
         </StackLayout>
-      
     </ContentPage>
 </TabbedPage>

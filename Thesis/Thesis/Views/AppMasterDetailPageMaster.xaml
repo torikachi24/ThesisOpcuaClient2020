@@ -16,15 +16,15 @@
                     <Image Source="LogoAuto.png" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
                 </Frame>
                 <StackLayout VerticalOptions="Center" Spacing="2">
-                    <Label Text="Welcome to my App" FontAttributes="Bold" FontSize="Large" 
-                           Margin="10,0,0,0" VerticalOptions="Center" TextColor="#06C6BC"/>
+                    <Label Text="Welcome to my App" FontAttributes="Bold" FontSize="Large"
+                           Margin="10,0,0,0" VerticalOptions="Center" TextColor="#06C6BC" />
                 <Label Text="hcmut.edu@gmail.com" FontSize="Small" TextColor="#06C6BC"
                            Margin="10,0,0,0" VerticalOptions="Center" />
                 </StackLayout>
             </StackLayout>
             <Grid Grid.Row="1" Grid.Column="0">
             <ListView x:Name="MenuItemsListView" SeparatorVisibility="Default" HasUnevenRows="true"
-                       ItemsSource="{Binding MenuItems}" 
+                       ItemsSource="{Binding MenuItems}"
                       SeparatorColor="#00757C"
                       Margin="5,8,5,5"
                     Footer=""
@@ -43,7 +43,7 @@
                                 <Image Source="{Binding Icon}"  HeightRequest="25" WidthRequest="25" Grid.Row="0"
                                            Grid.Column="0" VerticalOptions="Center" Margin="10,0,0,0" />
                                 <Label Text="{Binding Title}" Margin="20,0,0,0"
-                                       TextColor="White"    
+                                       TextColor="White"
                                        LineBreakMode="TailTruncation" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" FontAttributes="Bold" />
                             </Grid>
                         </custom:CustomViewCell>
@@ -54,12 +54,11 @@
                 <BoxView HeightRequest="3" Color="#00757C" />
                 <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" Margin="5,0,0,5">
                     <Image Source="logout.png" HeightRequest="25" WidthRequest="25" Margin="10,0,0,0" />
-                    <Button Text="Disconnect" VerticalOptions="Center" 
+                    <Button Text="Disconnect" VerticalOptions="Center"
                         TextColor="White"
                         FontAttributes="Bold" Margin="10,0,0,0" BackgroundColor="Transparent" Clicked="Disconnect_Clicked" />
                 </StackLayout>
             </StackLayout>
-           
             </Grid>
         </Grid>
     </ContentPage>

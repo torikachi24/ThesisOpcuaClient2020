@@ -12,12 +12,13 @@ namespace Thesis
         private SampleClient opcClient;
         private ListNode selected;
         private string datatype;
-        public WritePopup(SampleClient Client,ListNode id,string _datatype)
+
+        public WritePopup(SampleClient Client, ListNode id, string _datatype)
         {
             InitializeComponent();
             opcClient = Client;
             selected = id;
-            TitleNode.Text ="Change value of : "+ id.NodeName;
+            TitleNode.Text = "Change value of : " + id.NodeName;
             datatype = _datatype;
             if (datatype == "Boolean")
             {
@@ -29,7 +30,6 @@ namespace Thesis
                 FixType.IsVisible = true;
                 BooleanType.IsVisible = false;
             }
-
         }
 
         private void Button_Clicked_Cancel(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace Thesis
 
         private void Button_Clicked_Change(object sender, EventArgs e)
         {
-            string idnode =selected.id;
+            string idnode = selected.id;
             List<String> values = new List<string>();
             List<String> nodeIdStrings = new List<string>();
             nodeIdStrings.Add(idnode);
@@ -60,17 +60,16 @@ namespace Thesis
                 values.Add(ValueChange.Text);
             }
             values.Add(ValueChange.Text);
-            
+
             try
             {
                 opcClient.VariableWrite(values, nodeIdStrings);
             }
             catch (Exception ex)
             {
-                DisplayAlert("Alarm", "Can't Write"+ ex.ToString(), "OK");
+                DisplayAlert("Alarm", "Can't Write" + ex.ToString(), "OK");
             }
             PopupNavigation.Instance.PopAllAsync();
-
         }
 
         private void TrueCheck_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -89,4 +88,4 @@ namespace Thesis
             }
         }
     }
-} 
+}

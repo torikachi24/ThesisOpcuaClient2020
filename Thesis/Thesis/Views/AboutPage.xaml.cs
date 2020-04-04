@@ -1,7 +1,5 @@
 ﻿using Plugin.Share;
 using Rg.Plugins.Popup.Services;
-using System;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,9 +17,9 @@ namespace Thesis
             });
         }
 
-            //public ICommand ClickCommand => new Command(OpenBrowser);
+        //public ICommand ClickCommand => new Command(OpenBrowser);
 
-            private void OpenBrowser()
+        private void OpenBrowser()
         {
             CrossShare.Current.OpenBrowser("http://dee.hcmut.edu.vn/");
         }

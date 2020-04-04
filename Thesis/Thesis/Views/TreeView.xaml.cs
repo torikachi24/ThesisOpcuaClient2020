@@ -4,7 +4,6 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Thesis;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -89,7 +88,6 @@ namespace Thesis
                 VariableNode variablenode = new VariableNode();
                 opcClient.Read_Datatype(opcClient, selected.id, out datatype, out variablenode);
                 await PopupNavigation.Instance.PushAsync(new AttributeReadingNode(selected, value, datatype[0], variablenode));
-
             }
             catch (Exception ex)
             {
@@ -150,9 +148,8 @@ namespace Thesis
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error"+ex.ToString());
+                Console.WriteLine("Error" + ex.ToString());
             }
-           
         }
 
         //private void UnsubscribeButton_Click(object sender, EventArgs e)
@@ -161,6 +158,7 @@ namespace Thesis
         //    mySubscription = null;
         //    itemCount = 0;
         //}
+
         #endregion Subcription
 
         #region Graph
@@ -177,10 +175,11 @@ namespace Thesis
         #endregion Graph
 
         #region Notification_Monitor
-        int cnt = 0;
+
+        private int cnt = 0;
+
         private void Notification_MonitoredItem(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
         {
-
             MonitoredItemNotification notification = e.NotificationValue as MonitoredItemNotification;
             if (notification == null)
             {
@@ -193,16 +192,15 @@ namespace Thesis
                 if (cnt == 4)
                 {
                     MonitorType monitorType = new MonitorType();
-                monitorType.Name = monitoredItem.DisplayName;
-                monitorType.Value = Utils.Format("{0}", notification.Value.WrappedValue.ToString());
-                monitorType.SourceT = notification.Value.SourceTimestamp.ToString("hh:mm:ss");
-                monitorType.ServerT = notification.Value.ServerTimestamp.ToString("hh:mm:ss");
-                MonitorListViewModel.monitor = monitorType;
+                    monitorType.Name = monitoredItem.DisplayName;
+                    monitorType.Value = Utils.Format("{0}", notification.Value.WrappedValue.ToString());
+                    monitorType.SourceT = notification.Value.SourceTimestamp.ToString("hh:mm:ss");
+                    monitorType.ServerT = notification.Value.ServerTimestamp.ToString("hh:mm:ss");
+                    MonitorListViewModel.monitor = monitorType;
                     //MessagingCenter.Send<TreeView, MonitorType>(this, "AddOrEditMonitor", monitorType);
-                 cnt = 0;
+                    cnt = 0;
                 }
             }
-
         }
 
         #endregion Notification_Monitor
@@ -249,5 +247,15 @@ namespace Thesis
         }
 
         #endregion MenuItems
+
+        private async void ToolbarItem_Clicked_About(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new AboutPage());
+        }
+
+        private async void ToolbarItem_Clicked_Help(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new HelpPage());
+        }
     }
 }

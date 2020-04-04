@@ -14,7 +14,7 @@ namespace Thesis {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\HelpPage.xaml")]
-    public partial class HelpPage : global::Xamarin.Forms.ContentPage {
+    public partial class HelpPage : global::Rg.Plugins.Popup.Pages.PopupPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {

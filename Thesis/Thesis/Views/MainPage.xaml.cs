@@ -1,5 +1,4 @@
-﻿using Android.Widget;
-using Rg.Plugins.Popup.Services;
+﻿using Rg.Plugins.Popup.Services;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,6 +23,7 @@ namespace Thesis
             BindingContext = textInfo;
             InitializeComponent();
             BindingContext = new ConnectionListViewModel();
+
             MessagingCenter.Subscribe<Popup, ConnectType>(this, "AddOrEditConnection",
                (page, connectType) =>
                {
@@ -52,7 +52,7 @@ namespace Thesis
 
                 if (connectToServer == true)
                 {
-                    var connectionStatus = await Task.Run(() => OpcClient.OpcClient(endpointUrl, UserAuthor,User,Pass));
+                    var connectionStatus = await Task.Run(() => OpcClient.OpcClient(endpointUrl, UserAuthor, User, Pass));
 
                     if (connectionStatus == SampleClient.ConnectionStatus.Connected)
                     {
@@ -66,7 +66,6 @@ namespace Thesis
                         {
                             tree = OpcClient.GetChildren(tree.currentView[0].id);
                         }
-                        Test.opc = OpcClient;
                         AppMasterDetailPageMaster.OpcClient_Master = OpcClient;
                         AppMasterDetailPage.tree_controlPage = tree;
                         AppMasterDetailPage.sampleClient_controlPage = OpcClient;
@@ -78,7 +77,6 @@ namespace Thesis
                     {
                         await PopupNavigation.Instance.PopAsync();
                         await Navigation.PushAsync(new AlertPage("Cannot connect to an OPC UA server"));
-                       
                     }
                 }
                 else
@@ -121,7 +119,7 @@ namespace Thesis
 
         private async void ToolbarItem_Clicked_Help(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HelpPage());
+            await PopupNavigation.Instance.PushAsync(new HelpPage());
         }
     }
 }

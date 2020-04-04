@@ -30,9 +30,8 @@ namespace Thesis
                 MenuItems = new ObservableCollection<AppMasterDetailPageMenuItem>(new[]
                 {
                     new AppMasterDetailPageMenuItem { Id = 0,Icon="home.png", Title = "Status" ,TargetType=typeof(AppMasterDetailPageDetail)},
-                    new AppMasterDetailPageMenuItem { Id = 1,Icon="connector.png", Title = "TreeView" ,TargetType=typeof(TreeView)},
-                    new AppMasterDetailPageMenuItem { Id = 2,Icon="hardware.png", Title = "Monitor", TargetType=typeof(TabbedPageMonitor)},
-                    new AppMasterDetailPageMenuItem { Id = 3,Icon="hardware.png", Title = "Monitor", TargetType=typeof(Test)},
+                    new AppMasterDetailPageMenuItem { Id = 1,Icon="connector.png", Title = "Browse" ,TargetType=typeof(TreeView)},
+                    new AppMasterDetailPageMenuItem { Id = 2,Icon="hardware.png", Title = "Monitor", TargetType=typeof(MonitorPage)},
                  });
             }
 

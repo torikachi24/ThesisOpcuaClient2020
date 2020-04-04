@@ -8,13 +8,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Thesis.Views.TabbedPageMonitor.xaml", "Views/TabbedPageMonitor.xaml", typeof(global::Thesis.TabbedPageMonitor))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Thesis.MonitorPage.xaml", "MonitorPage.xaml", typeof(global::Thesis.MonitorPage))]
 
 namespace Thesis {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\TabbedPageMonitor.xaml")]
-    public partial class TabbedPageMonitor : global::Xamarin.Forms.TabbedPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("MonitorPage.xaml")]
+    public partial class MonitorPage : global::Xamarin.Forms.TabbedPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Microcharts.Forms.ChartView Chart0;
@@ -24,7 +24,7 @@ namespace Thesis {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(TabbedPageMonitor));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MonitorPage));
             Chart0 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Microcharts.Forms.ChartView>(this, "Chart0");
             Chart1 = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Microcharts.Forms.ChartView>(this, "Chart1");
         }

@@ -1,15 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
-             x:Class="Thesis.Test">
-    <ContentPage.Content>
+            xmlns:form="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.OffscreenPageLimit="2"
+             android:TabbedPage.IsSwipePagingEnabled="true"
+            android:TabbedPage.IsSmoothScrollEnabled="false"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="#00757C"
+            BarTextColor="White"
+            x:Class="Thesis.MonitorPage">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="DataView" IconImageSource="data.png" BackgroundColor="#082535">
+        <ContentPage.ToolbarItems>
+            <ToolbarItem Text="Help" Order="Secondary" Priority="1" Clicked="ToolbarItem_Clicked_Help"/>
+            <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About"/>
+        </ContentPage.ToolbarItems>
         <StackLayout Margin="10">
-            <ListView     x:Name="Listu"
+            <ListView     ItemsSource="{Binding Monitors}"
                           HasUnevenRows="True"
                           android:ListView.IsFastScrollEnabled="true"
-                          SeparatorColor="#06C6BC" BackgroundColor="#082535"
-                          >
+                          SeparatorColor="#06C6BC" BackgroundColor="#082535">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -51,5 +62,22 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </ContentPage>
+    <!--Graph Page-->
+    <ContentPage Title="Graph" IconImageSource="statistics.png" BackgroundColor="#082535">
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame BorderColor="#05a993" Margin="15,10,10,0" Padding="4,4,4,4" BackgroundColor="#181616" Grid.Row="0">
+                    <form:ChartView x:Name="Chart0"   Chart="{Binding Chart0}" />
+                </Frame>
+                <Frame BorderColor="#05a993" Margin="10,10,10,15" Padding="4,4,4,4" BackgroundColor="#181616" Grid.Row="1">
+                    <form:ChartView x:Name="Chart1" Chart="{Binding Chart1}" />
+                </Frame>
+            </Grid>
+        </ScrollView>
+    </ContentPage>
+</TabbedPage>

@@ -4,7 +4,10 @@
              x:Class="Thesis.AppMasterDetailPageDetail"
              Title="Detail"
              BackgroundColor="#082535">
-   
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Help" Order="Secondary" Priority="1" Clicked="ToolbarItem_Clicked_Help"/>
+        <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About"/>
+    </ContentPage.ToolbarItems>
   <StackLayout Padding="10">
         <Label Text="Server Name" TextColor="#06C6BC" FontAttributes="Bold" FontSize="Large" />
         <BoxView HeightRequest="2" Color="#00757C" />

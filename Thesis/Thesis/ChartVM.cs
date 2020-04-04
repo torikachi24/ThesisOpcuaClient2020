@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using Entry = Microcharts.Entry;
 
 namespace Thesis
@@ -13,7 +12,9 @@ namespace Thesis
     {
         public Chart Data { get; private set; }
         public List<Entry> _entries = new List<Entry>();
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         public Chart Chart0 { get; set; }
         public string GraphNodeID { get; set; }
         public string GraphDate { get; set; }
@@ -21,11 +22,11 @@ namespace Thesis
         public string GraphTime { get; set; }
         public bool vis { get; set; }
 
-        public ChartVM(SampleClient _client,string _node)
+        public ChartVM(SampleClient _client, string _node)
         {
-            if(_client !=null)
+            if (_client != null)
             {
-                if (_node!=null)
+                if (_node != null)
                 {
                     vis = true;
                     updatechart(_client, _node);
@@ -39,10 +40,9 @@ namespace Thesis
             {
                 vis = false;
             }
-           
         }
-        
-        private async void updatechart(SampleClient Client,string node)
+
+        private async void updatechart(SampleClient Client, string node)
         {
             while (true)
             {
@@ -61,7 +61,6 @@ namespace Thesis
                 if (_entries.Count == 8)
                 {
                     _entries.RemoveAt(0);
-
                 }
 
                 this.GraphNodeID = node;
@@ -69,10 +68,21 @@ namespace Thesis
                 this.GraphValue = value;
                 this.GraphTime = DateTime.Now.ToString("hh:mm:ss");
 
-                this.Chart0 = new LineChart { Entries = _entries, MinValue = 0, MaxValue = 100, LabelTextSize =30,
-                                              LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal,
-                                              IsAnimated = false, AnimationDuration = new TimeSpan(0), BackgroundColor = SKColors.Transparent
-                                              ,PointMode = PointMode.Square,PointSize = 20,LineMode=LineMode.Straight
+                this.Chart0 = new LineChart
+                {
+                    Entries = _entries,
+                    MinValue = 0,
+                    MaxValue = 100,
+                    LabelTextSize = 30,
+                    LabelOrientation = Orientation.Horizontal,
+                    ValueLabelOrientation = Orientation.Horizontal,
+                    IsAnimated = false,
+                    AnimationDuration = new TimeSpan(0),
+                    BackgroundColor = SKColors.Transparent
+                                              ,
+                    PointMode = PointMode.Square,
+                    PointSize = 20,
+                    LineMode = LineMode.Straight
                 };
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.Chart0)));
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(this.GraphNodeID)));
@@ -83,4 +93,3 @@ namespace Thesis
         }
     }
 }
-

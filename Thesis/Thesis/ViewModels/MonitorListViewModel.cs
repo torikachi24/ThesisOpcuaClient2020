@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using Thesis;
-using Xamarin.Forms;
 
 namespace Thesis
 {
     public class MonitorListViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
         public static MonitorType monitor { get; set; }
         private ObservableCollection<MonitorType> _monitors;
-        public  ObservableCollection<MonitorType> Monitors
+
+        public ObservableCollection<MonitorType> Monitors
         {
             get
             {
@@ -29,7 +27,6 @@ namespace Thesis
                 }
             }
         }
-        public static MonitorType monitortype;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
@@ -38,7 +35,7 @@ namespace Thesis
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        
+
         public MonitorListViewModel()
         {
             Monitors = new ObservableCollection<MonitorType>();
@@ -59,8 +56,6 @@ namespace Thesis
                         Monitors.Add(monitor);
                         int oldIndex = Monitors.IndexOf(Monitors[a]);
                         Monitors.Move(oldIndex, newIndex);
-
-
                     }
                     else
                     {
@@ -69,37 +64,36 @@ namespace Thesis
                 }
             }
 
-                //  MessagingCenter.Subscribe<TreeView, MonitorType>(this, "AddOrEditMonitor",
-                //(page, monitorType) =>
-                //{
-                //    if (monitorType.MonitorId == 0)
-                //    {
-                //        monitorType.MonitorId = Monitors.Count + 1;
-                //        Monitors.Add(monitorType);
-                //    }
-                //    else
-                //    {
-                //        for (int a = 0; a < Monitors.Count; a++)
-                //        {
-                //            if (monitorType.Name == Monitors[a].Name)
-                //            {
-                //                int newIndex = Monitors.IndexOf(monitorType);
-                //                Monitors.Remove(Monitors[a]);
-                //                Monitors.Add(monitorType);
-                //                int oldIndex = Monitors.IndexOf(Monitors[a]);
-                //                Monitors.Move(oldIndex, newIndex);
+            //  MessagingCenter.Subscribe<TreeView, MonitorType>(this, "AddOrEditMonitor",
+            //(page, monitorType) =>
+            //{
+            //    if (monitorType.MonitorId == 0)
+            //    {
+            //        monitorType.MonitorId = Monitors.Count + 1;
+            //        Monitors.Add(monitorType);
+            //    }
+            //    else
+            //    {
+            //        for (int a = 0; a < Monitors.Count; a++)
+            //        {
+            //            if (monitorType.Name == Monitors[a].Name)
+            //            {
+            //                int newIndex = Monitors.IndexOf(monitorType);
+            //                Monitors.Remove(Monitors[a]);
+            //                Monitors.Add(monitorType);
+            //                int oldIndex = Monitors.IndexOf(Monitors[a]);
+            //                Monitors.Move(oldIndex, newIndex);
 
+            //            }
+            //            else
+            //            {
+            //                Monitors.Add(monitorType);
+            //            }
+            //        }
+            //        Monitors.Add(monitorType);
+            //    }
 
-                //            }
-                //            else
-                //            {
-                //                Monitors.Add(monitorType);
-                //            }
-                //        }
-                //        Monitors.Add(monitorType);
-                //    }
-
-                //});
-            }
+            //});
+        }
     }
 }
