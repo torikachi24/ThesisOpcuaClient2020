@@ -16,8 +16,10 @@ namespace Thesis
         {
             Connections = new ObservableCollection<ConnectType>()
             {
-                new ConnectType(1,"ServerA","opc.tcp://45.124.94.180:4852"),
-                new ConnectType(2,"ServerB","opc.tcp://192.168.0.1:4840")
+                new ConnectType(1,"ServerA","opc.tcp://45.124.94.180:4852",false,"",""),
+                new ConnectType(2,"ServerB","opc.tcp://192.168.1.1:4840",false,"",""),
+                new ConnectType(3,"ServerC","opc.tcp://localhost:62541",false,"",""),
+                new ConnectType(4,"ServerD","opc.tcp://localhost:4139/OPC",false,"","")
             };
             MessagingCenter.Subscribe<Popup, ConnectType>(this, "AddOrEditConnection",
                 (page, connectType) =>

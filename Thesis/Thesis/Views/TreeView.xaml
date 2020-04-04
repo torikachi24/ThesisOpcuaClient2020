@@ -1,17 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Thesis.TreeView"
+            xmlns:form="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+            x:Class="Thesis.TreeView"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+              android:TabbedPage.OffscreenPageLimit="2"
+             android:TabbedPage.IsSwipePagingEnabled="true"
+            android:TabbedPage.IsSmoothScrollEnabled="false"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="#00757C"
+            BarTextColor="White"
              BackgroundColor="#082535"
              Title="Browse Opc Ua nodes">
-    <ContentPage.Content>
+    <ContentPage Title="DataView" IconImageSource="data.png" BackgroundColor="#082535">
         <StackLayout>
             <ListView x:Name="treeView"
               SelectedItem="Mode=Twoway"
               ItemSelected="OnSelection"
               HasUnevenRows="True"
               BackgroundColor="#082535"
-              SeparatorColor="#00757C">
+              SeparatorColor="#00757C"
+               Margin="5,0,5,0">
                 <ListView.SeparatorVisibility>
                     <OnPlatform x:TypeArguments="SeparatorVisibility">
                         <On Platform="iOS">None</On>
@@ -55,5 +64,33 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </ContentPage>
+    <ContentPage Title="Graph" IconImageSource="statistics.png" BackgroundColor="#082535">
+        <StackLayout >
+            <StackLayout BackgroundColor="#181616" HeightRequest="80" Margin="7,5,7,5" >
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0"  Text="{Binding GraphNodeID,StringFormat='NodeID: {0}'}" TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
+                    <Label Grid.Row="0" Grid.Column="1"  Text="{Binding GraphDate,StringFormat='Date: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
+
+                    <Label Grid.Row="1" Grid.Column="0"  Text="{Binding GraphValue,StringFormat='Value: {0}'}"   TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
+                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding GraphTime,StringFormat='Time: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium"/>
+
+                </Grid>
+               
+            </StackLayout>
+            
+            <form:ChartView x:Name="Chart0" Margin="7,0,7,5" Chart="{Binding Chart0}"  IsVisible="{Binding vis}"  BackgroundColor="#181616" 
+                            HeightRequest="450" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+           
+        </StackLayout>
+      
+    </ContentPage>
+</TabbedPage>

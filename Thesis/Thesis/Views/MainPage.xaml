@@ -2,10 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Thesis"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="Thesis.MainPage"
-             BackgroundColor="#082535"
-             NavigationPage.HasNavigationBar="false">
+             Title="OPC UA Client"
+             BackgroundColor="#082535">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Help" Order="Secondary" Priority="1" Clicked="ToolbarItem_Clicked_Help"/>
+        <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout  Margin = "10,10,10,10">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
@@ -25,11 +30,15 @@
                 </StackLayout>
 
                 <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold" 
-                       TextColor="#06C6BC" FontSize="Medium" />
+                       TextColor="#06C6BC" FontSize="Medium"  >
+                   
+                </Label>
                 <BoxView HeightRequest="3" Color="#00757C" />
 
-                <ListView ItemsSource="{Binding Connections}"
+                <ListView x:Name="listView"
+                          ItemsSource="{Binding Connections}"
                           HasUnevenRows="True"
+                          android:ListView.IsFastScrollEnabled="true"
                           SeparatorColor="#06C6BC" BackgroundColor="#082535"
                           Footer="">
                     <ListView.ItemTemplate>

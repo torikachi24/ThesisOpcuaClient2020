@@ -4,8 +4,8 @@
              x:Class="Thesis.App">
     <Application.Resources>
         <Style TargetType="NavigationPage">
-            <Setter Property="BarBackgroundColor" Value="#082535"></Setter>
-            
+            <Setter Property="BarBackgroundColor" Value="#00757C"></Setter>
+            <Setter Property="BarTextColor" Value="White"></Setter>
         </Style>
     </Application.Resources>
 </Application>

@@ -4,6 +4,7 @@
              x:Class="Thesis.AppMasterDetailPageDetail"
              Title="Detail"
              BackgroundColor="#082535">
+   
   <StackLayout Padding="10">
         <Label Text="Server Name" TextColor="#06C6BC" FontAttributes="Bold" FontSize="Large" />
         <BoxView HeightRequest="2" Color="#00757C" />

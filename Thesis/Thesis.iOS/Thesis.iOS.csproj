@@ -107,19 +107,18 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\info.png" />
     <BundleResource Include="Resources\home.png" />
     <BundleResource Include="Resources\logout.png" />
     <BundleResource Include="Resources\hardware.png" />
-    <BundleResource Include="Resources\doubt.png" />
     <BundleResource Include="Resources\connector.png" />
-    <BundleResource Include="Resources\graph.png" />
     <BundleResource Include="Resources\Logobk_trans.png" />
     <BundleResource Include="Resources\folder.png" />
     <BundleResource Include="Resources\tag.png" />
     <BundleResource Include="Resources\LogoAuto.png" />
     <BundleResource Include="Resources\edit.png" />
     <BundleResource Include="Resources\delete.png" />
+    <BundleResource Include="Resources\data.png" />
+    <BundleResource Include="Resources\statistics.png" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="PathService.cs" />
@@ -184,12 +183,15 @@
       <Version>0.8.5-pre</Version>
     </PackageReference>
     <PackageReference Include="Microcharts.Forms">
-      <Version>0.8.5-pre</Version>
+      <Version>0.8.3-pre</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.Share">
+      <Version>7.1.1</Version>
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.2.0.223</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.494-pre2" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

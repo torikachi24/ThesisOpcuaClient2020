@@ -35,6 +35,9 @@ Microsoft.Extensions.Options
 Microsoft.Extensions.Primitives
 Microsoft.Net.Http.Headers
 Newtonsoft.Json
+Plugin.CurrentActivity
+Plugin.Share.Abstractions
+Plugin.Share
 Rg.Plugins.Popup
 Rg.Plugins.Popup.Droid
 SkiaSharp
@@ -102,7 +105,6 @@ System.ObjectModel
 System.Threading.Tasks
 System.Collections
 System.Diagnostics.Debug
-System.ValueTuple
 System.Threading
 System.Resources.ResourceManager
 System.Runtime.Numerics

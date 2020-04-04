@@ -4,7 +4,6 @@
              xmlns:custom="clr-namespace:Thesis"
              x:Class="Thesis.AppMasterDetailPageMaster"
              BackgroundColor="#082535"
-             NavigationPage.HasNavigationBar="False"
              Title="Master">
     <Grid>
             <Grid.RowDefinitions>
@@ -18,8 +17,8 @@
                 </Frame>
                 <StackLayout VerticalOptions="Center" Spacing="2">
                     <Label Text="Welcome to my App" FontAttributes="Bold" FontSize="Large" 
-                           Margin="10,0,0,0" VerticalOptions="Center" TextColor="#082535"/>
-                <Label Text="hcmut.edu@gmail.com" FontSize="Small" TextColor="#082535"
+                           Margin="10,0,0,0" VerticalOptions="Center" TextColor="#06C6BC"/>
+                <Label Text="hcmut.edu@gmail.com" FontSize="Small" TextColor="#06C6BC"
                            Margin="10,0,0,0" VerticalOptions="Center" />
                 </StackLayout>
             </StackLayout>

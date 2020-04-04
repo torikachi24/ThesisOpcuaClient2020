@@ -40,6 +40,9 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Microsoft.Net.Http.H
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Mono.Android.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\mscorlib.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Newtonsoft.Json.dll
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Plugin.CurrentActivity.dll
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Plugin.Share.Abstractions.dll
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Plugin.Share.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Rg.Plugins.Popup.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\Rg.Plugins.Popup.Droid.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\SkiaSharp.dll
@@ -50,10 +53,8 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Collections.I
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Core.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Diagnostics.DiagnosticSource.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.dll
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.IO.Compression.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.IO.Pipelines.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Memory.dll
-C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Net.Http.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Reflection.Metadata.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Runtime.CompilerServices.Unsafe.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Text.Encodings.Web.dll
@@ -108,8 +109,10 @@ C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\netstandard.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Data.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Numerics.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Transactions.dll
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.IO.Compression.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.IO.Compression.FileSystem.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.ComponentModel.Composition.dll
+C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Net.Http.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Runtime.Serialization.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.ServiceModel.Internals.dll
 C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\android\assets\System.Web.Services.dll

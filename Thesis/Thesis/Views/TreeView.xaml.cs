@@ -2,26 +2,30 @@
 using Opc.Ua.Client;
 using Rg.Plugins.Popup.Services;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using Thesis;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Thesis
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TreeView : ContentPage
+    public partial class TreeView : TabbedPage
     {
         #region Fields
+
         private ObservableCollection<ListNode> nodes = new ObservableCollection<ListNode>();
         private SampleClient opcClient;
         private Tree storedTree;
         private MonitoredItem myMonitoredItem;
         private Int16 itemCount;
         private Subscription mySubscription;
-        #endregion
+
+        #endregion Fields
 
         #region TreeView
+
         public TreeView(Tree tree, SampleClient client)
         {
             InitializeComponent();
@@ -30,10 +34,13 @@ namespace Thesis
             storedTree = tree;
             opcClient = client;
             DisplayNodes();
+            itemCount = 0;
         }
-        #endregion
+
+        #endregion TreeView
 
         #region DisplayNodes
+
         private void DisplayNodes()
         {
             nodes.Clear();
@@ -47,6 +54,7 @@ namespace Thesis
             treeView.ItemsSource = null;
             treeView.ItemsSource = nodes;
         }
+
         private async void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
@@ -65,25 +73,25 @@ namespace Thesis
                 await Navigation.PushAsync(treeViewPage);
             }
         }
-        #endregion
 
-    
+        #endregion DisplayNodes
 
         #region Read/Write
+
         public async void OnRead(object sender, EventArgs e)
         {
             try
             {
                 var menu = sender as MenuItem;
                 var selected = menu.CommandParameter as ListNode;
-                //var value = opcClient.VariableRead("ns=3;s=\"Realnum\"");
-                //Console.WriteLine(value);
                 var value = opcClient.VariableRead(selected.id);
-
-                await PopupNavigation.Instance.PushAsync(new AttributeReadingNode(selected, value));
+                List<string> datatype = new List<string>();
+                VariableNode variablenode = new VariableNode();
+                opcClient.Read_Datatype(opcClient, selected.id, out datatype, out variablenode);
+                await PopupNavigation.Instance.PushAsync(new AttributeReadingNode(selected, value, datatype[0], variablenode));
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -95,19 +103,21 @@ namespace Thesis
             {
                 var menu = sender as MenuItem;
                 var selected = menu.CommandParameter as ListNode;
-
-                await PopupNavigation.Instance.PushAsync(new WritePopup(opcClient, selected));
+                List<string> datatype = new List<string>();
+                VariableNode variablenode = new VariableNode();
+                opcClient.Read_Datatype(opcClient, selected.id, out datatype, out variablenode);
+                await PopupNavigation.Instance.PushAsync(new WritePopup(opcClient, selected, datatype[0]));
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            
-            
         }
-        #endregion
+
+        #endregion Read/Write
 
         #region Subcription
+
         public void OnSubcription(object sender, EventArgs e)
         {
             if (myMonitoredItem != null)
@@ -118,52 +128,87 @@ namespace Thesis
                 }
                 catch
                 {
+                    //ignore
                     ;
                 }
             }
+
             try
             {
-                var menu = sender as MenuItem;
-                var selected = menu.CommandParameter as ListNode;
+                string id = "ns=3;s=\"Z\"";
+                //use different item names for correct assignment at the notificatino event
                 itemCount++;
                 string monitoredItemName = "myItem" + itemCount.ToString();
                 if (mySubscription == null)
                 {
                     mySubscription = opcClient.Subscribe(2000);
                 }
-                myMonitoredItem = opcClient.AddMonitoredItem(mySubscription, "ns=3;s=\"RealNum\"", monitoredItemName, 1);
-                //myMonitoredItem = opcClient.AddMonitoredItem(mySubscription, selected.id.ToString(), monitoredItemName, 1);
+                myMonitoredItem = opcClient.AddMonitoredItem(mySubscription, id, monitoredItemName, 1);
+
                 opcClient.ItemChangedNotification += new MonitoredItemNotificationEventHandler(Notification_MonitoredItem);
+                //Navigation.PushAsync(new TabbedPageMonitor());
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine("Error"+ex.ToString());
             }
-
+           
         }
-        #endregion
+
+        //private void UnsubscribeButton_Click(object sender, EventArgs e)
+        //{
+        //    opcClient.RemoveSubscription(mySubscription);
+        //    mySubscription = null;
+        //    itemCount = 0;
+        //}
+        #endregion Subcription
+
+        #region Graph
+
+        private void OnGraph(object sender, EventArgs e)
+        {
+            var menu = sender as MenuItem;
+            var selected = menu.CommandParameter as ListNode;
+            string id = "ns=3;s=\"test\"";
+            BindingContext = new ChartVM(opcClient, id);
+            CurrentPage = Children[1];
+        }
+
+        #endregion Graph
 
         #region Notification_Monitor
+        int cnt = 0;
         private void Notification_MonitoredItem(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
         {
+
             MonitoredItemNotification notification = e.NotificationValue as MonitoredItemNotification;
             if (notification == null)
             {
                 return;
             }
+            else
+            {
+                cnt += 1;
+                //Console.WriteLine(cnt);
+                if (cnt == 4)
+                {
+                    MonitorType monitorType = new MonitorType();
+                monitorType.Name = monitoredItem.DisplayName;
+                monitorType.Value = Utils.Format("{0}", notification.Value.WrappedValue.ToString());
+                monitorType.SourceT = notification.Value.SourceTimestamp.ToString("hh:mm:ss");
+                monitorType.ServerT = notification.Value.ServerTimestamp.ToString("hh:mm:ss");
+                MonitorListViewModel.monitor = monitorType;
+                    //MessagingCenter.Send<TreeView, MonitorType>(this, "AddOrEditMonitor", monitorType);
+                 cnt = 0;
+                }
+            }
 
-            //Console.WriteLine(monitoredItem.DisplayName);
-            //Console.WriteLine(notification.Value.WrappedValue.ToString());
-            //Console.WriteLine(notification.Value.SourceTimestamp.ToString());
-            //Console.WriteLine(notification.Value.ServerTimestamp.ToString());
-            //subscriptionTextBox.Text = "Item name: " + monitoredItem.DisplayName;
-            //subscriptionTextBox.Text += System.Environment.NewLine + "Value: " + Utils.Format("{0}", notification.Value.WrappedValue.ToString());
-            //subscriptionTextBox.Text += System.Environment.NewLine + "Source timestamp: " + notification.Value.SourceTimestamp.ToString();
-            //subscriptionTextBox.Text += System.Environment.NewLine + "Server timestamp: " + notification.Value.ServerTimestamp.ToString();
         }
-        #endregion
+
+        #endregion Notification_Monitor
 
         #region MenuItems
+
         private void OnBindingContextChanged(object sender, EventArgs e)
         {
             base.OnBindingContextChanged();
@@ -183,23 +228,26 @@ namespace Thesis
                 {
                     MenuItem WNode = new MenuItem { Text = "Write" };
                     MenuItem RNode = new MenuItem { Text = "Read" };
-                    MenuItem SubNode = new MenuItem { Text = "Sub" };
+                    MenuItem Graph = new MenuItem { Text = "Graph" };
+                    MenuItem Sub = new MenuItem { Text = "Sub" };
                     //viewCell.ContextActions.Add(new MenuItem() {Text = "Read"});
 
                     viewCell.ContextActions.Add(WNode);
                     viewCell.ContextActions.Add(RNode);
-                    viewCell.ContextActions.Add(SubNode);
+                    viewCell.ContextActions.Add(Graph);
+                    viewCell.ContextActions.Add(Sub);
                     foreach (var action in viewCell.ContextActions)
                     {
                         action.SetBinding(MenuItem.CommandParameterProperty, new Binding("."));
                         RNode.Clicked += OnRead;
                         WNode.Clicked += OnWrite;
-                        SubNode.Clicked += OnSubcription;
+                        Sub.Clicked += OnSubcription;
+                        Graph.Clicked += OnGraph;
                     }
                 }
             }
         }
-        #endregion
 
+        #endregion MenuItems
     }
 }

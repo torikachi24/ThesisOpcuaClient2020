@@ -44,6 +44,9 @@
   </Jars>
   <ResolvedResourceDirectories>
     <ResolvedResourceDirectory>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\3\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\39\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\40\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\41\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\54\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\56\jl\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\57\jl\res</ResolvedResourceDirectory>
@@ -63,6 +66,9 @@
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Debug\90\lp\3\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\39\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\40\jl\assets</ResolvedAssetDirectory>
+    <ResolvedAssetDirectory>obj\Debug\90\lp\41\jl\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\90\lp\54\jl\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\90\lp\56\jl\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>obj\Debug\90\lp\57\jl\assets</ResolvedAssetDirectory>
@@ -73,6 +79,9 @@
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
     <ResolvedResourceDirectoryStamp>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\3.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\39.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\40.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\41.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\54.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\56.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>C:\Thesis\Thesis\Thesis.Android\obj\Debug\90\lp\57.stamp</ResolvedResourceDirectoryStamp>

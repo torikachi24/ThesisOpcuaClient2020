@@ -2,6 +2,7 @@
 using Opc.Ua.Client;
 using Opc.Ua.Configuration;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -27,10 +28,6 @@ namespace Thesis
         private LabelViewModel info;
         private ApplicationConfiguration config;
 
-        public MonitoredItemNotificationEventHandler ItemChangedNotification = null;
-        public NotificationEventHandler ItemEventNotification = null;
-        public KeepAliveEventHandler KeepAliveNotification = null;
-        public CertificateValidationEventHandler CertificateValidationNotification = null;
         public SampleClient(LabelViewModel text)
         {
             connectionStatus = ConnectionStatus.None;
@@ -39,196 +36,6 @@ namespace Thesis
             haveAppCertificate = false;
             config = null;
         }
-
-        #region EventHandling
-        /// <summary>Eventhandler to validate the server certificate forwards this event</summary>
-        private void Notificatio_CertificateValidation(CertificateValidator certificate, CertificateValidationEventArgs e)
-        {
-            CertificateValidationNotification(certificate, e);
-        }
-
-        /// <summary>Eventhandler for MonitoredItemNotifications forwards this event</summary>
-        private void Notification_MonitoredItem(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
-        {
-            ItemChangedNotification(monitoredItem, e);
-        }
-
-        /// <summary>Eventhandler for MonitoredItemNotifications for event items forwards this event</summary>
-        private void Notification_MonitoredEventItem(Session session, NotificationEventArgs e)
-        {
-            NotificationMessage message = e.NotificationMessage;
-
-            // Check for keep alive.
-            if (message.NotificationData.Count == 0)
-            {
-                return;
-            }
-
-            ItemEventNotification(session, e);
-        }
-
-        /// <summary>Eventhandler for KeepAlive forwards this event</summary>
-        private void Notification_KeepAlive(Session session, KeepAliveEventArgs e)
-        {
-            KeepAliveNotification(session, e);
-        }
-        #endregion
-
-        #region Subscription
-        /// <summary>Creats a Subscription object to a server</summary>
-        /// <param name="publishingInterval">The publishing interval</param>
-        /// <returns>Subscription</returns>
-        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
-        public Subscription Subscribe(int publishingInterval)
-        {
-            //Create a Subscription object
-            Subscription subscription = new Subscription(session.DefaultSubscription);
-            //Enable publishing
-            subscription.PublishingEnabled = true;
-            //Set the publishing interval
-            subscription.PublishingInterval = publishingInterval;
-            //Add the subscription to the session
-            session.AddSubscription(subscription);
-            try
-            {
-                //Create/Activate the subscription
-                subscription.Create();
-                return subscription;
-            }
-            catch (Exception e)
-            {
-                //handle Exception here
-                throw e;
-            }
-        }
-
-        /// <summary>Ads a monitored item to an existing subscription</summary>
-        /// <param name="subscription">The subscription</param>
-        /// <param name="nodeIdString">The node Id as string</param>
-        /// <param name="itemName">The name of the item to add</param>
-        /// <param name="samplingInterval">The sampling interval</param>
-        /// <returns>The added item</returns>
-        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
-        public MonitoredItem AddMonitoredItem(Subscription subscription, string nodeIdString, string itemName, int samplingInterval)
-        {
-            //Create a monitored item
-            MonitoredItem monitoredItem = new MonitoredItem();
-            //Set the name of the item for assigning items and values later on; make sure item names differ
-            monitoredItem.DisplayName = itemName;
-            //Set the NodeId of the item
-            monitoredItem.StartNodeId = nodeIdString;
-            //Set the attribute Id (value here)
-            monitoredItem.AttributeId = Attributes.Value;
-            //Set reporting mode
-            monitoredItem.MonitoringMode = MonitoringMode.Reporting;
-            //Set the sampling interval (1 = fastest possible)
-            monitoredItem.SamplingInterval = samplingInterval;
-            //Set the queue size
-            monitoredItem.QueueSize = 1;
-            //Discard the oldest item after new one has been received
-            monitoredItem.DiscardOldest = true;
-            //Define event handler for this item and then add to monitoredItem
-            monitoredItem.Notification += new MonitoredItemNotificationEventHandler(Notification_MonitoredItem);
-            try
-            {
-                //Add the item to the subscription
-                subscription.AddItem(monitoredItem);
-                //Apply changes to the subscription
-                subscription.ApplyChanges();
-                return monitoredItem;
-            }
-            catch (Exception e)
-            {
-                //handle Exception here
-                throw e;
-            }
-        }
-
-        /// <summary>Ads a monitored event item to an existing subscription</summary>
-        /// <param name="subscription">The subscription</param>
-        /// <param name="nodeIdString">The node Id as string</param>
-        /// <param name="itemName">The name of the item to add</param>
-        /// <param name="samplingInterval">The sampling interval</param>
-        /// <param name="filter">The event filter</param>
-        /// <returns>The added item</returns>
-        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
-        public MonitoredItem AddEventMonitoredItem(Subscription subscription, string nodeIdString, string itemName, int samplingInterval, EventFilter filter)
-        {
-            //Create a monitored item
-            MonitoredItem monitoredItem = new MonitoredItem(subscription.DefaultItem);
-            //Set the name of the item for assigning items and values later on; make sure item names differ
-            monitoredItem.DisplayName = itemName;
-            //Set the NodeId of the item
-            monitoredItem.StartNodeId = nodeIdString;
-            //Set the attribute Id (value here)
-            monitoredItem.AttributeId = Attributes.EventNotifier;
-            //Set reporting mode
-            monitoredItem.MonitoringMode = MonitoringMode.Reporting;
-            //Set the sampling interval (1 = fastest possible)
-            monitoredItem.SamplingInterval = samplingInterval;
-            //Set the queue size
-            monitoredItem.QueueSize = 1;
-            //Discard the oldest item after new one has been received
-            monitoredItem.DiscardOldest = true;
-            //Set the filter for the event item
-            monitoredItem.Filter = filter;
-
-            //Define event handler for this item and then add to monitoredItem
-            session.Notification += new NotificationEventHandler(Notification_MonitoredEventItem);
-
-            try
-            {
-                //Add the item to the subscription
-                subscription.AddItem(monitoredItem);
-                //Apply changes to the subscription
-                subscription.ApplyChanges();
-                return monitoredItem;
-            }
-            catch (Exception e)
-            {
-                //handle Exception here
-                throw e;
-            }
-        }
-
-        /// <summary>Removs a monitored item from an existing subscription</summary>
-        /// <param name="subscription">The subscription</param>
-        /// <param name="monitoredItem">The item</param>
-        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
-        public MonitoredItem RemoveMonitoredItem(Subscription subscription, MonitoredItem monitoredItem)
-        {
-            try
-            {
-                //Add the item to the subscription
-                subscription.RemoveItem(monitoredItem);
-                //Apply changes to the subscription
-                subscription.ApplyChanges();
-                return null;
-            }
-            catch (Exception e)
-            {
-                //handle Exception here
-                throw e;
-            }
-        }
-
-        /// <summary>Removes an existing Subscription</summary>
-        /// <param name="subscription">The subscription</param>
-        /// <exception cref="Exception">Throws and forwards any exception with short error description.</exception>
-        public void RemoveSubscription(Subscription subscription)
-        {
-            try
-            {
-                //Delete the subscription and all items submitted
-                subscription.Delete(true);
-            }
-            catch (Exception e)
-            {
-                //handle Exception here
-                throw e;
-            }
-        }
-        #endregion
 
         public async void CreateCertificate()
         {
@@ -280,7 +87,7 @@ namespace Thesis
             }
         }
 
-        public async Task<ConnectionStatus> OpcClient(string endpointURL)
+        public async Task<ConnectionStatus> OpcClient(string endpointURL, bool userAuth, string userName, string password)
         {
             try
             {
@@ -310,7 +117,16 @@ namespace Thesis
                         sessionName = "OPC UA Xamarin Client IOS";
                         break;
                 }
-                session = await Session.Create(config, endpoint, false, sessionName, 60000, new UserIdentity(new AnonymousIdentityToken()), null);
+                UserIdentity UserIdentity;
+                if (userAuth)
+                {
+                    UserIdentity = new UserIdentity(userName, password);
+                }
+                else
+                {
+                    UserIdentity = new UserIdentity();
+                }
+                session = await Session.Create(config, endpoint, true, sessionName, 60000, UserIdentity, null);
 
                 if (session != null)
                 {
@@ -558,6 +374,24 @@ namespace Thesis
             }
         }
 
+        public Node ReadNode(String nodeIdString)
+        {
+            //Create a nodeId using the identifier string
+            NodeId nodeId = new NodeId(nodeIdString);
+            //Create a node
+            Node node = new Node();
+            try
+            {
+                //Read the dataValue
+                node = session.ReadNode(nodeId);
+                return node;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
 
         public string VariableRead(string node)
         {
@@ -587,32 +421,117 @@ namespace Thesis
             }
         }
 
-        public StatusCodeCollection VariableWrite(string nodeId, object value)
+        public void Read_Datatype(SampleClient opcClient, string id, out List<string> displayNames, out VariableNode variableNode)
         {
-            var nodeToWrite = new WriteValue()
-            {
-                NodeId = nodeId,
-                AttributeId = Attributes.Value,
-                Value = new DataValue()
-                {
-                    WrappedValue = new Variant(value)
-                }
-            };
-
-            WriteValueCollection nodesToWrite = new WriteValueCollection() { nodeToWrite };
-
-            ResponseHeader responseHeader = session.Write(
-                null,
-                nodesToWrite,
-                out StatusCodeCollection results,
-                out DiagnosticInfoCollection diagnosticInfos);
-
-            ClientBase.ValidateResponse(results, nodesToWrite);
-            ClientBase.ValidateDiagnosticInfos(diagnosticInfos, nodesToWrite);
-
-            return results;
+            Node node = opcClient.ReadNode(id);
+            variableNode = new VariableNode();
+            variableNode = (VariableNode)node.DataLock;
+            List<NodeId> nodeIds = new List<NodeId>();
+            displayNames = new List<string>();
+            List<ServiceResult> errors = new List<ServiceResult>();
+            NodeId nodeId = new NodeId(variableNode.DataType);
+            nodeIds.Add(nodeId);
+            session.ReadDisplayName(nodeIds, out displayNames, out errors);
         }
 
+        public void VariableWrite(List<String> values, List<String> nodeIdStrings)
+        {
+            //Create a collection of values to write
+            WriteValueCollection valuesToWrite = new WriteValueCollection();
+            //Create a collection for StatusCodes
+            StatusCodeCollection result = new StatusCodeCollection();
+            //Create a collection for DiagnosticInfos
+            DiagnosticInfoCollection diagnostics = new DiagnosticInfoCollection();
+
+            foreach (String str in nodeIdStrings)
+            {
+                //Create a nodeId
+                NodeId nodeId = new NodeId(str);
+                //Create a dataValue
+                DataValue dataValue = new DataValue();
+                //Read the dataValue
+                try
+                {
+                    dataValue = session.ReadValue(nodeId);
+                }
+                catch (Exception e)
+                {
+                    //handle Exception here
+                    throw e;
+                }
+
+                string test = dataValue.Value.GetType().Name;
+                //Get the data type of the read dataValue
+                //Handle Arrays here: TBD
+                Variant variant = 0;
+                try
+                {
+                    variant = new Variant(Convert.ChangeType(values[nodeIdStrings.IndexOf(str)], dataValue.Value.GetType()));
+                }
+                catch //no base data type
+                {
+                    //Handle different arrays types here: TBD
+                    if (dataValue.Value.GetType().Name == "string[]")
+                    {
+                        string[] arrString = values[nodeIdStrings.IndexOf(str)].Split(';');
+                        variant = new Variant(arrString);
+                    }
+                    else if (dataValue.Value.GetType().Name == "Byte[]")
+                    {
+                        string[] arrString = values[nodeIdStrings.IndexOf(str)].Split(';');
+                        Byte[] arrInt = new Byte[arrString.Length];
+
+                        for (int i = 0; i < arrString.Length; i++)
+                        {
+                            arrInt[i] = Convert.ToByte(arrString[i]);
+                        }
+                        variant = new Variant(arrInt);
+                    }
+                    else if (dataValue.Value.GetType().Name == "Int16[]")
+                    {
+                        string[] arrString = values[nodeIdStrings.IndexOf(str)].Split(';');
+                        Int16[] arrInt = new Int16[arrString.Length];
+
+                        for (int i = 0; i < arrString.Length; i++)
+                        {
+                            arrInt[i] = Convert.ToInt16(arrString[i]);
+                        }
+                        variant = new Variant(arrInt);
+                    }
+                }
+
+                //Overwrite the dataValue with a new constructor using read dataType
+                dataValue = new DataValue(variant);
+
+                //Create a WriteValue using the NodeId, dataValue and attributeType
+                WriteValue valueToWrite = new WriteValue();
+                valueToWrite.Value = dataValue;
+                valueToWrite.NodeId = nodeId;
+                valueToWrite.AttributeId = Attributes.Value;
+
+                //Add the dataValues to the collection
+                valuesToWrite.Add(valueToWrite);
+            }
+
+            try
+            {
+                //Write the collection to the server
+                session.Write(null, valuesToWrite, out result, out diagnostics);
+                foreach (StatusCode code in result)
+                {
+                    if (code != 0)
+                    {
+                        Exception ex = new Exception(code.ToString());
+                        throw ex;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
 
         private void CertificateValidator_CertificateValidation(CertificateValidator validator, CertificateValidationEventArgs e)
         {
@@ -628,6 +547,88 @@ namespace Thesis
                     info.LabelText = "Rejected Certificate: " + e.Certificate.Subject.ToString();
                 }
             }
+        }
+
+        public MonitoredItem RemoveMonitoredItem(Subscription subscription, MonitoredItem monitoredItem)
+        {
+            try
+            {
+                //Add the item to the subscription
+                subscription.RemoveItem(monitoredItem);
+                //Apply changes to the subscription
+                subscription.ApplyChanges();
+                return null;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+        public Subscription Subscribe(int publishingInterval)
+        {
+            //Create a Subscription object
+            Subscription subscription = new Subscription(session.DefaultSubscription);
+            //Enable publishing
+            subscription.PublishingEnabled = true;
+            //Set the publishing interval
+            subscription.PublishingInterval = publishingInterval;
+            //Add the subscription to the session
+            session.AddSubscription(subscription);
+            try
+            {
+                //Create/Activate the subscription
+                subscription.Create();
+                return subscription;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+        public MonitoredItem AddMonitoredItem(Subscription subscription, string nodeIdString, string itemName, int samplingInterval)
+        {
+            //Create a monitored item
+            MonitoredItem monitoredItem = new MonitoredItem();
+            //Set the name of the item for assigning items and values later on; make sure item names differ
+            monitoredItem.DisplayName = itemName;
+            //Set the NodeId of the item
+            monitoredItem.StartNodeId = nodeIdString;
+            //Set the attribute Id (value here)
+            monitoredItem.AttributeId = Attributes.Value;
+            //Set reporting mode
+            monitoredItem.MonitoringMode = MonitoringMode.Reporting;
+            //Set the sampling interval (1 = fastest possible)
+            monitoredItem.SamplingInterval = samplingInterval;
+            //Set the queue size
+            monitoredItem.QueueSize = 1;
+            //Discard the oldest item after new one has been received
+            monitoredItem.DiscardOldest = true;
+            //Define event handler for this item and then add to monitoredItem
+            monitoredItem.Notification += new MonitoredItemNotificationEventHandler(Notification_MonitoredItem);
+            try
+            {
+                //Add the item to the subscription
+                subscription.AddItem(monitoredItem);
+                //Apply changes to the subscription
+                subscription.ApplyChanges();
+                return monitoredItem;
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+        public MonitoredItemNotificationEventHandler ItemChangedNotification = null;
+
+        private void Notification_MonitoredItem(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
+        {
+            ItemChangedNotification(monitoredItem, e);
         }
     }
 }
