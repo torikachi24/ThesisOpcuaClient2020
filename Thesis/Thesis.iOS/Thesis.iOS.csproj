@@ -119,6 +119,11 @@
     <BundleResource Include="Resources\delete.png" />
     <BundleResource Include="Resources\data.png" />
     <BundleResource Include="Resources\statistics.png" />
+    <BundleResource Include="Resources\opcualogo.png" />
+    <BundleResource Include="Resources\Xamarinlogo.png" />
+    <BundleResource Include="Resources\Connect.png" />
+    <BundleResource Include="Resources\ConnectPopup.png" />
+    <BundleResource Include="Resources\Browse.png" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="PathService.cs" />
@@ -191,7 +196,7 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.2.0.223</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.6.0.494-pre2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

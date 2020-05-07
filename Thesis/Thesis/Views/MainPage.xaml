@@ -8,8 +8,8 @@
              Title="OPC UA Client"
              BackgroundColor="#082535">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Help" Order="Secondary" Priority="1" Clicked="ToolbarItem_Clicked_Help"/>
-        <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About"/>
+        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About"/>
+        <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout  Margin = "10,10,10,10">

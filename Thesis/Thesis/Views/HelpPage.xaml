@@ -25,10 +25,10 @@
                 <BoxView HeightRequest="1" Color="#00757C"/>
                 <Label TextColor="White" LineBreakMode="WordWrap" HorizontalTextAlignment="Start" 
                         Text="When starting the application the first screen to be shown is the Connection screen.Form this screen you can either create a new OPC UA connection with the &quot;Connect to new server&quot; button, or if you have used the client before you can select one of the previously created connections from the connections list." />
-                <Image/>
+                    <Image Source="Connect.png"/>
                     <Label TextColor="White" LineBreakMode="WordWrap" HorizontalTextAlignment="Start" 
                        Text="if you select &quot;Connect to new server&quot;, orselect to edit a conection from the list,you'll be shown a pop-up window."/>
-                <Image/>
+                    <Image Source="ConnectPopup.png"/>
                     <Label TextColor="White" LineBreakMode="WordWrap" HorizontalTextAlignment="Start" 
                        Text="In this window you can enter or edit the OPC UA server address,select if you want to use a secure connection, and define a name for the new connection. 
                        Once you've entered the required details you can click the Add button for new connections or Save button to save the edit to a connection from the list"/>
@@ -49,7 +49,7 @@
                 <BoxView HeightRequest="1" Color="#00757C"/>
                     <Label TextColor="White" LineBreakMode="WordWrap" HorizontalTextAlignment="Start" 
                         Text="When you open the address space browser you can navigate through the address space by clicking on the node-rows on the screen."/>
-                <Image/>
+                    <Image  Source="Browse.png"/>
                     <Label TextColor="White" LineBreakMode="WordWrap" HorizontalTextAlignment="Start" 
                        Text="Aside from navigating through the address space you can also subcribe to ndoes and view their attributes.If the node is of variable type then you can subcribe to it with the + sign, otherwise you can only see the nodes attributes with the info on the right."/>
 

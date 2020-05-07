@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "af12828da701fa22ffc1ca98eb4167c4b7940b78"
+    "signature": "c67c9a79eb0131545b257b75b4de1b618f557820"
   },
   "compilationOptions": {},
   "targets": {
@@ -17,8 +17,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.6.0.494-pre2",
-          "Mono.Android": "0.0.0.0"
+          "Xamarin.Forms": "4.5.0.617",
+          "Mono.Android": "0.0.0.0",
+          "Xamarin.iOS": "0.0.0.0"
         },
         "runtime": {
           "Thesis.dll": {}
@@ -41,7 +42,7 @@
           "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "4.6.0.494-pre2"
+          "Xamarin.Forms": "4.5.0.617"
         },
         "runtime": {
           "lib/netstandard1.3/Microcharts.Forms.dll": {
@@ -515,7 +516,7 @@
       },
       "Rg.Plugins.Popup/1.2.0.223": {
         "dependencies": {
-          "Xamarin.Forms": "4.6.0.494-pre2"
+          "Xamarin.Forms": "4.5.0.617"
         },
         "runtime": {
           "lib/netstandard1.0/Rg.Plugins.Popup.dll": {
@@ -583,7 +584,7 @@
       "SkiaSharp.Views.Forms/1.59.1.1": {
         "dependencies": {
           "SkiaSharp": "1.59.1",
-          "Xamarin.Forms": "4.6.0.494-pre2"
+          "Xamarin.Forms": "4.5.0.617"
         },
         "runtime": {
           "lib/netstandard1.3/SkiaSharp.Views.Forms.dll": {
@@ -1591,19 +1592,19 @@
           }
         }
       },
-      "Xamarin.Forms/4.6.0.494-pre2": {
+      "Xamarin.Forms/4.5.0.617": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.6.0.332"
+            "fileVersion": "4.5.0.216"
           },
           "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.6.0.332"
+            "fileVersion": "4.5.0.216"
           },
           "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "4.6.0.332"
+            "fileVersion": "4.5.0.216"
           }
         }
       },
@@ -1644,6 +1645,14 @@
       "Mono.Android/0.0.0.0": {
         "runtime": {
           "Mono.Android.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Xamarin.iOS/0.0.0.0": {
+        "runtime": {
+          "Xamarin.iOS.dll": {
             "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
@@ -2616,12 +2625,12 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Xamarin.Forms/4.6.0.494-pre2": {
+    "Xamarin.Forms/4.5.0.617": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qDeDqpe3yvWSMobkNUm4fT3M6xNBqGGIup2rf84ntk11WBaNkGXRqmJab2QZO2cUrH2dBVupkE0qO7xgxrdzjA==",
-      "path": "xamarin.forms/4.6.0.494-pre2",
-      "hashPath": "xamarin.forms.4.6.0.494-pre2.nupkg.sha512"
+      "sha512": "sha512-tB/h7bHEylOgNT+521SRnbmO+LCe5R3lPboD/icCMpa+FdjmxhZQ7+fIIPFDbhY2dqYetGRnAeJWXVx4NLbmAw==",
+      "path": "xamarin.forms/4.5.0.617",
+      "hashPath": "xamarin.forms.4.5.0.617.nupkg.sha512"
     },
     "Opc.Ua.Client/1.0.0": {
       "type": "project",
@@ -2639,6 +2648,11 @@
       "sha512": ""
     },
     "Mono.Android/0.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xamarin.iOS/0.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

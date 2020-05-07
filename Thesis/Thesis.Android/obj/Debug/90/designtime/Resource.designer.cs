@@ -8080,13 +8080,22 @@ namespace Thesis.Droid
 			public const int background = 2130771970;
 			
 			// aapt resource value: 0x7F010003
-			public const int connector = 2130771971;
+			public const int Browse = 2130771971;
 			
 			// aapt resource value: 0x7F010004
-			public const int data = 2130771972;
+			public const int Connect = 2130771972;
 			
 			// aapt resource value: 0x7F010005
-			public const int delete = 2130771973;
+			public const int connector = 2130771973;
+			
+			// aapt resource value: 0x7F010006
+			public const int ConnectPopup = 2130771974;
+			
+			// aapt resource value: 0x7F010007
+			public const int data = 2130771975;
+			
+			// aapt resource value: 0x7F010008
+			public const int delete = 2130771976;
 			
 			// aapt resource value: 0x7F090057
 			public const int design_bottom_navigation_item_background = 2131296343;
@@ -8106,20 +8115,20 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F09005C
 			public const int design_snackbar_background = 2131296348;
 			
-			// aapt resource value: 0x7F010006
-			public const int edit = 2130771974;
-			
-			// aapt resource value: 0x7F010007
-			public const int folder = 2130771975;
-			
-			// aapt resource value: 0x7F010008
-			public const int hardware = 2130771976;
-			
 			// aapt resource value: 0x7F010009
-			public const int home = 2130771977;
+			public const int edit = 2130771977;
 			
 			// aapt resource value: 0x7F010010
-			public const int icon = 2130771984;
+			public const int folder = 2130771984;
+			
+			// aapt resource value: 0x7F010011
+			public const int hardware = 2130771985;
+			
+			// aapt resource value: 0x7F010012
+			public const int home = 2130771986;
+			
+			// aapt resource value: 0x7F010013
+			public const int icon = 2130771987;
 			
 			// aapt resource value: 0x7F090055
 			public const int ic_audiotrack_dark = 2131296341;
@@ -8661,14 +8670,14 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F090105
 			public const int ic_vol_type_tv_light = 2131296517;
 			
-			// aapt resource value: 0x7F010011
-			public const int LogoAuto = 2130771985;
+			// aapt resource value: 0x7F010014
+			public const int LogoAuto = 2130771988;
 			
-			// aapt resource value: 0x7F010012
-			public const int Logobk_trans = 2130771986;
+			// aapt resource value: 0x7F010015
+			public const int Logobk_trans = 2130771989;
 			
-			// aapt resource value: 0x7F010013
-			public const int logout = 2130771987;
+			// aapt resource value: 0x7F010016
+			public const int logout = 2130771990;
 			
 			// aapt resource value: 0x7F090106
 			public const int mr_button_connected_dark = 2131296518;
@@ -8775,17 +8784,17 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010014
-			public const int opcualogo = 2130771988;
-			
-			// aapt resource value: 0x7F010015
-			public const int plus = 2130771989;
-			
-			// aapt resource value: 0x7F010016
-			public const int statistics = 2130771990;
-			
 			// aapt resource value: 0x7F010017
-			public const int tag = 2130771991;
+			public const int opcualogo = 2130771991;
+			
+			// aapt resource value: 0x7F010018
+			public const int plus = 2130771992;
+			
+			// aapt resource value: 0x7F010019
+			public const int statistics = 2130771993;
+			
+			// aapt resource value: 0x7F010020
+			public const int tag = 2130772000;
 			
 			// aapt resource value: 0x7F09006F
 			public const int tooltip_frame_dark = 2131296367;
@@ -8793,8 +8802,8 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F090070
 			public const int tooltip_frame_light = 2131296368;
 			
-			// aapt resource value: 0x7F010018
-			public const int Xamarinlogo = 2130771992;
+			// aapt resource value: 0x7F010021
+			public const int Xamarinlogo = 2130772001;
 			
 			static Drawable()
 			{

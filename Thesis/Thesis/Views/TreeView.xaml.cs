@@ -17,9 +17,7 @@ namespace Thesis
         private ObservableCollection<ListNode> nodes = new ObservableCollection<ListNode>();
         private SampleClient opcClient;
         private Tree storedTree;
-        private MonitoredItem myMonitoredItem;
-        private Int16 itemCount;
-        private Subscription mySubscription;
+
 
         #endregion Fields
 
@@ -29,11 +27,10 @@ namespace Thesis
         {
             InitializeComponent();
             BindingContext = nodes;
-
             storedTree = tree;
             opcClient = client;
             DisplayNodes();
-            itemCount = 0;
+            
         }
 
         #endregion TreeView
@@ -118,48 +115,14 @@ namespace Thesis
 
         public void OnSubcription(object sender, EventArgs e)
         {
-            if (myMonitoredItem != null)
-            {
-                try
-                {
-                    myMonitoredItem = opcClient.RemoveMonitoredItem(mySubscription, myMonitoredItem);
-                }
-                catch
-                {
-                    //ignore
-                    ;
-                }
-            }
-
-            try
-            {
-                string id = "ns=3;s=\"Z\"";
-                //use different item names for correct assignment at the notificatino event
-                itemCount++;
-                string monitoredItemName = "myItem" + itemCount.ToString();
-                if (mySubscription == null)
-                {
-                    mySubscription = opcClient.Subscribe(2000);
-                }
-                myMonitoredItem = opcClient.AddMonitoredItem(mySubscription, id, monitoredItemName, 1);
-
-                opcClient.ItemChangedNotification += new MonitoredItemNotificationEventHandler(Notification_MonitoredItem);
-                //Navigation.PushAsync(new TabbedPageMonitor());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error" + ex.ToString());
-            }
+            string id = "ns=3;s=\"Z\"";
+            MonitorListViewModel.opcClient = opcClient;
+            MonitorListViewModel.nodeid = id;
+         
         }
 
-        //private void UnsubscribeButton_Click(object sender, EventArgs e)
-        //{
-        //    opcClient.RemoveSubscription(mySubscription);
-        //    mySubscription = null;
-        //    itemCount = 0;
-        //}
-
         #endregion Subcription
+        
 
         #region Graph
 
@@ -173,37 +136,6 @@ namespace Thesis
         }
 
         #endregion Graph
-
-        #region Notification_Monitor
-
-        private int cnt = 0;
-
-        private void Notification_MonitoredItem(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
-        {
-            MonitoredItemNotification notification = e.NotificationValue as MonitoredItemNotification;
-            if (notification == null)
-            {
-                return;
-            }
-            else
-            {
-                cnt += 1;
-                //Console.WriteLine(cnt);
-                if (cnt == 4)
-                {
-                    MonitorType monitorType = new MonitorType();
-                    monitorType.Name = monitoredItem.DisplayName;
-                    monitorType.Value = Utils.Format("{0}", notification.Value.WrappedValue.ToString());
-                    monitorType.SourceT = notification.Value.SourceTimestamp.ToString("hh:mm:ss");
-                    monitorType.ServerT = notification.Value.ServerTimestamp.ToString("hh:mm:ss");
-                    MonitorListViewModel.monitor = monitorType;
-                    //MessagingCenter.Send<TreeView, MonitorType>(this, "AddOrEditMonitor", monitorType);
-                    cnt = 0;
-                }
-            }
-        }
-
-        #endregion Notification_Monitor
 
         #region MenuItems
 
@@ -247,7 +179,7 @@ namespace Thesis
         }
 
         #endregion MenuItems
-
+        
         private async void ToolbarItem_Clicked_About(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new AboutPage());

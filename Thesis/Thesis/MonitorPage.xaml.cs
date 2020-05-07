@@ -1,7 +1,10 @@
-﻿using Rg.Plugins.Popup.Services;
+﻿using Opc.Ua;
+using Opc.Ua.Client;
+using Rg.Plugins.Popup.Services;
 using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,14 +16,23 @@ namespace Thesis
         public MonitorPage()
         {
             InitializeComponent();
-            //BindingContext = new MonitorListViewModel();
+            BindingContext = new MonitorListViewModel();
         }
-
+        
         private void TapGestureRecognizer_Tapped_Remove(object sender, EventArgs e)
         {
-            TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
-            MonitorType monitorType = ((MonitorListViewModel)BindingContext).Monitors.Where(emp => emp.MonitorId == (int)tappedEventArgs.Parameter).FirstOrDefault();
-            ((MonitorListViewModel)BindingContext).Monitors.Remove(monitorType);
+            try
+            {
+                TappedEventArgs tappedEventArgs = (TappedEventArgs)e;
+                MonitorNodeType monitorType = ((MonitorListViewModel)BindingContext).Monitors.Where(emp => emp.MonitorID == (int)tappedEventArgs.Parameter).FirstOrDefault();
+
+                ((MonitorListViewModel)BindingContext).Monitors.Remove(monitorType);
+                MessagingCenter.Send<MonitorPage, string>(this, "FlagUnSub", "UnSubTrue");
+            }
+            catch
+            {
+                return;
+            }
         }
 
         private async void ToolbarItem_Clicked_About(object sender, System.EventArgs e)
@@ -32,5 +44,6 @@ namespace Thesis
         {
             await PopupNavigation.Instance.PushAsync(new HelpPage());
         }
+        
     }
 }

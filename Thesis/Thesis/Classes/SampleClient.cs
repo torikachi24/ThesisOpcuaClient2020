@@ -566,6 +566,21 @@ namespace Thesis
             }
         }
 
+        public void RemoveSubscription(Subscription subscription)
+        {
+            try
+            {
+                //Delete the subscription and all items submitted
+                subscription.Delete(true);
+            }
+            catch (Exception e)
+            {
+                //handle Exception here
+                throw e;
+            }
+        }
+
+
         public Subscription Subscribe(int publishingInterval)
         {
             //Create a Subscription object

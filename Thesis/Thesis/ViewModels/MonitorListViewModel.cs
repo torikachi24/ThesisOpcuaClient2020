@@ -1,99 +1,114 @@
-﻿using System;
+﻿using Opc.Ua;
+using Opc.Ua.Client;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Thesis
 {
-    public class MonitorListViewModel : INotifyPropertyChanged
+    public class MonitorListViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public static MonitorType monitor { get; set; }
-        private ObservableCollection<MonitorType> _monitors;
-
-        public ObservableCollection<MonitorType> Monitors
-        {
-            get
-            {
-                return _monitors;
-            }
-            set
-            {
-                if (value != _monitors)
-                {
-                    _monitors = value;
-                    NotifyPropertyChanged(nameof(Monitors));
-                }
-            }
-        }
-
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
+        public static string nodeid;
+        public static SampleClient opcClient;
+        private MonitoredItem myMonitoredItem;
+        private Subscription mySubscription;
+        private Int16 itemCount;
+        public ObservableCollection<MonitorNodeType> Monitors { get; set; }= new ObservableCollection<MonitorNodeType>();
+        
 
         public MonitorListViewModel()
         {
-            Monitors = new ObservableCollection<MonitorType>();
+            OnSubcription();
+            MessagingCenter.Subscribe<MonitorPage, string>(this, "FlagUnSub",
+             (sender, arg) =>
+             {
 
-            if (monitor.MonitorId == 0)
+                 opcClient.RemoveSubscription(mySubscription);
+                 mySubscription = null;
+                 itemCount = 0;
+                 opcClient = null;
+                 nodeid = null;
+             });
+        }
+
+        #region Subcription
+
+        public void OnSubcription()
+        {
+            if (myMonitoredItem != null)
             {
-                monitor.MonitorId = Monitors.Count + 1;
-                Monitors.Add(monitor);
-            }
-            else
-            {
-                for (int a = 0; a < Monitors.Count; a++)
+                try
                 {
-                    if (monitor.Name == Monitors[a].Name)
-                    {
-                        int newIndex = Monitors.IndexOf(monitor);
-                        Monitors.Remove(Monitors[a]);
-                        Monitors.Add(monitor);
-                        int oldIndex = Monitors.IndexOf(Monitors[a]);
-                        Monitors.Move(oldIndex, newIndex);
-                    }
-                    else
-                    {
-                        Monitors.Add(monitor);
-                    }
+                    myMonitoredItem = opcClient.RemoveMonitoredItem(mySubscription, myMonitoredItem);
+                }
+                catch
+                {
+                    //ignore
+                    ;
                 }
             }
 
-            //  MessagingCenter.Subscribe<TreeView, MonitorType>(this, "AddOrEditMonitor",
-            //(page, monitorType) =>
-            //{
-            //    if (monitorType.MonitorId == 0)
-            //    {
-            //        monitorType.MonitorId = Monitors.Count + 1;
-            //        Monitors.Add(monitorType);
-            //    }
-            //    else
-            //    {
-            //        for (int a = 0; a < Monitors.Count; a++)
-            //        {
-            //            if (monitorType.Name == Monitors[a].Name)
-            //            {
-            //                int newIndex = Monitors.IndexOf(monitorType);
-            //                Monitors.Remove(Monitors[a]);
-            //                Monitors.Add(monitorType);
-            //                int oldIndex = Monitors.IndexOf(Monitors[a]);
-            //                Monitors.Move(oldIndex, newIndex);
+            try
+            {
 
-            //            }
-            //            else
-            //            {
-            //                Monitors.Add(monitorType);
-            //            }
-            //        }
-            //        Monitors.Add(monitorType);
-            //    }
+                //use different item names for correct assignment at the notificatino event
+                itemCount++;
+                string monitoredItemName = "myItem" + itemCount.ToString();
+                if (mySubscription == null)
+                {
+                    mySubscription = opcClient.Subscribe(2000);
+                }
+                myMonitoredItem = opcClient.AddMonitoredItem(mySubscription, nodeid, monitoredItemName, 1);
 
-            //});
+                opcClient.ItemChangedNotification += new MonitoredItemNotificationEventHandler(Notification_MonitoredItem);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error" + ex.ToString());
+            }
         }
+
+        #endregion Subcription
+
+        #region Notification_Monitor
+
+        private void Notification_MonitoredItem(MonitoredItem monitoredItem, MonitoredItemNotificationEventArgs e)
+        {
+            MonitoredItemNotification notification = e.NotificationValue as MonitoredItemNotification;
+            if (notification == null)
+            {
+                return;
+            }
+            else
+            {
+                MonitorNodeType monitorType = new MonitorNodeType();
+                monitorType.MonitorName += monitoredItem.DisplayName;
+                monitorType.MonitorValue += Utils.Format("{0}", notification.Value.WrappedValue.ToString());
+                monitorType.MonitorSourceT += notification.Value.SourceTimestamp.ToString("hh:mm:ss");
+                monitorType.MonitorServerT += notification.Value.ServerTimestamp.ToString("hh:mm:ss");
+                monitorType.MonitorID = Monitors.Count + 1;
+                int tmp = 0;
+                for (int a = 0; a < Monitors.Count; a++)
+                {
+                    if (monitorType.MonitorName == Monitors[a].MonitorName)
+                    {
+                        Monitors.RemoveAt(a);
+                        Monitors.Add(monitorType);
+                        tmp = 1;
+                    }
+                }
+                if (tmp == 0)
+                {
+                    Monitors.Add(monitorType);
+                }
+            }
+        }
+
+        #endregion Notification_Monitor
+
+        
+        
     }
 }
