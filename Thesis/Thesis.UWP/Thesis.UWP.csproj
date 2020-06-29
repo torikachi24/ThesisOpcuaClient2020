@@ -163,19 +163,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microcharts">
-      <Version>0.8.5-pre</Version>
-    </PackageReference>
-    <PackageReference Include="Microcharts.Forms">
-      <Version>0.7.1</Version>
-    </PackageReference>
     <PackageReference Include="Plugin.Share">
       <Version>7.1.1</Version>
     </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.2.0.223</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" />
   </ItemGroup>
   <ItemGroup>

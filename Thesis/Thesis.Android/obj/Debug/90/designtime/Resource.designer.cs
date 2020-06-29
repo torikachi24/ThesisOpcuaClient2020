@@ -188,6 +188,7 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapsedTitleGravity = global::Thesis.Droid.Resource.Attribute.collapsedTitleGravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapsedTitleTextAppearance = global::Thesis.Droid.Resource.Attribute.collapsedTitleTextAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapseIcon = global::Thesis.Droid.Resource.Attribute.collapseIcon;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collectionViewStyle = global::Thesis.Droid.Resource.Attribute.collectionViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.color = global::Thesis.Droid.Resource.Attribute.color;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.colorAccent = global::Thesis.Droid.Resource.Attribute.colorAccent;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.colorBackgroundFloating = global::Thesis.Droid.Resource.Attribute.colorBackgroundFloating;
@@ -1302,6 +1303,7 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::Thesis.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_Tooltip = global::Thesis.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_Design_BottomSheetDialog = global::Thesis.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.AppCompatDialogStyle = global::Thesis.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_AlertDialog_AppCompat = global::Thesis.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_AlertDialog_AppCompat_Light = global::Thesis.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Animation_AppCompat_Dialog = global::Thesis.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -1493,8 +1495,10 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView = global::Thesis.Droid.Resource.Style.CardView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Dark = global::Thesis.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Light = global::Thesis.Droid.Resource.Style.CardView_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewStyle = global::Thesis.Droid.Resource.Style.collectionViewStyle;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.NestedScrollBarStyle = global::Thesis.Droid.Resource.Style.NestedScrollBarStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewScrollBars = global::Thesis.Droid.Resource.Style.collectionViewScrollBars;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewTheme = global::Thesis.Droid.Resource.Style.collectionViewTheme;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.MainTheme = global::Thesis.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.MainTheme_Base = global::Thesis.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat = global::Thesis.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat_Light = global::Thesis.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_MaterialComponents = global::Thesis.Droid.Resource.Style.Platform_MaterialComponents;
@@ -2223,6 +2227,8 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_startY = global::Thesis.Droid.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_tileMode = global::Thesis.Droid.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_type = global::Thesis.Droid.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ItemsViewRendererTheme = global::Thesis.Droid.Resource.Styleable.ItemsViewRendererTheme;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle = global::Thesis.Droid.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat = global::Thesis.Droid.Resource.Styleable.LinearLayoutCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::Thesis.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::Thesis.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
@@ -2710,6 +2716,7 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Resource.Attribute.collapsedTitleGravity = global::Thesis.Droid.Resource.Attribute.collapsedTitleGravity;
 			global::Xamarin.Forms.Platform.Resource.Attribute.collapsedTitleTextAppearance = global::Thesis.Droid.Resource.Attribute.collapsedTitleTextAppearance;
 			global::Xamarin.Forms.Platform.Resource.Attribute.collapseIcon = global::Thesis.Droid.Resource.Attribute.collapseIcon;
+			global::Xamarin.Forms.Platform.Resource.Attribute.collectionViewStyle = global::Thesis.Droid.Resource.Attribute.collectionViewStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.color = global::Thesis.Droid.Resource.Attribute.color;
 			global::Xamarin.Forms.Platform.Resource.Attribute.colorAccent = global::Thesis.Droid.Resource.Attribute.colorAccent;
 			global::Xamarin.Forms.Platform.Resource.Attribute.colorBackgroundFloating = global::Thesis.Droid.Resource.Attribute.colorBackgroundFloating;
@@ -3824,6 +3831,7 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_DropDownUp = global::Thesis.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_Tooltip = global::Thesis.Droid.Resource.Style.Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_Design_BottomSheetDialog = global::Thesis.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Resource.Style.AppCompatDialogStyle = global::Thesis.Droid.Resource.Style.AppCompatDialogStyle;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat = global::Thesis.Droid.Resource.Style.Base_AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_AlertDialog_AppCompat_Light = global::Thesis.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Animation_AppCompat_Dialog = global::Thesis.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
@@ -4015,8 +4023,10 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.CardView = global::Thesis.Droid.Resource.Style.CardView;
 			global::Xamarin.Forms.Platform.Resource.Style.CardView_Dark = global::Thesis.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Platform.Resource.Style.CardView_Light = global::Thesis.Droid.Resource.Style.CardView_Light;
-			global::Xamarin.Forms.Platform.Resource.Style.collectionViewStyle = global::Thesis.Droid.Resource.Style.collectionViewStyle;
-			global::Xamarin.Forms.Platform.Resource.Style.NestedScrollBarStyle = global::Thesis.Droid.Resource.Style.NestedScrollBarStyle;
+			global::Xamarin.Forms.Platform.Resource.Style.collectionViewScrollBars = global::Thesis.Droid.Resource.Style.collectionViewScrollBars;
+			global::Xamarin.Forms.Platform.Resource.Style.collectionViewTheme = global::Thesis.Droid.Resource.Style.collectionViewTheme;
+			global::Xamarin.Forms.Platform.Resource.Style.MainTheme = global::Thesis.Droid.Resource.Style.MainTheme;
+			global::Xamarin.Forms.Platform.Resource.Style.MainTheme_Base = global::Thesis.Droid.Resource.Style.MainTheme_Base;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat = global::Thesis.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_AppCompat_Light = global::Thesis.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Platform_MaterialComponents = global::Thesis.Droid.Resource.Style.Platform_MaterialComponents;
@@ -4745,6 +4755,8 @@ namespace Thesis.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.GradientColor_android_startY = global::Thesis.Droid.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Forms.Platform.Resource.Styleable.GradientColor_android_tileMode = global::Thesis.Droid.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.GradientColor_android_type = global::Thesis.Droid.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ItemsViewRendererTheme = global::Thesis.Droid.Resource.Styleable.ItemsViewRendererTheme;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle = global::Thesis.Droid.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat = global::Thesis.Droid.Resource.Styleable.LinearLayoutCompat;
 			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::Thesis.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
 			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::Thesis.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
@@ -5584,6 +5596,9 @@ namespace Thesis.Droid
 			
 			// aapt resource value: 0x7F040081
 			public const int collapseIcon = 2130968705;
+			
+			// aapt resource value: 0x7F100493
+			public const int collectionViewStyle = 2131756179;
 			
 			// aapt resource value: 0x7F040084
 			public const int color = 2130968708;
@@ -8077,25 +8092,22 @@ namespace Thesis.Droid
 			public const int avd_show_password = 2131296342;
 			
 			// aapt resource value: 0x7F010002
-			public const int background = 2130771970;
+			public const int Browse = 2130771970;
 			
 			// aapt resource value: 0x7F010003
-			public const int Browse = 2130771971;
+			public const int Connect = 2130771971;
 			
 			// aapt resource value: 0x7F010004
-			public const int Connect = 2130771972;
+			public const int connector = 2130771972;
 			
 			// aapt resource value: 0x7F010005
-			public const int connector = 2130771973;
+			public const int ConnectPopup = 2130771973;
 			
 			// aapt resource value: 0x7F010006
-			public const int ConnectPopup = 2130771974;
+			public const int data = 2130771974;
 			
 			// aapt resource value: 0x7F010007
-			public const int data = 2130771975;
-			
-			// aapt resource value: 0x7F010008
-			public const int delete = 2130771976;
+			public const int delete = 2130771975;
 			
 			// aapt resource value: 0x7F090057
 			public const int design_bottom_navigation_item_background = 2131296343;
@@ -8115,20 +8127,26 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F09005C
 			public const int design_snackbar_background = 2131296348;
 			
+			// aapt resource value: 0x7F010008
+			public const int edit = 2130771976;
+			
 			// aapt resource value: 0x7F010009
-			public const int edit = 2130771977;
+			public const int folder = 2130771977;
 			
 			// aapt resource value: 0x7F010010
-			public const int folder = 2130771984;
+			public const int Gate = 2130771984;
 			
 			// aapt resource value: 0x7F010011
-			public const int hardware = 2130771985;
+			public const int gateTab = 2130771985;
 			
 			// aapt resource value: 0x7F010012
-			public const int home = 2130771986;
+			public const int hardware = 2130771986;
 			
 			// aapt resource value: 0x7F010013
-			public const int icon = 2130771987;
+			public const int home = 2130771987;
+			
+			// aapt resource value: 0x7F010014
+			public const int icon = 2130771988;
 			
 			// aapt resource value: 0x7F090055
 			public const int ic_audiotrack_dark = 2131296341;
@@ -8670,14 +8688,32 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F090105
 			public const int ic_vol_type_tv_light = 2131296517;
 			
-			// aapt resource value: 0x7F010014
-			public const int LogoAuto = 2130771988;
-			
 			// aapt resource value: 0x7F010015
-			public const int Logobk_trans = 2130771989;
+			public const int light_red_off = 2130771989;
 			
 			// aapt resource value: 0x7F010016
-			public const int logout = 2130771990;
+			public const int light_red_on = 2130771990;
+			
+			// aapt resource value: 0x7F010017
+			public const int LogoAuto = 2130771991;
+			
+			// aapt resource value: 0x7F010018
+			public const int Logobk_trans = 2130771992;
+			
+			// aapt resource value: 0x7F010019
+			public const int logout = 2130771993;
+			
+			// aapt resource value: 0x7F010020
+			public const int manufacturing = 2130772000;
+			
+			// aapt resource value: 0x7F010021
+			public const int motoroff = 2130772001;
+			
+			// aapt resource value: 0x7F010022
+			public const int motoron = 2130772002;
+			
+			// aapt resource value: 0x7F010023
+			public const int motorTab = 2130772003;
 			
 			// aapt resource value: 0x7F090106
 			public const int mr_button_connected_dark = 2131296518;
@@ -8784,17 +8820,41 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F09000C
 			public const int notify_panel_notification_icon_bg = 2131296268;
 			
-			// aapt resource value: 0x7F010017
-			public const int opcualogo = 2130771991;
+			// aapt resource value: 0x7F010024
+			public const int opcualogo = 2130772004;
 			
-			// aapt resource value: 0x7F010018
-			public const int plus = 2130771992;
+			// aapt resource value: 0x7F010025
+			public const int plus = 2130772005;
 			
-			// aapt resource value: 0x7F010019
-			public const int statistics = 2130771993;
+			// aapt resource value: 0x7F010026
+			public const int pointgreen = 2130772006;
 			
-			// aapt resource value: 0x7F010020
-			public const int tag = 2130772000;
+			// aapt resource value: 0x7F010027
+			public const int pointoff = 2130772007;
+			
+			// aapt resource value: 0x7F010028
+			public const int pointred = 2130772008;
+			
+			// aapt resource value: 0x7F010029
+			public const int refresh = 2130772009;
+			
+			// aapt resource value: 0x7F010030
+			public const int settings = 2130772016;
+			
+			// aapt resource value: 0x7F010031
+			public const int statistics = 2130772017;
+			
+			// aapt resource value: 0x7F010032
+			public const int stopsign = 2130772018;
+			
+			// aapt resource value: 0x7F010033
+			public const int switchoff = 2130772019;
+			
+			// aapt resource value: 0x7F010034
+			public const int switchon = 2130772020;
+			
+			// aapt resource value: 0x7F010035
+			public const int tag = 2130772021;
 			
 			// aapt resource value: 0x7F09006F
 			public const int tooltip_frame_dark = 2131296367;
@@ -8802,8 +8862,17 @@ namespace Thesis.Droid
 			// aapt resource value: 0x7F090070
 			public const int tooltip_frame_light = 2131296368;
 			
-			// aapt resource value: 0x7F010021
-			public const int Xamarinlogo = 2130772001;
+			// aapt resource value: 0x7F010036
+			public const int water = 2130772022;
+			
+			// aapt resource value: 0x7F010037
+			public const int watertank = 2130772023;
+			
+			// aapt resource value: 0x7F010038
+			public const int watertankTab = 2130772024;
+			
+			// aapt resource value: 0x7F010039
+			public const int Xamarinlogo = 2130772025;
 			
 			static Drawable()
 			{
@@ -8931,9 +9000,6 @@ namespace Thesis.Droid
 			
 			// aapt resource value: 0x7F0C0008
 			public const int chronometer = 2131492872;
-			
-			// aapt resource value: 0x7F020223
-			public const int collectionViewStyle = 2130838051;
 			
 			// aapt resource value: 0x7F0C001E
 			public const int container = 2131492894;
@@ -9228,9 +9294,6 @@ namespace Thesis.Droid
 			
 			// aapt resource value: 0x7F0C0049
 			public const int navigation_header_container = 2131492937;
-			
-			// aapt resource value: 0x7F020224
-			public const int nestedScrollViewStyle = 2130838052;
 			
 			// aapt resource value: 0x7F0C0013
 			public const int none = 2131492883;
@@ -10736,16 +10799,16 @@ namespace Thesis.Droid
 			public const int CardView_Light = 2132148421;
 			
 			// aapt resource value: 0x7F060516
-			public const int collectionViewStyle = 2131100950;
+			public const int collectionViewScrollBars = 2131100950;
+			
+			// aapt resource value: 0x7F060517
+			public const int collectionViewTheme = 2131100951;
 			
 			// aapt resource value: 0x7F060002
 			public const int MainTheme = 2131099650;
 			
 			// aapt resource value: 0x7F060003
 			public const int MainTheme_Base = 2131099651;
-			
-			// aapt resource value: 0x7F060517
-			public const int NestedScrollBarStyle = 2131100951;
 			
 			// aapt resource value: 0x7F1600C6
 			public const int Platform_AppCompat = 2132148422;
@@ -13320,6 +13383,12 @@ namespace Thesis.Droid
 			
 			// aapt resource value: 0x11
 			public const int GradientColor_android_type = 17;
+			
+			public static int[] ItemsViewRendererTheme = new int[] {
+					0};
+			
+			// aapt resource value: 0x7F080758
+			public const int ItemsViewRendererTheme_collectionViewStyle = 2131232600;
 			
 			public static int[] LinearLayoutCompat = new int[] {
 					16843046,

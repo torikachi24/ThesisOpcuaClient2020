@@ -116,8 +116,6 @@ namespace Opc.Ua.Configuration
 
         #endregion Overridden Methods
 
-
-
         #region IComparable Members
 
         /// <summary>

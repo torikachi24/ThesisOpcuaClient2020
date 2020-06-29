@@ -112,7 +112,7 @@ namespace Opc.Ua
                 }
             }
 
-            return null;
+            return None;
         }
 
         /// <summary>

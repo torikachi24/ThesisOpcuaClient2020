@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2019 The OPC Foundation, Inc. All rights reserved.
  *
  * OPC Foundation MIT License 1.00
- * 
+ *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
  * files (the "Software"), to deal in the Software without
@@ -11,7 +11,7 @@
  * copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following
  * conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -28,7 +28,6 @@
  * ======================================================================*/
 
 using System;
-using System.Collections.Generic;
 
 namespace Opc.Ua
 {
@@ -40,6 +39,7 @@ namespace Opc.Ua
     public partial class SessionClient : ClientBase
     {
         #region Constructors
+
         /// <summary>
         /// Intializes the object with a channel and a message context.
         /// </summary>
@@ -48,9 +48,11 @@ namespace Opc.Ua
             base(channel)
         {
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// The component  contains classes  object use to communicate with the server.
         /// </summary>
@@ -58,46 +60,50 @@ namespace Opc.Ua
         {
             get { return (ISessionChannel)base.InnerChannel; }
         }
-        #endregion
+
+        #endregion Public Properties
 
         #region Client API
+
         #region CreateSession Methods
-        #if (!OPCUA_EXCLUDE_CreateSession)
+
+#if (!OPCUA_EXCLUDE_CreateSession)
+
         /// <summary>
         /// Invokes the CreateSession service.
         /// </summary>
         public virtual ResponseHeader CreateSession(
-            RequestHeader                           requestHeader,
-            ApplicationDescription                  clientDescription,
-            string                                  serverUri,
-            string                                  endpointUrl,
-            string                                  sessionName,
-            byte[]                                  clientNonce,
-            byte[]                                  clientCertificate,
-            double                                  requestedSessionTimeout,
-            uint                                    maxResponseMessageSize,
-            out NodeId                              sessionId,
-            out NodeId                              authenticationToken,
-            out double                              revisedSessionTimeout,
-            out byte[]                              serverNonce,
-            out byte[]                              serverCertificate,
-            out EndpointDescriptionCollection       serverEndpoints,
+            RequestHeader requestHeader,
+            ApplicationDescription clientDescription,
+            string serverUri,
+            string endpointUrl,
+            string sessionName,
+            byte[] clientNonce,
+            byte[] clientCertificate,
+            double requestedSessionTimeout,
+            uint maxResponseMessageSize,
+            out NodeId sessionId,
+            out NodeId authenticationToken,
+            out double revisedSessionTimeout,
+            out byte[] serverNonce,
+            out byte[] serverCertificate,
+            out EndpointDescriptionCollection serverEndpoints,
             out SignedSoftwareCertificateCollection serverSoftwareCertificates,
-            out SignatureData                       serverSignature,
-            out uint                                maxRequestMessageSize)
+            out SignatureData serverSignature,
+            out uint maxRequestMessageSize)
         {
             CreateSessionRequest request = new CreateSessionRequest();
             CreateSessionResponse response = null;
 
-            request.RequestHeader           = requestHeader;
-            request.ClientDescription       = clientDescription;
-            request.ServerUri               = serverUri;
-            request.EndpointUrl             = endpointUrl;
-            request.SessionName             = sessionName;
-            request.ClientNonce             = clientNonce;
-            request.ClientCertificate       = clientCertificate;
+            request.RequestHeader = requestHeader;
+            request.ClientDescription = clientDescription;
+            request.ServerUri = serverUri;
+            request.EndpointUrl = endpointUrl;
+            request.SessionName = sessionName;
+            request.ClientNonce = clientNonce;
+            request.ClientCertificate = clientCertificate;
             request.RequestedSessionTimeout = requestedSessionTimeout;
-            request.MaxResponseMessageSize  = maxResponseMessageSize;
+            request.MaxResponseMessageSize = maxResponseMessageSize;
 
             UpdateRequestHeader(request, requestHeader == null, "CreateSession");
 
@@ -128,15 +134,15 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                sessionId                  = response.SessionId;
-                authenticationToken        = response.AuthenticationToken;
-                revisedSessionTimeout      = response.RevisedSessionTimeout;
-                serverNonce                = response.ServerNonce;
-                serverCertificate          = response.ServerCertificate;
-                serverEndpoints            = response.ServerEndpoints;
+                sessionId = response.SessionId;
+                authenticationToken = response.AuthenticationToken;
+                revisedSessionTimeout = response.RevisedSessionTimeout;
+                serverNonce = response.ServerNonce;
+                serverCertificate = response.ServerCertificate;
+                serverEndpoints = response.ServerEndpoints;
                 serverSoftwareCertificates = response.ServerSoftwareCertificates;
-                serverSignature            = response.ServerSignature;
-                maxRequestMessageSize      = response.MaxRequestMessageSize;
+                serverSignature = response.ServerSignature;
+                maxRequestMessageSize = response.MaxRequestMessageSize;
             }
             finally
             {
@@ -150,29 +156,29 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the CreateSession service.
         /// </summary>
         public IAsyncResult BeginCreateSession(
-            RequestHeader          requestHeader,
+            RequestHeader requestHeader,
             ApplicationDescription clientDescription,
-            string                 serverUri,
-            string                 endpointUrl,
-            string                 sessionName,
-            byte[]                 clientNonce,
-            byte[]                 clientCertificate,
-            double                 requestedSessionTimeout,
-            uint                   maxResponseMessageSize,
-            AsyncCallback          callback,
-            object                 asyncState)
+            string serverUri,
+            string endpointUrl,
+            string sessionName,
+            byte[] clientNonce,
+            byte[] clientCertificate,
+            double requestedSessionTimeout,
+            uint maxResponseMessageSize,
+            AsyncCallback callback,
+            object asyncState)
         {
             CreateSessionRequest request = new CreateSessionRequest();
 
-            request.RequestHeader           = requestHeader;
-            request.ClientDescription       = clientDescription;
-            request.ServerUri               = serverUri;
-            request.EndpointUrl             = endpointUrl;
-            request.SessionName             = sessionName;
-            request.ClientNonce             = clientNonce;
-            request.ClientCertificate       = clientCertificate;
+            request.RequestHeader = requestHeader;
+            request.ClientDescription = clientDescription;
+            request.ServerUri = serverUri;
+            request.EndpointUrl = endpointUrl;
+            request.SessionName = sessionName;
+            request.ClientNonce = clientNonce;
+            request.ClientCertificate = clientCertificate;
             request.RequestedSessionTimeout = requestedSessionTimeout;
-            request.MaxResponseMessageSize  = maxResponseMessageSize;
+            request.MaxResponseMessageSize = maxResponseMessageSize;
 
             UpdateRequestHeader(request, requestHeader == null, "CreateSession");
 
@@ -188,16 +194,16 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the CreateSession service.
         /// </summary>
         public ResponseHeader EndCreateSession(
-            IAsyncResult                            result,
-            out NodeId                              sessionId,
-            out NodeId                              authenticationToken,
-            out double                              revisedSessionTimeout,
-            out byte[]                              serverNonce,
-            out byte[]                              serverCertificate,
-            out EndpointDescriptionCollection       serverEndpoints,
+            IAsyncResult result,
+            out NodeId sessionId,
+            out NodeId authenticationToken,
+            out double revisedSessionTimeout,
+            out byte[] serverNonce,
+            out byte[] serverCertificate,
+            out EndpointDescriptionCollection serverEndpoints,
             out SignedSoftwareCertificateCollection serverSoftwareCertificates,
-            out SignatureData                       serverSignature,
-            out uint                                maxRequestMessageSize)
+            out SignatureData serverSignature,
+            out uint maxRequestMessageSize)
         {
             CreateSessionResponse response = null;
 
@@ -228,15 +234,15 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                sessionId                  = response.SessionId;
-                authenticationToken        = response.AuthenticationToken;
-                revisedSessionTimeout      = response.RevisedSessionTimeout;
-                serverNonce                = response.ServerNonce;
-                serverCertificate          = response.ServerCertificate;
-                serverEndpoints            = response.ServerEndpoints;
+                sessionId = response.SessionId;
+                authenticationToken = response.AuthenticationToken;
+                revisedSessionTimeout = response.RevisedSessionTimeout;
+                serverNonce = response.ServerNonce;
+                serverCertificate = response.ServerCertificate;
+                serverEndpoints = response.ServerEndpoints;
                 serverSoftwareCertificates = response.ServerSoftwareCertificates;
-                serverSignature            = response.ServerSignature;
-                maxRequestMessageSize      = response.MaxRequestMessageSize;
+                serverSignature = response.ServerSignature;
+                maxRequestMessageSize = response.MaxRequestMessageSize;
             }
             finally
             {
@@ -245,34 +251,38 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion CreateSession Methods
 
         #region ActivateSession Methods
-        #if (!OPCUA_EXCLUDE_ActivateSession)
+
+#if (!OPCUA_EXCLUDE_ActivateSession)
+
         /// <summary>
         /// Invokes the ActivateSession service.
         /// </summary>
         public virtual ResponseHeader ActivateSession(
-            RequestHeader                       requestHeader,
-            SignatureData                       clientSignature,
+            RequestHeader requestHeader,
+            SignatureData clientSignature,
             SignedSoftwareCertificateCollection clientSoftwareCertificates,
-            StringCollection                    localeIds,
-            ExtensionObject                     userIdentityToken,
-            SignatureData                       userTokenSignature,
-            out byte[]                          serverNonce,
-            out StatusCodeCollection            results,
-            out DiagnosticInfoCollection        diagnosticInfos)
+            StringCollection localeIds,
+            ExtensionObject userIdentityToken,
+            SignatureData userTokenSignature,
+            out byte[] serverNonce,
+            out StatusCodeCollection results,
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             ActivateSessionRequest request = new ActivateSessionRequest();
             ActivateSessionResponse response = null;
 
-            request.RequestHeader              = requestHeader;
-            request.ClientSignature            = clientSignature;
+            request.RequestHeader = requestHeader;
+            request.ClientSignature = clientSignature;
             request.ClientSoftwareCertificates = clientSoftwareCertificates;
-            request.LocaleIds                  = localeIds;
-            request.UserIdentityToken          = userIdentityToken;
-            request.UserTokenSignature         = userTokenSignature;
+            request.LocaleIds = localeIds;
+            request.UserIdentityToken = userIdentityToken;
+            request.UserTokenSignature = userTokenSignature;
 
             UpdateRequestHeader(request, requestHeader == null, "ActivateSession");
 
@@ -303,8 +313,8 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                serverNonce     = response.ServerNonce;
-                results         = response.Results;
+                serverNonce = response.ServerNonce;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -319,23 +329,23 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the ActivateSession service.
         /// </summary>
         public IAsyncResult BeginActivateSession(
-            RequestHeader                       requestHeader,
-            SignatureData                       clientSignature,
+            RequestHeader requestHeader,
+            SignatureData clientSignature,
             SignedSoftwareCertificateCollection clientSoftwareCertificates,
-            StringCollection                    localeIds,
-            ExtensionObject                     userIdentityToken,
-            SignatureData                       userTokenSignature,
-            AsyncCallback                       callback,
-            object                              asyncState)
+            StringCollection localeIds,
+            ExtensionObject userIdentityToken,
+            SignatureData userTokenSignature,
+            AsyncCallback callback,
+            object asyncState)
         {
             ActivateSessionRequest request = new ActivateSessionRequest();
 
-            request.RequestHeader              = requestHeader;
-            request.ClientSignature            = clientSignature;
+            request.RequestHeader = requestHeader;
+            request.ClientSignature = clientSignature;
             request.ClientSoftwareCertificates = clientSoftwareCertificates;
-            request.LocaleIds                  = localeIds;
-            request.UserIdentityToken          = userIdentityToken;
-            request.UserTokenSignature         = userTokenSignature;
+            request.LocaleIds = localeIds;
+            request.UserIdentityToken = userIdentityToken;
+            request.UserTokenSignature = userTokenSignature;
 
             UpdateRequestHeader(request, requestHeader == null, "ActivateSession");
 
@@ -351,9 +361,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the ActivateSession service.
         /// </summary>
         public ResponseHeader EndActivateSession(
-            IAsyncResult                 result,
-            out byte[]                   serverNonce,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out byte[] serverNonce,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             ActivateSessionResponse response = null;
@@ -385,8 +395,8 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                serverNonce     = response.ServerNonce;
-                results         = response.Results;
+                serverNonce = response.ServerNonce;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -396,22 +406,26 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion ActivateSession Methods
 
         #region CloseSession Methods
-        #if (!OPCUA_EXCLUDE_CloseSession)
+
+#if (!OPCUA_EXCLUDE_CloseSession)
+
         /// <summary>
         /// Invokes the CloseSession service.
         /// </summary>
         public virtual ResponseHeader CloseSession(
             RequestHeader requestHeader,
-            bool          deleteSubscriptions)
+            bool deleteSubscriptions)
         {
             CloseSessionRequest request = new CloseSessionRequest();
             CloseSessionResponse response = null;
 
-            request.RequestHeader       = requestHeader;
+            request.RequestHeader = requestHeader;
             request.DeleteSubscriptions = deleteSubscriptions;
 
             UpdateRequestHeader(request, requestHeader == null, "CloseSession");
@@ -442,7 +456,6 @@ namespace Opc.Ua
                     response = responseMessage.CloseSessionResponse;
                     ValidateResponse(response.ResponseHeader);
                 }
-
             }
             finally
             {
@@ -457,13 +470,13 @@ namespace Opc.Ua
         /// </summary>
         public IAsyncResult BeginCloseSession(
             RequestHeader requestHeader,
-            bool          deleteSubscriptions,
+            bool deleteSubscriptions,
             AsyncCallback callback,
-            object        asyncState)
+            object asyncState)
         {
             CloseSessionRequest request = new CloseSessionRequest();
 
-            request.RequestHeader       = requestHeader;
+            request.RequestHeader = requestHeader;
             request.DeleteSubscriptions = deleteSubscriptions;
 
             UpdateRequestHeader(request, requestHeader == null, "CloseSession");
@@ -510,7 +523,6 @@ namespace Opc.Ua
                     response = responseMessage.CloseSessionResponse;
                     ValidateResponse(response.ResponseHeader);
                 }
-
             }
             finally
             {
@@ -519,18 +531,22 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion CloseSession Methods
 
         #region Cancel Methods
-        #if (!OPCUA_EXCLUDE_Cancel)
+
+#if (!OPCUA_EXCLUDE_Cancel)
+
         /// <summary>
         /// Invokes the Cancel service.
         /// </summary>
         public virtual ResponseHeader Cancel(
             RequestHeader requestHeader,
-            uint          requestHandle,
-            out uint      cancelCount)
+            uint requestHandle,
+            out uint cancelCount)
         {
             CancelRequest request = new CancelRequest();
             CancelResponse response = null;
@@ -582,9 +598,9 @@ namespace Opc.Ua
         /// </summary>
         public IAsyncResult BeginCancel(
             RequestHeader requestHeader,
-            uint          requestHandle,
+            uint requestHandle,
             AsyncCallback callback,
-            object        asyncState)
+            object asyncState)
         {
             CancelRequest request = new CancelRequest();
 
@@ -646,17 +662,21 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion Cancel Methods
 
         #region AddNodes Methods
-        #if (!OPCUA_EXCLUDE_AddNodes)
+
+#if (!OPCUA_EXCLUDE_AddNodes)
+
         /// <summary>
         /// Invokes the AddNodes service.
         /// </summary>
         public virtual ResponseHeader AddNodes(
-            RequestHeader                requestHeader,
-            AddNodesItemCollection       nodesToAdd,
+            RequestHeader requestHeader,
+            AddNodesItemCollection nodesToAdd,
             out AddNodesResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
@@ -664,7 +684,7 @@ namespace Opc.Ua
             AddNodesResponse response = null;
 
             request.RequestHeader = requestHeader;
-            request.NodesToAdd    = nodesToAdd;
+            request.NodesToAdd = nodesToAdd;
 
             UpdateRequestHeader(request, requestHeader == null, "AddNodes");
 
@@ -695,7 +715,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -710,15 +730,15 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the AddNodes service.
         /// </summary>
         public IAsyncResult BeginAddNodes(
-            RequestHeader          requestHeader,
+            RequestHeader requestHeader,
             AddNodesItemCollection nodesToAdd,
-            AsyncCallback          callback,
-            object                 asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             AddNodesRequest request = new AddNodesRequest();
 
             request.RequestHeader = requestHeader;
-            request.NodesToAdd    = nodesToAdd;
+            request.NodesToAdd = nodesToAdd;
 
             UpdateRequestHeader(request, requestHeader == null, "AddNodes");
 
@@ -734,7 +754,7 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the AddNodes service.
         /// </summary>
         public ResponseHeader EndAddNodes(
-            IAsyncResult                 result,
+            IAsyncResult result,
             out AddNodesResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
@@ -767,7 +787,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -777,24 +797,28 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion AddNodes Methods
 
         #region AddReferences Methods
-        #if (!OPCUA_EXCLUDE_AddReferences)
+
+#if (!OPCUA_EXCLUDE_AddReferences)
+
         /// <summary>
         /// Invokes the AddReferences service.
         /// </summary>
         public virtual ResponseHeader AddReferences(
-            RequestHeader                requestHeader,
-            AddReferencesItemCollection  referencesToAdd,
-            out StatusCodeCollection     results,
+            RequestHeader requestHeader,
+            AddReferencesItemCollection referencesToAdd,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             AddReferencesRequest request = new AddReferencesRequest();
             AddReferencesResponse response = null;
 
-            request.RequestHeader   = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReferencesToAdd = referencesToAdd;
 
             UpdateRequestHeader(request, requestHeader == null, "AddReferences");
@@ -826,7 +850,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -841,14 +865,14 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the AddReferences service.
         /// </summary>
         public IAsyncResult BeginAddReferences(
-            RequestHeader               requestHeader,
+            RequestHeader requestHeader,
             AddReferencesItemCollection referencesToAdd,
-            AsyncCallback               callback,
-            object                      asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             AddReferencesRequest request = new AddReferencesRequest();
 
-            request.RequestHeader   = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReferencesToAdd = referencesToAdd;
 
             UpdateRequestHeader(request, requestHeader == null, "AddReferences");
@@ -865,8 +889,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the AddReferences service.
         /// </summary>
         public ResponseHeader EndAddReferences(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             AddReferencesResponse response = null;
@@ -898,7 +922,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -908,18 +932,22 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion AddReferences Methods
 
         #region DeleteNodes Methods
-        #if (!OPCUA_EXCLUDE_DeleteNodes)
+
+#if (!OPCUA_EXCLUDE_DeleteNodes)
+
         /// <summary>
         /// Invokes the DeleteNodes service.
         /// </summary>
         public virtual ResponseHeader DeleteNodes(
-            RequestHeader                requestHeader,
-            DeleteNodesItemCollection    nodesToDelete,
-            out StatusCodeCollection     results,
+            RequestHeader requestHeader,
+            DeleteNodesItemCollection nodesToDelete,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteNodesRequest request = new DeleteNodesRequest();
@@ -957,7 +985,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -972,10 +1000,10 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the DeleteNodes service.
         /// </summary>
         public IAsyncResult BeginDeleteNodes(
-            RequestHeader             requestHeader,
+            RequestHeader requestHeader,
             DeleteNodesItemCollection nodesToDelete,
-            AsyncCallback             callback,
-            object                    asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             DeleteNodesRequest request = new DeleteNodesRequest();
 
@@ -996,8 +1024,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the DeleteNodes service.
         /// </summary>
         public ResponseHeader EndDeleteNodes(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteNodesResponse response = null;
@@ -1029,7 +1057,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1039,24 +1067,28 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion DeleteNodes Methods
 
         #region DeleteReferences Methods
-        #if (!OPCUA_EXCLUDE_DeleteReferences)
+
+#if (!OPCUA_EXCLUDE_DeleteReferences)
+
         /// <summary>
         /// Invokes the DeleteReferences service.
         /// </summary>
         public virtual ResponseHeader DeleteReferences(
-            RequestHeader                  requestHeader,
+            RequestHeader requestHeader,
             DeleteReferencesItemCollection referencesToDelete,
-            out StatusCodeCollection       results,
-            out DiagnosticInfoCollection   diagnosticInfos)
+            out StatusCodeCollection results,
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteReferencesRequest request = new DeleteReferencesRequest();
             DeleteReferencesResponse response = null;
 
-            request.RequestHeader      = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReferencesToDelete = referencesToDelete;
 
             UpdateRequestHeader(request, requestHeader == null, "DeleteReferences");
@@ -1088,7 +1120,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1103,14 +1135,14 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the DeleteReferences service.
         /// </summary>
         public IAsyncResult BeginDeleteReferences(
-            RequestHeader                  requestHeader,
+            RequestHeader requestHeader,
             DeleteReferencesItemCollection referencesToDelete,
-            AsyncCallback                  callback,
-            object                         asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             DeleteReferencesRequest request = new DeleteReferencesRequest();
 
-            request.RequestHeader      = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReferencesToDelete = referencesToDelete;
 
             UpdateRequestHeader(request, requestHeader == null, "DeleteReferences");
@@ -1127,8 +1159,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the DeleteReferences service.
         /// </summary>
         public ResponseHeader EndDeleteReferences(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteReferencesResponse response = null;
@@ -1160,7 +1192,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1170,29 +1202,33 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion DeleteReferences Methods
 
         #region Browse Methods
-        #if (!OPCUA_EXCLUDE_Browse)
+
+#if (!OPCUA_EXCLUDE_Browse)
+
         /// <summary>
         /// Invokes the Browse service.
         /// </summary>
         public virtual ResponseHeader Browse(
-            RequestHeader                requestHeader,
-            ViewDescription              view,
-            uint                         requestedMaxReferencesPerNode,
-            BrowseDescriptionCollection  nodesToBrowse,
-            out BrowseResultCollection   results,
+            RequestHeader requestHeader,
+            ViewDescription view,
+            uint requestedMaxReferencesPerNode,
+            BrowseDescriptionCollection nodesToBrowse,
+            out BrowseResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             BrowseRequest request = new BrowseRequest();
             BrowseResponse response = null;
 
-            request.RequestHeader                 = requestHeader;
-            request.View                          = view;
+            request.RequestHeader = requestHeader;
+            request.View = view;
             request.RequestedMaxReferencesPerNode = requestedMaxReferencesPerNode;
-            request.NodesToBrowse                 = nodesToBrowse;
+            request.NodesToBrowse = nodesToBrowse;
 
             UpdateRequestHeader(request, requestHeader == null, "Browse");
 
@@ -1223,7 +1259,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1238,19 +1274,19 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the Browse service.
         /// </summary>
         public IAsyncResult BeginBrowse(
-            RequestHeader               requestHeader,
-            ViewDescription             view,
-            uint                        requestedMaxReferencesPerNode,
+            RequestHeader requestHeader,
+            ViewDescription view,
+            uint requestedMaxReferencesPerNode,
             BrowseDescriptionCollection nodesToBrowse,
-            AsyncCallback               callback,
-            object                      asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             BrowseRequest request = new BrowseRequest();
 
-            request.RequestHeader                 = requestHeader;
-            request.View                          = view;
+            request.RequestHeader = requestHeader;
+            request.View = view;
             request.RequestedMaxReferencesPerNode = requestedMaxReferencesPerNode;
-            request.NodesToBrowse                 = nodesToBrowse;
+            request.NodesToBrowse = nodesToBrowse;
 
             UpdateRequestHeader(request, requestHeader == null, "Browse");
 
@@ -1266,8 +1302,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the Browse service.
         /// </summary>
         public ResponseHeader EndBrowse(
-            IAsyncResult                 result,
-            out BrowseResultCollection   results,
+            IAsyncResult result,
+            out BrowseResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             BrowseResponse response = null;
@@ -1299,7 +1335,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1309,27 +1345,31 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion Browse Methods
 
         #region BrowseNext Methods
-        #if (!OPCUA_EXCLUDE_BrowseNext)
+
+#if (!OPCUA_EXCLUDE_BrowseNext)
+
         /// <summary>
         /// Invokes the BrowseNext service.
         /// </summary>
         public virtual ResponseHeader BrowseNext(
-            RequestHeader                requestHeader,
-            bool                         releaseContinuationPoints,
-            ByteStringCollection         continuationPoints,
-            out BrowseResultCollection   results,
+            RequestHeader requestHeader,
+            bool releaseContinuationPoints,
+            ByteStringCollection continuationPoints,
+            out BrowseResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             BrowseNextRequest request = new BrowseNextRequest();
             BrowseNextResponse response = null;
 
-            request.RequestHeader             = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReleaseContinuationPoints = releaseContinuationPoints;
-            request.ContinuationPoints        = continuationPoints;
+            request.ContinuationPoints = continuationPoints;
 
             UpdateRequestHeader(request, requestHeader == null, "BrowseNext");
 
@@ -1360,7 +1400,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1375,17 +1415,17 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the BrowseNext service.
         /// </summary>
         public IAsyncResult BeginBrowseNext(
-            RequestHeader        requestHeader,
-            bool                 releaseContinuationPoints,
+            RequestHeader requestHeader,
+            bool releaseContinuationPoints,
             ByteStringCollection continuationPoints,
-            AsyncCallback        callback,
-            object               asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             BrowseNextRequest request = new BrowseNextRequest();
 
-            request.RequestHeader             = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReleaseContinuationPoints = releaseContinuationPoints;
-            request.ContinuationPoints        = continuationPoints;
+            request.ContinuationPoints = continuationPoints;
 
             UpdateRequestHeader(request, requestHeader == null, "BrowseNext");
 
@@ -1401,8 +1441,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the BrowseNext service.
         /// </summary>
         public ResponseHeader EndBrowseNext(
-            IAsyncResult                 result,
-            out BrowseResultCollection   results,
+            IAsyncResult result,
+            out BrowseResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             BrowseNextResponse response = null;
@@ -1434,7 +1474,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1444,25 +1484,29 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion BrowseNext Methods
 
         #region TranslateBrowsePathsToNodeIds Methods
-        #if (!OPCUA_EXCLUDE_TranslateBrowsePathsToNodeIds)
+
+#if (!OPCUA_EXCLUDE_TranslateBrowsePathsToNodeIds)
+
         /// <summary>
         /// Invokes the TranslateBrowsePathsToNodeIds service.
         /// </summary>
         public virtual ResponseHeader TranslateBrowsePathsToNodeIds(
-            RequestHeader                  requestHeader,
-            BrowsePathCollection           browsePaths,
+            RequestHeader requestHeader,
+            BrowsePathCollection browsePaths,
             out BrowsePathResultCollection results,
-            out DiagnosticInfoCollection   diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             TranslateBrowsePathsToNodeIdsRequest request = new TranslateBrowsePathsToNodeIdsRequest();
             TranslateBrowsePathsToNodeIdsResponse response = null;
 
             request.RequestHeader = requestHeader;
-            request.BrowsePaths   = browsePaths;
+            request.BrowsePaths = browsePaths;
 
             UpdateRequestHeader(request, requestHeader == null, "TranslateBrowsePathsToNodeIds");
 
@@ -1493,7 +1537,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1508,15 +1552,15 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the TranslateBrowsePathsToNodeIds service.
         /// </summary>
         public IAsyncResult BeginTranslateBrowsePathsToNodeIds(
-            RequestHeader        requestHeader,
+            RequestHeader requestHeader,
             BrowsePathCollection browsePaths,
-            AsyncCallback        callback,
-            object               asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             TranslateBrowsePathsToNodeIdsRequest request = new TranslateBrowsePathsToNodeIdsRequest();
 
             request.RequestHeader = requestHeader;
-            request.BrowsePaths   = browsePaths;
+            request.BrowsePaths = browsePaths;
 
             UpdateRequestHeader(request, requestHeader == null, "TranslateBrowsePathsToNodeIds");
 
@@ -1532,9 +1576,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the TranslateBrowsePathsToNodeIds service.
         /// </summary>
         public ResponseHeader EndTranslateBrowsePathsToNodeIds(
-            IAsyncResult                   result,
+            IAsyncResult result,
             out BrowsePathResultCollection results,
-            out DiagnosticInfoCollection   diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             TranslateBrowsePathsToNodeIdsResponse response = null;
 
@@ -1565,7 +1609,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -1575,23 +1619,27 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion TranslateBrowsePathsToNodeIds Methods
 
         #region RegisterNodes Methods
-        #if (!OPCUA_EXCLUDE_RegisterNodes)
+
+#if (!OPCUA_EXCLUDE_RegisterNodes)
+
         /// <summary>
         /// Invokes the RegisterNodes service.
         /// </summary>
         public virtual ResponseHeader RegisterNodes(
-            RequestHeader        requestHeader,
-            NodeIdCollection     nodesToRegister,
+            RequestHeader requestHeader,
+            NodeIdCollection nodesToRegister,
             out NodeIdCollection registeredNodeIds)
         {
             RegisterNodesRequest request = new RegisterNodesRequest();
             RegisterNodesResponse response = null;
 
-            request.RequestHeader   = requestHeader;
+            request.RequestHeader = requestHeader;
             request.NodesToRegister = nodesToRegister;
 
             UpdateRequestHeader(request, requestHeader == null, "RegisterNodes");
@@ -1637,14 +1685,14 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the RegisterNodes service.
         /// </summary>
         public IAsyncResult BeginRegisterNodes(
-            RequestHeader    requestHeader,
+            RequestHeader requestHeader,
             NodeIdCollection nodesToRegister,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             RegisterNodesRequest request = new RegisterNodesRequest();
 
-            request.RequestHeader   = requestHeader;
+            request.RequestHeader = requestHeader;
             request.NodesToRegister = nodesToRegister;
 
             UpdateRequestHeader(request, requestHeader == null, "RegisterNodes");
@@ -1661,7 +1709,7 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the RegisterNodes service.
         /// </summary>
         public ResponseHeader EndRegisterNodes(
-            IAsyncResult         result,
+            IAsyncResult result,
             out NodeIdCollection registeredNodeIds)
         {
             RegisterNodesResponse response = null;
@@ -1702,22 +1750,26 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion RegisterNodes Methods
 
         #region UnregisterNodes Methods
-        #if (!OPCUA_EXCLUDE_UnregisterNodes)
+
+#if (!OPCUA_EXCLUDE_UnregisterNodes)
+
         /// <summary>
         /// Invokes the UnregisterNodes service.
         /// </summary>
         public virtual ResponseHeader UnregisterNodes(
-            RequestHeader    requestHeader,
+            RequestHeader requestHeader,
             NodeIdCollection nodesToUnregister)
         {
             UnregisterNodesRequest request = new UnregisterNodesRequest();
             UnregisterNodesResponse response = null;
 
-            request.RequestHeader     = requestHeader;
+            request.RequestHeader = requestHeader;
             request.NodesToUnregister = nodesToUnregister;
 
             UpdateRequestHeader(request, requestHeader == null, "UnregisterNodes");
@@ -1748,7 +1800,6 @@ namespace Opc.Ua
                     response = responseMessage.UnregisterNodesResponse;
                     ValidateResponse(response.ResponseHeader);
                 }
-
             }
             finally
             {
@@ -1762,14 +1813,14 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the UnregisterNodes service.
         /// </summary>
         public IAsyncResult BeginUnregisterNodes(
-            RequestHeader    requestHeader,
+            RequestHeader requestHeader,
             NodeIdCollection nodesToUnregister,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             UnregisterNodesRequest request = new UnregisterNodesRequest();
 
-            request.RequestHeader     = requestHeader;
+            request.RequestHeader = requestHeader;
             request.NodesToUnregister = nodesToUnregister;
 
             UpdateRequestHeader(request, requestHeader == null, "UnregisterNodes");
@@ -1816,7 +1867,6 @@ namespace Opc.Ua
                     response = responseMessage.UnregisterNodesResponse;
                     ValidateResponse(response.ResponseHeader);
                 }
-
             }
             finally
             {
@@ -1825,35 +1875,39 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion UnregisterNodes Methods
 
         #region QueryFirst Methods
-        #if (!OPCUA_EXCLUDE_QueryFirst)
+
+#if (!OPCUA_EXCLUDE_QueryFirst)
+
         /// <summary>
         /// Invokes the QueryFirst service.
         /// </summary>
         public virtual ResponseHeader QueryFirst(
-            RequestHeader                 requestHeader,
-            ViewDescription               view,
+            RequestHeader requestHeader,
+            ViewDescription view,
             NodeTypeDescriptionCollection nodeTypes,
-            ContentFilter                 filter,
-            uint                          maxDataSetsToReturn,
-            uint                          maxReferencesToReturn,
-            out QueryDataSetCollection    queryDataSets,
-            out byte[]                    continuationPoint,
-            out ParsingResultCollection   parsingResults,
-            out DiagnosticInfoCollection  diagnosticInfos,
-            out ContentFilterResult       filterResult)
+            ContentFilter filter,
+            uint maxDataSetsToReturn,
+            uint maxReferencesToReturn,
+            out QueryDataSetCollection queryDataSets,
+            out byte[] continuationPoint,
+            out ParsingResultCollection parsingResults,
+            out DiagnosticInfoCollection diagnosticInfos,
+            out ContentFilterResult filterResult)
         {
             QueryFirstRequest request = new QueryFirstRequest();
             QueryFirstResponse response = null;
 
-            request.RequestHeader         = requestHeader;
-            request.View                  = view;
-            request.NodeTypes             = nodeTypes;
-            request.Filter                = filter;
-            request.MaxDataSetsToReturn   = maxDataSetsToReturn;
+            request.RequestHeader = requestHeader;
+            request.View = view;
+            request.NodeTypes = nodeTypes;
+            request.Filter = filter;
+            request.MaxDataSetsToReturn = maxDataSetsToReturn;
             request.MaxReferencesToReturn = maxReferencesToReturn;
 
             UpdateRequestHeader(request, requestHeader == null, "QueryFirst");
@@ -1885,11 +1939,11 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                queryDataSets     = response.QueryDataSets;
+                queryDataSets = response.QueryDataSets;
                 continuationPoint = response.ContinuationPoint;
-                parsingResults    = response.ParsingResults;
-                diagnosticInfos   = response.DiagnosticInfos;
-                filterResult      = response.FilterResult;
+                parsingResults = response.ParsingResults;
+                diagnosticInfos = response.DiagnosticInfos;
+                filterResult = response.FilterResult;
             }
             finally
             {
@@ -1903,22 +1957,22 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the QueryFirst service.
         /// </summary>
         public IAsyncResult BeginQueryFirst(
-            RequestHeader                 requestHeader,
-            ViewDescription               view,
+            RequestHeader requestHeader,
+            ViewDescription view,
             NodeTypeDescriptionCollection nodeTypes,
-            ContentFilter                 filter,
-            uint                          maxDataSetsToReturn,
-            uint                          maxReferencesToReturn,
-            AsyncCallback                 callback,
-            object                        asyncState)
+            ContentFilter filter,
+            uint maxDataSetsToReturn,
+            uint maxReferencesToReturn,
+            AsyncCallback callback,
+            object asyncState)
         {
             QueryFirstRequest request = new QueryFirstRequest();
 
-            request.RequestHeader         = requestHeader;
-            request.View                  = view;
-            request.NodeTypes             = nodeTypes;
-            request.Filter                = filter;
-            request.MaxDataSetsToReturn   = maxDataSetsToReturn;
+            request.RequestHeader = requestHeader;
+            request.View = view;
+            request.NodeTypes = nodeTypes;
+            request.Filter = filter;
+            request.MaxDataSetsToReturn = maxDataSetsToReturn;
             request.MaxReferencesToReturn = maxReferencesToReturn;
 
             UpdateRequestHeader(request, requestHeader == null, "QueryFirst");
@@ -1935,12 +1989,12 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the QueryFirst service.
         /// </summary>
         public ResponseHeader EndQueryFirst(
-            IAsyncResult                 result,
-            out QueryDataSetCollection   queryDataSets,
-            out byte[]                   continuationPoint,
-            out ParsingResultCollection  parsingResults,
+            IAsyncResult result,
+            out QueryDataSetCollection queryDataSets,
+            out byte[] continuationPoint,
+            out ParsingResultCollection parsingResults,
             out DiagnosticInfoCollection diagnosticInfos,
-            out ContentFilterResult      filterResult)
+            out ContentFilterResult filterResult)
         {
             QueryFirstResponse response = null;
 
@@ -1971,11 +2025,11 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                queryDataSets     = response.QueryDataSets;
+                queryDataSets = response.QueryDataSets;
                 continuationPoint = response.ContinuationPoint;
-                parsingResults    = response.ParsingResults;
-                diagnosticInfos   = response.DiagnosticInfos;
-                filterResult      = response.FilterResult;
+                parsingResults = response.ParsingResults;
+                diagnosticInfos = response.DiagnosticInfos;
+                filterResult = response.FilterResult;
             }
             finally
             {
@@ -1984,27 +2038,31 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion QueryFirst Methods
 
         #region QueryNext Methods
-        #if (!OPCUA_EXCLUDE_QueryNext)
+
+#if (!OPCUA_EXCLUDE_QueryNext)
+
         /// <summary>
         /// Invokes the QueryNext service.
         /// </summary>
         public virtual ResponseHeader QueryNext(
-            RequestHeader              requestHeader,
-            bool                       releaseContinuationPoint,
-            byte[]                     continuationPoint,
+            RequestHeader requestHeader,
+            bool releaseContinuationPoint,
+            byte[] continuationPoint,
             out QueryDataSetCollection queryDataSets,
-            out byte[]                 revisedContinuationPoint)
+            out byte[] revisedContinuationPoint)
         {
             QueryNextRequest request = new QueryNextRequest();
             QueryNextResponse response = null;
 
-            request.RequestHeader            = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReleaseContinuationPoint = releaseContinuationPoint;
-            request.ContinuationPoint        = continuationPoint;
+            request.ContinuationPoint = continuationPoint;
 
             UpdateRequestHeader(request, requestHeader == null, "QueryNext");
 
@@ -2035,7 +2093,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                queryDataSets            = response.QueryDataSets;
+                queryDataSets = response.QueryDataSets;
                 revisedContinuationPoint = response.RevisedContinuationPoint;
             }
             finally
@@ -2051,16 +2109,16 @@ namespace Opc.Ua
         /// </summary>
         public IAsyncResult BeginQueryNext(
             RequestHeader requestHeader,
-            bool          releaseContinuationPoint,
-            byte[]        continuationPoint,
+            bool releaseContinuationPoint,
+            byte[] continuationPoint,
             AsyncCallback callback,
-            object        asyncState)
+            object asyncState)
         {
             QueryNextRequest request = new QueryNextRequest();
 
-            request.RequestHeader            = requestHeader;
+            request.RequestHeader = requestHeader;
             request.ReleaseContinuationPoint = releaseContinuationPoint;
-            request.ContinuationPoint        = continuationPoint;
+            request.ContinuationPoint = continuationPoint;
 
             UpdateRequestHeader(request, requestHeader == null, "QueryNext");
 
@@ -2076,9 +2134,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the QueryNext service.
         /// </summary>
         public ResponseHeader EndQueryNext(
-            IAsyncResult               result,
+            IAsyncResult result,
             out QueryDataSetCollection queryDataSets,
-            out byte[]                 revisedContinuationPoint)
+            out byte[] revisedContinuationPoint)
         {
             QueryNextResponse response = null;
 
@@ -2109,7 +2167,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                queryDataSets            = response.QueryDataSets;
+                queryDataSets = response.QueryDataSets;
                 revisedContinuationPoint = response.RevisedContinuationPoint;
             }
             finally
@@ -2119,29 +2177,33 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion QueryNext Methods
 
         #region Read Methods
-        #if (!OPCUA_EXCLUDE_Read)
+
+#if (!OPCUA_EXCLUDE_Read)
+
         /// <summary>
         /// Invokes the Read service.
         /// </summary>
         public virtual ResponseHeader Read(
-            RequestHeader                requestHeader,
-            double                       maxAge,
-            TimestampsToReturn           timestampsToReturn,
-            ReadValueIdCollection        nodesToRead,
-            out DataValueCollection      results,
+            RequestHeader requestHeader,
+            double maxAge,
+            TimestampsToReturn timestampsToReturn,
+            ReadValueIdCollection nodesToRead,
+            out DataValueCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             ReadRequest request = new ReadRequest();
             ReadResponse response = null;
 
-            request.RequestHeader      = requestHeader;
-            request.MaxAge             = maxAge;
+            request.RequestHeader = requestHeader;
+            request.MaxAge = maxAge;
             request.TimestampsToReturn = timestampsToReturn;
-            request.NodesToRead        = nodesToRead;
+            request.NodesToRead = nodesToRead;
 
             UpdateRequestHeader(request, requestHeader == null, "Read");
 
@@ -2172,7 +2234,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2187,19 +2249,19 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the Read service.
         /// </summary>
         public IAsyncResult BeginRead(
-            RequestHeader         requestHeader,
-            double                maxAge,
-            TimestampsToReturn    timestampsToReturn,
+            RequestHeader requestHeader,
+            double maxAge,
+            TimestampsToReturn timestampsToReturn,
             ReadValueIdCollection nodesToRead,
-            AsyncCallback         callback,
-            object                asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             ReadRequest request = new ReadRequest();
 
-            request.RequestHeader      = requestHeader;
-            request.MaxAge             = maxAge;
+            request.RequestHeader = requestHeader;
+            request.MaxAge = maxAge;
             request.TimestampsToReturn = timestampsToReturn;
-            request.NodesToRead        = nodesToRead;
+            request.NodesToRead = nodesToRead;
 
             UpdateRequestHeader(request, requestHeader == null, "Read");
 
@@ -2215,8 +2277,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the Read service.
         /// </summary>
         public ResponseHeader EndRead(
-            IAsyncResult                 result,
-            out DataValueCollection      results,
+            IAsyncResult result,
+            out DataValueCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             ReadResponse response = null;
@@ -2248,7 +2310,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2258,31 +2320,35 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion Read Methods
 
         #region HistoryRead Methods
-        #if (!OPCUA_EXCLUDE_HistoryRead)
+
+#if (!OPCUA_EXCLUDE_HistoryRead)
+
         /// <summary>
         /// Invokes the HistoryRead service.
         /// </summary>
         public virtual ResponseHeader HistoryRead(
-            RequestHeader                   requestHeader,
-            ExtensionObject                 historyReadDetails,
-            TimestampsToReturn              timestampsToReturn,
-            bool                            releaseContinuationPoints,
-            HistoryReadValueIdCollection    nodesToRead,
+            RequestHeader requestHeader,
+            ExtensionObject historyReadDetails,
+            TimestampsToReturn timestampsToReturn,
+            bool releaseContinuationPoints,
+            HistoryReadValueIdCollection nodesToRead,
             out HistoryReadResultCollection results,
-            out DiagnosticInfoCollection    diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             HistoryReadRequest request = new HistoryReadRequest();
             HistoryReadResponse response = null;
 
-            request.RequestHeader             = requestHeader;
-            request.HistoryReadDetails        = historyReadDetails;
-            request.TimestampsToReturn        = timestampsToReturn;
+            request.RequestHeader = requestHeader;
+            request.HistoryReadDetails = historyReadDetails;
+            request.TimestampsToReturn = timestampsToReturn;
             request.ReleaseContinuationPoints = releaseContinuationPoints;
-            request.NodesToRead               = nodesToRead;
+            request.NodesToRead = nodesToRead;
 
             UpdateRequestHeader(request, requestHeader == null, "HistoryRead");
 
@@ -2313,7 +2379,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2328,21 +2394,21 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the HistoryRead service.
         /// </summary>
         public IAsyncResult BeginHistoryRead(
-            RequestHeader                requestHeader,
-            ExtensionObject              historyReadDetails,
-            TimestampsToReturn           timestampsToReturn,
-            bool                         releaseContinuationPoints,
+            RequestHeader requestHeader,
+            ExtensionObject historyReadDetails,
+            TimestampsToReturn timestampsToReturn,
+            bool releaseContinuationPoints,
             HistoryReadValueIdCollection nodesToRead,
-            AsyncCallback                callback,
-            object                       asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             HistoryReadRequest request = new HistoryReadRequest();
 
-            request.RequestHeader             = requestHeader;
-            request.HistoryReadDetails        = historyReadDetails;
-            request.TimestampsToReturn        = timestampsToReturn;
+            request.RequestHeader = requestHeader;
+            request.HistoryReadDetails = historyReadDetails;
+            request.TimestampsToReturn = timestampsToReturn;
             request.ReleaseContinuationPoints = releaseContinuationPoints;
-            request.NodesToRead               = nodesToRead;
+            request.NodesToRead = nodesToRead;
 
             UpdateRequestHeader(request, requestHeader == null, "HistoryRead");
 
@@ -2358,9 +2424,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the HistoryRead service.
         /// </summary>
         public ResponseHeader EndHistoryRead(
-            IAsyncResult                    result,
+            IAsyncResult result,
             out HistoryReadResultCollection results,
-            out DiagnosticInfoCollection    diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             HistoryReadResponse response = null;
 
@@ -2391,7 +2457,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2401,25 +2467,29 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion HistoryRead Methods
 
         #region Write Methods
-        #if (!OPCUA_EXCLUDE_Write)
+
+#if (!OPCUA_EXCLUDE_Write)
+
         /// <summary>
         /// Invokes the Write service.
         /// </summary>
         public virtual ResponseHeader Write(
-            RequestHeader                requestHeader,
-            WriteValueCollection         nodesToWrite,
-            out StatusCodeCollection     results,
+            RequestHeader requestHeader,
+            WriteValueCollection nodesToWrite,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             WriteRequest request = new WriteRequest();
             WriteResponse response = null;
 
             request.RequestHeader = requestHeader;
-            request.NodesToWrite  = nodesToWrite;
+            request.NodesToWrite = nodesToWrite;
 
             UpdateRequestHeader(request, requestHeader == null, "Write");
 
@@ -2450,7 +2520,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2465,15 +2535,15 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the Write service.
         /// </summary>
         public IAsyncResult BeginWrite(
-            RequestHeader        requestHeader,
+            RequestHeader requestHeader,
             WriteValueCollection nodesToWrite,
-            AsyncCallback        callback,
-            object               asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             WriteRequest request = new WriteRequest();
 
             request.RequestHeader = requestHeader;
-            request.NodesToWrite  = nodesToWrite;
+            request.NodesToWrite = nodesToWrite;
 
             UpdateRequestHeader(request, requestHeader == null, "Write");
 
@@ -2489,8 +2559,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the Write service.
         /// </summary>
         public ResponseHeader EndWrite(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             WriteResponse response = null;
@@ -2522,7 +2592,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2532,24 +2602,28 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion Write Methods
 
         #region HistoryUpdate Methods
-        #if (!OPCUA_EXCLUDE_HistoryUpdate)
+
+#if (!OPCUA_EXCLUDE_HistoryUpdate)
+
         /// <summary>
         /// Invokes the HistoryUpdate service.
         /// </summary>
         public virtual ResponseHeader HistoryUpdate(
-            RequestHeader                     requestHeader,
-            ExtensionObjectCollection         historyUpdateDetails,
+            RequestHeader requestHeader,
+            ExtensionObjectCollection historyUpdateDetails,
             out HistoryUpdateResultCollection results,
-            out DiagnosticInfoCollection      diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             HistoryUpdateRequest request = new HistoryUpdateRequest();
             HistoryUpdateResponse response = null;
 
-            request.RequestHeader        = requestHeader;
+            request.RequestHeader = requestHeader;
             request.HistoryUpdateDetails = historyUpdateDetails;
 
             UpdateRequestHeader(request, requestHeader == null, "HistoryUpdate");
@@ -2581,7 +2655,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2596,14 +2670,14 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the HistoryUpdate service.
         /// </summary>
         public IAsyncResult BeginHistoryUpdate(
-            RequestHeader             requestHeader,
+            RequestHeader requestHeader,
             ExtensionObjectCollection historyUpdateDetails,
-            AsyncCallback             callback,
-            object                    asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             HistoryUpdateRequest request = new HistoryUpdateRequest();
 
-            request.RequestHeader        = requestHeader;
+            request.RequestHeader = requestHeader;
             request.HistoryUpdateDetails = historyUpdateDetails;
 
             UpdateRequestHeader(request, requestHeader == null, "HistoryUpdate");
@@ -2620,9 +2694,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the HistoryUpdate service.
         /// </summary>
         public ResponseHeader EndHistoryUpdate(
-            IAsyncResult                      result,
+            IAsyncResult result,
             out HistoryUpdateResultCollection results,
-            out DiagnosticInfoCollection      diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             HistoryUpdateResponse response = null;
 
@@ -2653,7 +2727,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2663,19 +2737,23 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion HistoryUpdate Methods
 
         #region Call Methods
-        #if (!OPCUA_EXCLUDE_Call)
+
+#if (!OPCUA_EXCLUDE_Call)
+
         /// <summary>
         /// Invokes the Call service.
         /// </summary>
         public virtual ResponseHeader Call(
-            RequestHeader                  requestHeader,
-            CallMethodRequestCollection    methodsToCall,
+            RequestHeader requestHeader,
+            CallMethodRequestCollection methodsToCall,
             out CallMethodResultCollection results,
-            out DiagnosticInfoCollection   diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             CallRequest request = new CallRequest();
             CallResponse response = null;
@@ -2712,7 +2790,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2727,10 +2805,10 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the Call service.
         /// </summary>
         public IAsyncResult BeginCall(
-            RequestHeader               requestHeader,
+            RequestHeader requestHeader,
             CallMethodRequestCollection methodsToCall,
-            AsyncCallback               callback,
-            object                      asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             CallRequest request = new CallRequest();
 
@@ -2751,9 +2829,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the Call service.
         /// </summary>
         public ResponseHeader EndCall(
-            IAsyncResult                   result,
+            IAsyncResult result,
             out CallMethodResultCollection results,
-            out DiagnosticInfoCollection   diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             CallResponse response = null;
 
@@ -2784,7 +2862,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2794,29 +2872,33 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion Call Methods
 
         #region CreateMonitoredItems Methods
-        #if (!OPCUA_EXCLUDE_CreateMonitoredItems)
+
+#if (!OPCUA_EXCLUDE_CreateMonitoredItems)
+
         /// <summary>
         /// Invokes the CreateMonitoredItems service.
         /// </summary>
         public virtual ResponseHeader CreateMonitoredItems(
-            RequestHeader                           requestHeader,
-            uint                                    subscriptionId,
-            TimestampsToReturn                      timestampsToReturn,
-            MonitoredItemCreateRequestCollection    itemsToCreate,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            TimestampsToReturn timestampsToReturn,
+            MonitoredItemCreateRequestCollection itemsToCreate,
             out MonitoredItemCreateResultCollection results,
-            out DiagnosticInfoCollection            diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             CreateMonitoredItemsRequest request = new CreateMonitoredItemsRequest();
             CreateMonitoredItemsResponse response = null;
 
-            request.RequestHeader      = requestHeader;
-            request.SubscriptionId     = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.TimestampsToReturn = timestampsToReturn;
-            request.ItemsToCreate      = itemsToCreate;
+            request.ItemsToCreate = itemsToCreate;
 
             UpdateRequestHeader(request, requestHeader == null, "CreateMonitoredItems");
 
@@ -2847,7 +2929,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2862,19 +2944,19 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the CreateMonitoredItems service.
         /// </summary>
         public IAsyncResult BeginCreateMonitoredItems(
-            RequestHeader                        requestHeader,
-            uint                                 subscriptionId,
-            TimestampsToReturn                   timestampsToReturn,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            TimestampsToReturn timestampsToReturn,
             MonitoredItemCreateRequestCollection itemsToCreate,
-            AsyncCallback                        callback,
-            object                               asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             CreateMonitoredItemsRequest request = new CreateMonitoredItemsRequest();
 
-            request.RequestHeader      = requestHeader;
-            request.SubscriptionId     = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.TimestampsToReturn = timestampsToReturn;
-            request.ItemsToCreate      = itemsToCreate;
+            request.ItemsToCreate = itemsToCreate;
 
             UpdateRequestHeader(request, requestHeader == null, "CreateMonitoredItems");
 
@@ -2890,9 +2972,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the CreateMonitoredItems service.
         /// </summary>
         public ResponseHeader EndCreateMonitoredItems(
-            IAsyncResult                            result,
+            IAsyncResult result,
             out MonitoredItemCreateResultCollection results,
-            out DiagnosticInfoCollection            diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             CreateMonitoredItemsResponse response = null;
 
@@ -2923,7 +3005,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -2933,29 +3015,33 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion CreateMonitoredItems Methods
 
         #region ModifyMonitoredItems Methods
-        #if (!OPCUA_EXCLUDE_ModifyMonitoredItems)
+
+#if (!OPCUA_EXCLUDE_ModifyMonitoredItems)
+
         /// <summary>
         /// Invokes the ModifyMonitoredItems service.
         /// </summary>
         public virtual ResponseHeader ModifyMonitoredItems(
-            RequestHeader                           requestHeader,
-            uint                                    subscriptionId,
-            TimestampsToReturn                      timestampsToReturn,
-            MonitoredItemModifyRequestCollection    itemsToModify,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            TimestampsToReturn timestampsToReturn,
+            MonitoredItemModifyRequestCollection itemsToModify,
             out MonitoredItemModifyResultCollection results,
-            out DiagnosticInfoCollection            diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             ModifyMonitoredItemsRequest request = new ModifyMonitoredItemsRequest();
             ModifyMonitoredItemsResponse response = null;
 
-            request.RequestHeader      = requestHeader;
-            request.SubscriptionId     = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.TimestampsToReturn = timestampsToReturn;
-            request.ItemsToModify      = itemsToModify;
+            request.ItemsToModify = itemsToModify;
 
             UpdateRequestHeader(request, requestHeader == null, "ModifyMonitoredItems");
 
@@ -2986,7 +3072,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3001,19 +3087,19 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the ModifyMonitoredItems service.
         /// </summary>
         public IAsyncResult BeginModifyMonitoredItems(
-            RequestHeader                        requestHeader,
-            uint                                 subscriptionId,
-            TimestampsToReturn                   timestampsToReturn,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            TimestampsToReturn timestampsToReturn,
             MonitoredItemModifyRequestCollection itemsToModify,
-            AsyncCallback                        callback,
-            object                               asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             ModifyMonitoredItemsRequest request = new ModifyMonitoredItemsRequest();
 
-            request.RequestHeader      = requestHeader;
-            request.SubscriptionId     = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.TimestampsToReturn = timestampsToReturn;
-            request.ItemsToModify      = itemsToModify;
+            request.ItemsToModify = itemsToModify;
 
             UpdateRequestHeader(request, requestHeader == null, "ModifyMonitoredItems");
 
@@ -3029,9 +3115,9 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the ModifyMonitoredItems service.
         /// </summary>
         public ResponseHeader EndModifyMonitoredItems(
-            IAsyncResult                            result,
+            IAsyncResult result,
             out MonitoredItemModifyResultCollection results,
-            out DiagnosticInfoCollection            diagnosticInfos)
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             ModifyMonitoredItemsResponse response = null;
 
@@ -3062,7 +3148,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3072,28 +3158,32 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion ModifyMonitoredItems Methods
 
         #region SetMonitoringMode Methods
-        #if (!OPCUA_EXCLUDE_SetMonitoringMode)
+
+#if (!OPCUA_EXCLUDE_SetMonitoringMode)
+
         /// <summary>
         /// Invokes the SetMonitoringMode service.
         /// </summary>
         public virtual ResponseHeader SetMonitoringMode(
-            RequestHeader                requestHeader,
-            uint                         subscriptionId,
-            MonitoringMode               monitoringMode,
-            UInt32Collection             monitoredItemIds,
-            out StatusCodeCollection     results,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            MonitoringMode monitoringMode,
+            UInt32Collection monitoredItemIds,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             SetMonitoringModeRequest request = new SetMonitoringModeRequest();
             SetMonitoringModeResponse response = null;
 
-            request.RequestHeader    = requestHeader;
-            request.SubscriptionId   = subscriptionId;
-            request.MonitoringMode   = monitoringMode;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
+            request.MonitoringMode = monitoringMode;
             request.MonitoredItemIds = monitoredItemIds;
 
             UpdateRequestHeader(request, requestHeader == null, "SetMonitoringMode");
@@ -3125,7 +3215,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3140,18 +3230,18 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the SetMonitoringMode service.
         /// </summary>
         public IAsyncResult BeginSetMonitoringMode(
-            RequestHeader    requestHeader,
-            uint             subscriptionId,
-            MonitoringMode   monitoringMode,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            MonitoringMode monitoringMode,
             UInt32Collection monitoredItemIds,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             SetMonitoringModeRequest request = new SetMonitoringModeRequest();
 
-            request.RequestHeader    = requestHeader;
-            request.SubscriptionId   = subscriptionId;
-            request.MonitoringMode   = monitoringMode;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
+            request.MonitoringMode = monitoringMode;
             request.MonitoredItemIds = monitoredItemIds;
 
             UpdateRequestHeader(request, requestHeader == null, "SetMonitoringMode");
@@ -3168,8 +3258,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the SetMonitoringMode service.
         /// </summary>
         public ResponseHeader EndSetMonitoringMode(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             SetMonitoringModeResponse response = null;
@@ -3201,7 +3291,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3211,33 +3301,37 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion SetMonitoringMode Methods
 
         #region SetTriggering Methods
-        #if (!OPCUA_EXCLUDE_SetTriggering)
+
+#if (!OPCUA_EXCLUDE_SetTriggering)
+
         /// <summary>
         /// Invokes the SetTriggering service.
         /// </summary>
         public virtual ResponseHeader SetTriggering(
-            RequestHeader                requestHeader,
-            uint                         subscriptionId,
-            uint                         triggeringItemId,
-            UInt32Collection             linksToAdd,
-            UInt32Collection             linksToRemove,
-            out StatusCodeCollection     addResults,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            uint triggeringItemId,
+            UInt32Collection linksToAdd,
+            UInt32Collection linksToRemove,
+            out StatusCodeCollection addResults,
             out DiagnosticInfoCollection addDiagnosticInfos,
-            out StatusCodeCollection     removeResults,
+            out StatusCodeCollection removeResults,
             out DiagnosticInfoCollection removeDiagnosticInfos)
         {
             SetTriggeringRequest request = new SetTriggeringRequest();
             SetTriggeringResponse response = null;
 
-            request.RequestHeader    = requestHeader;
-            request.SubscriptionId   = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.TriggeringItemId = triggeringItemId;
-            request.LinksToAdd       = linksToAdd;
-            request.LinksToRemove    = linksToRemove;
+            request.LinksToAdd = linksToAdd;
+            request.LinksToRemove = linksToRemove;
 
             UpdateRequestHeader(request, requestHeader == null, "SetTriggering");
 
@@ -3268,9 +3362,9 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                addResults            = response.AddResults;
-                addDiagnosticInfos    = response.AddDiagnosticInfos;
-                removeResults         = response.RemoveResults;
+                addResults = response.AddResults;
+                addDiagnosticInfos = response.AddDiagnosticInfos;
+                removeResults = response.RemoveResults;
                 removeDiagnosticInfos = response.RemoveDiagnosticInfos;
             }
             finally
@@ -3285,21 +3379,21 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the SetTriggering service.
         /// </summary>
         public IAsyncResult BeginSetTriggering(
-            RequestHeader    requestHeader,
-            uint             subscriptionId,
-            uint             triggeringItemId,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            uint triggeringItemId,
             UInt32Collection linksToAdd,
             UInt32Collection linksToRemove,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             SetTriggeringRequest request = new SetTriggeringRequest();
 
-            request.RequestHeader    = requestHeader;
-            request.SubscriptionId   = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.TriggeringItemId = triggeringItemId;
-            request.LinksToAdd       = linksToAdd;
-            request.LinksToRemove    = linksToRemove;
+            request.LinksToAdd = linksToAdd;
+            request.LinksToRemove = linksToRemove;
 
             UpdateRequestHeader(request, requestHeader == null, "SetTriggering");
 
@@ -3315,10 +3409,10 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the SetTriggering service.
         /// </summary>
         public ResponseHeader EndSetTriggering(
-            IAsyncResult                 result,
-            out StatusCodeCollection     addResults,
+            IAsyncResult result,
+            out StatusCodeCollection addResults,
             out DiagnosticInfoCollection addDiagnosticInfos,
-            out StatusCodeCollection     removeResults,
+            out StatusCodeCollection removeResults,
             out DiagnosticInfoCollection removeDiagnosticInfos)
         {
             SetTriggeringResponse response = null;
@@ -3350,9 +3444,9 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                addResults            = response.AddResults;
-                addDiagnosticInfos    = response.AddDiagnosticInfos;
-                removeResults         = response.RemoveResults;
+                addResults = response.AddResults;
+                addDiagnosticInfos = response.AddDiagnosticInfos;
+                removeResults = response.RemoveResults;
                 removeDiagnosticInfos = response.RemoveDiagnosticInfos;
             }
             finally
@@ -3362,26 +3456,30 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion SetTriggering Methods
 
         #region DeleteMonitoredItems Methods
-        #if (!OPCUA_EXCLUDE_DeleteMonitoredItems)
+
+#if (!OPCUA_EXCLUDE_DeleteMonitoredItems)
+
         /// <summary>
         /// Invokes the DeleteMonitoredItems service.
         /// </summary>
         public virtual ResponseHeader DeleteMonitoredItems(
-            RequestHeader                requestHeader,
-            uint                         subscriptionId,
-            UInt32Collection             monitoredItemIds,
-            out StatusCodeCollection     results,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            UInt32Collection monitoredItemIds,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteMonitoredItemsRequest request = new DeleteMonitoredItemsRequest();
             DeleteMonitoredItemsResponse response = null;
 
-            request.RequestHeader    = requestHeader;
-            request.SubscriptionId   = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.MonitoredItemIds = monitoredItemIds;
 
             UpdateRequestHeader(request, requestHeader == null, "DeleteMonitoredItems");
@@ -3413,7 +3511,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3428,16 +3526,16 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the DeleteMonitoredItems service.
         /// </summary>
         public IAsyncResult BeginDeleteMonitoredItems(
-            RequestHeader    requestHeader,
-            uint             subscriptionId,
+            RequestHeader requestHeader,
+            uint subscriptionId,
             UInt32Collection monitoredItemIds,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             DeleteMonitoredItemsRequest request = new DeleteMonitoredItemsRequest();
 
-            request.RequestHeader    = requestHeader;
-            request.SubscriptionId   = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.MonitoredItemIds = monitoredItemIds;
 
             UpdateRequestHeader(request, requestHeader == null, "DeleteMonitoredItems");
@@ -3454,8 +3552,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the DeleteMonitoredItems service.
         /// </summary>
         public ResponseHeader EndDeleteMonitoredItems(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteMonitoredItemsResponse response = null;
@@ -3487,7 +3585,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3497,37 +3595,41 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion DeleteMonitoredItems Methods
 
         #region CreateSubscription Methods
-        #if (!OPCUA_EXCLUDE_CreateSubscription)
+
+#if (!OPCUA_EXCLUDE_CreateSubscription)
+
         /// <summary>
         /// Invokes the CreateSubscription service.
         /// </summary>
         public virtual ResponseHeader CreateSubscription(
             RequestHeader requestHeader,
-            double        requestedPublishingInterval,
-            uint          requestedLifetimeCount,
-            uint          requestedMaxKeepAliveCount,
-            uint          maxNotificationsPerPublish,
-            bool          publishingEnabled,
-            byte          priority,
-            out uint      subscriptionId,
-            out double    revisedPublishingInterval,
-            out uint      revisedLifetimeCount,
-            out uint      revisedMaxKeepAliveCount)
+            double requestedPublishingInterval,
+            uint requestedLifetimeCount,
+            uint requestedMaxKeepAliveCount,
+            uint maxNotificationsPerPublish,
+            bool publishingEnabled,
+            byte priority,
+            out uint subscriptionId,
+            out double revisedPublishingInterval,
+            out uint revisedLifetimeCount,
+            out uint revisedMaxKeepAliveCount)
         {
             CreateSubscriptionRequest request = new CreateSubscriptionRequest();
             CreateSubscriptionResponse response = null;
 
-            request.RequestHeader               = requestHeader;
+            request.RequestHeader = requestHeader;
             request.RequestedPublishingInterval = requestedPublishingInterval;
-            request.RequestedLifetimeCount      = requestedLifetimeCount;
-            request.RequestedMaxKeepAliveCount  = requestedMaxKeepAliveCount;
-            request.MaxNotificationsPerPublish  = maxNotificationsPerPublish;
-            request.PublishingEnabled           = publishingEnabled;
-            request.Priority                    = priority;
+            request.RequestedLifetimeCount = requestedLifetimeCount;
+            request.RequestedMaxKeepAliveCount = requestedMaxKeepAliveCount;
+            request.MaxNotificationsPerPublish = maxNotificationsPerPublish;
+            request.PublishingEnabled = publishingEnabled;
+            request.Priority = priority;
 
             UpdateRequestHeader(request, requestHeader == null, "CreateSubscription");
 
@@ -3558,10 +3660,10 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                subscriptionId            = response.SubscriptionId;
+                subscriptionId = response.SubscriptionId;
                 revisedPublishingInterval = response.RevisedPublishingInterval;
-                revisedLifetimeCount      = response.RevisedLifetimeCount;
-                revisedMaxKeepAliveCount  = response.RevisedMaxKeepAliveCount;
+                revisedLifetimeCount = response.RevisedLifetimeCount;
+                revisedMaxKeepAliveCount = response.RevisedMaxKeepAliveCount;
             }
             finally
             {
@@ -3576,24 +3678,24 @@ namespace Opc.Ua
         /// </summary>
         public IAsyncResult BeginCreateSubscription(
             RequestHeader requestHeader,
-            double        requestedPublishingInterval,
-            uint          requestedLifetimeCount,
-            uint          requestedMaxKeepAliveCount,
-            uint          maxNotificationsPerPublish,
-            bool          publishingEnabled,
-            byte          priority,
+            double requestedPublishingInterval,
+            uint requestedLifetimeCount,
+            uint requestedMaxKeepAliveCount,
+            uint maxNotificationsPerPublish,
+            bool publishingEnabled,
+            byte priority,
             AsyncCallback callback,
-            object        asyncState)
+            object asyncState)
         {
             CreateSubscriptionRequest request = new CreateSubscriptionRequest();
 
-            request.RequestHeader               = requestHeader;
+            request.RequestHeader = requestHeader;
             request.RequestedPublishingInterval = requestedPublishingInterval;
-            request.RequestedLifetimeCount      = requestedLifetimeCount;
-            request.RequestedMaxKeepAliveCount  = requestedMaxKeepAliveCount;
-            request.MaxNotificationsPerPublish  = maxNotificationsPerPublish;
-            request.PublishingEnabled           = publishingEnabled;
-            request.Priority                    = priority;
+            request.RequestedLifetimeCount = requestedLifetimeCount;
+            request.RequestedMaxKeepAliveCount = requestedMaxKeepAliveCount;
+            request.MaxNotificationsPerPublish = maxNotificationsPerPublish;
+            request.PublishingEnabled = publishingEnabled;
+            request.Priority = priority;
 
             UpdateRequestHeader(request, requestHeader == null, "CreateSubscription");
 
@@ -3610,10 +3712,10 @@ namespace Opc.Ua
         /// </summary>
         public ResponseHeader EndCreateSubscription(
             IAsyncResult result,
-            out uint   subscriptionId,
+            out uint subscriptionId,
             out double revisedPublishingInterval,
-            out uint   revisedLifetimeCount,
-            out uint   revisedMaxKeepAliveCount)
+            out uint revisedLifetimeCount,
+            out uint revisedMaxKeepAliveCount)
         {
             CreateSubscriptionResponse response = null;
 
@@ -3644,10 +3746,10 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                subscriptionId            = response.SubscriptionId;
+                subscriptionId = response.SubscriptionId;
                 revisedPublishingInterval = response.RevisedPublishingInterval;
-                revisedLifetimeCount      = response.RevisedLifetimeCount;
-                revisedMaxKeepAliveCount  = response.RevisedMaxKeepAliveCount;
+                revisedLifetimeCount = response.RevisedLifetimeCount;
+                revisedMaxKeepAliveCount = response.RevisedMaxKeepAliveCount;
             }
             finally
             {
@@ -3656,36 +3758,40 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion CreateSubscription Methods
 
         #region ModifySubscription Methods
-        #if (!OPCUA_EXCLUDE_ModifySubscription)
+
+#if (!OPCUA_EXCLUDE_ModifySubscription)
+
         /// <summary>
         /// Invokes the ModifySubscription service.
         /// </summary>
         public virtual ResponseHeader ModifySubscription(
             RequestHeader requestHeader,
-            uint          subscriptionId,
-            double        requestedPublishingInterval,
-            uint          requestedLifetimeCount,
-            uint          requestedMaxKeepAliveCount,
-            uint          maxNotificationsPerPublish,
-            byte          priority,
-            out double    revisedPublishingInterval,
-            out uint      revisedLifetimeCount,
-            out uint      revisedMaxKeepAliveCount)
+            uint subscriptionId,
+            double requestedPublishingInterval,
+            uint requestedLifetimeCount,
+            uint requestedMaxKeepAliveCount,
+            uint maxNotificationsPerPublish,
+            byte priority,
+            out double revisedPublishingInterval,
+            out uint revisedLifetimeCount,
+            out uint revisedMaxKeepAliveCount)
         {
             ModifySubscriptionRequest request = new ModifySubscriptionRequest();
             ModifySubscriptionResponse response = null;
 
-            request.RequestHeader               = requestHeader;
-            request.SubscriptionId              = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.RequestedPublishingInterval = requestedPublishingInterval;
-            request.RequestedLifetimeCount      = requestedLifetimeCount;
-            request.RequestedMaxKeepAliveCount  = requestedMaxKeepAliveCount;
-            request.MaxNotificationsPerPublish  = maxNotificationsPerPublish;
-            request.Priority                    = priority;
+            request.RequestedLifetimeCount = requestedLifetimeCount;
+            request.RequestedMaxKeepAliveCount = requestedMaxKeepAliveCount;
+            request.MaxNotificationsPerPublish = maxNotificationsPerPublish;
+            request.Priority = priority;
 
             UpdateRequestHeader(request, requestHeader == null, "ModifySubscription");
 
@@ -3717,8 +3823,8 @@ namespace Opc.Ua
                 }
 
                 revisedPublishingInterval = response.RevisedPublishingInterval;
-                revisedLifetimeCount      = response.RevisedLifetimeCount;
-                revisedMaxKeepAliveCount  = response.RevisedMaxKeepAliveCount;
+                revisedLifetimeCount = response.RevisedLifetimeCount;
+                revisedMaxKeepAliveCount = response.RevisedMaxKeepAliveCount;
             }
             finally
             {
@@ -3733,24 +3839,24 @@ namespace Opc.Ua
         /// </summary>
         public IAsyncResult BeginModifySubscription(
             RequestHeader requestHeader,
-            uint          subscriptionId,
-            double        requestedPublishingInterval,
-            uint          requestedLifetimeCount,
-            uint          requestedMaxKeepAliveCount,
-            uint          maxNotificationsPerPublish,
-            byte          priority,
+            uint subscriptionId,
+            double requestedPublishingInterval,
+            uint requestedLifetimeCount,
+            uint requestedMaxKeepAliveCount,
+            uint maxNotificationsPerPublish,
+            byte priority,
             AsyncCallback callback,
-            object        asyncState)
+            object asyncState)
         {
             ModifySubscriptionRequest request = new ModifySubscriptionRequest();
 
-            request.RequestHeader               = requestHeader;
-            request.SubscriptionId              = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.RequestedPublishingInterval = requestedPublishingInterval;
-            request.RequestedLifetimeCount      = requestedLifetimeCount;
-            request.RequestedMaxKeepAliveCount  = requestedMaxKeepAliveCount;
-            request.MaxNotificationsPerPublish  = maxNotificationsPerPublish;
-            request.Priority                    = priority;
+            request.RequestedLifetimeCount = requestedLifetimeCount;
+            request.RequestedMaxKeepAliveCount = requestedMaxKeepAliveCount;
+            request.MaxNotificationsPerPublish = maxNotificationsPerPublish;
+            request.Priority = priority;
 
             UpdateRequestHeader(request, requestHeader == null, "ModifySubscription");
 
@@ -3768,8 +3874,8 @@ namespace Opc.Ua
         public ResponseHeader EndModifySubscription(
             IAsyncResult result,
             out double revisedPublishingInterval,
-            out uint   revisedLifetimeCount,
-            out uint   revisedMaxKeepAliveCount)
+            out uint revisedLifetimeCount,
+            out uint revisedMaxKeepAliveCount)
         {
             ModifySubscriptionResponse response = null;
 
@@ -3801,8 +3907,8 @@ namespace Opc.Ua
                 }
 
                 revisedPublishingInterval = response.RevisedPublishingInterval;
-                revisedLifetimeCount      = response.RevisedLifetimeCount;
-                revisedMaxKeepAliveCount  = response.RevisedMaxKeepAliveCount;
+                revisedLifetimeCount = response.RevisedLifetimeCount;
+                revisedMaxKeepAliveCount = response.RevisedMaxKeepAliveCount;
             }
             finally
             {
@@ -3811,27 +3917,31 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion ModifySubscription Methods
 
         #region SetPublishingMode Methods
-        #if (!OPCUA_EXCLUDE_SetPublishingMode)
+
+#if (!OPCUA_EXCLUDE_SetPublishingMode)
+
         /// <summary>
         /// Invokes the SetPublishingMode service.
         /// </summary>
         public virtual ResponseHeader SetPublishingMode(
-            RequestHeader                requestHeader,
-            bool                         publishingEnabled,
-            UInt32Collection             subscriptionIds,
-            out StatusCodeCollection     results,
+            RequestHeader requestHeader,
+            bool publishingEnabled,
+            UInt32Collection subscriptionIds,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             SetPublishingModeRequest request = new SetPublishingModeRequest();
             SetPublishingModeResponse response = null;
 
-            request.RequestHeader     = requestHeader;
+            request.RequestHeader = requestHeader;
             request.PublishingEnabled = publishingEnabled;
-            request.SubscriptionIds   = subscriptionIds;
+            request.SubscriptionIds = subscriptionIds;
 
             UpdateRequestHeader(request, requestHeader == null, "SetPublishingMode");
 
@@ -3862,7 +3972,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3877,17 +3987,17 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the SetPublishingMode service.
         /// </summary>
         public IAsyncResult BeginSetPublishingMode(
-            RequestHeader    requestHeader,
-            bool             publishingEnabled,
+            RequestHeader requestHeader,
+            bool publishingEnabled,
             UInt32Collection subscriptionIds,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             SetPublishingModeRequest request = new SetPublishingModeRequest();
 
-            request.RequestHeader     = requestHeader;
+            request.RequestHeader = requestHeader;
             request.PublishingEnabled = publishingEnabled;
-            request.SubscriptionIds   = subscriptionIds;
+            request.SubscriptionIds = subscriptionIds;
 
             UpdateRequestHeader(request, requestHeader == null, "SetPublishingMode");
 
@@ -3903,8 +4013,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the SetPublishingMode service.
         /// </summary>
         public ResponseHeader EndSetPublishingMode(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             SetPublishingModeResponse response = null;
@@ -3936,7 +4046,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -3946,28 +4056,32 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion SetPublishingMode Methods
 
         #region Publish Methods
-        #if (!OPCUA_EXCLUDE_Publish)
+
+#if (!OPCUA_EXCLUDE_Publish)
+
         /// <summary>
         /// Invokes the Publish service.
         /// </summary>
         public virtual ResponseHeader Publish(
-            RequestHeader                         requestHeader,
+            RequestHeader requestHeader,
             SubscriptionAcknowledgementCollection subscriptionAcknowledgements,
-            out uint                              subscriptionId,
-            out UInt32Collection                  availableSequenceNumbers,
-            out bool                              moreNotifications,
-            out NotificationMessage               notificationMessage,
-            out StatusCodeCollection              results,
-            out DiagnosticInfoCollection          diagnosticInfos)
+            out uint subscriptionId,
+            out UInt32Collection availableSequenceNumbers,
+            out bool moreNotifications,
+            out NotificationMessage notificationMessage,
+            out StatusCodeCollection results,
+            out DiagnosticInfoCollection diagnosticInfos)
         {
             PublishRequest request = new PublishRequest();
             PublishResponse response = null;
 
-            request.RequestHeader                = requestHeader;
+            request.RequestHeader = requestHeader;
             request.SubscriptionAcknowledgements = subscriptionAcknowledgements;
 
             UpdateRequestHeader(request, requestHeader == null, "Publish");
@@ -3999,12 +4113,12 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                subscriptionId           = response.SubscriptionId;
+                subscriptionId = response.SubscriptionId;
                 availableSequenceNumbers = response.AvailableSequenceNumbers;
-                moreNotifications        = response.MoreNotifications;
-                notificationMessage      = response.NotificationMessage;
-                results                  = response.Results;
-                diagnosticInfos          = response.DiagnosticInfos;
+                moreNotifications = response.MoreNotifications;
+                notificationMessage = response.NotificationMessage;
+                results = response.Results;
+                diagnosticInfos = response.DiagnosticInfos;
             }
             finally
             {
@@ -4018,14 +4132,14 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the Publish service.
         /// </summary>
         public IAsyncResult BeginPublish(
-            RequestHeader                         requestHeader,
+            RequestHeader requestHeader,
             SubscriptionAcknowledgementCollection subscriptionAcknowledgements,
-            AsyncCallback                         callback,
-            object                                asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             PublishRequest request = new PublishRequest();
 
-            request.RequestHeader                = requestHeader;
+            request.RequestHeader = requestHeader;
             request.SubscriptionAcknowledgements = subscriptionAcknowledgements;
 
             UpdateRequestHeader(request, requestHeader == null, "Publish");
@@ -4042,12 +4156,12 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the Publish service.
         /// </summary>
         public ResponseHeader EndPublish(
-            IAsyncResult                 result,
-            out uint                     subscriptionId,
-            out UInt32Collection         availableSequenceNumbers,
-            out bool                     moreNotifications,
-            out NotificationMessage      notificationMessage,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out uint subscriptionId,
+            out UInt32Collection availableSequenceNumbers,
+            out bool moreNotifications,
+            out NotificationMessage notificationMessage,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             PublishResponse response = null;
@@ -4079,12 +4193,12 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                subscriptionId           = response.SubscriptionId;
+                subscriptionId = response.SubscriptionId;
                 availableSequenceNumbers = response.AvailableSequenceNumbers;
-                moreNotifications        = response.MoreNotifications;
-                notificationMessage      = response.NotificationMessage;
-                results                  = response.Results;
-                diagnosticInfos          = response.DiagnosticInfos;
+                moreNotifications = response.MoreNotifications;
+                notificationMessage = response.NotificationMessage;
+                results = response.Results;
+                diagnosticInfos = response.DiagnosticInfos;
             }
             finally
             {
@@ -4093,25 +4207,29 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion Publish Methods
 
         #region Republish Methods
-        #if (!OPCUA_EXCLUDE_Republish)
+
+#if (!OPCUA_EXCLUDE_Republish)
+
         /// <summary>
         /// Invokes the Republish service.
         /// </summary>
         public virtual ResponseHeader Republish(
-            RequestHeader           requestHeader,
-            uint                    subscriptionId,
-            uint                    retransmitSequenceNumber,
+            RequestHeader requestHeader,
+            uint subscriptionId,
+            uint retransmitSequenceNumber,
             out NotificationMessage notificationMessage)
         {
             RepublishRequest request = new RepublishRequest();
             RepublishResponse response = null;
 
-            request.RequestHeader            = requestHeader;
-            request.SubscriptionId           = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.RetransmitSequenceNumber = retransmitSequenceNumber;
 
             UpdateRequestHeader(request, requestHeader == null, "Republish");
@@ -4158,15 +4276,15 @@ namespace Opc.Ua
         /// </summary>
         public IAsyncResult BeginRepublish(
             RequestHeader requestHeader,
-            uint          subscriptionId,
-            uint          retransmitSequenceNumber,
+            uint subscriptionId,
+            uint retransmitSequenceNumber,
             AsyncCallback callback,
-            object        asyncState)
+            object asyncState)
         {
             RepublishRequest request = new RepublishRequest();
 
-            request.RequestHeader            = requestHeader;
-            request.SubscriptionId           = subscriptionId;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionId = subscriptionId;
             request.RetransmitSequenceNumber = retransmitSequenceNumber;
 
             UpdateRequestHeader(request, requestHeader == null, "Republish");
@@ -4183,7 +4301,7 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the Republish service.
         /// </summary>
         public ResponseHeader EndRepublish(
-            IAsyncResult            result,
+            IAsyncResult result,
             out NotificationMessage notificationMessage)
         {
             RepublishResponse response = null;
@@ -4224,26 +4342,30 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion Republish Methods
 
         #region TransferSubscriptions Methods
-        #if (!OPCUA_EXCLUDE_TransferSubscriptions)
+
+#if (!OPCUA_EXCLUDE_TransferSubscriptions)
+
         /// <summary>
         /// Invokes the TransferSubscriptions service.
         /// </summary>
         public virtual ResponseHeader TransferSubscriptions(
-            RequestHeader                requestHeader,
-            UInt32Collection             subscriptionIds,
-            bool                         sendInitialValues,
+            RequestHeader requestHeader,
+            UInt32Collection subscriptionIds,
+            bool sendInitialValues,
             out TransferResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             TransferSubscriptionsRequest request = new TransferSubscriptionsRequest();
             TransferSubscriptionsResponse response = null;
 
-            request.RequestHeader     = requestHeader;
-            request.SubscriptionIds   = subscriptionIds;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionIds = subscriptionIds;
             request.SendInitialValues = sendInitialValues;
 
             UpdateRequestHeader(request, requestHeader == null, "TransferSubscriptions");
@@ -4275,7 +4397,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -4290,16 +4412,16 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the TransferSubscriptions service.
         /// </summary>
         public IAsyncResult BeginTransferSubscriptions(
-            RequestHeader    requestHeader,
+            RequestHeader requestHeader,
             UInt32Collection subscriptionIds,
-            bool             sendInitialValues,
-            AsyncCallback    callback,
-            object           asyncState)
+            bool sendInitialValues,
+            AsyncCallback callback,
+            object asyncState)
         {
             TransferSubscriptionsRequest request = new TransferSubscriptionsRequest();
 
-            request.RequestHeader     = requestHeader;
-            request.SubscriptionIds   = subscriptionIds;
+            request.RequestHeader = requestHeader;
+            request.SubscriptionIds = subscriptionIds;
             request.SendInitialValues = sendInitialValues;
 
             UpdateRequestHeader(request, requestHeader == null, "TransferSubscriptions");
@@ -4316,7 +4438,7 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the TransferSubscriptions service.
         /// </summary>
         public ResponseHeader EndTransferSubscriptions(
-            IAsyncResult                 result,
+            IAsyncResult result,
             out TransferResultCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
@@ -4349,7 +4471,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -4359,24 +4481,28 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion TransferSubscriptions Methods
 
         #region DeleteSubscriptions Methods
-        #if (!OPCUA_EXCLUDE_DeleteSubscriptions)
+
+#if (!OPCUA_EXCLUDE_DeleteSubscriptions)
+
         /// <summary>
         /// Invokes the DeleteSubscriptions service.
         /// </summary>
         public virtual ResponseHeader DeleteSubscriptions(
-            RequestHeader                requestHeader,
-            UInt32Collection             subscriptionIds,
-            out StatusCodeCollection     results,
+            RequestHeader requestHeader,
+            UInt32Collection subscriptionIds,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteSubscriptionsRequest request = new DeleteSubscriptionsRequest();
             DeleteSubscriptionsResponse response = null;
 
-            request.RequestHeader   = requestHeader;
+            request.RequestHeader = requestHeader;
             request.SubscriptionIds = subscriptionIds;
 
             UpdateRequestHeader(request, requestHeader == null, "DeleteSubscriptions");
@@ -4408,7 +4534,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -4423,14 +4549,14 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the DeleteSubscriptions service.
         /// </summary>
         public IAsyncResult BeginDeleteSubscriptions(
-            RequestHeader    requestHeader,
+            RequestHeader requestHeader,
             UInt32Collection subscriptionIds,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             DeleteSubscriptionsRequest request = new DeleteSubscriptionsRequest();
 
-            request.RequestHeader   = requestHeader;
+            request.RequestHeader = requestHeader;
             request.SubscriptionIds = subscriptionIds;
 
             UpdateRequestHeader(request, requestHeader == null, "DeleteSubscriptions");
@@ -4447,8 +4573,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the DeleteSubscriptions service.
         /// </summary>
         public ResponseHeader EndDeleteSubscriptions(
-            IAsyncResult                 result,
-            out StatusCodeCollection     results,
+            IAsyncResult result,
+            out StatusCodeCollection results,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             DeleteSubscriptionsResponse response = null;
@@ -4480,7 +4606,7 @@ namespace Opc.Ua
                     ValidateResponse(response.ResponseHeader);
                 }
 
-                results         = response.Results;
+                results = response.Results;
                 diagnosticInfos = response.DiagnosticInfos;
             }
             finally
@@ -4490,9 +4616,12 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
-        #endregion
+
+#endif
+
+        #endregion DeleteSubscriptions Methods
+
+        #endregion Client API
     }
 
     /// <summary>
@@ -4503,6 +4632,7 @@ namespace Opc.Ua
     public partial class DiscoveryClient : ClientBase
     {
         #region Constructors
+
         /// <summary>
         /// Intializes the object with a channel and a message context.
         /// </summary>
@@ -4511,9 +4641,11 @@ namespace Opc.Ua
             base(channel)
         {
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// The component  contains classes  object use to communicate with the server.
         /// </summary>
@@ -4521,28 +4653,32 @@ namespace Opc.Ua
         {
             get { return (IDiscoveryChannel)base.InnerChannel; }
         }
-        #endregion
+
+        #endregion Public Properties
 
         #region Client API
+
         #region FindServers Methods
-        #if (!OPCUA_EXCLUDE_FindServers)
+
+#if (!OPCUA_EXCLUDE_FindServers)
+
         /// <summary>
         /// Invokes the FindServers service.
         /// </summary>
         public virtual ResponseHeader FindServers(
-            RequestHeader                        requestHeader,
-            string                               endpointUrl,
-            StringCollection                     localeIds,
-            StringCollection                     serverUris,
+            RequestHeader requestHeader,
+            string endpointUrl,
+            StringCollection localeIds,
+            StringCollection serverUris,
             out ApplicationDescriptionCollection servers)
         {
             FindServersRequest request = new FindServersRequest();
             FindServersResponse response = null;
 
             request.RequestHeader = requestHeader;
-            request.EndpointUrl   = endpointUrl;
-            request.LocaleIds     = localeIds;
-            request.ServerUris    = serverUris;
+            request.EndpointUrl = endpointUrl;
+            request.LocaleIds = localeIds;
+            request.ServerUris = serverUris;
 
             UpdateRequestHeader(request, requestHeader == null, "FindServers");
 
@@ -4587,19 +4723,19 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the FindServers service.
         /// </summary>
         public IAsyncResult BeginFindServers(
-            RequestHeader    requestHeader,
-            string           endpointUrl,
+            RequestHeader requestHeader,
+            string endpointUrl,
             StringCollection localeIds,
             StringCollection serverUris,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             FindServersRequest request = new FindServersRequest();
 
             request.RequestHeader = requestHeader;
-            request.EndpointUrl   = endpointUrl;
-            request.LocaleIds     = localeIds;
-            request.ServerUris    = serverUris;
+            request.EndpointUrl = endpointUrl;
+            request.LocaleIds = localeIds;
+            request.ServerUris = serverUris;
 
             UpdateRequestHeader(request, requestHeader == null, "FindServers");
 
@@ -4615,7 +4751,7 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the FindServers service.
         /// </summary>
         public ResponseHeader EndFindServers(
-            IAsyncResult                         result,
+            IAsyncResult result,
             out ApplicationDescriptionCollection servers)
         {
             FindServersResponse response = null;
@@ -4656,28 +4792,32 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion FindServers Methods
 
         #region FindServersOnNetwork Methods
-        #if (!OPCUA_EXCLUDE_FindServersOnNetwork)
+
+#if (!OPCUA_EXCLUDE_FindServersOnNetwork)
+
         /// <summary>
         /// Invokes the FindServersOnNetwork service.
         /// </summary>
         public virtual ResponseHeader FindServersOnNetwork(
-            RequestHeader                 requestHeader,
-            uint                          startingRecordId,
-            uint                          maxRecordsToReturn,
-            StringCollection              serverCapabilityFilter,
-            out DateTime                  lastCounterResetTime,
+            RequestHeader requestHeader,
+            uint startingRecordId,
+            uint maxRecordsToReturn,
+            StringCollection serverCapabilityFilter,
+            out DateTime lastCounterResetTime,
             out ServerOnNetworkCollection servers)
         {
             FindServersOnNetworkRequest request = new FindServersOnNetworkRequest();
             FindServersOnNetworkResponse response = null;
 
-            request.RequestHeader          = requestHeader;
-            request.StartingRecordId       = startingRecordId;
-            request.MaxRecordsToReturn     = maxRecordsToReturn;
+            request.RequestHeader = requestHeader;
+            request.StartingRecordId = startingRecordId;
+            request.MaxRecordsToReturn = maxRecordsToReturn;
             request.ServerCapabilityFilter = serverCapabilityFilter;
 
             UpdateRequestHeader(request, requestHeader == null, "FindServersOnNetwork");
@@ -4710,7 +4850,7 @@ namespace Opc.Ua
                 }
 
                 lastCounterResetTime = response.LastCounterResetTime;
-                servers              = response.Servers;
+                servers = response.Servers;
             }
             finally
             {
@@ -4724,18 +4864,18 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the FindServersOnNetwork service.
         /// </summary>
         public IAsyncResult BeginFindServersOnNetwork(
-            RequestHeader    requestHeader,
-            uint             startingRecordId,
-            uint             maxRecordsToReturn,
+            RequestHeader requestHeader,
+            uint startingRecordId,
+            uint maxRecordsToReturn,
             StringCollection serverCapabilityFilter,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             FindServersOnNetworkRequest request = new FindServersOnNetworkRequest();
 
-            request.RequestHeader          = requestHeader;
-            request.StartingRecordId       = startingRecordId;
-            request.MaxRecordsToReturn     = maxRecordsToReturn;
+            request.RequestHeader = requestHeader;
+            request.StartingRecordId = startingRecordId;
+            request.MaxRecordsToReturn = maxRecordsToReturn;
             request.ServerCapabilityFilter = serverCapabilityFilter;
 
             UpdateRequestHeader(request, requestHeader == null, "FindServersOnNetwork");
@@ -4752,8 +4892,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the FindServersOnNetwork service.
         /// </summary>
         public ResponseHeader EndFindServersOnNetwork(
-            IAsyncResult                  result,
-            out DateTime                  lastCounterResetTime,
+            IAsyncResult result,
+            out DateTime lastCounterResetTime,
             out ServerOnNetworkCollection servers)
         {
             FindServersOnNetworkResponse response = null;
@@ -4786,7 +4926,7 @@ namespace Opc.Ua
                 }
 
                 lastCounterResetTime = response.LastCounterResetTime;
-                servers              = response.Servers;
+                servers = response.Servers;
             }
             finally
             {
@@ -4795,28 +4935,32 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion FindServersOnNetwork Methods
 
         #region GetEndpoints Methods
-        #if (!OPCUA_EXCLUDE_GetEndpoints)
+
+#if (!OPCUA_EXCLUDE_GetEndpoints)
+
         /// <summary>
         /// Invokes the GetEndpoints service.
         /// </summary>
         public virtual ResponseHeader GetEndpoints(
-            RequestHeader                     requestHeader,
-            string                            endpointUrl,
-            StringCollection                  localeIds,
-            StringCollection                  profileUris,
+            RequestHeader requestHeader,
+            string endpointUrl,
+            StringCollection localeIds,
+            StringCollection profileUris,
             out EndpointDescriptionCollection endpoints)
         {
             GetEndpointsRequest request = new GetEndpointsRequest();
             GetEndpointsResponse response = null;
 
             request.RequestHeader = requestHeader;
-            request.EndpointUrl   = endpointUrl;
-            request.LocaleIds     = localeIds;
-            request.ProfileUris   = profileUris;
+            request.EndpointUrl = endpointUrl;
+            request.LocaleIds = localeIds;
+            request.ProfileUris = profileUris;
 
             UpdateRequestHeader(request, requestHeader == null, "GetEndpoints");
 
@@ -4861,19 +5005,19 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the GetEndpoints service.
         /// </summary>
         public IAsyncResult BeginGetEndpoints(
-            RequestHeader    requestHeader,
-            string           endpointUrl,
+            RequestHeader requestHeader,
+            string endpointUrl,
             StringCollection localeIds,
             StringCollection profileUris,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             GetEndpointsRequest request = new GetEndpointsRequest();
 
             request.RequestHeader = requestHeader;
-            request.EndpointUrl   = endpointUrl;
-            request.LocaleIds     = localeIds;
-            request.ProfileUris   = profileUris;
+            request.EndpointUrl = endpointUrl;
+            request.LocaleIds = localeIds;
+            request.ProfileUris = profileUris;
 
             UpdateRequestHeader(request, requestHeader == null, "GetEndpoints");
 
@@ -4889,7 +5033,7 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the GetEndpoints service.
         /// </summary>
         public ResponseHeader EndGetEndpoints(
-            IAsyncResult                      result,
+            IAsyncResult result,
             out EndpointDescriptionCollection endpoints)
         {
             GetEndpointsResponse response = null;
@@ -4930,9 +5074,12 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
-        #endregion
+
+#endif
+
+        #endregion GetEndpoints Methods
+
+        #endregion Client API
     }
 
     /// <summary>
@@ -4943,6 +5090,7 @@ namespace Opc.Ua
     public partial class RegistrationClient : ClientBase
     {
         #region Constructors
+
         /// <summary>
         /// Intializes the object with a channel and a message context.
         /// </summary>
@@ -4951,9 +5099,11 @@ namespace Opc.Ua
             base(channel)
         {
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Properties
+
         /// <summary>
         /// The component  contains classes  object use to communicate with the server.
         /// </summary>
@@ -4961,23 +5111,27 @@ namespace Opc.Ua
         {
             get { return (IRegistrationChannel)base.InnerChannel; }
         }
-        #endregion
+
+        #endregion Public Properties
 
         #region Client API
+
         #region RegisterServer Methods
-        #if (!OPCUA_EXCLUDE_RegisterServer)
+
+#if (!OPCUA_EXCLUDE_RegisterServer)
+
         /// <summary>
         /// Invokes the RegisterServer service.
         /// </summary>
         public virtual ResponseHeader RegisterServer(
-            RequestHeader    requestHeader,
+            RequestHeader requestHeader,
             RegisteredServer server)
         {
             RegisterServerRequest request = new RegisterServerRequest();
             RegisterServerResponse response = null;
 
             request.RequestHeader = requestHeader;
-            request.Server        = server;
+            request.Server = server;
 
             UpdateRequestHeader(request, requestHeader == null, "RegisterServer");
 
@@ -5007,7 +5161,6 @@ namespace Opc.Ua
                     response = responseMessage.RegisterServerResponse;
                     ValidateResponse(response.ResponseHeader);
                 }
-
             }
             finally
             {
@@ -5021,15 +5174,15 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the RegisterServer service.
         /// </summary>
         public IAsyncResult BeginRegisterServer(
-            RequestHeader    requestHeader,
+            RequestHeader requestHeader,
             RegisteredServer server,
-            AsyncCallback    callback,
-            object           asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             RegisterServerRequest request = new RegisterServerRequest();
 
             request.RequestHeader = requestHeader;
-            request.Server        = server;
+            request.Server = server;
 
             UpdateRequestHeader(request, requestHeader == null, "RegisterServer");
 
@@ -5075,7 +5228,6 @@ namespace Opc.Ua
                     response = responseMessage.RegisterServerResponse;
                     ValidateResponse(response.ResponseHeader);
                 }
-
             }
             finally
             {
@@ -5084,26 +5236,30 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
+
+#endif
+
+        #endregion RegisterServer Methods
 
         #region RegisterServer2 Methods
-        #if (!OPCUA_EXCLUDE_RegisterServer2)
+
+#if (!OPCUA_EXCLUDE_RegisterServer2)
+
         /// <summary>
         /// Invokes the RegisterServer2 service.
         /// </summary>
         public virtual ResponseHeader RegisterServer2(
-            RequestHeader                requestHeader,
-            RegisteredServer             server,
-            ExtensionObjectCollection    discoveryConfiguration,
-            out StatusCodeCollection     configurationResults,
+            RequestHeader requestHeader,
+            RegisteredServer server,
+            ExtensionObjectCollection discoveryConfiguration,
+            out StatusCodeCollection configurationResults,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             RegisterServer2Request request = new RegisterServer2Request();
             RegisterServer2Response response = null;
 
-            request.RequestHeader          = requestHeader;
-            request.Server                 = server;
+            request.RequestHeader = requestHeader;
+            request.Server = server;
             request.DiscoveryConfiguration = discoveryConfiguration;
 
             UpdateRequestHeader(request, requestHeader == null, "RegisterServer2");
@@ -5136,7 +5292,7 @@ namespace Opc.Ua
                 }
 
                 configurationResults = response.ConfigurationResults;
-                diagnosticInfos      = response.DiagnosticInfos;
+                diagnosticInfos = response.DiagnosticInfos;
             }
             finally
             {
@@ -5150,16 +5306,16 @@ namespace Opc.Ua
         /// Begins an asynchronous invocation of the RegisterServer2 service.
         /// </summary>
         public IAsyncResult BeginRegisterServer2(
-            RequestHeader             requestHeader,
-            RegisteredServer          server,
+            RequestHeader requestHeader,
+            RegisteredServer server,
             ExtensionObjectCollection discoveryConfiguration,
-            AsyncCallback             callback,
-            object                    asyncState)
+            AsyncCallback callback,
+            object asyncState)
         {
             RegisterServer2Request request = new RegisterServer2Request();
 
-            request.RequestHeader          = requestHeader;
-            request.Server                 = server;
+            request.RequestHeader = requestHeader;
+            request.Server = server;
             request.DiscoveryConfiguration = discoveryConfiguration;
 
             UpdateRequestHeader(request, requestHeader == null, "RegisterServer2");
@@ -5176,8 +5332,8 @@ namespace Opc.Ua
         /// Finishes an asynchronous invocation of the RegisterServer2 service.
         /// </summary>
         public ResponseHeader EndRegisterServer2(
-            IAsyncResult                 result,
-            out StatusCodeCollection     configurationResults,
+            IAsyncResult result,
+            out StatusCodeCollection configurationResults,
             out DiagnosticInfoCollection diagnosticInfos)
         {
             RegisterServer2Response response = null;
@@ -5210,7 +5366,7 @@ namespace Opc.Ua
                 }
 
                 configurationResults = response.ConfigurationResults;
-                diagnosticInfos      = response.DiagnosticInfos;
+                diagnosticInfos = response.DiagnosticInfos;
             }
             finally
             {
@@ -5219,8 +5375,11 @@ namespace Opc.Ua
 
             return response.ResponseHeader;
         }
-        #endif
-        #endregion
-        #endregion
+
+#endif
+
+        #endregion RegisterServer2 Methods
+
+        #endregion Client API
     }
 }

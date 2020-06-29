@@ -5,8 +5,8 @@
              Title="Detail"
              BackgroundColor="#082535">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About"/>
-        <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help"/>
+        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help" />
     </ContentPage.ToolbarItems>
   <StackLayout Padding="10">
         <Label Text="Server Name" TextColor="#06C6BC" FontAttributes="Bold" FontSize="Large" />
@@ -15,18 +15,18 @@
 
         <Label Text="Server Uri" TextColor="#06C6BC" FontAttributes="Bold" FontSize="Large" />
         <BoxView HeightRequest="2" Color="#00757C" />
-        <Label x:Name="serveruri" FontSize="Medium" TextColor="White"/>
+        <Label x:Name="serveruri" FontSize="Medium" TextColor="White" />
 
         <Label Text="Security" TextColor="#06C6BC" FontAttributes="Bold" FontSize="Large" />
         <BoxView HeightRequest="2" Color="#00757C" />
-        <Label Text="..." FontSize="Medium" TextColor="White"/>
+        <Label Text="..." FontSize="Medium" TextColor="White" />
 
         <Label Text="Connection Status" TextColor="#06C6BC" FontAttributes="Bold" FontSize="Large" />
         <BoxView HeightRequest="2" Color="#00757C" />
-        <Label x:Name="connectionstatus" FontSize="Medium" TextColor="White"/>
+        <Label x:Name="connectionstatus" FontSize="Medium" TextColor="White" />
 
         <Label Text="Connected Sinced" TextColor="#06C6BC" FontAttributes="Bold" FontSize="Large" />
         <BoxView HeightRequest="2" Color="#00757C" />
-        <Label x:Name="connectedsince" FontSize="Medium" TextColor="White"/>
+        <Label x:Name="connectedsince" FontSize="Medium" TextColor="White" />
     </StackLayout>
 </ContentPage>

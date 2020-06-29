@@ -124,6 +124,10 @@
     <BundleResource Include="Resources\Connect.png" />
     <BundleResource Include="Resources\ConnectPopup.png" />
     <BundleResource Include="Resources\Browse.png" />
+    <BundleResource Include="Resources\PLC.PNG" />
+    <BundleResource Include="Resources\ET200sp.PNG" />
+    <BundleResource Include="Resources\manufacturing.png" />
+    <BundleResource Include="Resources\settings.png" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="PathService.cs" />
@@ -185,7 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microcharts">
-      <Version>0.8.5-pre</Version>
+      <Version>0.8.3-pre</Version>
     </PackageReference>
     <PackageReference Include="Microcharts.Forms">
       <Version>0.8.3-pre</Version>
@@ -196,7 +200,10 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.2.0.223</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.7.335</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.968" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

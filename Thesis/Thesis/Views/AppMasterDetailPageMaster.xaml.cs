@@ -12,6 +12,7 @@ namespace Thesis
     public partial class AppMasterDetailPageMaster : ContentPage
     {
         public ListView ListView;
+      
 
         public AppMasterDetailPageMaster()
         {
@@ -19,20 +20,37 @@ namespace Thesis
 
             BindingContext = new AppMasterDetailPageMasterViewModel();
             ListView = MenuItemsListView;
+           
         }
 
         private class AppMasterDetailPageMasterViewModel : INotifyPropertyChanged
         {
+            private SampleClient opcClient;
             public ObservableCollection<AppMasterDetailPageMenuItem> MenuItems { get; set; }
 
             public AppMasterDetailPageMasterViewModel()
             {
-                MenuItems = new ObservableCollection<AppMasterDetailPageMenuItem>(new[]
+                opcClient = MainPage.OpcClient;
+                if (opcClient.session.Endpoint.EndpointUrl == "opc.tcp://192.168.0.2:4840/")
                 {
+                    MenuItems = new ObservableCollection<AppMasterDetailPageMenuItem>(new[]
+                    {
                     new AppMasterDetailPageMenuItem { Id = 0,Icon="home.png", Title = "Status" ,TargetType=typeof(AppMasterDetailPageDetail)},
                     new AppMasterDetailPageMenuItem { Id = 1,Icon="connector.png", Title = "Browse" ,TargetType=typeof(TreeView)},
                     new AppMasterDetailPageMenuItem { Id = 2,Icon="hardware.png", Title = "Monitor", TargetType=typeof(MonitorPage)},
-                 });
+                     new AppMasterDetailPageMenuItem { Id = 3,Icon="manufacturing.png", Title = "Station", TargetType=typeof(MyScada)},
+                    });
+                }
+                else
+                {
+                    MenuItems = new ObservableCollection<AppMasterDetailPageMenuItem>(new[]
+                  {
+                    new AppMasterDetailPageMenuItem { Id = 0,Icon="home.png", Title = "Status" ,TargetType=typeof(AppMasterDetailPageDetail)},
+                    new AppMasterDetailPageMenuItem { Id = 1,Icon="connector.png", Title = "Browse" ,TargetType=typeof(TreeView)},
+                    new AppMasterDetailPageMenuItem { Id = 2,Icon="hardware.png", Title = "Monitor", TargetType=typeof(MonitorPage)},
+                    });
+                }
+              
             }
 
             #region INotifyPropertyChanged Implementation

@@ -1,24 +1,32 @@
-﻿using Opc.Ua;
-using Opc.Ua.Client;
+﻿using Microcharts;
+using Opc.Ua;
 using Rg.Plugins.Popup.Services;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Entry = Microcharts.Entry;
+using Orientation = Microcharts.Orientation;
 
 namespace Thesis
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TreeView : TabbedPage
+    public partial class TreeView : TabbedPage, INotifyPropertyChanged
     {
         #region Fields
 
         private ObservableCollection<ListNode> nodes = new ObservableCollection<ListNode>();
-        private SampleClient opcClient;
+        public static SampleClient opcClient;
         private Tree storedTree;
 
-
+        public List<Entry> _entries;//= new List<Entry>();
+        public Chart Chart0 { get; set; }
+        public bool vis { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private float dataitem, prevalue;
         #endregion Fields
 
         #region TreeView
@@ -30,7 +38,7 @@ namespace Thesis
             storedTree = tree;
             opcClient = client;
             DisplayNodes();
-            
+
         }
 
         #endregion TreeView
@@ -112,17 +120,33 @@ namespace Thesis
         #endregion Read/Write
 
         #region Subcription
-
+        int cnt = 0;
         public void OnSubcription(object sender, EventArgs e)
         {
-            string id = "ns=3;s=\"Z\"";
-            MonitorListViewModel.opcClient = opcClient;
-            MonitorListViewModel.nodeid = id;
-         
+            cnt++;
+            if (cnt == 4)
+            {
+                try
+                {
+                    var menu = sender as MenuItem;
+                    var selected = menu.CommandParameter as ListNode;
+                    MonitorPage.nodeid = selected.id;
+                    //MonitorListViewModel.nodeid = selected.id;
+                    Page monitorPage = new MonitorPage();
+                    Navigation.PushAsync(monitorPage);
+                    cnt = 0;
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+           
+          
         }
 
         #endregion Subcription
-        
 
         #region Graph
 
@@ -130,11 +154,76 @@ namespace Thesis
         {
             var menu = sender as MenuItem;
             var selected = menu.CommandParameter as ListNode;
-            string id = "ns=3;s=\"test\"";
-            BindingContext = new ChartVM(opcClient, id);
-            CurrentPage = Children[1];
+            List<string> datatype = new List<string>();
+            VariableNode variablenode = new VariableNode();
+            opcClient.Read_Datatype(opcClient, selected.id, out datatype, out variablenode);
+            if (datatype[0] == "Float" || datatype[0] == "Byte" || datatype[0] == "Int16" || datatype[0] == "Int32" || datatype[0] == "Int64" || datatype[0] == "SByte" || datatype[0] == "Double" || datatype[0] == "UInt16" || datatype[0] == "UInt32" || datatype[0] == "UInt64")
+            {
+                _entries = new List<Entry>();
+                Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        updatechart(selected.id.ToString());
+                        BindingContext = this;
+                    });
+                    return true;
+                });
+                CurrentPage = Children[1];
+            }
+            else
+            {
+                return;
+            }
         }
 
+        private void updatechart(string node)
+        {
+            string value = opcClient.VariableRead(node);
+            dataitem = float.Parse(value);
+            if (prevalue != dataitem)
+            {
+                prevalue = dataitem;
+                int index = node.IndexOf(';');
+                string second = node.Substring(index + 1);
+                GraphNodeID.Text = "NodeID : " + second;
+                GraphDate.Text = "Date : " + DateTime.Now.ToString("MM /dd/yyyy");
+                GraphValue.Text = "Value : " + value;
+                GraphTime.Text = "Time : " + DateTime.Now.ToString("hh:mm:ss");
+
+                _entries.Add(new Entry(dataitem)
+                {
+                    Label = DateTime.Now.ToString("hh:mm:ss"),
+                    Color = SKColor.Parse("#aafb2f"),
+                    ValueLabel = dataitem.ToString(),
+                });
+                Chart_Read.WidthRequest += 100;
+                Chart_Read.Chart = new LineChart
+                {
+                    Entries = _entries,
+                    LabelTextSize = 30,
+                    LabelOrientation = Orientation.Horizontal,
+                    ValueLabelOrientation = Orientation.Horizontal,
+                    IsAnimated = false,
+                    AnimationDuration = new TimeSpan(0),
+                    BackgroundColor = SKColors.Empty,
+                    PointMode = PointMode.Square,
+                    PointSize = 20,
+                    LineMode = LineMode.Straight
+                };
+            }
+            else
+            {
+                return;
+            }
+                //Random generator = new Random();
+                //var color = String.Format("#{0:X6}", generator.Next(0x1000000));
+               
+                //if (_entries.Count == 8)
+                //{
+                //    _entries.RemoveAt(0);
+                //}
+        }
         #endregion Graph
 
         #region MenuItems
@@ -179,7 +268,7 @@ namespace Thesis
         }
 
         #endregion MenuItems
-        
+
         private async void ToolbarItem_Clicked_About(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new AboutPage());

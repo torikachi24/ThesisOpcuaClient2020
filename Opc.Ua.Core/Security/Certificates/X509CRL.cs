@@ -75,7 +75,6 @@ namespace Opc.Ua
             GC.SuppressFinalize(this);
         }
 
-
         /// <summary>
         /// An overrideable version of the Dispose.
         /// </summary>

@@ -33,10 +33,10 @@
                 </StackLayout>
 
                 <StackLayout x:Name="BooleanType" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" IsVisible="False">
-                    <CheckBox x:Name="TrueCheck" IsChecked="False" CheckedChanged="TrueCheck_CheckedChanged" />
-                    <Label Text="True" TextColor="White" />
-                    <CheckBox x:Name="FalseCheck" IsChecked="False" CheckedChanged="FalseCheck_CheckedChanged" />
-                    <Label Text="False" TextColor="White" />
+                    <CheckBox x:Name="TrueCheck" IsChecked="False" CheckedChanged="TrueCheck_CheckedChanged" VerticalOptions="Center"/>
+                    <Label Text="True" TextColor="White" VerticalOptions="Center"/>
+                    <CheckBox x:Name="FalseCheck" IsChecked="False" CheckedChanged="FalseCheck_CheckedChanged" VerticalOptions="Center"/>
+                    <Label Text="False" TextColor="White" VerticalOptions="Center"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Margin="0,5,0,0">

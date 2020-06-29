@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Thesis"
-             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="Thesis.MainPage"
              Title="OPC UA Client"
              BackgroundColor="#082535">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About"/>
-        <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help"/>
+        <ToolbarItem Text="About" Order="Default" Priority="0" Clicked="ToolbarItem_Clicked_About" />
+        <ToolbarItem Text="Help" Order="Default" Priority="1" Clicked="ToolbarItem_Clicked_Help" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout  Margin = "10,10,10,10">
@@ -25,25 +25,23 @@
                     FontAttributes="Bold"
                     TextColor="White"
                     BackgroundColor="#045E69"
-                    Clicked="AddNewConnection_Clicked" 
-                          />
+                    Clicked="AddNewConnection_Clicked" />
                 </StackLayout>
 
-                <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold" 
-                       TextColor="#06C6BC" FontSize="Medium"  >
-                   
+                <Label Text="CONNECTION LIST" HorizontalTextAlignment="Start" FontAttributes="Bold"
+                       TextColor="#06C6BC" FontSize="Medium">
                 </Label>
                 <BoxView HeightRequest="3" Color="#00757C" />
 
                 <ListView x:Name="listView"
-                          ItemsSource="{Binding Connections}"
+                         ItemsSource="{Binding Connections}"
                           HasUnevenRows="True"
                           android:ListView.IsFastScrollEnabled="true"
                           SeparatorColor="#06C6BC" BackgroundColor="#082535"
                           Footer="">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell >
+                            <ViewCell>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="5*" />
@@ -56,18 +54,18 @@
                                         </StackLayout.GestureRecognizers>
                                         <Label x:Name="NameA" Text="{Binding ConnectionName}"
                                            FontSize="Medium"
-                                           FontAttributes="Bold" 
-                                               TextColor="#06C6BC"/>
-                                        <Label  Text="{Binding ConnectionUrl,StringFormat='Uri: {0}'}"  
-                                               TextColor="White"/>
+                                           FontAttributes="Bold"
+                                               TextColor="#06C6BC" />
+                                        <Label  Text="{Binding ConnectionUrl,StringFormat='Uri: {0}'}"
+                                               TextColor="White" />
                                     </StackLayout>
-                                    <Image Source="edit.png" Grid.Column=" 1" >
+                                    <Image Source="edit.png" Grid.Column=" 1">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Edit"
                                                                   CommandParameter="{Binding ConnectionId}" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Image Source="delete.png" Grid.Column="2" 
+                                    <Image Source="delete.png" Grid.Column="2"
                                            Margin="5,0,0,0">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Remove"
@@ -98,7 +96,7 @@
                            HeightRequest="40"
                            Opacity="0.9"
                            Margin="20,0,10,0"
-                           Aspect="AspectFit"/>
+                           Aspect="AspectFit" />
                     <Label>
                         <Label.FormattedText>
                             <FormattedString>

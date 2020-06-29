@@ -1,3 +1,5 @@
+System.Runtime
+Thesis
 BouncyCastle.Crypto
 FormsViewGroup
 Microcharts
@@ -43,6 +45,11 @@ Rg.Plugins.Popup.Droid
 SkiaSharp
 SkiaSharp.Views.Android
 SkiaSharp.Views.Forms
+SQLite-net
+SQLitePCLRaw.batteries_v2
+SQLitePCLRaw.core
+SQLitePCLRaw.lib.e_sqlite3.android
+SQLitePCLRaw.provider.e_sqlite3
 System.Buffers
 System.Collections.Immutable
 System.Diagnostics.DiagnosticSource
@@ -50,10 +57,8 @@ System.IO.Pipelines
 System.Memory
 System.Reflection.Metadata
 System.Runtime.CompilerServices.Unsafe
-System.Runtime
 System.Text.Encodings.Web
 System.Threading.Tasks.Extensions
-Thesis
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Core.Runtime
 Xamarin.Android.Arch.Lifecycle.Common
@@ -94,6 +99,7 @@ Xamarin.Android.Support.Vector.Drawable
 Xamarin.Android.Support.VersionedParcelable
 Xamarin.Android.Support.ViewPager
 Xamarin.Forms.Core
+Xamarin.Forms.PancakeView
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml

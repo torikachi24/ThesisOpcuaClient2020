@@ -12,7 +12,7 @@ namespace Thesis
     {
         private StackLayout stacklayout = new StackLayout();
         private static LabelViewModel textInfo = new LabelViewModel();
-        private SampleClient OpcClient = new SampleClient(textInfo);
+        public static SampleClient OpcClient = new SampleClient(textInfo);
         private string endpointUrl = null;
         private string User = null;
         private string Pass = null;
@@ -62,10 +62,7 @@ namespace Thesis
                         await PopupNavigation.Instance.PopAsync();//turn off Activity Indicator
                         Tree tree;
                         tree = OpcClient.GetRootNode(textInfo);
-                        if (tree.currentView[0].children == true)
-                        {
-                            tree = OpcClient.GetChildren(tree.currentView[0].id);
-                        }
+                        
                         AppMasterDetailPageMaster.OpcClient_Master = OpcClient;
                         AppMasterDetailPage.tree_controlPage = tree;
                         AppMasterDetailPage.sampleClient_controlPage = OpcClient;
@@ -75,8 +72,10 @@ namespace Thesis
                     }
                     else
                     {
-                        await PopupNavigation.Instance.PopAsync();
-                        await Navigation.PushAsync(new AlertPage("Cannot connect to an OPC UA server"));
+                        await PopupNavigation.Instance.PopAllAsync();
+                        await DisplayAlert("Warning", "Cannot connect to an OPC UA server", "Ok");
+                        //await Navigation.PushAsync(new AlertPage("Cannot connect to an OPC UA server"));
+                        //await Application.Current.MainPage.Navigation.PushAsync(new Popup());
                     }
                 }
                 else

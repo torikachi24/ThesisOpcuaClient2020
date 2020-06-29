@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     "UAP,Version=v10.0.16299": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -16,18 +16,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -682,7 +683,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -971,7 +972,7 @@
           "build/runtime.win10-x86.Microsoft.Net.UWPCoreRuntimeSdk.targets": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -983,22 +984,6 @@
           "runtimes/osx/native/libSkiaSharp.dylib": {
             "assetType": "native",
             "rid": "osx"
-          },
-          "runtimes/tizen-armel/native/libSkiaSharp.so": {
-            "assetType": "native",
-            "rid": "tizen-armel"
-          },
-          "runtimes/tizen-x86/native/libSkiaSharp.so": {
-            "assetType": "native",
-            "rid": "tizen-x86"
-          },
-          "runtimes/win-x64/native/libSkiaSharp.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
-          "runtimes/win-x86/native/libSkiaSharp.dll": {
-            "assetType": "native",
-            "rid": "win-x86"
           },
           "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll": {
             "assetType": "native",
@@ -1035,33 +1020,27 @@
           "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {
             "assetType": "native",
             "rid": "win10-x86"
+          },
+          "runtimes/win7-x64/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x64"
+          },
+          "runtimes/win7-x86/native/libSkiaSharp.dll": {
+            "assetType": "native",
+            "rid": "win7-x86"
           }
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
-        },
-        "runtimeTargets": {
-          "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {
-            "assetType": "native",
-            "rid": "win10-arm"
-          },
-          "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {
-            "assetType": "native",
-            "rid": "win10-x64"
-          },
-          "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {
-            "assetType": "native",
-            "rid": "win10-x86"
-          }
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -1076,6 +1055,131 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/alpine-x64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "alpine-x64"
+          },
+          "runtimes/linux-arm/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-arm"
+          },
+          "runtimes/linux-arm64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-armel/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-armel"
+          },
+          "runtimes/linux-musl-x64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-musl-x64"
+          },
+          "runtimes/linux-x64/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/linux-x86/native/libe_sqlite3.so": {
+            "assetType": "native",
+            "rid": "linux-x86"
+          },
+          "runtimes/osx-x64/native/libe_sqlite3.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-arm"
+          },
+          "runtimes/win-arm64/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win10-arm/nativeassets/uap10.0/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win10-arm"
+          },
+          "runtimes/win10-arm64/nativeassets/uap10.0/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win10-arm64"
+          },
+          "runtimes/win10-x64/nativeassets/uap10.0/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win10-x64"
+          },
+          "runtimes/win10-x86/nativeassets/uap10.0/e_sqlite3.dll": {
+            "assetType": "native",
+            "rid": "win10-x86"
+          }
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -1154,6 +1258,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -1482,13 +1598,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -1890,7 +2006,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -2467,11 +2583,11 @@
           }
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -2489,6 +2605,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -2551,7 +2680,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -2562,10 +2693,10 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -2576,18 +2707,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -3243,7 +3375,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -3892,7 +4024,7 @@
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -3906,19 +4038,16 @@
           "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
-        },
-        "native": {
-          "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -3933,6 +4062,68 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/e_sqlite3.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -4012,6 +4203,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -4322,13 +4525,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -4696,7 +4899,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -5221,11 +5424,11 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -5243,6 +5446,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -5305,7 +5521,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -5316,10 +5534,10 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm-aot": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -5330,18 +5548,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -5997,7 +6216,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -6689,7 +6908,7 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -6703,19 +6922,16 @@
           "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
-        },
-        "native": {
-          "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -6730,6 +6946,68 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win10-arm/nativeassets/uap10.0/e_sqlite3.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -6809,6 +7087,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -7119,13 +7409,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -7493,7 +7783,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -8018,11 +8308,11 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -8040,6 +8330,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -8102,7 +8405,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -8113,10 +8418,10 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-arm64-aot": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -8127,18 +8432,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -8794,7 +9100,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -9486,7 +9792,7 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -9495,10 +9801,10 @@
           "lib/uap10.0/SkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
@@ -9519,6 +9825,68 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win10-arm64/nativeassets/uap10.0/e_sqlite3.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -9598,6 +9966,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -9908,13 +10288,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -10282,7 +10662,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -10804,11 +11184,11 @@
           "lib/uap10.0/Microsoft.Graphics.Canvas.winmd": {}
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -10826,6 +11206,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -10888,7 +11281,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -10899,10 +11294,10 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -10913,18 +11308,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -11580,7 +11976,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -12229,7 +12625,7 @@
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -12243,19 +12639,16 @@
           "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
-        },
-        "native": {
-          "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -12270,6 +12663,68 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/e_sqlite3.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -12349,6 +12804,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -12659,13 +13126,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -13033,7 +13500,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -13558,11 +14025,11 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -13580,6 +14047,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -13642,7 +14122,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -13653,10 +14135,10 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x64-aot": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -13667,18 +14149,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -14334,7 +14817,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -15026,7 +15509,7 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -15040,19 +15523,16 @@
           "runtimes/win10-x64/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
-        },
-        "native": {
-          "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -15067,6 +15547,68 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win10-x64/nativeassets/uap10.0/e_sqlite3.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -15146,6 +15688,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -15456,13 +16010,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -15830,7 +16384,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -16355,11 +16909,11 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -16377,6 +16931,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -16439,7 +17006,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -16450,10 +17019,10 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -16464,18 +17033,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -17131,7 +17701,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -17780,7 +18350,7 @@
           "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -17794,19 +18364,16 @@
           "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
-        },
-        "native": {
-          "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -17821,6 +18388,68 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/e_sqlite3.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -17900,6 +18529,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -18210,13 +18851,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -18584,7 +19225,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -19109,11 +19750,11 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -19131,6 +19772,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -19193,7 +19847,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -19204,10 +19860,10 @@
       }
     },
     "UAP,Version=v10.0.16299/win10-x86-aot": {
-      "Microcharts/0.8.5-pre": {
+      "Microcharts/0.8.3-pre": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp.Views": "1.68.0"
+          "SkiaSharp.Views": "1.59.1.1"
         },
         "compile": {
           "lib/uap/Microcharts.Uwp.dll": {},
@@ -19218,18 +19874,19 @@
           "lib/uap/Microcharts.dll": {}
         }
       },
-      "Microcharts.Forms/0.7.1": {
+      "Microcharts.Forms/0.8.3-pre": {
         "type": "package",
         "dependencies": {
+          "Microcharts": "0.8.3-pre",
           "SkiaSharp.Views.Forms": "1.59.1.1",
           "System.ValueTuple": "4.4.0",
-          "Xamarin.Forms": "2.4.0.280"
+          "Xamarin.Forms": "2.4.0.282"
         },
         "compile": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.4/Microcharts.Forms.dll": {}
+          "lib/netstandard1.3/Microcharts.Forms.dll": {}
         }
       },
       "Microsoft.AspNetCore.Connections.Abstractions/2.2.0": {
@@ -19885,7 +20542,7 @@
           "build/Microsoft.NetCore.UniversalWindowsPlatform.targets": {}
         }
       },
-      "Microsoft.UI.Xaml/2.3.191211002": {
+      "Microsoft.UI.Xaml/2.4.2": {
         "type": "package",
         "compile": {
           "lib/uap10.0/Microsoft.UI.Xaml.winmd": {}
@@ -20577,7 +21234,7 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "SkiaSharp/1.68.0": {
+      "SkiaSharp/1.59.1": {
         "type": "package",
         "compile": {
           "lib/uap10.0/SkiaSharp.dll": {}
@@ -20591,19 +21248,16 @@
           "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll": {}
         }
       },
-      "SkiaSharp.Views/1.68.0": {
+      "SkiaSharp.Views/1.59.1.1": {
         "type": "package",
         "dependencies": {
-          "SkiaSharp": "1.68.0"
+          "SkiaSharp": "1.59.1"
         },
         "compile": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.UWP.dll": {}
-        },
-        "native": {
-          "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll": {}
         }
       },
       "SkiaSharp.Views.Forms/1.59.1.1": {
@@ -20618,6 +21272,68 @@
         },
         "runtime": {
           "lib/uap10.0/SkiaSharp.Views.Forms.dll": {}
+        }
+      },
+      "sqlite-net-pcl/1.7.335": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.bundle_green": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLite-net.dll": {}
+        }
+      },
+      "SQLitePCLRaw.bundle_green/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3",
+          "SQLitePCLRaw.lib.e_sqlite3": "2.0.3",
+          "SQLitePCLRaw.provider.e_sqlite3": "2.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll": {}
+        }
+      },
+      "SQLitePCLRaw.core/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "System.Memory": "4.5.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SQLitePCLRaw.core.dll": {}
+        }
+      },
+      "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {}
+        },
+        "native": {
+          "runtimes/win10-x86/nativeassets/uap10.0/e_sqlite3.dll": {}
+        }
+      },
+      "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+        "type": "package",
+        "dependencies": {
+          "SQLitePCLRaw.core": "2.0.3"
+        },
+        "compile": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -20697,6 +21413,18 @@
         },
         "runtime": {
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
+        }
+      },
+      "System.ComponentModel/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netcore50/System.ComponentModel.dll": {}
+        },
+        "runtime": {
+          "lib/netcore50/System.ComponentModel.dll": {}
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {
@@ -21007,13 +21735,13 @@
           "lib/netcore50/System.Linq.Queryable.dll": {}
         }
       },
-      "System.Memory/4.5.1": {
+      "System.Memory/4.5.3": {
         "type": "package",
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.0"
+          "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "ref/netstandard2.0/System.Memory.dll": {}
+          "lib/netstandard2.0/System.Memory.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/System.Memory.dll": {}
@@ -21381,7 +22109,7 @@
           "lib/win8/_._": {}
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {
+      "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
           "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
@@ -21906,11 +22634,11 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Xamarin.Forms/4.5.0.617": {
+      "Xamarin.Forms/4.7.0.968": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.15",
-          "Microsoft.UI.Xaml": "2.3.191211002",
+          "Microsoft.UI.Xaml": "2.4.2",
           "Win2D.uwp": "1.20.0"
         },
         "compile": {
@@ -21928,6 +22656,19 @@
         "build": {
           "build/Xamarin.Forms.props": {},
           "build/Xamarin.Forms.targets": {}
+        }
+      },
+      "Xamarin.Forms.PancakeView/1.4.2": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel": "4.3.0",
+          "Xamarin.Forms": "3.6.0.220655"
+        },
+        "compile": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
+        },
+        "runtime": {
+          "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll": {}
         }
       },
       "Opc.Ua.Client/1.0.0": {
@@ -21990,7 +22731,9 @@
           "Opc.Ua.Core": "1.0.0",
           "Plugin.Share": "7.1.1",
           "Rg.Plugins.Popup": "1.2.0.223",
-          "Xamarin.Forms": "4.5.0.617"
+          "Xamarin.Forms": "4.7.0.968",
+          "Xamarin.Forms.PancakeView": "1.4.2",
+          "sqlite-net-pcl": "1.7.335"
         },
         "compile": {
           "bin/placeholder/Thesis.dll": {}
@@ -22002,10 +22745,10 @@
     }
   },
   "libraries": {
-    "Microcharts/0.8.5-pre": {
-      "sha512": "zPRK+ZtublASZneu97T8ZeyVEWZQnOo0RZMvWyu7w/ZmN6fDl2NDdQP0IdW4Y4PVfOrLIBQp+2/EkQs8YkFDtQ==",
+    "Microcharts/0.8.3-pre": {
+      "sha512": "8RF/nktCobZ2PBQ9t9BROI/v78azWePKzLv/X3W4h6UrsNLUjrusc/fA5sgh10lD4n6R7jP+LaDXx1p/sKd89w==",
       "type": "package",
-      "path": "microcharts/0.8.5-pre",
+      "path": "microcharts/0.8.3-pre",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -22014,23 +22757,25 @@
         "lib/Xamarin.iOS10/Microcharts.dll",
         "lib/Xamarin.iOS10/Microcharts.iOS.dll",
         "lib/netstandard1.3/Microcharts.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Microcharts.dll",
         "lib/uap/Microcharts.Uwp.dll",
         "lib/uap/Microcharts.dll",
         "lib/xamarinmac/Microcharts.dll",
         "lib/xamarinmac/Microcharts.macOS.dll",
-        "microcharts.0.8.5-pre.nupkg.sha512",
+        "microcharts.0.8.3-pre.nupkg.sha512",
         "microcharts.nuspec"
       ]
     },
-    "Microcharts.Forms/0.7.1": {
-      "sha512": "/oeY4j/x3I8PY6sNV3B6CHKdvZl3cJHxfkxIKSPaX86bc50mq1C0L+LqVnbRMwMa1PpywPtwL1+aqlKGM8bL3w==",
+    "Microcharts.Forms/0.8.3-pre": {
+      "sha512": "sw7TRWZbrodd+R26lpSm5o4ckoYPlj6rxiedXVeWyLJemKevOflWfX8W3HWjoadFDAhuOczEilHJOS5eXFeapQ==",
       "type": "package",
-      "path": "microcharts.forms/0.7.1",
+      "path": "microcharts.forms/0.8.3-pre",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/netstandard1.4/Microcharts.Forms.dll",
-        "microcharts.forms.0.7.1.nupkg.sha512",
+        "lib/netstandard1.3/Microcharts.Forms.dll",
+        "lib/portable-net45+win8+wpa81+wp8/Microcharts.Forms.dll",
+        "microcharts.forms.0.8.3-pre.nupkg.sha512",
         "microcharts.forms.nuspec"
       ]
     },
@@ -22902,10 +23647,10 @@
         "runtime.json"
       ]
     },
-    "Microsoft.UI.Xaml/2.3.191211002": {
-      "sha512": "Sr27CVH8Dh4jSPYXKYLrMeuNfPFZSh1/t5W/xD8MKjDlPdv9vHQdCFUCtMqEKZalNQIo35UUSV6jgl5ZeRihIg==",
+    "Microsoft.UI.Xaml/2.4.2": {
+      "sha512": "EPuBFtyrKi7VweJEB6pBQE9lsQKMT0xaHHsQwDnm5yusYFGRCnPLuwptRfEeXbZemkpnXU6NmtC7FY5WBMqxGA==",
       "type": "package",
-      "path": "microsoft.ui.xaml/2.3.191211002",
+      "path": "microsoft.ui.xaml/2.4.2",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -22923,13 +23668,13 @@
         "lib/uap10.0/Microsoft.UI.Xaml.xml",
         "lib/uap10.0/Microsoft.UI.Xaml/Themes/Generic.xaml",
         "license.txt",
-        "microsoft.ui.xaml.2.3.191211002.nupkg.sha512",
+        "microsoft.ui.xaml.2.4.2.nupkg.sha512",
         "microsoft.ui.xaml.nuspec",
         "readme.txt",
-        "tools/AppX/arm/Release/Microsoft.UI.Xaml.2.3.appx",
-        "tools/AppX/arm64/Release/Microsoft.UI.Xaml.2.3.appx",
-        "tools/AppX/x64/Release/Microsoft.UI.Xaml.2.3.appx",
-        "tools/AppX/x86/Release/Microsoft.UI.Xaml.2.3.appx",
+        "tools/AppX/arm/Release/Microsoft.UI.Xaml.2.4.appx",
+        "tools/AppX/arm64/Release/Microsoft.UI.Xaml.2.4.appx",
+        "tools/AppX/x64/Release/Microsoft.UI.Xaml.2.4.appx",
+        "tools/AppX/x86/Release/Microsoft.UI.Xaml.2.4.appx",
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
@@ -23201,6 +23946,7 @@
         "lib/MonoTouch/Rg.Plugins.Popup.dll",
         "lib/MonoTouch/Rg.Plugins.Popup.pdb",
         "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.dll",
+        "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.dll.mdb",
         "lib/Xamarin.IOS/Rg.Plugins.Popup.IOS.pdb",
         "lib/Xamarin.IOS/Rg.Plugins.Popup.dll",
         "lib/Xamarin.IOS/Rg.Plugins.Popup.pdb",
@@ -28070,40 +28816,33 @@
         "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll"
       ]
     },
-    "SkiaSharp/1.68.0": {
-      "sha512": "ptuxAKk9FiClNnAgWM8hVMCYw/B0hUJWZ8W6efnIAtJmJn/Xl4jvxxDF5WOqfQYCLVzxXw5gvBPVxvTLblFp0g==",
+    "SkiaSharp/1.59.1": {
+      "sha512": "Le+YqP0aWwJ5ImHikWiLWOWjdH8oOV6F2D7fknzKp9ArzDIrtPASeiHpI1RgqQEK/GGvR56B2l5belsDzwK7uQ==",
       "type": "package",
-      "path": "skiasharp/1.68.0",
+      "path": "skiasharp/1.59.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.txt",
-        "THIRD-PARTY-NOTICES.txt",
+        "build/net45/SkiaSharp.dll.config",
         "build/net45/SkiaSharp.targets",
-        "build/tizen40/SkiaSharp.targets",
         "lib/MonoAndroid/SkiaSharp.dll",
         "lib/MonoAndroid/SkiaSharp.xml",
-        "lib/Xamarin.Mac20/SkiaSharp.dll",
-        "lib/Xamarin.Mac20/SkiaSharp.xml",
-        "lib/Xamarin.TVOS/SkiaSharp.dll",
-        "lib/Xamarin.TVOS/SkiaSharp.xml",
-        "lib/Xamarin.WatchOS/SkiaSharp.dll",
-        "lib/Xamarin.WatchOS/SkiaSharp.xml",
-        "lib/Xamarin.iOS/SkiaSharp.dll",
-        "lib/Xamarin.iOS/SkiaSharp.xml",
+        "lib/XamarinMac/SkiaSharp.dll",
+        "lib/XamarinMac/SkiaSharp.xml",
+        "lib/XamariniOS/SkiaSharp.dll",
+        "lib/XamariniOS/SkiaSharp.xml",
+        "lib/XamarintvOS/SkiaSharp.dll",
+        "lib/XamarintvOS/SkiaSharp.xml",
         "lib/net45/SkiaSharp.dll",
+        "lib/net45/SkiaSharp.dll.config",
         "lib/net45/SkiaSharp.xml",
         "lib/netstandard1.3/SkiaSharp.dll",
         "lib/netstandard1.3/SkiaSharp.xml",
-        "lib/tizen40/SkiaSharp.dll",
-        "lib/tizen40/SkiaSharp.xml",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.dll",
+        "lib/portable-net45+win8+wpa81+wp8/SkiaSharp.xml",
         "lib/uap10.0/SkiaSharp.dll",
         "lib/uap10.0/SkiaSharp.xml",
         "runtimes/osx/native/libSkiaSharp.dylib",
-        "runtimes/tizen-armel/native/libSkiaSharp.so",
-        "runtimes/tizen-x86/native/libSkiaSharp.so",
-        "runtimes/win-x64/native/libSkiaSharp.dll",
-        "runtimes/win-x86/native/libSkiaSharp.dll",
         "runtimes/win10-arm/nativeassets/uap10.0/libEGL.dll",
         "runtimes/win10-arm/nativeassets/uap10.0/libGLESv2.dll",
         "runtimes/win10-arm/nativeassets/uap10.0/libSkiaSharp.dll",
@@ -28113,43 +28852,28 @@
         "runtimes/win10-x86/nativeassets/uap10.0/libEGL.dll",
         "runtimes/win10-x86/nativeassets/uap10.0/libGLESv2.dll",
         "runtimes/win10-x86/nativeassets/uap10.0/libSkiaSharp.dll",
-        "skiasharp.1.68.0.nupkg.sha512",
+        "runtimes/win7-x64/native/libSkiaSharp.dll",
+        "runtimes/win7-x86/native/libSkiaSharp.dll",
+        "skiasharp.1.59.1.nupkg.sha512",
         "skiasharp.nuspec",
         "xamarin.interactive/SkiaSharp.Workbooks.dll"
       ]
     },
-    "SkiaSharp.Views/1.68.0": {
-      "sha512": "tCpeBURfS3knCdB3lz1Ck6HQ5jXRT2CPWrT8QJb1PWhcx1SHm9iLWvcv2cu1Z5blkDuLZ1hREnxd07Mx+xS74Q==",
+    "SkiaSharp.Views/1.59.1.1": {
+      "sha512": "1MQmOh3OjdrCD87Ehdn986RoD43WEe8D9zzncCotuAckYHB++JmDv1poOhaiWtoYqCLXU6Vk5IcQR6+EgZ0ofQ==",
       "type": "package",
-      "path": "skiasharp.views/1.68.0",
+      "path": "skiasharp.views/1.59.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.txt",
         "lib/MonoAndroid/SkiaSharp.Views.Android.dll",
-        "lib/MonoAndroid/SkiaSharp.Views.Android.xml",
-        "lib/Xamarin.Mac20/SkiaSharp.Views.Mac.dll",
-        "lib/Xamarin.Mac20/SkiaSharp.Views.Mac.xml",
-        "lib/Xamarin.TVOS/SkiaSharp.Views.tvOS.dll",
-        "lib/Xamarin.TVOS/SkiaSharp.Views.tvOS.xml",
-        "lib/Xamarin.WatchOS/SkiaSharp.Views.watchOS.dll",
-        "lib/Xamarin.WatchOS/SkiaSharp.Views.watchOS.xml",
-        "lib/Xamarin.iOS/SkiaSharp.Views.iOS.dll",
-        "lib/Xamarin.iOS/SkiaSharp.Views.iOS.xml",
+        "lib/XamarinMac/SkiaSharp.Views.Mac.dll",
+        "lib/XamariniOS/SkiaSharp.Views.iOS.dll",
+        "lib/XamarintvOS/SkiaSharp.Views.tvOS.dll",
         "lib/net45/SkiaSharp.Views.Desktop.dll",
-        "lib/net45/SkiaSharp.Views.Desktop.xml",
-        "lib/net45/SkiaSharp.Views.Gtk.dll",
-        "lib/net45/SkiaSharp.Views.Gtk.xml",
         "lib/net45/SkiaSharp.Views.WPF.dll",
-        "lib/net45/SkiaSharp.Views.WPF.xml",
-        "lib/tizen40/SkiaSharp.Views.Tizen.dll",
-        "lib/tizen40/SkiaSharp.Views.Tizen.xml",
         "lib/uap10.0/SkiaSharp.Views.UWP.dll",
-        "lib/uap10.0/SkiaSharp.Views.UWP.xml",
-        "runtimes/win10-arm/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll",
-        "runtimes/win10-x64/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll",
-        "runtimes/win10-x86/nativeassets/uap10.0/SkiaSharp.Views.Interop.UWP.dll",
-        "skiasharp.views.1.68.0.nupkg.sha512",
+        "skiasharp.views.1.59.1.1.nupkg.sha512",
         "skiasharp.views.nuspec"
       ]
     },
@@ -28168,6 +28892,93 @@
         "lib/uap10.0/SkiaSharp.Views.Forms.dll",
         "skiasharp.views.forms.1.59.1.1.nupkg.sha512",
         "skiasharp.views.forms.nuspec"
+      ]
+    },
+    "sqlite-net-pcl/1.7.335": {
+      "sha512": "0A9YNPbp66aB+Sitxmh9lq1KDtD4+EBPfdtnYN8WenvQqh5dNgMxUV7kaEG6EXYTi4zBxcsDKpyYJzbViWJXtw==",
+      "type": "package",
+      "path": "sqlite-net-pcl/1.7.335",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.0/SQLite-net.dll",
+        "lib/netstandard2.0/SQLite-net.xml",
+        "sqlite-net-pcl.1.7.335.nupkg.sha512",
+        "sqlite-net-pcl.nuspec"
+      ]
+    },
+    "SQLitePCLRaw.bundle_green/2.0.3": {
+      "sha512": "QgevRdYSy/MtL1TDdWuhoCH5cpBPZYUZd8h/WqgiLGXDa8e93Fv4/SE812SDCdjTb2+6s8SIwSLRq0z2bUeieg==",
+      "type": "package",
+      "path": "sqlitepclraw.bundle_green/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll",
+        "lib/Xamarin.iOS10/SQLitePCLRaw.nativelibrary.dll",
+        "lib/net461/SQLitePCLRaw.batteries_v2.dll",
+        "lib/net461/SQLitePCLRaw.nativelibrary.dll",
+        "lib/netcoreapp3.0/SQLitePCLRaw.batteries_v2.dll",
+        "lib/netcoreapp3.0/SQLitePCLRaw.nativelibrary.dll",
+        "lib/netstandard2.0/SQLitePCLRaw.batteries_v2.dll",
+        "sqlitepclraw.bundle_green.2.0.3.nupkg.sha512",
+        "sqlitepclraw.bundle_green.nuspec"
+      ]
+    },
+    "SQLitePCLRaw.core/2.0.3": {
+      "sha512": "9LO3qT7tP+0qBAQxg/PGLHPcsKri4H2zIiiMEg+7EGrnBbuUnJg1tcfKiiqFtRp74kZSAV6N0ZeSGYiodqYnoQ==",
+      "type": "package",
+      "path": "sqlitepclraw.core/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SQLitePCLRaw.core.dll",
+        "sqlitepclraw.core.2.0.3.nupkg.sha512",
+        "sqlitepclraw.core.nuspec"
+      ]
+    },
+    "SQLitePCLRaw.lib.e_sqlite3/2.0.3": {
+      "sha512": "VSTQBlcPOcqCCxXnXwo8N2msQuE/Hd6oKpZ5Nn022tq5/+liyx5uEYNw6Hj8logTdkuq+3Nlq7qYQhraFWn1wg==",
+      "type": "package",
+      "path": "sqlitepclraw.lib.e_sqlite3/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/net461/SQLitePCLRaw.lib.e_sqlite3.targets",
+        "lib/net461/_._",
+        "lib/netstandard2.0/_._",
+        "runtimes/alpine-x64/native/libe_sqlite3.so",
+        "runtimes/linux-arm/native/libe_sqlite3.so",
+        "runtimes/linux-arm64/native/libe_sqlite3.so",
+        "runtimes/linux-armel/native/libe_sqlite3.so",
+        "runtimes/linux-musl-x64/native/libe_sqlite3.so",
+        "runtimes/linux-x64/native/libe_sqlite3.so",
+        "runtimes/linux-x86/native/libe_sqlite3.so",
+        "runtimes/osx-x64/native/libe_sqlite3.dylib",
+        "runtimes/win-arm/native/e_sqlite3.dll",
+        "runtimes/win-arm64/native/e_sqlite3.dll",
+        "runtimes/win-x64/native/e_sqlite3.dll",
+        "runtimes/win-x86/native/e_sqlite3.dll",
+        "runtimes/win10-arm/nativeassets/uap10.0/e_sqlite3.dll",
+        "runtimes/win10-arm64/nativeassets/uap10.0/e_sqlite3.dll",
+        "runtimes/win10-x64/nativeassets/uap10.0/e_sqlite3.dll",
+        "runtimes/win10-x86/nativeassets/uap10.0/e_sqlite3.dll",
+        "sqlitepclraw.lib.e_sqlite3.2.0.3.nupkg.sha512",
+        "sqlitepclraw.lib.e_sqlite3.nuspec"
+      ]
+    },
+    "SQLitePCLRaw.provider.e_sqlite3/2.0.3": {
+      "sha512": "f2bwfPhD91dJ6KnjOw01KDT68zl7qpeX4+lC0mmKa+eA91Huya8hdNan73B3q7jEDLMFU/dkv7l5wqrqGB4QoQ==",
+      "type": "package",
+      "path": "sqlitepclraw.provider.e_sqlite3/2.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll",
+        "lib/uap10.0/SQLitePCLRaw.provider.e_sqlite3.dll",
+        "sqlitepclraw.provider.e_sqlite3.2.0.3.nupkg.sha512",
+        "sqlitepclraw.provider.e_sqlite3.nuspec"
       ]
     },
     "System.Buffers/4.5.0": {
@@ -28411,6 +29222,65 @@
         "ref/xamarinwatchos10/_._",
         "system.collections.specialized.4.3.0.nupkg.sha512",
         "system.collections.specialized.nuspec"
+      ]
+    },
+    "System.ComponentModel/4.3.0": {
+      "sha512": "VyGn1jGRZVfxnh8EdvDCi71v3bMXrsu8aYJOwoV7SNDLVhiEqwP86pPMyRGsDsxhXAm2b3o9OIqeETfN5qfezw==",
+      "type": "package",
+      "path": "system.componentmodel/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.ComponentModel.dll",
+        "lib/netstandard1.3/System.ComponentModel.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.ComponentModel.dll",
+        "ref/netcore50/System.ComponentModel.xml",
+        "ref/netcore50/de/System.ComponentModel.xml",
+        "ref/netcore50/es/System.ComponentModel.xml",
+        "ref/netcore50/fr/System.ComponentModel.xml",
+        "ref/netcore50/it/System.ComponentModel.xml",
+        "ref/netcore50/ja/System.ComponentModel.xml",
+        "ref/netcore50/ko/System.ComponentModel.xml",
+        "ref/netcore50/ru/System.ComponentModel.xml",
+        "ref/netcore50/zh-hans/System.ComponentModel.xml",
+        "ref/netcore50/zh-hant/System.ComponentModel.xml",
+        "ref/netstandard1.0/System.ComponentModel.dll",
+        "ref/netstandard1.0/System.ComponentModel.xml",
+        "ref/netstandard1.0/de/System.ComponentModel.xml",
+        "ref/netstandard1.0/es/System.ComponentModel.xml",
+        "ref/netstandard1.0/fr/System.ComponentModel.xml",
+        "ref/netstandard1.0/it/System.ComponentModel.xml",
+        "ref/netstandard1.0/ja/System.ComponentModel.xml",
+        "ref/netstandard1.0/ko/System.ComponentModel.xml",
+        "ref/netstandard1.0/ru/System.ComponentModel.xml",
+        "ref/netstandard1.0/zh-hans/System.ComponentModel.xml",
+        "ref/netstandard1.0/zh-hant/System.ComponentModel.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.componentmodel.4.3.0.nupkg.sha512",
+        "system.componentmodel.nuspec"
       ]
     },
     "System.ComponentModel.Annotations/4.5.0": {
@@ -29628,10 +30498,10 @@
         "system.linq.queryable.nuspec"
       ]
     },
-    "System.Memory/4.5.1": {
-      "sha512": "sDJYJpGtTgx+23Ayu5euxG5mAXWdkDb4+b0rD0Cab0M1oQS9H0HXGPriKcqpXuiJDTV7fTp/d+fMDJmnr6sNvA==",
+    "System.Memory/4.5.3": {
+      "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
       "type": "package",
-      "path": "system.memory/4.5.1",
+      "path": "system.memory/4.5.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -29643,11 +30513,7 @@
         "lib/netstandard2.0/System.Memory.dll",
         "lib/netstandard2.0/System.Memory.xml",
         "ref/netcoreapp2.1/_._",
-        "ref/netstandard1.1/System.Memory.dll",
-        "ref/netstandard1.1/System.Memory.xml",
-        "ref/netstandard2.0/System.Memory.dll",
-        "ref/netstandard2.0/System.Memory.xml",
-        "system.memory.4.5.1.nupkg.sha512",
+        "system.memory.4.5.3.nupkg.sha512",
         "system.memory.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -30653,10 +31519,10 @@
         "system.runtime.nuspec"
       ]
     },
-    "System.Runtime.CompilerServices.Unsafe/4.5.1": {
-      "sha512": "Zh8t8oqolRaFa9vmOZfdQm/qKejdqz0J9kr7o2Fu0vPeoH3BL1EOXipKWwkWtLT1JPzjByrF19fGuFlNbmPpiw==",
+    "System.Runtime.CompilerServices.Unsafe/4.5.2": {
+      "sha512": "wprSFgext8cwqymChhrBLu62LMg/1u92bU+VOwyfBimSPVFXtsNqEWC92Pf9ofzJFlk4IHmJA75EDJn1b2goAQ==",
       "type": "package",
-      "path": "system.runtime.compilerservices.unsafe/4.5.1",
+      "path": "system.runtime.compilerservices.unsafe/4.5.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -30672,7 +31538,7 @@
         "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
         "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
-        "system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -32382,13 +33248,14 @@
         "win2d.uwp.nuspec"
       ]
     },
-    "Xamarin.Forms/4.5.0.617": {
-      "sha512": "tB/h7bHEylOgNT+521SRnbmO+LCe5R3lPboD/icCMpa+FdjmxhZQ7+fIIPFDbhY2dqYetGRnAeJWXVx4NLbmAw==",
+    "Xamarin.Forms/4.7.0.968": {
+      "sha512": "VvHI/VXyDZcCLYXywh9A8gVtldD8XCLR8hujZVdlKGh87HIXAUW0b+uLFsvyMB8COwNce0w56ycgD/tXtLgFRA==",
       "type": "package",
-      "path": "xamarin.forms/4.5.0.617",
+      "path": "xamarin.forms/4.7.0.968",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Assets/xamarin_128x128.png",
         "build/MonoAndroid10/proguard.cfg",
         "build/XCODE10/Xamarin.Forms.Platform.iOS.dll",
         "build/XCODE10/Xamarin.Forms.Platform.iOS.pdb",
@@ -32648,8 +33515,8 @@
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/Themes/generic.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PageControlStyle.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PickerStyle.xaml",
+        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/PromptDialog.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Resources.xaml",
-        "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/Shell/ShellStyles.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/SliderStyle.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/StepperControl.xaml",
         "lib/uap10.0.14393/Xamarin.Forms.Platform.UAP/TabbedPageStyle.xaml",
@@ -32680,6 +33547,7 @@
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Microsoft.UI.Xaml/Themes/generic.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PageControlStyle.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PickerStyle.xaml",
+        "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/PromptDialog.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Resources.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/Shell/ShellStyles.xaml",
         "lib/uap10.0.16299/Xamarin.Forms.Platform.UAP/SliderStyle.xaml",
@@ -32690,8 +33558,27 @@
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.dll",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.pdb",
         "lib/uap10.0.16299/Xamarin.Forms.Xaml.xml",
-        "xamarin.forms.4.5.0.617.nupkg.sha512",
+        "xamarin.forms.4.7.0.968.nupkg.sha512",
         "xamarin.forms.nuspec"
+      ]
+    },
+    "Xamarin.Forms.PancakeView/1.4.2": {
+      "sha512": "0HGhwpvL8780UYmueP3Vazn6hmYB8GYEYyjkcPcW1qmnkYcfMc8h/9RZsDtUC7QFHikxCdxS29Aw8T0XrPETAQ==",
+      "type": "package",
+      "path": "xamarin.forms.pancakeview/1.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/monoandroid81/Xamarin.Forms.PancakeView.dll",
+        "lib/monoandroid90/Xamarin.Forms.PancakeView.dll",
+        "lib/net461/Xamarin.Forms.PancakeView.dll",
+        "lib/netstandard1.0/Xamarin.Forms.PancakeView.dll",
+        "lib/netstandard2.0/Xamarin.Forms.PancakeView.dll",
+        "lib/uap10.0.16299/Xamarin.Forms.PancakeView.dll",
+        "lib/uap10.0.16299/Xamarin.Forms.PancakeView.pri",
+        "lib/xamarinios10/Xamarin.Forms.PancakeView.dll",
+        "xamarin.forms.pancakeview.1.4.2.nupkg.sha512",
+        "xamarin.forms.pancakeview.nuspec"
       ]
     },
     "Opc.Ua.Client/1.0.0": {
@@ -32717,13 +33604,11 @@
   },
   "projectFileDependencyGroups": {
     "UAP,Version=v10.0.16299": [
-      "Microcharts >= 0.8.5-pre",
-      "Microcharts.Forms >= 0.7.1",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 6.2.9",
       "Plugin.Share >= 7.1.1",
       "Rg.Plugins.Popup >= 1.2.0.223",
       "Thesis >= 1.0.0",
-      "Xamarin.Forms >= 4.5.0.617"
+      "Xamarin.Forms >= 4.7.0.968"
     ]
   },
   "packageFolders": {
@@ -32753,6 +33638,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.telerik.com/nuget": {},
         "https://nugetized.blob.core.windows.net/live-reload/index.json": {}
       },
       "frameworks": {
@@ -32768,14 +33654,6 @@
     "frameworks": {
       "uap10.0.16299": {
         "dependencies": {
-          "Microcharts": {
-            "target": "Package",
-            "version": "[0.8.5-pre, )"
-          },
-          "Microcharts.Forms": {
-            "target": "Package",
-            "version": "[0.7.1, )"
-          },
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.9, )"
@@ -32790,7 +33668,7 @@
           },
           "Xamarin.Forms": {
             "target": "Package",
-            "version": "[4.5.0.617, )"
+            "version": "[4.7.0.968, )"
           }
         },
         "imports": [
@@ -32823,24 +33701,5 @@
         "#import": []
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Detected package downgrade: Microcharts.Forms from 0.8.3-pre to 0.7.1. Reference the package directly from the project to select a different version. \r\n Thesis.UWP -> Thesis -> Microcharts.Forms (>= 0.8.3-pre) \r\n Thesis.UWP -> Microcharts.Forms (>= 0.7.1)",
-      "libraryId": "Microcharts.Forms",
-      "targetGraphs": [
-        "UAP,Version=v10.0.16299",
-        "UAP,Version=v10.0.16299/win10-arm",
-        "UAP,Version=v10.0.16299/win10-arm-aot",
-        "UAP,Version=v10.0.16299/win10-arm64-aot",
-        "UAP,Version=v10.0.16299/win10-x64",
-        "UAP,Version=v10.0.16299/win10-x64-aot",
-        "UAP,Version=v10.0.16299/win10-x86",
-        "UAP,Version=v10.0.16299/win10-x86-aot"
-      ]
-    }
-  ]
+  }
 }

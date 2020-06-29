@@ -15,7 +15,7 @@
                                    PositionOut="Center"
                                    ScaleIn="1.2"
                                    ScaleOut="0.8" />
-        </pages:PopupPage.Animation>
+    </pages:PopupPage.Animation>
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center"
         HorizontalOptions="FillAndExpand"

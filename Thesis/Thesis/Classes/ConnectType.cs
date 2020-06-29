@@ -1,8 +1,13 @@
-﻿namespace Thesis
+﻿using SQLite;
+
+namespace Thesis
 {
     public class ConnectType
     {
+        [PrimaryKey]
+        [AutoIncrement]
         public int ConnectionId { get; set; }
+
         public string ConnectionName { get; set; }
         public string ConnectionUrl { get; set; }
         public bool ConnectionBool { get; set; }

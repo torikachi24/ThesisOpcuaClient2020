@@ -209,8 +209,9 @@ namespace Thesis
                     out continuationPoint,
                     out references);
 
-                browserTree.currentView.Add(new ListNode { id = ObjectIds.ObjectsFolder.ToString(), NodeName = "Root", children = (references?.Count != 0) });
-
+                browserTree.currentView.Add(new ListNode { id = ObjectIds.ObjectsFolder.ToString(), NodeName = "Objects", children = (references?.Count != 0) });
+                browserTree.currentView.Add(new ListNode { id = ObjectIds.TypesFolder.ToString(), NodeName = "Types", children = (references?.Count != 0) });
+                browserTree.currentView.Add(new ListNode { id = ObjectIds.ViewsFolder.ToString(), NodeName = "Views", children = (references?.Count != 0) });
                 return browserTree;
             }
             catch
@@ -223,8 +224,10 @@ namespace Thesis
         public Tree GetChildren(string node)
         {
             ReferenceDescriptionCollection references;
+            ReferenceDescriptionCollection nextreferenceDescriptionCollection;
             Byte[] continuationPoint;
             Tree browserTree = new Tree();
+            Byte[] revisedContinuationPoint;
 
             try
             {
@@ -239,6 +242,13 @@ namespace Thesis
                     0,
                     out continuationPoint,
                     out references);
+
+                while (continuationPoint != null)
+                {
+                    session.BrowseNext(null, false, continuationPoint, out revisedContinuationPoint, out nextreferenceDescriptionCollection);
+                    references.AddRange(nextreferenceDescriptionCollection);
+                    continuationPoint = revisedContinuationPoint;
+                }
 
                 if (references != null)
                 {
@@ -579,7 +589,6 @@ namespace Thesis
                 throw e;
             }
         }
-
 
         public Subscription Subscribe(int publishingInterval)
         {

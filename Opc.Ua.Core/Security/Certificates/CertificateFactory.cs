@@ -115,7 +115,7 @@ public class CertificateFactory
     /// <summary>
     /// The default certificate factory security parameter.
     /// </summary>
-    public const ushort defaultKeySize = 2048;
+    public const ushort defaultKeySize = 1024;
 
     public const ushort defaultHashSize = 256;
     public const ushort defaultLifeTime = 12;

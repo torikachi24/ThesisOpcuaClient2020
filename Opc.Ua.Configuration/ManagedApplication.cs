@@ -394,7 +394,7 @@ namespace Opc.Ua.Configuration
         private CertificateIdentifier m_certificate;
         private CertificateStoreIdentifier m_trustList;
         private StringCollection m_baseAddresses;
-        #endregion Private Fields
 
+        #endregion Private Fields
     }
 }

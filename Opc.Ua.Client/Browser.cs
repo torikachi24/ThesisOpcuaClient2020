@@ -342,8 +342,6 @@ namespace Opc.Ua.Client
 
         #endregion Public Methods
 
-
-
         #region Private Methods
 
         /// <summary>
@@ -413,8 +411,8 @@ namespace Opc.Ua.Client
 
         private bool m_continueUntilDone;
         private bool m_browseInProgress;
-        #endregion Private Fields
 
+        #endregion Private Fields
     }
 
     #region BrowserEventArgs Class

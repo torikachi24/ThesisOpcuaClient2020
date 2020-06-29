@@ -5,8 +5,8 @@
             x:Class="Thesis.TreeView"
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
               android:TabbedPage.OffscreenPageLimit="2"
-             android:TabbedPage.IsSwipePagingEnabled="true"
-            android:TabbedPage.IsSmoothScrollEnabled="false"
+             android:TabbedPage.IsSwipePagingEnabled="True"
+            android:TabbedPage.IsSmoothScrollEnabled="False"
             android:TabbedPage.ToolbarPlacement="Bottom"
             BarBackgroundColor="#00757C"
             BarTextColor="White"
@@ -67,7 +67,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-           
         </StackLayout>
     </ContentPage>
     <ContentPage Title="Graph" IconImageSource="statistics.png" BackgroundColor="#082535">
@@ -76,26 +75,43 @@
             <ToolbarItem Text="About" Order="Secondary" Priority="0" Clicked="ToolbarItem_Clicked_About" />
         </ContentPage.ToolbarItems>
         <StackLayout>
-            <StackLayout BackgroundColor="#181616" HeightRequest="80" Margin="7,5,7,5">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0"  Text="{Binding GraphNodeID,StringFormat='NodeID: {0}'}" TextColor="White" FontAttributes="Bold" FontSize="Medium" />
-                    <Label Grid.Row="0" Grid.Column="1"  Text="{Binding GraphDate,StringFormat='Date: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium" />
+            <Frame BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5"  HasShadow="False"
+                           VerticalOptions="Center"
+                           Margin="7,5,7,5"
+                           WidthRequest="150"
+                           HeightRequest="80">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" x:Name="GraphNodeID"  TextColor="White" FontAttributes="Bold" FontSize="Small" />
+                        <Label Grid.Row="0" Grid.Column="1" x:Name="GraphDate"  TextColor="White" FontAttributes="Bold" FontSize="Small" />
 
-                    <Label Grid.Row="1" Grid.Column="0"  Text="{Binding GraphValue,StringFormat='Value: {0}'}"   TextColor="White" FontAttributes="Bold" FontSize="Medium" />
-                    <Label Grid.Row="1" Grid.Column="1"  Text="{Binding GraphTime,StringFormat='Time: {0}'}"     TextColor="White" FontAttributes="Bold" FontSize="Medium" />
-                </Grid>
-            </StackLayout>
-
-            <form:ChartView x:Name="Chart0" Margin="7,0,7,5" Chart="{Binding Chart0}"  IsVisible="{Binding vis}"  BackgroundColor="#181616"
-                            HeightRequest="450" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+                        <Label Grid.Row="1" Grid.Column="0" x:Name="GraphValue" TextColor="White" FontAttributes="Bold" FontSize="Small" />
+                        <Label Grid.Row="1" Grid.Column="1" x:Name="GraphTime" TextColor="White" FontAttributes="Bold" FontSize="Small" />
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            <Frame BorderColor="#5e98af" BackgroundColor="#082535"
+                           CornerRadius="5"  HasShadow="False"
+                           VerticalOptions="Center"
+                           Margin="7,5,7,5"
+                           WidthRequest="150"
+                           HeightRequest="80">
+                <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <form:ChartView Margin="7,0,7,5" x:Name="Chart_Read" 
+                            HeightRequest="400" WidthRequest="0" HorizontalOptions="StartAndExpand"  />
+                </ScrollView>
+            </Frame>
+            
+         
         </StackLayout>
     </ContentPage>
 </TabbedPage>

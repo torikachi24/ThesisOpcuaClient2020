@@ -13,9 +13,9 @@ namespace Thesis
             warningtext.Text = alarm;
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            PopupNavigation.Instance.PopAsync();
         }
     }
 }
